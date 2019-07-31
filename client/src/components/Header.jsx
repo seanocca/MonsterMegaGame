@@ -31,12 +31,13 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar bg="light" variant="light" fixed="top">
+      <Navbar bg="light" variant="light" fixed="top" style={{position: 'relative'}}>
         <Navbar.Brand href="#home" className="mr-auto">Half Monster Games</Navbar.Brand>
         <Nav className="justify-content-center mr-auto" defaultActiveKey="#home">
           <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav.Link href="#lore">Lore</Nav.Link>
+          <Nav.Link href="#gamerules">Game Rules</Nav.Link>
+          <Nav.Link href="#megagame">MegaGame</Nav.Link>
         </Nav>
         {this.getUser()}
       </Navbar>
