@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -8,6 +9,7 @@ class App extends Component {
       <Fragment>
         <Header />
         <Container />
+        <Footer />
       </Fragment>
     );
   }
