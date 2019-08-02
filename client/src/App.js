@@ -1,16 +1,18 @@
-import React, { Component, Fragment } from "react";
-import { Container } from "react-bootstrap";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 class App extends Component {
   render() {
     return (
-      <Fragment>
-        <Header />
-        <Container />
-        <Footer />
-      </Fragment>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/login" component={Login} />
+        </Switch>
+      </Router>
     );
   }
 }

@@ -5,7 +5,6 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = { user: null };
-
   }
 
   getUser(){
@@ -13,17 +12,16 @@ class Header extends Component {
     if (this.state.user !== null){
       return (
         <NavDropdown title="User###" id="basic-nav-dropdown" className="justify-content-right">
-          <NavDropdown.Item href="#login">User Details</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+          <NavDropdown.Item href="#details">User Details</NavDropdown.Item>
+          <NavDropdown.Item href="#action">Change Faction</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+          <NavDropdown.Item /*onClick={}*/>Log Out</NavDropdown.Item>
         </NavDropdown>
       );
     } else {
       return (
       <Navbar.Text className="justify-content-right">
-        Signed in as: <a href="#login">Mark Otto</a>
+       <a href="/login">Sign In/Sign Up</a>
       </Navbar.Text>
       );
     }
