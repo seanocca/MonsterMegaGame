@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Image } from "react-bootstrap";
+import Logo from "./../images/hmgLogo.png";
 
 class Header extends Component {
   constructor(props) {
@@ -7,11 +8,15 @@ class Header extends Component {
     this.state = { user: null };
   }
 
-  getUser(){
+  getUser() {
     //this.user = //Get user from Session
-    if (this.state.user !== null){
+    if (this.state.user !== null) {
       return (
-        <NavDropdown title="User###" id="basic-nav-dropdown" className="justify-content-right">
+        <NavDropdown
+          title="User###"
+          id="basic-nav-dropdown"
+          className="justify-content-right"
+        >
           <NavDropdown.Item href="#details">User Details</NavDropdown.Item>
           <NavDropdown.Item href="#action">Change Faction</NavDropdown.Item>
           <NavDropdown.Divider />
@@ -20,19 +25,30 @@ class Header extends Component {
       );
     } else {
       return (
-      <Navbar.Text className="justify-content-right">
-       <a href="/login">Sign In/Sign Up</a>
-      </Navbar.Text>
+        <Navbar.Text className="justify-content-right">
+          <a href="/login">Sign In/Sign Up</a>
+        </Navbar.Text>
       );
     }
   }
 
   render() {
     return (
-      <Navbar bg="light" variant="light" fixed="top" style={{position: 'relative'}}>
-        <Navbar.Brand href="#home" className="mr-auto">Half Monster Games</Navbar.Brand>
-        <Nav className="justify-content-center mr-auto" defaultActiveKey="#home">
-          <Nav.Link href="#home">Home</Nav.Link>
+      <Navbar
+        bg="light"
+        variant="light"
+        fixed="top"
+        style={{ position: "relative" }}
+      >
+        <Navbar.Brand href="/" className="mr-auto">
+          <Image src={Logo} alt="Half Monster Games" width="50" height="50" />
+          Half Monster Games
+        </Navbar.Brand>
+        <Nav
+          className="justify-content-center mr-auto"
+          defaultActiveKey="#home"
+        >
+          <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="#lore">Lore</Nav.Link>
           <Nav.Link href="#gamerules">Game Rules</Nav.Link>
           <Nav.Link href="#megagame">MegaGame</Nav.Link>
