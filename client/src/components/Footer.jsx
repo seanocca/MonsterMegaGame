@@ -19,6 +19,7 @@ class Footer extends Component {
         return (
             <Card bg="light" style={sticky_footer} class="pagination-centered">
                 <Row>
+                    <Col></Col>
                     <Col md={{ span: 6, offset: 2 }}>
                         <Card.Text>
                             Brisbane, Australia
@@ -38,6 +39,7 @@ class Footer extends Component {
                             <a href="https://www.patreon.com/jackfordmorgan"><img src={PatLogo} alt="Patreon" height="40" width="40" style={{padding: '5px 5px'}}/></a>
                         </Card.Text>
                     </Col>
+                    <Col></Col>
                 </Row>
                 <Card.Footer clasName="text-muted" style={{textAlign: 'center', padding: '0.5rem 1.25rem'}}>&copy; 2019 by Half-Monster Games</Card.Footer>
             </Card>);
