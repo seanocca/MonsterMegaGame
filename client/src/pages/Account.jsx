@@ -3,15 +3,15 @@ import { Container } from "react-bootstrap";
 
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
-import Game from "./../components/Game";
+import AccEditForm from "./../components/AccEditForm";
 
-class Home extends Component {
+class Account extends Component {
   render() {
     return (
       <Fragment>
         <Header />
         <Container>
-          <Game />
+          <AccEditForm />
         </Container>
         <Footer />
       </Fragment>
@@ -19,4 +19,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Account;

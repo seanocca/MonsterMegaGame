@@ -55,7 +55,7 @@ class Forms extends Component {
           </Form.Group>
         </Form.Row>
 
-        <Form.Group controlId="formGridAddress1">
+        <Form.Group controlId="formGridAddress">
           <Form.Label>Address</Form.Label>
           <Form.Control placeholder="1234 Main St" />
         </Form.Group>
