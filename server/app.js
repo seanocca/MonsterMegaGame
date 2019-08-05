@@ -4,6 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const AWS = require('aws-sdk');
+var dynamoDb = new AWS.DynamoDB.DocumentClient({
+    region: 'ap-southeast-2'
+});
+
 var indexRouter = require('./routes/index');
 
 var app = express();
