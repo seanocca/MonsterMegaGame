@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
@@ -10,8 +10,12 @@ class Account extends Component {
     return (
       <Fragment>
         <Header />
-        <Container>
-          <AccEditForm />
+        <Container style={{padding: '2rem'}}>
+          <Row>
+            <Col md={6}>
+              <AccEditForm />
+            </Col>
+          </Row>
         </Container>
         <Footer />
       </Fragment>

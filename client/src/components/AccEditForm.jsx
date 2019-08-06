@@ -5,8 +5,9 @@ class AccEditForm extends Component {
   render() {
     return (
       <Card>
-        <Card.Header>Edit Account Details</Card.Header>
-        <Form>
+        <Card.Header className="text-center" style={{fontSize: '1.4rem'}}>Edit Account Details</Card.Header>
+        <Card.Body>
+        <Form style={{padding: '1rem'}}>
           <Form.Row>
             <Form.Group as={Col} controlId="formFirstName">
               <Form.Label>First Name</Form.Label>
@@ -45,6 +46,7 @@ class AccEditForm extends Component {
             </Button>
           </Form.Row>
         </Form>
+        </Card.Body>
       </Card>
     );
   }
