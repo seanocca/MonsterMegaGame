@@ -6,7 +6,7 @@ import YTLogo from "./../images/youtube.png";
 import PatLogo from "./../images/patreon.png";
 
 const sticky_footer = {
-  position: "absolute",
+  position: "relative",
   width: "100%",
   bottom: 0,
   left: 0,
