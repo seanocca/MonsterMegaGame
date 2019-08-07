@@ -6,17 +6,17 @@ import Footer from "./../components/Footer";
 import Game from "./../components/Game";
 
 class Home extends Component {
-    render(){
-        return (
-        <Fragment>
-            <Header />
-            <Container>
-                <Game />
-            </Container>
-            <Footer />
-        </Fragment>
-      );
-    }
+  render() {
+    return (
+      <Fragment>
+        <Header />
+        <Container>
+          <Game />
+        </Container>
+        <Footer />
+      </Fragment>
+    );
+  }
 }
 
 export default Home;

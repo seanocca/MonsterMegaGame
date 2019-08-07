@@ -16,7 +16,7 @@ class Forms extends Component {
         <Form.Group controlId="formBasicChecbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" href="/account">
           Login
         </Button>
       </Form>
@@ -55,7 +55,7 @@ class Forms extends Component {
           </Form.Group>
         </Form.Row>
 
-        <Form.Group controlId="formGridAddress1">
+        <Form.Group controlId="formGridAddress">
           <Form.Label>Address</Form.Label>
           <Form.Control placeholder="1234 Main St" />
         </Form.Group>
@@ -80,7 +80,7 @@ class Forms extends Component {
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" href="/account">
             Submit
           </Button>
         </Form.Row>

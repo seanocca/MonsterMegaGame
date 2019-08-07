@@ -1,8 +1,8 @@
 FROM node:latest
 
-COPY . /hmgclient
+COPY . /hmgdevclient
 
-WORKDIR /hmgclient
+WORKDIR /hmgdevclient
 
 RUN npm install
 

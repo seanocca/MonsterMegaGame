@@ -35,25 +35,27 @@ class Header extends Component {
   render() {
     return (
       <Navbar
-        bg="light"
-        variant="light"
         fixed="top"
         style={{ position: "relative" }}
+        expand="md"
       >
         <Navbar.Brand href="/" className="mr-auto">
           <Image src={Logo} alt="Half Monster Games" width="50" height="50" />
-          Half Monster Games
+          &nbsp;Half Monster Games
         </Navbar.Brand>
-        <Nav
-          className="justify-content-center mr-auto"
-          defaultActiveKey="#home"
-        >
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="#lore">Lore</Nav.Link>
-          <Nav.Link href="#gamerules">Game Rules</Nav.Link>
-          <Nav.Link href="#megagame">MegaGame</Nav.Link>
-        </Nav>
-        {this.getUser()}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav
+            className="justify-content-center mr-auto"
+            defaultActiveKey="#home"
+          >
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="#lore">Lore</Nav.Link>
+            <Nav.Link href="#gamerules">Game Rules</Nav.Link>
+            <Nav.Link href="#megagame">MegaGame</Nav.Link>
+          </Nav>
+          {this.getUser()}
+        </Navbar.Collapse>
       </Navbar>
     );
   }

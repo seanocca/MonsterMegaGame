@@ -6,11 +6,11 @@ import YTLogo from "./../images/youtube.png";
 import PatLogo from "./../images/patreon.png";
 
 const sticky_footer = {
-  position: "absolute",
+  position: "relative",
   width: "100%",
   bottom: 0,
   left: 0,
-  fontSize: "0.8rem"
+  fontSize: "0.75rem"
 };
 
 class Footer extends Component {
@@ -21,13 +21,13 @@ class Footer extends Component {
           className="justify-content-md-center"
           style={{ marginLeft: "0", marginRight: "0" }}
         >
-          <Col md="auto" style={{ fontSize: "0.75rem" }}>
+          <Col md="auto">
             <Card.Text className="text-center">Brisbane, Australia</Card.Text>
             <Card.Text className="text-center">
               halfhuman@halfmonstergames.com
             </Card.Text>
           </Col>
-          <Col md="auto" style={{ fontSize: "0.75rem" }}>
+          <Col md="auto">
             <Card.Text className="text-center">Contact Us!</Card.Text>
             <Card.Text className="text-center">
               <a href="https://facebook.com/HalfMonsterGames">
