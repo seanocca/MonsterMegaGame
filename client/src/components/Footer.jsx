@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { Card, Row, Col, Image } from "react-bootstrap";
-import FBLogo from "./../images/facebook.png";
-import InstaLogo from "./../images/instagram.png";
-import YTLogo from "./../images/youtube.png";
-import PatLogo from "./../images/patreon.png";
+import React, { Component } from 'react';
+import { Card, Row, Col, Image } from 'react-bootstrap';
+import FBLogo from '../images/facebook.png';
+import InstaLogo from '../images/instagram.png';
+import YTLogo from '../images/youtube.png';
+import PatLogo from '../images/patreon.png';
 
 const sticky_footer = {
-  position: "relative",
-  width: "100%",
+  position: 'fixed',
+  width: '100%',
   bottom: 0,
   left: 0,
-  fontSize: "0.75rem"
+  fontSize: '0.75rem',
 };
 
 class Footer extends Component {
@@ -19,7 +19,7 @@ class Footer extends Component {
       <Card bg="light" style={sticky_footer} className="pagination-centered">
         <Row
           className="justify-content-md-center"
-          style={{ marginLeft: "0", marginRight: "0" }}
+          style={{ marginLeft: '0', marginRight: '0' }}
         >
           <Col md="auto">
             <Card.Text className="text-center">Brisbane, Australia</Card.Text>
@@ -36,7 +36,11 @@ class Footer extends Component {
                   thumbnail
                   width="50"
                   height="50"
-                  style={{ padding: "5px 5px", border: "none" }}
+                  style={{
+                    padding: '0px 5px',
+                    border: 'none',
+                    backgroundColor: '#fff0',
+                  }}
                 />
               </a>
               <a href="https://www.instagram.com/halfmonstergames/">
@@ -45,7 +49,11 @@ class Footer extends Component {
                   thumbnail
                   width="50"
                   height="50"
-                  style={{ padding: "5px 5px", border: "none" }}
+                  style={{
+                    padding: '0px 5px',
+                    border: 'none',
+                    backgroundColor: '#fff0',
+                  }}
                 />
               </a>
               <a href="https://www.youtube.com/channel/UCPm1k8Gy3otn7fUZGaFFy5Q">
@@ -54,7 +62,11 @@ class Footer extends Component {
                   thumbnail
                   width="50"
                   height="50"
-                  style={{ padding: "5px 5px", border: "none" }}
+                  style={{
+                    padding: '0px 5px',
+                    border: 'none',
+                    backgroundColor: '#fff0',
+                  }}
                 />
               </a>
               <a href="https://www.patreon.com/jackfordmorgan">
@@ -63,7 +75,11 @@ class Footer extends Component {
                   thumbnail
                   width="50"
                   height="50"
-                  style={{ padding: "5px 5px", border: "none" }}
+                  style={{
+                    padding: '0px 5px',
+                    border: 'none',
+                    backgroundColor: '#fff0',
+                  }}
                 />
               </a>
             </Card.Text>
@@ -71,7 +87,7 @@ class Footer extends Component {
         </Row>
         <Card.Footer
           className="text-muted text-center"
-          style={{ fontSize: "0.6rem", padding: "0.5rem 1.25rem" }}
+          style={{ fontSize: '0.6rem', padding: '0.5rem 1.25rem' }}
         >
           &copy; 2019 by Half-Monster Games
         </Card.Footer>

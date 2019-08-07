@@ -46,13 +46,14 @@ class Header extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav
-            className="justify-content-center mr-auto"
+            className="justify-content-center m-auto"
             defaultActiveKey="#home"
           >
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#lore">Lore</Nav.Link>
-            <Nav.Link href="#gamerules">Game Rules</Nav.Link>
-            <Nav.Link href="#megagame">MegaGame</Nav.Link>
+            <Nav.Link href="/lore">Lore</Nav.Link>
+            <Nav.Link href="/gamerules">Game Rules</Nav.Link>
+            <Nav.Link href="/factions">Factions</Nav.Link>
+            <Nav.Link href="/bestiary">Bestiary</Nav.Link>
           </Nav>
           {this.getUser()}
         </Navbar.Collapse>

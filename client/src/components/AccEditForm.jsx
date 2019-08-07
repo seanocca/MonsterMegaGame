@@ -7,7 +7,7 @@ class AccEditForm extends Component {
       <Card>
         <Card.Header className="text-center" style={{fontSize: '1.4rem'}}>Edit Account Details</Card.Header>
         <Form style={{padding: '1rem'}}>
-        <Card.Body inline >
+        <Card.Body inline="true" >
 
           <Form.Row>
             <Form.Group as={Col} controlId="formFirstName">
