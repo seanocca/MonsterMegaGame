@@ -19,6 +19,12 @@
   "eslintConfig": {
     "extends": "airbnb"
   },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -32,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^17.1.1"
+    "eslint-config-airbnb": "^17.1.1",
+    "prettier": "1.18.2"
   }
 }
