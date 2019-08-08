@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import AccEditForm from "./../components/AccEditForm";
+import AccEditForm from "../components/AccountEditForm";
 import FactionEdit from "./../components/FactionEdit";
 
 class Account extends Component {
