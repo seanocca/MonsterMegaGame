@@ -1,6 +1,4 @@
 import React from 'react';
-import './NotFound.css';
-
 const not_found = {
   paddingTop: '100px',
   textAlign: 'center',
