@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl, FormLabel } from 'react-bootstrap';
-import './AdminLogin.css';
+
+const login = {
+  padding: '60px 0',
+};
+
+const login_form = {
+  margin: '0 auto',
+  maxWidth: '320px',
+};
 
 export default class Login extends Component {
   constructor(props) {
@@ -29,8 +37,8 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
+      <div style={login}>
+        <form onSubmit={this.handleSubmit} style={login_form}>
           <FormGroup controlId="email" bsSize="large">
             <FormLabel>Email</FormLabel>
             <FormControl
