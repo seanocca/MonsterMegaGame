@@ -1,4 +1,5 @@
 import React from 'react';
+
 const not_found = {
   paddingTop: '100px',
   textAlign: 'center',

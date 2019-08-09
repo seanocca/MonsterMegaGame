@@ -61,6 +61,7 @@ export default class Login extends Component {
             bsSize="large"
             disabled={!this.validateForm()}
             type="submit"
+            href="/dashboard"
           >
             Login{' '}
           </Button>

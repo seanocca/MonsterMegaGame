@@ -17,6 +17,7 @@ import Factions from './pages/Factions';
 import Bestiary from './pages/Bestiary';
 import Lore from './pages/Lore';
 import GameRules from './pages/GameRules';
+import Dashboard from './pages/Dashboard';
 
 import NotFound from './pages/NotFound';
 
@@ -34,6 +35,7 @@ const App = () => (
         <Route exact path="/bestiary" component={Bestiary} />
         <Route exact path="/lore" component={Lore} />
         <Route exact path="/gamerules" component={GameRules} />
+        <Route exact path="/dashboard" component={Dashboard} />
         <Route component={NotFound} />
       </Switch>
     </Router>
