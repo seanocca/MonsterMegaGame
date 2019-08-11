@@ -25,7 +25,7 @@ const hamburgerColor = {
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: 'null' };
+    this.state = { user: null };
   }
 
   getUser() {
@@ -35,7 +35,7 @@ class Header extends Component {
     if (user !== null) {
       return (
         <NavDropdown
-          style={{ backgroundColor: '#01004d' }}
+          style={textColor}
           title="User###"
           id="basic-nav-dropdown"
           className="justify-content-right"
@@ -48,9 +48,9 @@ class Header extends Component {
       );
     }
     return (
-      <Navbar.Text className="justify-content-right">
-        <a style={textColor} href="/login">Sign In/Sign Up</a>
-      </Navbar.Text>
+      <LinkContainer className="justify-content-right" style={textColor} to="/login">
+        <Nav.Link>Sign In/Sign Up</Nav.Link>
+      </LinkContainer>
     );
   }
 
