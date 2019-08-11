@@ -17,9 +17,9 @@ import Factions from './pages/Factions';
 import Bestiary from './pages/Bestiary';
 import Lore from './pages/Lore';
 import GameRules from './pages/GameRules';
-import Dashboard from './pages/Dashboard';
 
 import NotFound from './pages/NotFound';
+import UsersDashboard from './components/UsersDashboard';
 
 const App = () => (
   <Fragment>
@@ -34,7 +34,7 @@ const App = () => (
       <Route exact path="/bestiary" component={Bestiary} />
       <Route exact path="/lore" component={Lore} />
       <Route exact path="/gamerules" component={GameRules} />
-      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/dashboard/users" component={UsersDashboard} />
       <Route component={NotFound} />
     </Switch>
     <Footer />
