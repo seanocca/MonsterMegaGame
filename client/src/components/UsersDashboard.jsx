@@ -20,8 +20,9 @@ class UsersDashboard extends Component {
   render() {
     const { users } = this.state;
     return (
-      <Container>
+      <Container style={{padding: '4rem 0'}}>
         <Dashboard />
+        <h1>Users</h1>
         <EditableUserList users={users} />
       </Container>
     );
