@@ -3,10 +3,7 @@ import { Navbar, Nav, NavDropdown, Image } from "react-bootstrap";
 import Logo from "./../images/hmgLogo.png";
 
 const textColor = {
-  color: "#ffc107",
-  fontWeight: "600",
-  fontSize: "1.25rem"
-}
+  textDecoration: 'none',
 
 const hamburgerColor = {
   backgroundColor: "#ffc107"
