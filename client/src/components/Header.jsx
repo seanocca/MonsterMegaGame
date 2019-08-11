@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Navbar, Nav, NavDropdown, Image,
 } from 'react-bootstrap';
+import { Link, withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import Logo from '../images/hmgLogo.png';
@@ -46,12 +47,12 @@ class Header extends Component {
         </NavDropdown>
       );
     }
-      return (
-        <Navbar.Text className="justify-content-right">
-          <a style={textColor} href="/login">Sign In/Sign Up</a>
-        </Navbar.Text>
-      );
-    }
+    return (
+      <Navbar.Text className="justify-content-right">
+        <a style={textColor} href="/login">Sign In/Sign Up</a>
+      </Navbar.Text>
+    );
+  }
 
   render() {
     return (
