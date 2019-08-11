@@ -45,7 +45,7 @@ class Forms extends Component {
 
     try {
       await Auth.signIn(logInEmail, logInPassword);
-      alert('Logged in...');
+      alert('You are not really logged in..');
     } catch (e) {
       alert(e.message);
     }
