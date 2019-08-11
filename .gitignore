@@ -56,7 +56,19 @@ typings/
 
 # dotenv environment variables file
 .env
+env.yml
+
+# Serverless
+.webpack
+.serverless
 
 # next.js build output
 .next
+
+# IDEs
+.idea
+.vscode
+
+# Security Keys
 HMG.pem
+config.js

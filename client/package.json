@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-amplify": "^1.1.36",
     "bootstrap": "^4.3.1",
+    "dotenv": "^8.0.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.10",
     "react-dom": "^16.8.6",
+    "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
@@ -17,7 +20,28 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "airbnb",
+      "react-app"
+    ],
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "arrowParens": "always"
   },
   "browserslist": {
     "production": [
@@ -30,5 +54,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "prettier": "1.18.2"
   }
 }
