@@ -50,9 +50,8 @@ class Header extends Component {
         style={{ position: "relative", backgroundImage: "linear-gradient(#01004d 85%, #01004d96)" }}
         expand="md"
       >
-        <Navbar.Brand href="/" className="mr-auto" style={textColor}>
-          <Image src={Logo} alt="Half Monster Games" width="50" height="50" />
-          &nbsp;Half Monster Games
+            <Image src={Logo} style={imagePadding} alt="Half Monster Games" width="50" height="50" />
+            Half Monster Games
         </Navbar.Brand>
         <Navbar.Toggle style={hamburgerColor}/>
         <Navbar.Collapse id="responsive-navbar-nav">
