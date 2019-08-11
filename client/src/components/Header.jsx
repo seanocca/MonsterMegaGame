@@ -15,7 +15,7 @@ const hamburgerColor = {
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: "null" };
+    this.state = { user: null };
   }
 
   getUser() {
