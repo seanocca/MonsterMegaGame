@@ -42,6 +42,7 @@ class Forms extends Component {
   handleLogInSubmit = async (event) => {
     event.preventDefault();
     const { logInEmail, logInPassword } = this.state;
+    console.log('process env', process.env);
 
     try {
       await Auth.signIn(logInEmail, logInPassword);
