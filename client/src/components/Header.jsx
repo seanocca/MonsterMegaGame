@@ -60,11 +60,21 @@ class Header extends Component {
             className="justify-content-center m-auto"
             defaultActiveKey="#home"
           >
-            <Nav.Link style={textColor} href="/">Home</Nav.Link>
-            <Nav.Link style={textColor} href="/lore">Lore</Nav.Link>
-            <Nav.Link style={textColor} href="/gamerules">Game Rules</Nav.Link>
-            <Nav.Link style={textColor} href="/factions">Factions</Nav.Link>
-            <Nav.Link style={textColor} href="/bestiary">Bestiary</Nav.Link>
+            <LinkContainer style={textColor} to="/">
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer style={textColor} to="/lore">
+              <Nav.Link>Lore</Nav.Link>
+            </LinkContainer>
+            <LinkContainer style={textColor} to="/gamerules">
+              <Nav.Link>Game Rules</Nav.Link>
+            </LinkContainer>
+            <LinkContainer style={textColor} to="/factions">
+              <Nav.Link>Factions</Nav.Link>
+            </LinkContainer>
+            <LinkContainer style={textColor} to="/bestiary">
+              <Nav.Link>Bestiary</Nav.Link>
+            </LinkContainer>
           </Nav>
           {this.getUser()}
         </Navbar.Collapse>
