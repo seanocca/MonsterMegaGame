@@ -1,30 +1,40 @@
-import React, { Component } from "react";
-import { Navbar, Nav, NavDropdown, Image } from "react-bootstrap";
-import Logo from "./../images/hmgLogo.png";
+import React, { Component } from 'react';
+import {
+  Navbar, Nav, NavDropdown, Image,
+} from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+
+import Logo from '../images/hmgLogo.png';
 
 const textColor = {
+  color: '#ffc107',
+  fontWeight: '600',
+  fontSize: '1.25rem',
   textDecoration: 'none',
+};
 
 const imagePadding = {
   marginRight: '5px',
 };
 
 const hamburgerColor = {
-  backgroundColor: "#ffc107"
-}
+  backgroundColor: '#ffc107',
+};
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: "null" };
+    this.state = { user: 'null' };
   }
 
   getUser() {
-    //this.user = //Get user from Session
-    if (this.state.user !== null) {
+    // this.user = //Get user from Session
+    const { user } = this.state;
+
+    if (user !== null) {
       return (
         <NavDropdown
-          style={{backgroundColor: "#01004d"}}
+          style={{ backgroundColor: '#01004d' }}
           title="User###"
           id="basic-nav-dropdown"
           className="justify-content-right"
@@ -32,23 +42,22 @@ class Header extends Component {
           <NavDropdown.Item style={textColor} href="#details">User Details</NavDropdown.Item>
           <NavDropdown.Item style={textColor} href="#action">Change Faction</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item style={textColor} /*onClick={}*/>Log Out</NavDropdown.Item>
+          <NavDropdown.Item style={textColor}>Log Out</NavDropdown.Item>
         </NavDropdown>
       );
-    } else {
+    }
       return (
         <Navbar.Text className="justify-content-right">
           <a style={textColor} href="/login">Sign In/Sign Up</a>
         </Navbar.Text>
       );
     }
-  }
 
   render() {
     return (
       <Navbar
         fixed="top"
-        style={{ position: "relative", backgroundImage: "linear-gradient(#01004d 85%, #01004d96)" }}
+        style={{ position: 'relative', backgroundImage: 'linear-gradient(#01004d 85%, #01004d96)' }}
         expand="md"
       >
         <Navbar.Brand>
