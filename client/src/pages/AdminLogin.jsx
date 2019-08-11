@@ -5,7 +5,7 @@ const login = {
   padding: '60px 0',
 };
 
-const login_form = {
+const loginForm = {
   margin: '0 auto',
   maxWidth: '320px',
 };
@@ -20,41 +20,43 @@ export default class Login extends Component {
     };
   }
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
-
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     // just route to the admin page for now
     event.preventDefault();
   };
 
+  validateForm() {
+    const { email, password } = this.state;
+    return email.length > 0 && password.length > 0;
+  }
+
   render() {
+    const { email, password } = this.state;
     return (
       <div style={login}>
-        <form onSubmit={this.handleSubmit} style={login_form}>
+        <form onSubmit={this.handleSubmit} style={loginForm}>
           <FormGroup controlId="email" bsSize="large">
             <FormLabel>Email</FormLabel>
             <FormControl
               autoFocus
               type="email"
-              value={this.state.email}
+              value={email}
               onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
             <FormLabel>Password</FormLabel>
             <FormControl
-              value={this.state.password}
+              value={password}
               onChange={this.handleChange}
               type="password"
-            />{' '}
+            />
           </FormGroup>
           <Button
             block
@@ -63,7 +65,7 @@ export default class Login extends Component {
             type="submit"
             href="/dashboard"
           >
-            Login{' '}
+            Login
           </Button>
         </form>
       </div>
