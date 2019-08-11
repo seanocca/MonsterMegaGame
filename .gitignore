@@ -71,3 +71,4 @@ env.yml
 
 # Security Keys
 HMG.pem
+config.js

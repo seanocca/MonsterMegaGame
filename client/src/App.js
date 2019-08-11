@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
+  withRouter,
 } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -17,30 +17,32 @@ import Factions from './pages/Factions';
 import Bestiary from './pages/Bestiary';
 import Lore from './pages/Lore';
 import GameRules from './pages/GameRules';
-import Dashboard from './pages/Dashboard';
 
 import NotFound from './pages/NotFound';
+import UsersDashboard from './components/UsersDashboard';
+import BeastsDashboard from './components/BeastsDashboard';
+import FactionsDashboard from './components/FactionsDashboard';
 
 const App = () => (
   <Fragment>
     <Header />
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Redirect from="/home" to="/" />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/admin" component={AdminLogin} />
-        <Route exact path="/account" component={Account} />
-        <Route exact path="/factions" component={Factions} />
-        <Route exact path="/bestiary" component={Bestiary} />
-        <Route exact path="/lore" component={Lore} />
-        <Route exact path="/gamerules" component={GameRules} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Redirect from="/home" to="/" />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/admin" component={AdminLogin} />
+      <Route exact path="/account" component={Account} />
+      <Route exact path="/factions" component={Factions} />
+      <Route exact path="/bestiary" component={Bestiary} />
+      <Route exact path="/lore" component={Lore} />
+      <Route exact path="/gamerules" component={GameRules} />
+      <Route exact path="/dashboard/users" component={UsersDashboard} />
+      <Route exact path="/dashboard/beasts" component={BeastsDashboard} />
+      <Route exact path="/dashboard/factions" component={FactionsDashboard} />
+      <Route component={NotFound} />
+    </Switch>
     <Footer />
   </Fragment>
 );
 
-export default App;
+export default withRouter(App);
