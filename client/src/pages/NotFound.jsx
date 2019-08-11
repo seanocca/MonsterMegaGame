@@ -1,12 +1,12 @@
 import React from 'react';
 
-const not_found = {
+const notFound = {
   paddingTop: '100px',
   textAlign: 'center',
 };
 
 export default () => (
-  <div className="NotFound" style={not_found}>
+  <div className="NotFound" style={notFound}>
     <h3>404 Page Not Found</h3>
   </div>
 );
