@@ -5,6 +5,10 @@ import Logo from "./../images/hmgLogo.png";
 const textColor = {
   textDecoration: 'none',
 
+const imagePadding = {
+  marginRight: '5px',
+};
+
 const hamburgerColor = {
   backgroundColor: "#ffc107"
 }
