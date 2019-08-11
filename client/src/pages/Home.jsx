@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 
-import Game from "./../components/Game";
+import Game from "../components/Game";
 
 class Home extends Component {
   render() {
