@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
+  withRouter,
 } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -24,23 +24,21 @@ import NotFound from './pages/NotFound';
 const App = () => (
   <Fragment>
     <Header />
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Redirect from="/home" to="/" />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/admin" component={AdminLogin} />
-        <Route exact path="/account" component={Account} />
-        <Route exact path="/factions" component={Factions} />
-        <Route exact path="/bestiary" component={Bestiary} />
-        <Route exact path="/lore" component={Lore} />
-        <Route exact path="/gamerules" component={GameRules} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Redirect from="/home" to="/" />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/admin" component={AdminLogin} />
+      <Route exact path="/account" component={Account} />
+      <Route exact path="/factions" component={Factions} />
+      <Route exact path="/bestiary" component={Bestiary} />
+      <Route exact path="/lore" component={Lore} />
+      <Route exact path="/gamerules" component={GameRules} />
+      <Route exact path="/dashboard" component={Dashboard} />
+      <Route component={NotFound} />
+    </Switch>
     <Footer />
   </Fragment>
 );
 
-export default App;
+export default withRouter(App);
