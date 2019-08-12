@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import {
   Navbar, Nav, NavDropdown, Image,
 } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import Logo from '../images/hmgLogo.png';
+
+const mapStateToProps = (state) => {
+  const { isAuthenticated } = state;
+  return {
+    isAuthenticated,
+  };
+};
 
 const textColor = {
   color: '#ffc107',
@@ -23,16 +31,8 @@ const hamburgerColor = {
 };
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { user: null };
-  }
-
   getUser() {
-    // this.user = //Get user from Session
-    const { user } = this.state;
-
-    if (user !== null) {
+    if (this.props.isAuthenticated !== false) {
       return (
         <NavDropdown
           style={textColor}
@@ -96,4 +96,4 @@ class Header extends Component {
   }
 }
 
-export default withRouter(Header);
+export default withRouter(connect(mapStateToProps)(Header));
