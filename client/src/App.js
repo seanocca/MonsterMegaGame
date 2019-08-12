@@ -27,7 +27,6 @@ import FactionsDashboard from './components/FactionsDashboard';
 
 import { userHasAuthenticated } from './store/actions';
 
-// eslint-disable-next-line no-shadow
 const App = ({ userHasAuthenticated }) => {
   useEffect(() => {
     Auth.currentSession().then((user) => {
