@@ -1,4 +1,7 @@
-import { 
+import {
+  USER_AUTHENTICATION,
+
+  // DELETE THE BELOW SOON
   PRESSED_CLEAR,
   PRESSED_ALL_CLEAR,
   VALUE_KEY_PRESSED,
@@ -8,15 +11,18 @@ import {
   MULTIPLY_OPERATOR_KEY_PRESSED,
   DIVIDE_OPERATOR_KEY_PRESSED,
   PLUS_MINUS_OPERATOR_KEY_PRESSED,
-  SQUARED_OPERATOR_KEY_PRESSED
+  SQUARED_OPERATOR_KEY_PRESSED,
 } from '../constants/action-types';
 
+export const userHasAuthenticated = payload => ({ type: USER_AUTHENTICATION, payload });
+
+// DELETE THE BELOW SOON
 export function clearEnterBox() {
-  return { type: PRESSED_CLEAR }
+  return { type: PRESSED_CLEAR };
 }
 
 export function clearEverything() {
-  return { type: PRESSED_ALL_CLEAR }
+  return { type: PRESSED_ALL_CLEAR };
 }
 
 export function valueKeyPress(payload) {
