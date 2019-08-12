@@ -1,6 +1,7 @@
-// import {
-
-// } from '../constants/action-types';
+import { Auth } from 'aws-amplify';
+import {
+  USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION
+} from '../constants/action-types';
 
 // THESE CAN BE DELETED ONCE OLD CODE IS REMOVED
 const VALUE_KEY_PRESSED = '';
@@ -16,6 +17,18 @@ const DIVIDE_OPERATOR_KEY_PRESSED = '';
 const PLUS_MINUS_OPERATOR_KEY_PRESSED = '';
 const SQUARED_OPERATOR_KEY_PRESSED = '';
 const PROCESS_OPERATOR_KEY_PRESSED = '';
+
+export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
+  if (USER_AUTHENTICATION === action.type) {
+    if (action.payload === false) await Auth.signOut();
+    return dispatch({ type: PROCESS_USER_AUTHENTICATION, payload: action.payload });
+  }
+
+  return next(action);
+}
+
+
+
 
 export const processValueKey = ({ getState, dispatch }) => next => (action) => {
   if (VALUE_KEY_PRESSED === action.type) {
