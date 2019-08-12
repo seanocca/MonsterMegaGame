@@ -35,7 +35,9 @@
             ".jsx"
           ]
         }
-      ]
+      ],
+      "react/prop-types": false,
+      "react/destructuring-assignment": false
     }
   },
   "prettier": {
