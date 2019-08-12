@@ -29,16 +29,14 @@ import { userHasAuthenticated } from './store/actions';
 
 const App = ({ userHasAuthenticated }) => {
   useEffect(() => {
-    Auth.currentSession().then((user) => {
-      userHasAuthenticated(true);
-    // eslint-disable-next-line no-console
-    }).catch(err => {
-      if (err === 'No current user') {
-        userHasAuthenticated(false);
-      } else {
-        console.log('Error testing for current session', err);
-      }
-    });
+    Auth.currentSession().then((user) => userHasAuthenticated(true))
+      .catch(err => {
+        if (err === 'No current user') {
+          userHasAuthenticated(false);
+        } else {
+          console.log('Error testing for current session', err);
+        }
+      });
   }, [userHasAuthenticated]);
 
   return (
