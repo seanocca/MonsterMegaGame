@@ -7,6 +7,13 @@ import { connect } from 'react-redux';
 import { Auth } from 'aws-amplify';
 import { userHasAuthenticated } from '../store/actions';
 
+// eslint-disable-next-line arrow-body-style
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userAuthenticated: auth => dispatch(userHasAuthenticated(auth)),
+  };
+};
+
 class Forms extends Component {
   constructor(props) {
     super(props);
@@ -46,8 +53,11 @@ class Forms extends Component {
 
     try {
       await Auth.signIn(logInEmail, logInPassword);
+      this.props.userAuthenticated(true);
       alert('You are not really logged in..');
     } catch (e) {
+      // eslint-disable-next-line no-alert
+      // TODO: Use a modal instead of a alert box
       alert(e.message);
     }
   }
@@ -183,4 +193,4 @@ class Forms extends Component {
   }
 }
 
-export default connect(null, { userHasAuthenticated })(Forms);
+export default connect(null, mapDispatchToProps)(Forms);

@@ -5,6 +5,7 @@ import {
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import { userHasAuthenticated } from '../store/actions';
 
 import Logo from '../images/hmgLogo.png';
 
@@ -12,6 +13,13 @@ const mapStateToProps = (state) => {
   const { isAuthenticated } = state;
   return {
     isAuthenticated,
+  };
+};
+
+// eslint-disable-next-line arrow-body-style
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userAuthenticated: auth => dispatch(userHasAuthenticated(auth)),
   };
 };
 
@@ -31,28 +39,26 @@ const hamburgerColor = {
 };
 
 class Header extends Component {
-  getUser() {
-    if (this.props.isAuthenticated !== false) {
-      return (
-        <NavDropdown
-          style={textColor}
-          title="User###"
-          id="basic-nav-dropdown"
-          className="justify-content-right"
-        >
-          <NavDropdown.Item style={textColor} href="#details">User Details</NavDropdown.Item>
-          <NavDropdown.Item style={textColor} href="#action">Change Faction</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item style={textColor}>Log Out</NavDropdown.Item>
-        </NavDropdown>
-      );
-    }
-    return (
+  handleLogout = event => this.props.userAuthenticated(false);
+
+  loginState = () => (this.props.isAuthenticated
+    ? (
+      <NavDropdown
+        style={textColor}
+        title="User###"
+        id="basic-nav-dropdown"
+        className="justify-content-right"
+      >
+        <NavDropdown.Item style={textColor} href="#details">User Details</NavDropdown.Item>
+        <NavDropdown.Item style={textColor} href="#action">Change Faction</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item style={textColor} onClick={this.handleLogout}>Log Out</NavDropdown.Item>
+      </NavDropdown>
+    ) : (
       <LinkContainer className="justify-content-right" style={textColor} to="/login">
         <Nav.Link>Sign In/Sign Up</Nav.Link>
       </LinkContainer>
-    );
-  }
+    ));
 
   render() {
     return (
@@ -89,11 +95,11 @@ class Header extends Component {
               <Nav.Link>Bestiary</Nav.Link>
             </LinkContainer>
           </Nav>
-          {this.getUser()}
+          {this.loginState()}
         </Navbar.Collapse>
       </Navbar>
     );
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Header));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
