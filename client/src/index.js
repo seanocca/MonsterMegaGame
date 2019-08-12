@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Amplify from 'aws-amplify';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import store from './store/index';
 
 require('dotenv').config();
 
@@ -36,9 +38,11 @@ Amplify.configure({
 });
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root'),
 );
 
