@@ -5,6 +5,8 @@ import { Table } from 'react-bootstrap';
 // import EditableUser from './EditableUser';
 
 class EditableUserList extends Component {
+  x = () => { /* Temp fix to remove list warnings */ };
+
   render() {
     // const users = this.props.users.map((user) => (
     //   <EditableUser
@@ -33,7 +35,7 @@ class EditableUserList extends Component {
             <td>Otto</td>
             <td>@mdo</td>
             <td>
-              <a href="">Edit User</a>
+              <a href="/#">Edit User</a>
             </td>
           </tr>
           <tr>
@@ -42,7 +44,7 @@ class EditableUserList extends Component {
             <td>Thornton</td>
             <td>@fat</td>
             <td>
-              <a href="">Edit User</a>
+              <a href="/#">Edit User</a>
             </td>
           </tr>
           <tr>
@@ -50,7 +52,7 @@ class EditableUserList extends Component {
             <td colSpan="2">Larry the Bird</td>
             <td>@twitter</td>
             <td>
-              <a href="">Edit User</a>
+              <a href="/#">Edit User</a>
             </td>
           </tr>
         </tbody>
