@@ -10,9 +10,9 @@ import { userHasAuthenticated } from '../store/actions';
 import Logo from '../images/hmgLogo.png';
 
 const mapStateToProps = (state) => {
-  const { isAuthenticated } = state;
   return {
-    isAuthenticated,
+    isAuthenticated: state.isAuthenticated,
+    isAuthenticating: state.isAuthenticating,
   };
 };
 
@@ -41,7 +41,11 @@ const hamburgerColor = {
 class Header extends Component {
   handleLogout = event => this.props.userAuthenticated(false);
 
-  loginState = () => (this.props.isAuthenticated
+  loading = () => (
+    <span style={textColor}>Loggin in ...</span>
+  )
+
+  userState = () => (this.props.isAuthenticated
     ? (
       <NavDropdown
         style={textColor}
@@ -95,7 +99,7 @@ class Header extends Component {
               <Nav.Link>Bestiary</Nav.Link>
             </LinkContainer>
           </Nav>
-          {this.loginState()}
+          {this.props.isAuthenticating ? this.loading() : this.userState()}
         </Navbar.Collapse>
       </Navbar>
     );
