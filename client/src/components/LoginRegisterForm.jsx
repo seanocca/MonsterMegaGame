@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import {
   Form, Button, Card, Row, Col, Tabs, Tab,
 } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { Auth } from 'aws-amplify';
-
+import { userHasAuthenticated } from '../store/actions';
 
 class Forms extends Component {
   constructor(props) {
@@ -182,4 +183,4 @@ class Forms extends Component {
   }
 }
 
-export default Forms;
+export default connect(null, { userHasAuthenticated })(Forms);
