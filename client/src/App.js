@@ -32,7 +32,13 @@ const App = ({ userHasAuthenticated }) => {
     Auth.currentSession().then((user) => {
       userHasAuthenticated(true);
     // eslint-disable-next-line no-console
-    }).catch(err => console.log('ERROR auto sign-in', err));
+    }).catch(err => {
+      if (err === 'No current user') {
+        userHasAuthenticated(false);
+      } else {
+        console.log('Error testing for current session', err);
+      }
+    });
   }, [userHasAuthenticated]);
 
   return (
