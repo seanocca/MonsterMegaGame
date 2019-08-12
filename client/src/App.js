@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Auth } from 'aws-amplify';
 import {
   Route,
   Switch,
@@ -23,26 +25,38 @@ import UsersDashboard from './components/UsersDashboard';
 import BeastsDashboard from './components/BeastsDashboard';
 import FactionsDashboard from './components/FactionsDashboard';
 
-const App = () => (
-  <Fragment>
-    <Header />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Redirect from="/home" to="/" />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/admin" component={AdminLogin} />
-      <Route exact path="/account" component={Account} />
-      <Route exact path="/factions" component={Factions} />
-      <Route exact path="/bestiary" component={Bestiary} />
-      <Route exact path="/lore" component={Lore} />
-      <Route exact path="/gamerules" component={GameRules} />
-      <Route exact path="/dashboard/users" component={UsersDashboard} />
-      <Route exact path="/dashboard/beasts" component={BeastsDashboard} />
-      <Route exact path="/dashboard/factions" component={FactionsDashboard} />
-      <Route component={NotFound} />
-    </Switch>
-    <Footer />
-  </Fragment>
-);
+import { userHasAuthenticated } from './store/actions';
 
-export default withRouter(App);
+// eslint-disable-next-line no-shadow
+const App = ({ userHasAuthenticated }) => {
+  useEffect(() => {
+    Auth.currentSession().then((user) => {
+      userHasAuthenticated(true);
+    // eslint-disable-next-line no-console
+    }).catch(err => console.log('ERROR auto sign-in', err));
+  }, [userHasAuthenticated]);
+
+  return (
+    <Fragment>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Redirect from="/home" to="/" />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/admin" component={AdminLogin} />
+        <Route exact path="/account" component={Account} />
+        <Route exact path="/factions" component={Factions} />
+        <Route exact path="/bestiary" component={Bestiary} />
+        <Route exact path="/lore" component={Lore} />
+        <Route exact path="/gamerules" component={GameRules} />
+        <Route exact path="/dashboard/users" component={UsersDashboard} />
+        <Route exact path="/dashboard/beasts" component={BeastsDashboard} />
+        <Route exact path="/dashboard/factions" component={FactionsDashboard} />
+        <Route component={NotFound} />
+      </Switch>
+      <Footer />
+    </Fragment>
+  );
+}
+
+export default withRouter(connect(null, { userHasAuthenticated })(App));
