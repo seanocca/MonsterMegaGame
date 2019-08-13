@@ -1,11 +1,14 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import { Card, Row, Col, Image } from 'react-bootstrap';
+import {
+  Card, Row, Col, Image,
+} from 'react-bootstrap';
 import FBLogo from '../images/facebook.png';
 import InstaLogo from '../images/instagram.png';
 import YTLogo from '../images/youtube.png';
 import PatLogo from '../images/patreon.png';
 
-const sticky_footer = {
+const stickyFooter = {
   position: 'fixed',
   width: '100%',
   bottom: 0,
@@ -16,7 +19,7 @@ const sticky_footer = {
 class Footer extends Component {
   render() {
     return (
-      <Card bg="light" style={sticky_footer} className="pagination-centered">
+      <Card bg="light" style={stickyFooter} className="pagination-centered">
         <Row
           className="justify-content-md-center"
           style={{ marginLeft: '0', marginRight: '0' }}
@@ -34,8 +37,8 @@ class Footer extends Component {
                 <Image
                   src={FBLogo}
                   thumbnail
-                  width="50"
-                  height="50"
+                  width="40"
+                  height="40"
                   style={{
                     padding: '0px 5px',
                     border: 'none',
@@ -47,8 +50,8 @@ class Footer extends Component {
                 <Image
                   src={InstaLogo}
                   thumbnail
-                  width="50"
-                  height="50"
+                  width="40"
+                  height="40"
                   style={{
                     padding: '0px 5px',
                     border: 'none',
@@ -60,8 +63,8 @@ class Footer extends Component {
                 <Image
                   src={YTLogo}
                   thumbnail
-                  width="50"
-                  height="50"
+                  width="40"
+                  height="40"
                   style={{
                     padding: '0px 5px',
                     border: 'none',
@@ -73,8 +76,8 @@ class Footer extends Component {
                 <Image
                   src={PatLogo}
                   thumbnail
-                  width="50"
-                  height="50"
+                  width="40"
+                  height="40"
                   style={{
                     padding: '0px 5px',
                     border: 'none',
