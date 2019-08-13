@@ -6,12 +6,22 @@ import {
   Accordion, Card, Col, Row,
 } from 'react-bootstrap';
 
+const accordionStyling = {
+  padding: '1.5rem 0',
+  fontSize: '3rem',
+  fontWeight: '700',
+  backgroundImage: 'linear-gradient(#ffffff, #01004d 10%, #01004d 90%, #ffffff)',
+  color: '#ffc107',
+  border: 'none',
+  margin: '2rem 0',
+};
+
 class GameRulesAccordion extends Component {
   render() {
     return (
-      <Accordion as={Col} md={{ span: 8, offset: 2 }} className=" justify-content-center text-center">
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="0">
+      <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center" style={{ padding: '2rem 0' }}>
+        <Card style={{ border: 'none' }}>
+          <Accordion.Toggle as={Card.Header} eventKey="0" style={accordionStyling}>
             Setup
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
@@ -38,8 +48,8 @@ class GameRulesAccordion extends Component {
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="1">
+        <Card style={{ border: 'none' }}>
+          <Accordion.Toggle as={Card.Header} eventKey="1" style={accordionStyling}>
             Game Modes
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="1">
@@ -94,8 +104,8 @@ class GameRulesAccordion extends Component {
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="2">
+        <Card style={{ border: 'none' }}>
+          <Accordion.Toggle as={Card.Header} eventKey="2" style={accordionStyling}>
             How to Win!
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="2">
@@ -107,8 +117,8 @@ class GameRulesAccordion extends Component {
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="4">
+        <Card style={{ border: 'none' }}>
+          <Accordion.Toggle as={Card.Header} eventKey="4" style={accordionStyling}>
             Attacking and Health Points
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="4">
@@ -126,8 +136,8 @@ class GameRulesAccordion extends Component {
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="5">
+        <Card style={{ border: 'none' }}>
+          <Accordion.Toggle as={Card.Header} eventKey="5" style={accordionStyling}>
             Death and Experience
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="5">

@@ -1,12 +1,16 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 
+import FactionAccordion from '../components/FactionAccordion';
+
 class Factions extends Component {
   render() {
-    return(
+    return (
       <Container style={{ padding: '4rem 0' }}>
-        <p>This is the factions</p>
-      </Container>);
+        <FactionAccordion />
+      </Container>
+    );
   }
 }
 

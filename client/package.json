@@ -39,7 +39,7 @@
       ],
       "react/prop-types": false,
       "react/destructuring-assignment": false,
-      "no-shadow": false
+      "no-shadow": 0
     }
   },
   "prettier": {
