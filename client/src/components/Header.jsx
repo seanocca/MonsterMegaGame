@@ -40,7 +40,7 @@ class Header extends Component {
   }
 
   loading = () => (
-    <span style={textColor}>Loggin in ...</span>
+    <span style={textColor}>Logging in ...</span>
   )
 
   userState = () => (this.props.isAuthenticated
