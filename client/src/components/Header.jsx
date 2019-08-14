@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { userHasAuthenticated } from '../store/actions';
+import './Header.css';
 
 import Logo from '../images/hmgLogo.png';
 
@@ -29,9 +30,9 @@ const imagePadding = {
   marginRight: '5px',
 };
 
-const hamburgerColor = {
-  backgroundColor: '#ffc107',
-};
+// const hamburgerColor = {
+//   backgroundColor: '#ffc107',
+// };
 
 class Header extends Component {
   handleLogout = (event) => {
@@ -75,7 +76,7 @@ class Header extends Component {
             Half Monster Games
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle style={hamburgerColor} />
+        <Navbar.Toggle className="custom-toggler" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav
             className="justify-content-center m-auto"
