@@ -134,6 +134,8 @@ class LoginRegisterForm extends Component {
         />
       </Form.Group>
       <LoaderButton
+        block
+        bsSize="large"
         variant="primary"
         disabled={!this.validateLogInForm()}
         type="submit"
@@ -237,7 +239,13 @@ class LoginRegisterForm extends Component {
         </Form.Group>
       </Form.Row>
       <Form.Row className="justify-content-center">
-        <Button variant="primary" disabled={!this.validateSignUpForm()} type="submit">
+        <Button
+          block
+          bsSize="large"
+          variant="primary"
+          disabled={!this.validateSignUpForm()}
+          type="submit"
+        >
           Submit
         </Button>
       </Form.Row>
