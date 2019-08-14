@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 
-import Forms from '../components/LoginRegisterForm';
+import LoginRegisterForm from '../components/LoginRegisterForm';
 
-class Login extends Component {
-  render() {
-    return (
-      <Container style={{ padding: '4rem 0' }}>
-        <Forms />
-      </Container>
-    );
-  }
-}
+const Login = () => (
+  <Container style={{ padding: '4rem 0' }}>
+    <LoginRegisterForm />
+  </Container>
+);
 
 export default Login;
