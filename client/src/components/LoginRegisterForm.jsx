@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {
   Form, Button, Card, Row, Col, Tabs, Tab,
@@ -24,7 +24,9 @@ class LoginRegisterForm extends Component {
       signUpEmail: '',
       signUpPassword: '',
       signUpConfirm: '',
+      newUser: false,
       isLoading: false,
+      confirmationCode: 0,
     };
   }
 
@@ -39,14 +41,31 @@ class LoginRegisterForm extends Component {
     return signUpEmail.length > 0 && signUpPassword.length > 0 && signUpPassword === signUpConfirm;
   }
 
+  validateConfirmationForm = () => {
+    const { confirmationCode } = this.state;
+    return confirmationCode.length > 0;
+  }
+
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
     });
   }
 
-  handleSubmit = (event) => {
+  handleSignUpSubmit = (event) => {
     event.preventDefault();
+
+    this.setState({ isLoading: true });
+
+    this.setState({ newUser: true });
+
+    this.setState({ isLoading: false });
+  }
+
+  handleConfirmationSubmit = async (event) => {
+    event.preventDefault();
+
+    this.setState({ isLoading: true });
   }
 
   handleLogInSubmit = async (event) => {
@@ -69,6 +88,30 @@ class LoginRegisterForm extends Component {
     }
   }
 
+  renderConfirmationForm = () => (
+    <Form onSubmit={this.handleConfirmationSubmit}>
+      <Form.Group controlId="confirmationCode" bsSize="large">
+        <Form.Label>Confirmation Code</Form.Label>
+        <Form.Control
+          autoFocus
+          type="tel"
+          value={this.state.confirmationCode}
+          onChange={this.handleChange}
+        />
+        <Form.Text className="text-muted">Please check your email for the code.</Form.Text>
+      </Form.Group>
+      <LoaderButton
+        block
+        bsSize="large"
+        disabled={!this.validateConfirmationForm()}
+        type="submit"
+        isLoading={this.state.isLoading}
+        text="Verify"
+        loadingText="Verifying…"
+      />
+    </Form>
+  )
+
   LogForm = () => (
     <Form onSubmit={this.handleLogInSubmit}>
       <Form.Group controlId="logInEmail">
@@ -90,9 +133,6 @@ class LoginRegisterForm extends Component {
           onChange={this.handleChange}
         />
       </Form.Group>
-      <Form.Group controlId="formBasicChecbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
       <LoaderButton
         variant="primary"
         disabled={!this.validateLogInForm()}
@@ -105,23 +145,29 @@ class LoginRegisterForm extends Component {
   );
 
   SignUpForm = () => (
-    <Form onSubmit={this.handleSubmit}>
+    <Form onSubmit={this.handleSignUpSubmit}>
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridFirsName">
+        <Form.Group as={Col} controlId="signUpFirsName">
           <Form.Label>First Name</Form.Label>
-          <Form.Control placeholder="First Name" />
+          <Form.Control
+            autoFocus
+            placeholder="First Name"
+            onChange={this.handleChange}
+          />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridLastName">
+        <Form.Group as={Col} controlId="signUpLastName">
           <Form.Label>Last Name</Form.Label>
-          <Form.Control placeholder="Last Name" />
+          <Form.Control
+            placeholder="Last Name"
+            onChange={this.handleChange}
+          />
         </Form.Group>
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col} controlId="signUpEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control
-            autoFocus
             type="email"
             placeholder="Enter email"
             value={this.state.signUpEmail}
@@ -151,28 +197,43 @@ class LoginRegisterForm extends Component {
         </Form.Group>
       </Form.Row>
 
-      <Form.Group controlId="formGridAddress">
+      <Form.Group controlId="signUpAddress">
         <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
+        <Form.Control
+          placeholder="Address"
+          onChange={this.handleChange}
+        />
       </Form.Group>
 
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridCity">
+        <Form.Group as={Col} controlId="signUpCity">
           <Form.Label>City</Form.Label>
-          <Form.Control />
+          <Form.Control
+            placeholder="City"
+            onChange={this.handleChange}
+          />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridState">
+        <Form.Group as={Col} controlId="signUpState">
           <Form.Label>State</Form.Label>
           <Form.Control as="select">
             <option>Choose...</option>
-            <option>...</option>
+            <option>QLD</option>
+            <option>NSW</option>
+            <option>VIC</option>
+            <option>NT</option>
+            <option>SA</option>
+            <option>WA</option>
+            <option>ACT</option>
           </Form.Control>
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
+        <Form.Group as={Col} controlId="signUpPostcode">
+          <Form.Label>Post Code</Form.Label>
+          <Form.Control
+            placeholder="Post Code"
+            onChange={this.handleChange}
+          />
         </Form.Group>
       </Form.Row>
       <Form.Row className="justify-content-center">
@@ -187,18 +248,37 @@ class LoginRegisterForm extends Component {
     return (
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <Tabs defaultActiveKey="login" id="uncontrolled-tab-example">
-            <Tab eventKey="login" title="Login">
-              <Card>
-                <Card.Body>{this.LogForm()}</Card.Body>
-              </Card>
-            </Tab>
-            <Tab eventKey="signUp" title="Sign Up">
-              <Card>
-                <Card.Body>{this.SignUpForm()}</Card.Body>
-              </Card>
-            </Tab>
-          </Tabs>
+          {this.state.newUser === false
+            ? (
+              <Fragment>
+                <Tabs defaultActiveKey="login" id="loginSignupConfirmationAAA">
+                  <Tab eventKey="login" title="Login">
+                    <Card>
+                      <Card.Body>{this.LogForm()}</Card.Body>
+                    </Card>
+                  </Tab>
+                  <Tab eventKey="signUp" title="Sign Up">
+                    <Card>
+                      <Card.Body>{this.SignUpForm()}</Card.Body>
+                    </Card>
+                  </Tab>
+                </Tabs>
+              </Fragment>
+            )
+            : (
+              <Fragment>
+                <Tabs activeKey="confirmation" id="loginSignupConfirmationBBB">
+                  <Tab eventKey="confirmation" title="Confirm Email">
+                    <Card>
+                      <Card.Body>{this.renderConfirmationForm()}</Card.Body>
+                    </Card>
+                  </Tab>
+                </Tabs>
+              </Fragment>
+            )}
+          <br />
+          <br />
+          <br />
         </Col>
       </Row>
     );
