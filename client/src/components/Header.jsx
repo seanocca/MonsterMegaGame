@@ -34,7 +34,10 @@ const hamburgerColor = {
 };
 
 class Header extends Component {
-  handleLogout = event => this.props.userAuthenticated(false);
+  handleLogout = (event) => {
+    this.props.userAuthenticated(false);
+    this.props.history.push('/');
+  }
 
   loading = () => (
     <span style={textColor}>Loggin in ...</span>
