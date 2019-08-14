@@ -1,7 +1,11 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import { Accordion, Card, Col } from 'react-bootstrap';
+
+const mapStateToProps = state => ({
+  factions: state.factions,
+});
 
 const accordionStyling = {
   padding: '1.5rem 0',
@@ -14,6 +18,7 @@ const accordionStyling = {
 
 class FactionAccordion extends Component {
   render() {
+    console.log('FACTIONS TEST', this.props.factions);
     return (
       <div>
         <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center">
@@ -55,4 +60,4 @@ class FactionAccordion extends Component {
   }
 }
 
-export default FactionAccordion;
+export default connect(mapStateToProps)(FactionAccordion);

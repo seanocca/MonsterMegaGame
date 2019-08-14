@@ -1,6 +1,6 @@
 import { Auth } from 'aws-amplify';
 import {
-  USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION
+  USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION, DOWNLOAD_FACTIONS,
 } from '../constants/action-types';
 
 // THESE CAN BE DELETED ONCE OLD CODE IS REMOVED
@@ -25,10 +25,18 @@ export const processUserAuth = ({ getState, dispatch }) => next => async (action
   }
 
   return next(action);
-}
+};
+
+export const downloadFactions = ({ getState, dispatch }) => next => async (action) => {
+  if (DOWNLOAD_FACTIONS === action.type) {
+    // Call to API
 
 
+    window.localStorage.setItem('factionsData', action.payload);
+  }
 
+  return next(action);
+};
 
 export const processValueKey = ({ getState, dispatch }) => next => (action) => {
   if (VALUE_KEY_PRESSED === action.type) {
