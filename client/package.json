@@ -42,7 +42,8 @@
       ],
       "react/prop-types": false,
       "react/destructuring-assignment": false,
-      "no-shadow": 0
+      "no-shadow": 0,
+      "no-console": true
     }
   },
   "prettier": {
