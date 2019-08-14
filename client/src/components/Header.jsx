@@ -69,6 +69,7 @@ class Header extends Component {
         fixed="top"
         style={{ position: 'relative', backgroundImage: 'linear-gradient(#01004d 85%, #01004d96)' }}
         expand="md"
+        collapseOnSelect="true"
       >
         <Navbar.Brand>
           <Link className="mr-auto" style={textColor} to="/">
