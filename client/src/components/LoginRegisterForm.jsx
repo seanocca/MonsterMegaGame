@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import {
   Form, Button, Card, Row, Col, Tabs, Tab,
 } from 'react-bootstrap';
@@ -192,4 +193,4 @@ class LoginRegisterForm extends Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(LoginRegisterForm);
+export default withRouter(connect(null, mapDispatchToProps)(LoginRegisterForm));
