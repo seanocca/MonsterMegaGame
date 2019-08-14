@@ -24,12 +24,19 @@ class LoginRegisterForm extends Component {
       signUpEmail: '',
       signUpPassword: '',
       signUpConfirm: '',
-      newUser: false,
+      signUpFirsName: '',
+      signUpLastName: '',
+      signUpAddress: '',
+      signUpCity: '',
+      signUpPostcode: '',
+      signUpState: '',
+      newUser: null,
       isLoading: false,
       confirmationCode: 0,
     };
   }
 
+  onChangeSelectState = (event) => this.setState({ signUpState: event.target.value });
 
   validateLogInForm = () => {
     const { logInEmail, logInPassword } = this.state;
@@ -52,12 +59,22 @@ class LoginRegisterForm extends Component {
     });
   }
 
-  handleSignUpSubmit = (event) => {
+  handleSignUpSubmit = async (event) => {
     event.preventDefault();
 
     this.setState({ isLoading: true });
-
-    this.setState({ newUser: true });
+    
+    try {
+      const newUser = await Auth.signUp({
+        username: this.state.signUpEmail,
+        password: this.state.signUpPassword
+      });
+      this.setState({
+        newUser
+      });
+    } catch (e) {
+      alert(e.message);
+    }
 
     this.setState({ isLoading: false });
   }
@@ -90,7 +107,7 @@ class LoginRegisterForm extends Component {
 
   renderConfirmationForm = () => (
     <Form onSubmit={this.handleConfirmationSubmit}>
-      <Form.Group controlId="confirmationCode" bsSize="large">
+      <Form.Group controlId="confirmationCode">
         <Form.Label>Confirmation Code</Form.Label>
         <Form.Control
           autoFocus
@@ -102,7 +119,6 @@ class LoginRegisterForm extends Component {
       </Form.Group>
       <LoaderButton
         block
-        bsSize="large"
         disabled={!this.validateConfirmationForm()}
         type="submit"
         isLoading={this.state.isLoading}
@@ -135,7 +151,6 @@ class LoginRegisterForm extends Component {
       </Form.Group>
       <LoaderButton
         block
-        bsSize="large"
         variant="primary"
         disabled={!this.validateLogInForm()}
         type="submit"
@@ -154,6 +169,7 @@ class LoginRegisterForm extends Component {
           <Form.Control
             autoFocus
             placeholder="First Name"
+            value={this.state.signUpFirsName}
             onChange={this.handleChange}
           />
         </Form.Group>
@@ -162,6 +178,7 @@ class LoginRegisterForm extends Component {
           <Form.Label>Last Name</Form.Label>
           <Form.Control
             placeholder="Last Name"
+            value={this.state.signUpLastName}
             onChange={this.handleChange}
           />
         </Form.Group>
@@ -203,6 +220,7 @@ class LoginRegisterForm extends Component {
         <Form.Label>Address</Form.Label>
         <Form.Control
           placeholder="Address"
+          value={this.state.signUpAddress}
           onChange={this.handleChange}
         />
       </Form.Group>
@@ -212,21 +230,26 @@ class LoginRegisterForm extends Component {
           <Form.Label>City</Form.Label>
           <Form.Control
             placeholder="City"
+            value={this.state.signUpCity}
             onChange={this.handleChange}
           />
         </Form.Group>
 
         <Form.Group as={Col} controlId="signUpState">
           <Form.Label>State</Form.Label>
-          <Form.Control as="select">
-            <option>Choose...</option>
-            <option>QLD</option>
-            <option>NSW</option>
-            <option>VIC</option>
-            <option>NT</option>
-            <option>SA</option>
-            <option>WA</option>
-            <option>ACT</option>
+          <Form.Control
+            as="select"
+            onChange={this.onChangeSelectState}
+            ref={select => { this.select = select }}
+          >
+            <option value=''>Choose...</option>
+            <option value='QLD'>QLD</option>
+            <option value='NSW'>NSW</option>
+            <option value='VIC'>VIC</option>
+            <option value='NT'>NT</option>
+            <option value='SA'>SA</option>
+            <option value='WA'>WA</option>
+            <option value='ACT'>ACT</option>
           </Form.Control>
         </Form.Group>
 
@@ -234,6 +257,7 @@ class LoginRegisterForm extends Component {
           <Form.Label>Post Code</Form.Label>
           <Form.Control
             placeholder="Post Code"
+            value={this.state.signUpPostcode}
             onChange={this.handleChange}
           />
         </Form.Group>
@@ -241,7 +265,6 @@ class LoginRegisterForm extends Component {
       <Form.Row className="justify-content-center">
         <Button
           block
-          bsSize="large"
           variant="primary"
           disabled={!this.validateSignUpForm()}
           type="submit"
@@ -256,7 +279,7 @@ class LoginRegisterForm extends Component {
     return (
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          {this.state.newUser === false
+          {this.state.newUser === null
             ? (
               <Fragment>
                 <Tabs defaultActiveKey="login" id="loginSignupConfirmationAAA">
