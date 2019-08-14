@@ -7,6 +7,16 @@ import {
 const initialState = {
   isAuthenticated: false,
   isAuthenticating: true,
+  factions: [
+    {
+      name: 'Voidborn',
+      desc: 'blah',
+    },
+    {
+      name: 'Bio',
+      desc: 'blah',
+    },
+  ],
 };
 
 const rootReducer = (state = initialState, action) => {

@@ -28,6 +28,7 @@ class LoginRegisterForm extends Component {
     };
   }
 
+
   validateLogInForm = () => {
     const { logInEmail, logInPassword } = this.state;
     return logInEmail.length > 0 && logInPassword.length > 0;
