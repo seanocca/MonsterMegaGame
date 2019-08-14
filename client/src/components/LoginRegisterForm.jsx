@@ -7,14 +7,11 @@ import { connect } from 'react-redux';
 import { Auth } from 'aws-amplify';
 import { userHasAuthenticated } from '../store/actions';
 
-// eslint-disable-next-line arrow-body-style
-const mapDispatchToProps = (dispatch) => {
-  return {
-    userAuthenticated: auth => dispatch(userHasAuthenticated(auth)),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  userAuthenticated: auth => dispatch(userHasAuthenticated(auth)),
+});
 
-class Forms extends Component {
+class LoginRegisterForm extends Component {
   constructor(props) {
     super(props);
 
@@ -52,12 +49,14 @@ class Forms extends Component {
     const { logInEmail, logInPassword } = this.state;
 
     try {
-      await Auth.signIn(logInEmail, logInPassword);
-      this.props.userAuthenticated(true);
-      alert('You are not really logged in..');
+      await Auth.signIn(logInEmail, logInPassword)
+        .then((res) => {
+          this.props.userAuthenticated(true);
+          this.props.history.push('/account');
+        });
     } catch (e) {
-      // eslint-disable-next-line no-alert
       // TODO: Use a modal instead of a alert box
+      // eslint-disable-next-line no-alert
       alert(e.message);
     }
   }
@@ -86,7 +85,7 @@ class Forms extends Component {
       <Form.Group controlId="formBasicChecbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="primary" disabled={!this.validateLogInForm()} type="submit">
+      <Button variant="primary" id="loginSubmit" disabled={!this.validateLogInForm()} type="submit">
         Login
       </Button>
     </Form>
@@ -193,4 +192,4 @@ class Forms extends Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Forms);
+export default connect(null, mapDispatchToProps)(LoginRegisterForm);
