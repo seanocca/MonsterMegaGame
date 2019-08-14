@@ -4,19 +4,12 @@ import {
   IS_AUTHENTICATING,
 } from '../constants/action-types';
 
+import factions from '../constants/faction-data';
+
 const initialState = {
   isAuthenticated: false,
   isAuthenticating: true,
-  factions: [
-    {
-      name: 'Voidborn',
-      desc: 'blah',
-    },
-    {
-      name: 'Bio',
-      desc: 'blah',
-    },
-  ],
+  factions,
 };
 
 const rootReducer = (state = initialState, action) => {
