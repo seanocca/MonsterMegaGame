@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import {
   Form, Button, Card, Row, Col, Tabs, Tab,
 } from 'react-bootstrap';
+import LoaderButton from "./LoaderButton";
 import { connect } from 'react-redux';
 import { Auth } from 'aws-amplify';
 import { userHasAuthenticated, isAuthenticating } from '../store/actions';
@@ -23,6 +24,7 @@ class LoginRegisterForm extends Component {
       signUpEmail: '',
       signUpPassword: '',
       signUpConfirm: '',
+      isLoading: false,
     };
   }
 
@@ -50,6 +52,7 @@ class LoginRegisterForm extends Component {
     event.preventDefault();
     const { logInEmail, logInPassword } = this.state;
     this.props.isAuthenticating(true);
+    this.setState({ isLoading: true });
 
     try {
       await Auth.signIn(logInEmail, logInPassword)
@@ -61,6 +64,7 @@ class LoginRegisterForm extends Component {
       // TODO: Use a modal instead of a alert box
       // eslint-disable-next-line no-alert
       alert(e.message);
+      this.setState({ isLoading: false });
     }
   }
 
@@ -88,9 +92,14 @@ class LoginRegisterForm extends Component {
       <Form.Group controlId="formBasicChecbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="primary" id="loginSubmit" disabled={!this.validateLogInForm()} type="submit">
-        Login
-      </Button>
+      <LoaderButton
+        variant="primary"
+        disabled={!this.validateLogInForm()}
+        type="submit"
+        isLoading={this.state.isLoading}
+        text="Login"
+        loadingText="Logging in…"
+      />
     </Form>
   );
 
