@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import {
   Form, Button, Card, Row, Col, Tabs, Tab,
 } from 'react-bootstrap';
-import LoaderButton from "./LoaderButton";
 import { connect } from 'react-redux';
 import { Auth } from 'aws-amplify';
+import LoaderButton from './LoaderButton';
 import { userHasAuthenticated, isAuthenticating } from '../store/actions';
 
 const mapDispatchToProps = dispatch => ({
