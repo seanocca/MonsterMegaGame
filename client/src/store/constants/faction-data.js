@@ -1,10 +1,18 @@
 export default [
   {
-    name: 'Voidborn',
+    name: 'Biochrondys',
     desc: 'blah',
   },
   {
-    name: 'Bio',
+    name: 'Gatekeepers',
+    desc: 'blah',
+  },
+  {
+    name: 'Mechanica',
+    desc: 'blah',
+  },
+  {
+    name: 'Voidborn',
     desc: 'blah',
   },
 ];

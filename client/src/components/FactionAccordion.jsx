@@ -17,43 +17,23 @@ const accordionStyling = {
 };
 
 class FactionAccordion extends Component {
+  factionDetails = () => (this.props.factions.map((faction, i) => (
+    <Card style={{ border: 'none', padding: '2rem 0' }}>
+      <Accordion.Toggle as={Card.Header} eventKey={i} style={accordionStyling}>
+        {faction.name}
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey={i}>
+        <Card.Body>{faction.desc}</Card.Body>
+      </Accordion.Collapse>
+    </Card>
+  )))
+
   render() {
     console.log('FACTIONS TEST', this.props.factions);
     return (
       <div>
         <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center">
-          <Card style={{ border: 'none', padding: '2rem 0' }}>
-            <Accordion.Toggle as={Card.Header} eventKey="0" style={accordionStyling}>
-              Biochrondys
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>Body</Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card style={{ border: 'none', padding: '2rem 0' }}>
-            <Accordion.Toggle as={Card.Header} eventKey="1" style={accordionStyling}>
-              Gatekeepers
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body>Body</Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card style={{ border: 'none', padding: '2rem 0' }}>
-            <Accordion.Toggle as={Card.Header} eventKey="2" style={accordionStyling}>
-              Mechanica
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="2">
-              <Card.Body>Body</Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card style={{ border: 'none', padding: '2rem 0' }}>
-            <Accordion.Toggle as={Card.Header} eventKey="3" style={accordionStyling}>
-              Voidborn
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="3">
-              <Card.Body>Body</Card.Body>
-            </Accordion.Collapse>
-          </Card>
+          {this.factionDetails()}
         </Accordion>
       </div>
     );
