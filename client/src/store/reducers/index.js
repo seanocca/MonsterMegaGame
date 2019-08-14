@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import {
   PROCESS_USER_AUTHENTICATION,
+  IS_AUTHENTICATING,
 } from '../constants/action-types';
 
 const initialState = {
@@ -14,6 +15,13 @@ const rootReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       isAuthenticated: action.payload,
       isAuthenticating: false,
+    });
+  }
+
+  if (IS_AUTHENTICATING === action.type) {
+    console.log('[REDUX] Is Authenticating: ', action.payload);
+    return Object.assign({}, state, {
+      isAuthenticating: action.payload,
     });
   }
 
