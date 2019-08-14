@@ -6,10 +6,11 @@ import {
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Auth } from 'aws-amplify';
-import { userHasAuthenticated } from '../store/actions';
+import { userHasAuthenticated, isAuthenticating } from '../store/actions';
 
 const mapDispatchToProps = dispatch => ({
-  userAuthenticated: auth => dispatch(userHasAuthenticated(auth)),
+  userHasAuthenticated: auth => dispatch(userHasAuthenticated(auth)),
+  isAuthenticating: status => dispatch(isAuthenticating(status)),
 });
 
 class LoginRegisterForm extends Component {
@@ -48,11 +49,12 @@ class LoginRegisterForm extends Component {
   handleLogInSubmit = async (event) => {
     event.preventDefault();
     const { logInEmail, logInPassword } = this.state;
+    this.props.isAuthenticating(true);
 
     try {
       await Auth.signIn(logInEmail, logInPassword)
         .then((res) => {
-          this.props.userAuthenticated(true);
+          this.props.userHasAuthenticated(true);
           this.props.history.push('/account');
         });
     } catch (e) {
