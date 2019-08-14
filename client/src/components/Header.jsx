@@ -9,19 +9,14 @@ import { userHasAuthenticated } from '../store/actions';
 
 import Logo from '../images/hmgLogo.png';
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.isAuthenticated,
-    isAuthenticating: state.isAuthenticating,
-  };
-};
+const mapStateToProps = state => ({
+  isAuthenticated: state.isAuthenticated,
+  isAuthenticating: state.isAuthenticating,
+});
 
-// eslint-disable-next-line arrow-body-style
-const mapDispatchToProps = (dispatch) => {
-  return {
-    userAuthenticated: auth => dispatch(userHasAuthenticated(auth)),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  userAuthenticated: auth => dispatch(userHasAuthenticated(auth)),
+});
 
 const textColor = {
   color: '#ffc107',
