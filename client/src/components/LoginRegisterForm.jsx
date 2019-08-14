@@ -30,9 +30,9 @@ class LoginRegisterForm extends Component {
       signUpCity: '',
       signUpPostcode: '',
       signUpState: '',
+      signUpConfirmationCode: '',
       newUser: null,
       isLoading: false,
-      confirmationCode: 0,
     };
   }
 
@@ -49,8 +49,8 @@ class LoginRegisterForm extends Component {
   }
 
   validateConfirmationForm = () => {
-    const { confirmationCode } = this.state;
-    return confirmationCode.length > 0;
+    const { signUpConfirmationCode } = this.state;
+    return signUpConfirmationCode.length > 0;
   }
 
   handleChange = (event) => {
@@ -83,6 +83,17 @@ class LoginRegisterForm extends Component {
     event.preventDefault();
 
     this.setState({ isLoading: true });
+
+    try {
+      await Auth.confirmSignUp(this.state.signUpEmail, this.state.signUpConfirmationCode);
+      await Auth.signIn(this.state.signUpEmail, this.state.signUpPassword);
+
+      this.props.userHasAuthenticated(true);
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e);
+      this.setState({ isLoading: false });
+    }
   }
 
   handleLogInSubmit = async (event) => {
@@ -107,12 +118,12 @@ class LoginRegisterForm extends Component {
 
   renderConfirmationForm = () => (
     <Form onSubmit={this.handleConfirmationSubmit}>
-      <Form.Group controlId="confirmationCode">
+      <Form.Group controlId="signUpConfirmationCode">
         <Form.Label>Confirmation Code</Form.Label>
         <Form.Control
           autoFocus
           type="tel"
-          value={this.state.confirmationCode}
+          value={this.state.signUpConfirmationCode}
           onChange={this.handleChange}
         />
         <Form.Text className="text-muted">Please check your email for the code.</Form.Text>
