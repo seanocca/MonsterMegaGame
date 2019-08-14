@@ -16,40 +16,34 @@ class FactionAccordion extends Component {
   render() {
     return (
       <div>
-        <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center" style={{ padding: '2rem 0' }}>
-          <Card style={{ border: 'none' }}>
+        <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center">
+          <Card style={{ border: 'none', padding: '2rem 0' }}>
             <Accordion.Toggle as={Card.Header} eventKey="0" style={accordionStyling}>
-              VOIDBORN
+              Biochrondys
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
               <Card.Body>Body</Card.Body>
             </Accordion.Collapse>
           </Card>
-        </Accordion>
-        <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center" style={{ padding: '2rem 0' }}>
-          <Card style={{ border: 'none' }}>
+          <Card style={{ border: 'none', padding: '2rem 0' }}>
             <Accordion.Toggle as={Card.Header} eventKey="1" style={accordionStyling}>
-              Biochrondys
+              Gatekeepers
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="1">
               <Card.Body>Body</Card.Body>
             </Accordion.Collapse>
           </Card>
-        </Accordion>
-        <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center" style={{ padding: '2rem 0' }}>
-          <Card style={{ border: 'none' }}>
+          <Card style={{ border: 'none', padding: '2rem 0' }}>
             <Accordion.Toggle as={Card.Header} eventKey="2" style={accordionStyling}>
-              Gatekeepers
+              Mechanica
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="2">
               <Card.Body>Body</Card.Body>
             </Accordion.Collapse>
           </Card>
-        </Accordion>
-        <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center" style={{ padding: '2rem 0' }}>
-          <Card style={{ border: 'none' }}>
+          <Card style={{ border: 'none', padding: '2rem 0' }}>
             <Accordion.Toggle as={Card.Header} eventKey="3" style={accordionStyling}>
-              Mechanica
+              Voidborn
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="3">
               <Card.Body>Body</Card.Body>

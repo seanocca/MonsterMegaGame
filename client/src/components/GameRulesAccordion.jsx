@@ -8,12 +8,13 @@ import {
 
 const accordionStyling = {
   padding: '1.5rem 0',
-  fontSize: '3rem',
+  fontSize: '2.25rem',
   fontWeight: '700',
-  backgroundImage: 'linear-gradient(#ffffff, #01004d 10%, #01004d 90%, #ffffff)',
+  backgroundColor: '#01004d',
   color: '#ffc107',
   border: 'none',
   margin: '2rem 0',
+  borderRadius: '3px',
 };
 
 class GameRulesAccordion extends Component {

@@ -29,8 +29,8 @@ import { userHasAuthenticated } from './store/actions';
 
 const App = ({ userHasAuthenticated }) => {
   useEffect(() => {
-    Auth.currentSession().then((user) => userHasAuthenticated(true))
-      .catch(err => {
+    Auth.currentSession().then(user => userHasAuthenticated(true))
+      .catch((err) => {
         if (err === 'No current user') {
           userHasAuthenticated(false);
         } else {
@@ -60,6 +60,6 @@ const App = ({ userHasAuthenticated }) => {
       <Footer />
     </Fragment>
   );
-}
+};
 
 export default withRouter(connect(null, { userHasAuthenticated })(App));

@@ -30,10 +30,6 @@ const imagePadding = {
   marginRight: '5px',
 };
 
-// const hamburgerColor = {
-//   backgroundColor: '#ffc107',
-// };
-
 class Header extends Component {
   handleLogout = (event) => {
     this.props.userAuthenticated(false);
