@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 class BestiaryAccordion extends Component {
 
   beastDetails = (faction) => (this.props.beasts[faction].beasts.map((beast, j) => (
-    <Col md={4} key={j}>
+    <Col xs={12} md={6} lg={4} key={j}>
       <Card key={j} className="custom-beast-card">
         <Card.Header>
           {beast.name}

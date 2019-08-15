@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 class FactionAccordion extends Component {
   factionDetails = () => (this.props.factions.map((faction, i) => (
-    <Card className="custom-accordion-card">
+    <Card className="custom-accordion-card" key={i}>
       <Accordion.Toggle as={Card.Header} eventKey={i} className="custom-accordion">
         {faction.name}
       </Accordion.Toggle>
