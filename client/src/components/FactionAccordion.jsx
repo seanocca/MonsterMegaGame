@@ -2,24 +2,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Accordion, Card, Col } from 'react-bootstrap';
+import './Accordion.css';
 
 const mapStateToProps = state => ({
   factions: state.factions,
 });
 
-const accordionStyling = {
-  padding: '1.5rem 0',
-  fontSize: '3rem',
-  fontWeight: '700',
-  backgroundImage: 'linear-gradient(#ffffff, #01004d 10%, #01004d 90%, #ffffff)',
-  color: '#ffc107',
-  border: 'none',
-};
-
 class FactionAccordion extends Component {
   factionDetails = () => (this.props.factions.map((faction, i) => (
-    <Card style={{ border: 'none', padding: '2rem 0' }}>
-      <Accordion.Toggle as={Card.Header} eventKey={i} style={accordionStyling}>
+    <Card className="custom-accordion-card">
+      <Accordion.Toggle as={Card.Header} eventKey={i} className="custom-accordion">
         {faction.name}
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={i}>
@@ -29,7 +21,6 @@ class FactionAccordion extends Component {
   )))
 
   render() {
-    console.log('FACTIONS TEST', this.props.factions);
     return (
       <div>
         <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center">

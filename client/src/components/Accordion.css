@@ -1,0 +1,38 @@
+.custom-accordion {
+  padding: 1.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background-Color: #01004d !important;
+  color: #ffc107;
+  border: none;
+  border-radius: 5px !important;
+}
+
+.custom-accordion-card {
+  border: none !important;
+  padding: 2rem 0;
+  background-color: #fff0 !important;
+}
+
+.custom-beast-card .card-body {
+  font-size: 0.75rem;
+}
+
+.card-text span, .card-body span {
+  margin: 15px;
+  display: block;
+  background-color: #fff0 !important;
+}
+
+.custom-game-rule-card .card-header{
+  font-size: 1.15rem;
+  font-weight: 600;
+  background-color: #01004d !important;
+  color: #ffc107;
+  border-radius: 5px !important;
+}
+
+.custom-game-rule-card {
+  background-color: #fff0 !important;
+  border: none !important;
+}

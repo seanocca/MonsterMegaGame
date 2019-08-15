@@ -5,11 +5,15 @@ import {
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
+import beasts from '../constants/beast-data';
+import augments from '../constants/augment-data';
 
 const initialState = {
   isAuthenticated: false,
   isAuthenticating: true,
   factions,
+  beasts,
+  augments,
 };
 
 const rootReducer = (state = initialState, action) => {
