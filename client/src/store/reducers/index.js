@@ -7,6 +7,9 @@ import {
 import factions from '../constants/faction-data';
 import beasts from '../constants/beast-data';
 import augments from '../constants/augment-data';
+import overview from '../constants/overview-data';
+import rift from '../constants/rift-data';
+import gamerules from '../constants/game-rule-data';
 
 const initialState = {
   isAuthenticated: false,
@@ -14,6 +17,9 @@ const initialState = {
   factions,
   beasts,
   augments,
+  overview,
+  rift,
+  gamerules,
 };
 
 const rootReducer = (state = initialState, action) => {

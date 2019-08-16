@@ -24,7 +24,7 @@ export default [
       type: 'Mutation',
       name: 'Retractable Claws',
       action: 'Passive',
-      desc: 'Doesn&#39t fall when finishing move on a wall.',
+      desc: `Doesn't fall when finishing move on a wall.`,
     },
     {
       type: 'Mutation',

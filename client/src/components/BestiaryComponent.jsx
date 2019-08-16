@@ -43,9 +43,9 @@ class BestiaryAccordion extends Component {
   )))
 
   render() {
-    console.log(this.props.beasts[0].beasts);
     return (
       <div>
+        <h1 className="text-center custom-title">BESTIARY</h1>
         <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center">
           {this.factionAccordion()}
         </Accordion>
