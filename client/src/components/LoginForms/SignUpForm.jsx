@@ -43,11 +43,12 @@ const SignUpForm = ({ setUser }) => {
         username: formValues.email,
         password: formValues.password
       });
+      setIsLoading(false);
       setUser({ ...formValues, cognitoID: newUser.userSub });
     } catch (e) {
       alert(e.message);
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }
 
   return (
