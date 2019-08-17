@@ -1,6 +1,9 @@
 import { Auth } from 'aws-amplify';
 import {
-  USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION, DOWNLOAD_FACTIONS,
+  USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION, 
+  DOWNLOAD_FACTIONS,
+  GET_USER, SET_USER, PROCESS_SET_USER,
+  USER_CONFIRMED_EMAIL, PROCESS_USER_CONFIRMED_EMAIL,
 } from '../constants/action-types';
 
 // THESE CAN BE DELETED ONCE OLD CODE IS REMOVED
@@ -37,6 +40,41 @@ export const downloadFactions = ({ getState, dispatch }) => next => async (actio
 
   return next(action);
 };
+
+export const processUser = ({ getState, dispatch }) => next => async (action) => {
+  if (SET_USER === action.type || GET_USER === action.type) {
+    let userData = {}
+
+    if (SET_USER === action.type) {
+      // Upsert the data
+      userData = action.payload;
+    }
+
+    if (GET_USER === action.type) {
+      // download the data
+      userData = action.payload;
+    }
+
+
+    return dispatch({ type: PROCESS_SET_USER, payload: userData });
+  }
+
+  return next(action);
+}
+
+export const processUserConfirmation = ({ getState, dispatch }) => next => async (action) => {
+  if (USER_CONFIRMED_EMAIL === action.type) {
+    // Call to API
+
+
+    return dispatch({ type: PROCESS_USER_CONFIRMED_EMAIL, payload: action.payload });
+  }
+
+  return next(action);
+}
+
+
+//  DELETE BELOW HERE
 
 export const processValueKey = ({ getState, dispatch }) => next => (action) => {
   if (VALUE_KEY_PRESSED === action.type) {

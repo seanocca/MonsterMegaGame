@@ -2,6 +2,8 @@
 import {
   PROCESS_USER_AUTHENTICATION,
   IS_AUTHENTICATING,
+  PROCESS_SET_USER,
+  PROCESS_USER_CONFIRMED_EMAIL,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -14,6 +16,7 @@ import gamerules from '../constants/game-rule-data';
 const initialState = {
   isAuthenticated: false,
   isAuthenticating: true,
+  user: null,
   factions,
   beasts,
   augments,
@@ -35,6 +38,20 @@ const rootReducer = (state = initialState, action) => {
     console.log('[REDUX] Is Authenticating: ', action.payload);
     return Object.assign({}, state, {
       isAuthenticating: action.payload,
+    });
+  }
+
+  if (PROCESS_SET_USER === action.type) {
+    console.log('[REDUX] Set/Get User: ', action.payload);
+    return Object.assign({}, state, {
+      user: action.payload,
+    });
+  }
+
+  if (PROCESS_USER_CONFIRMED_EMAIL === action.type) {
+    console.log('[REDUX] User Confirm Email: ', action.payload);
+    return Object.assign({}, state, {
+      user: Object.assign({}, state.user, { emailConfirmed: action.payload }),
     });
   }
 
