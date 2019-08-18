@@ -36,7 +36,7 @@ const EditableBeastCard = (props) => {
       {/* placeholder image */}
       <Card.Img variant="top" src={Clamberer} />
       <Card.Body>
-        <Card.Title>{name} <img src={factionImagePath} style={{ height: '1.3rem' }} /></Card.Title>
+        <Card.Title>{faction} - {name} <img src={factionImagePath} style={{ height: '1.3rem' }} /></Card.Title>
         <Card.Text>
           {desc}
           <br />
