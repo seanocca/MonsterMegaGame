@@ -26,19 +26,22 @@ import BeastsDashboard from './components/BeastsDashboard';
 import AugmentsDashboard from './components/AugmentsDashboard';
 import FactionsDashboard from './components/FactionsDashboard';
 
-import { userHasAuthenticated } from './store/actions';
+import { userHasAuthenticated, getUser } from './store/actions';
 
-const App = ({ userHasAuthenticated }) => {
+const App = ({ userHasAuthenticated, getUser }) => {
   useEffect(() => {
-    Auth.currentSession().then(user => userHasAuthenticated(true))
-      .catch((err) => {
+    Auth.currentSession()
+      .then((user) => {
+        getUser();
+        userHasAuthenticated(true);
+      }).catch((err) => {
         if (err === 'No current user') {
           userHasAuthenticated(false);
         } else {
           console.log('Error testing for current session', err);
         }
       });
-  }, [userHasAuthenticated]);
+  }, [userHasAuthenticated, getUser]);
 
   return (
     <Fragment>
@@ -64,4 +67,4 @@ const App = ({ userHasAuthenticated }) => {
   );
 };
 
-export default withRouter(connect(null, { userHasAuthenticated })(App));
+export default withRouter(connect(null, { userHasAuthenticated, getUser })(App));
