@@ -33,12 +33,15 @@ const EditableBeastCard = (props) => {
   const { faction, name, desc, move, damage, maxdmg, leap, maxleap, hp, maxhp, speed, maxspeed } = props;
   const factionImagePath = factionImagePathPrefix + faction.toLowerCase() + '.png';
   const factionStyles = useFactionCardStyles(faction);
+  const altTag = `${faction} - ${name}`;
   return (
     <Card bg="dark" text="white" style={factionStyles}>
       {/* placeholder image */}
       <Card.Img variant="top" src={Clamberer} />
       <Card.Body>
-        <Card.Title>{faction} - {name} <img src={factionImagePath} style={{ height: '1.3rem' }} /></Card.Title>
+        <Card.Title>
+          {faction} - {name} <img src={factionImagePath} alt={altTag} style={{ height: '1.3rem' }} />
+        </Card.Title>
         <Card.Text>
           {desc}
           <br />
