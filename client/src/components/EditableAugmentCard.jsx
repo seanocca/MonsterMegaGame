@@ -1,5 +1,6 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
+import React, { useState } from 'react';
+import AugmentForm from './AugmentForm';
+import AugmentCard from './AugmentCard';
 import Clamberer from '../images/monsters/clamberer.png';
 
 const factionImagePathPrefix = '/img/factions/';
@@ -30,29 +31,22 @@ const useFactionCardStyles = (faction) => {
 }
 
 const EditableAugmentCard = (props) => {
+  const [editFormopen, setEditFormOpen] = useState(false);
   const { faction, name, type, action, desc } = props;
-  const factionImagePath = factionImagePathPrefix + faction.toLowerCase() + '.png';
-  const factionStyles = useFactionCardStyles(faction);
-  const altTag = `${faction} - ${name}`;
+  if (editFormopen) {
+    return (
+      <AugmentForm />
+    );
+  }
   return (
-    <Card bg="dark" text="white" style={factionStyles}>
-      {/* placeholder image */}
-      <Card.Img variant="top" src={Clamberer} />
-      <Card.Body>
-        <Card.Title>
-          {faction} - {name} <img src={factionImagePath} alt={altTag} style={{ height: '1.3rem' }} />
-        </Card.Title>
-        <Card.Text>
-          <strong>Type: </strong>{type}<br/>
-          <strong>{action.toUpperCase()} - </strong> {desc}
-        </Card.Text>
-      </Card.Body>
-      <Card.Footer>
-        {/* Link currently not working yet */}
-        <a href="/#">Edit Augment</a>
-      </Card.Footer>
-    </Card>
-  );
+    <AugmentCard
+      faction={faction}
+      name={name}
+      type={type}
+      action={action}
+      desc={desc}
+    />
+  )
 };
 
 export default EditableAugmentCard;

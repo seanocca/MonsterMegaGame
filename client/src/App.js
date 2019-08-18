@@ -23,7 +23,7 @@ import GameRules from './pages/GameRules';
 import NotFound from './pages/NotFound';
 import UsersDashboard from './components/UsersDashboard';
 import BeastsDashboard from './pages/BeastsDashboard';
-import AugmentsDashboard from './components/AugmentsDashboard';
+import AugmentsDashboard from './pages/AugmentsDashboard';
 import FactionsDashboard from './components/FactionsDashboard';
 
 import { userHasAuthenticated, getUser } from './store/actions';
