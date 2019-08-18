@@ -9,21 +9,23 @@ import LoaderButton from './LoaderButton';
 const seedData = {
   logInEmail: '',
   logInPassword: '',
-}
+};
 
-const LoginForm = ({ history, userHasAuthenticated, isAuthenticating, getUser }) => {
+const LoginForm = ({
+  history, userHasAuthenticated, isAuthenticating, getUser,
+}) => {
   const [formValues, setFormValues] = useState(seedData);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event) => {
     event.persist();
     setFormValues(values => ({ ...values, [event.target.id]: event.target.value }));
-  }
+  };
 
   const validateLogInForm = () => {
     const { logInEmail, logInPassword } = formValues;
     return logInEmail.length > 0 && logInPassword.length > 0;
-  }
+  };
 
   const handleLogInSubmit = async (event) => {
     event.preventDefault();
@@ -33,7 +35,7 @@ const LoginForm = ({ history, userHasAuthenticated, isAuthenticating, getUser })
 
     try {
       await Auth.signIn(logInEmail, logInPassword)
-        .then(({username}) => {
+        .then(({ username }) => {
           userHasAuthenticated(true);
           getUser({ cognitoID: username });
 
@@ -45,7 +47,7 @@ const LoginForm = ({ history, userHasAuthenticated, isAuthenticating, getUser })
       alert(e.message);
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <Form onSubmit={handleLogInSubmit}>
@@ -79,9 +81,10 @@ const LoginForm = ({ history, userHasAuthenticated, isAuthenticating, getUser })
       />
     </Form>
   );
-}
+};
 
-export default withRouter(connect(null, { 
-  userHasAuthenticated, 
-  isAuthenticating, 
-  getUser })(LoginForm));
+export default withRouter(connect(null, {
+  userHasAuthenticated,
+  isAuthenticating,
+  getUser,
+})(LoginForm));
