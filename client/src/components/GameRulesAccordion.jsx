@@ -71,39 +71,3 @@ class GameRulesAccordion extends Component {
 }
 
 export default connect(mapStateToProps)(GameRulesAccordion);
-
-// <Card.Body>
-//   <Row>
-//     <Col xs={12} md={6} lg={4}>
-//       <Card className="custom-game-rule-card">
-//         <Card.Header>Rift Swarm</Card.Header>
-//         <Card.Body >
-//           <span>All out war across the campus</span>
-//           <span>Creatures respawn infinitely</span>
-//           <span>First Faction to five kills wins</span>
-//         </Card.Body>
-//       </Card>
-//     </Col>
-//     <Col xs={12} md={6} lg={4}>
-//       <Card className="custom-game-rule-card">
-//         <Card.Header>Tyrant of the Tower</Card.Header>
-//         <Card.Text  >
-//           <span>The goal is to capture V Block</span>
-//           <span>The Faction with the last creature/s alien in V block wins the round</span>
-//           <span>Once killed, creatures do not respawn</span>
-//           <span>Best out of three rounds is the overall winner of the Block Capture Battle</span>
-//         </Card.Text>
-//       </Card>
-//     </Col>
-//     <Col xs={12} md={12} lg={4}>
-//       <Card className="custom-game-rule-card">
-//         <Card.Header>Hunt for Humans</Card.Header>
-//         <Card.Text >
-//           <span>Scatter the "Prey" (human) tokens evenly around the map, both inside and outside of buildings (cannot be in the startinng buildings)</span>
-//           <span>Every time your Monster touches Prey, remove the Prey and gain one experience. The gatekeepers "save" them instead, but follow the same rules</span>
-//           <span>The game ends when all Prey is consumed or saved - Faction with the most Prey tokens wins</span>
-//         </Card.Text>
-//       </Card>
-//     </Col>
-//   </Row>
-// </Card.Body>
