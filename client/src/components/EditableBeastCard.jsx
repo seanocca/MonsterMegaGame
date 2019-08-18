@@ -4,11 +4,35 @@ import Clamberer from '../images/monsters/clamberer.png';
 
 const factionImagePathPrefix = '/img/factions/';
 
+const useFactionCardStyles = (faction) => {
+  let border = '';
+  switch (faction) {
+    case 'Voidborn':
+      border = 'solid 10px purple';
+      break;
+    case 'Mechanica':
+      border = 'solid 10px orange';
+      break;
+    case 'Gatekeepers':
+      border = 'solid 10px black';
+      break;
+    case 'Biochrondys':
+      border = 'solid 10px green';
+      break;
+  }
+  return {
+    width: '18rem',
+    height: 'auto',
+    border
+  }
+}
+
 const EditableBeastCard = (props) => {
   const { faction, name, desc, move, damage, maxdmg, leap, maxleap, hp, maxhp, speed, maxspeed } = props;
   const factionImagePath = factionImagePathPrefix + faction.toLowerCase() + '.png';
+  const factionStyles = useFactionCardStyles(faction);
   return (
-    <Card bg="dark" text="white" style={{ width: '18rem', height: 'auto' }}>
+    <Card bg="dark" text="white" style={factionStyles}>
       {/* placeholder image */}
       <Card.Img variant="top" src={Clamberer} />
       <Card.Body>
