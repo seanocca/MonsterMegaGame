@@ -49,7 +49,7 @@ const EditableAugmentCard = (props) => {
       </Card.Body>
       <Card.Footer>
         {/* Link currently not working yet */}
-        <a href="">Edit Augment</a>
+        <a href="/#">Edit Augment</a>
       </Card.Footer>
     </Card>
   );
