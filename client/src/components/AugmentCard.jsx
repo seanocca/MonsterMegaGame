@@ -42,7 +42,7 @@ const AugmentCard = (props) => {
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Subtitle className="text-muted">{type}</Card.Subtitle>
-        <Card.Text>{desc}</Card.Text>
+        <Card.Text>{action}: {desc}</Card.Text>
       </Card.Body>
       <Card.Footer>
         {/* Link currently not working yet */}
