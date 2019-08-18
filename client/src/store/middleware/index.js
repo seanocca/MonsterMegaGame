@@ -2,8 +2,7 @@ import { Auth } from 'aws-amplify';
 import {
   USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION, 
   DOWNLOAD_FACTIONS,
-  GET_USER, SET_USER, PROCESS_SET_USER,
-  USER_CONFIRMED_EMAIL, PROCESS_USER_CONFIRMED_EMAIL,
+  GET_USER, SET_USER, PROCESS_USER,
 } from '../constants/action-types';
 
 // THESE CAN BE DELETED ONCE OLD CODE IS REMOVED
@@ -56,18 +55,7 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
     }
 
 
-    return dispatch({ type: PROCESS_SET_USER, payload: userData });
-  }
-
-  return next(action);
-}
-
-export const processUserConfirmation = ({ getState, dispatch }) => next => async (action) => {
-  if (USER_CONFIRMED_EMAIL === action.type) {
-    // Call to API
-
-
-    return dispatch({ type: PROCESS_USER_CONFIRMED_EMAIL, payload: action.payload });
+    return dispatch({ type: PROCESS_USER, payload: userData });
   }
 
   return next(action);

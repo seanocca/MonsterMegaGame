@@ -2,8 +2,7 @@
 import {
   PROCESS_USER_AUTHENTICATION,
   IS_AUTHENTICATING,
-  PROCESS_SET_USER,
-  PROCESS_USER_CONFIRMED_EMAIL,
+  PROCESS_USER,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -41,19 +40,19 @@ const rootReducer = (state = initialState, action) => {
     });
   }
 
-  if (PROCESS_SET_USER === action.type) {
+  if (PROCESS_USER === action.type) {
     console.log('[REDUX] Set/Get User: ', action.payload);
     return Object.assign({}, state, {
       user: action.payload,
     });
   }
 
-  if (PROCESS_USER_CONFIRMED_EMAIL === action.type) {
-    console.log('[REDUX] User Confirm Email: ', action.payload);
-    return Object.assign({}, state, {
-      user: Object.assign({}, state.user, { emailConfirmed: action.payload }),
-    });
-  }
+  // if (PROCESS_USER_CONFIRMED_EMAIL === action.type) {
+  //   console.log('[REDUX] User Confirm Email: ', action.payload);
+  //   return Object.assign({}, state, {
+  //     user: Object.assign({}, state.user, { emailConfirmed: action.payload }),
+  //   });
+  // }
 
   console.log('[REDUX] Uncaught Action: ', action);
   return state;
