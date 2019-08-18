@@ -1,7 +1,4 @@
 /* eslint-disable no-unused-vars */
-import uuid from 'uuid';
-// 535beec0-b8c6-11e9-a8c8-63de02c865af
-// 65790230-b8c8-11e9-b2ff-a553a284bfdf
 import * as dynamoDbLib from './utils/dynamodb-lib';
 import { success, failure } from './utils/response-lib';
 
@@ -12,19 +9,17 @@ export async function main(event, context, callback) {
 
   const params = {
     TableName: 'Users',
-    // 'Item' contains the attributes of the item to be created
-    // - 'userId': user identities are federated through the             Cognito
-    // Identity Pool, we will use the identity id             as the user id of the
-    // authenticated user
-    // - 'noteId': a unique uuid
-    // - 'content': parsed from request body
-    // - 'attachment': parsed from request body
-    // - 'createdAt': current Unix timestamp
     Item: {
       userID: event.requestContext.identity.cognitoIdentityId,
-      uuid: uuid.v1(),
-      firstname: apiData.firstname,
-      lastname: apiData.lastname,
+      address: apiData.address,
+      city: apiData.city,
+      cognitoID: apiData.cognitoID,
+      email: apiData.email,
+      emailConfirmed: apiData.emailConfirmed,
+      firstName: apiData.firstName,
+      lastName: apiData.lastName,
+      postcode: apiData.postcode,
+      state: apiData.state,
       createdAt: Date.now(),
     },
   };
