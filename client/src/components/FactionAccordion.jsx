@@ -31,7 +31,7 @@ class FactionAccordion extends Component {
         <Accordion.Collapse eventKey={i} className="justify-content-center">
           <Card key={i + faction.name} className="custom-faction-card">
             <Row>
-              <Col md={2}>
+              <Col md={{ span: 2, order: 1 }} xs={{ span: 6, order: 2 }}>
                 <img
                   src={require('../images/banners/' +
                     faction.name.toLowerCase() +
@@ -41,12 +41,12 @@ class FactionAccordion extends Component {
                   height="100%"
                 />
               </Col>
-              <Col>
+              <Col md={{ span: 8, order: 2 }} xs={{ span: 12, order: 1 }}>
                 <Card.Body>Leader: {faction.leader}</Card.Body>
                 <Card.Body>Faculty: {faction.faculty}</Card.Body>
                 {this.factionDescSeperater(faction.desc)}
               </Col>
-              <Col md={2}>
+              <Col md={{ span: 2, order: 3 }} xs={{ span: 6, order: 3 }}>
                 <img
                   src={require('../images/banners/' +
                     faction.name.toLowerCase() +
@@ -64,23 +64,39 @@ class FactionAccordion extends Component {
 
   render() {
     return (
-      <Row width="100vw">
-        <Col md={1}>
+      <Row className="flex-row" style={{ margin: '0' }}>
+        <Col
+          md={{ span: 1, order: 1 }}
+          xs={{ span: 3, order: 3 }}
+          style={{ margin: '0' }}
+        >
           <img src={Biochrondys} alt="Biochrondys" height="100%" width="100%" />
         </Col>
-        <Col md={1}>
+        <Col
+          md={{ span: 1, order: 2 }}
+          xs={{ span: 3, order: 3 }}
+          style={{ margin: '0' }}
+        >
           <img src={Gatekeepers} alt="Gatekeepers" height="100%" width="100%" />
         </Col>
-        <Col md={8}>
+        <Col md={{ span: 8, order: 3 }} xs={{ span: 12, order: 1 }}>
           <h1 className="text-center custom-title">FACTIONS</h1>
           <Accordion className="justify-content-center text-center">
             {this.factionDetails()}
           </Accordion>
         </Col>
-        <Col md={1}>
+        <Col
+          md={{ span: 1, order: 4 }}
+          xs={{ span: 3, order: 3 }}
+          style={{ margin: '0' }}
+        >
           <img src={Mechanica} alt="Mechanica" height="100%" width="100%" />
         </Col>
-        <Col md={1}>
+        <Col
+          md={{ span: 1, order: 5 }}
+          xs={{ span: 3, order: 3 }}
+          style={{ margin: '0' }}
+        >
           <img src={Voidborn} alt="Voidborn" height="100%" width="100%" />
         </Col>
       </Row>
