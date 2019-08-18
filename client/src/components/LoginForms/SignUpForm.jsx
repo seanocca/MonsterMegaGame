@@ -16,8 +16,7 @@ const seedState = {
   city: '',
   postcode: '',
   state: '',
-  userSub: '',
-  emailConfirmed: false,
+  cognitoID: '',
 };
 
 const SignUpForm = ({ setUser }) => {
@@ -27,12 +26,12 @@ const SignUpForm = ({ setUser }) => {
   const handleChange = (event) => {
     event.persist();
     setFormValues(values => ({ ...values, [event.target.id]: event.target.value }));
-  }
+  };
 
   const validateSignUpForm = () => {
     const { email, password, confirm } = formValues;
     return email.length > 0 && password.length > 0 && password === confirm;
-  }
+  };
 
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
@@ -41,15 +40,17 @@ const SignUpForm = ({ setUser }) => {
     try {
       const newUser = await Auth.signUp({
         username: formValues.email,
-        password: formValues.password
+        password: formValues.password,
       });
+
       setIsLoading(false);
       setUser({ ...formValues, cognitoID: newUser.userSub });
     } catch (e) {
+      // eslint-disable-next-line no-alert
       alert(e.message);
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <Form onSubmit={handleSignUpSubmit}>
@@ -131,14 +132,14 @@ const SignUpForm = ({ setUser }) => {
             as="select"
             onChange={handleChange}
           >
-            <option value=''>Choose...</option>
-            <option value='QLD'>QLD</option>
-            <option value='NSW'>NSW</option>
-            <option value='VIC'>VIC</option>
-            <option value='NT'>NT</option>
-            <option value='SA'>SA</option>
-            <option value='WA'>WA</option>
-            <option value='ACT'>ACT</option>
+            <option value="">Choose...</option>
+            <option value="QLD">QLD</option>
+            <option value="NSW">NSW</option>
+            <option value="VIC">VIC</option>
+            <option value="NT">NT</option>
+            <option value="SA">SA</option>
+            <option value="WA">WA</option>
+            <option value="ACT">ACT</option>
           </Form.Control>
         </Form.Group>
 
@@ -164,8 +165,6 @@ const SignUpForm = ({ setUser }) => {
       </Form.Row>
     </Form>
   );
-}
+};
 
 export default withRouter(connect(null, { setUser })(SignUpForm));
-
-
