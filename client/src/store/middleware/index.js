@@ -1,6 +1,6 @@
-import { Auth } from 'aws-amplify';
+import { Auth, API } from 'aws-amplify';
 import {
-  USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION, 
+  USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION,
   DOWNLOAD_FACTIONS,
   GET_USER, SET_USER, PROCESS_USER,
 } from '../constants/action-types';
@@ -42,24 +42,32 @@ export const downloadFactions = ({ getState, dispatch }) => next => async (actio
 
 export const processUser = ({ getState, dispatch }) => next => async (action) => {
   if (SET_USER === action.type || GET_USER === action.type) {
-    let userData = {}
+    let userData = {};
 
     if (SET_USER === action.type) {
       // Upsert the data
       userData = action.payload;
+
+      return Auth.currentSession()
+        .then((data) => {
+          userData = Object.assign({}, userData, { password: '', confirm: '' });
+          API.post('User', '/users', { body: userData })
+            .then(res => dispatch({ type: PROCESS_USER, payload: userData }))
+            .catch(({ response }) => {
+              console.log(`Error(${response.status}): ${response.data.message}`);
+            });
+        }).catch(e => dispatch({ type: PROCESS_USER, payload: userData }));
     }
 
     if (GET_USER === action.type) {
       // download the data
       userData = action.payload;
+      return dispatch({ type: PROCESS_USER, payload: userData });
     }
-
-
-    return dispatch({ type: PROCESS_USER, payload: userData });
   }
 
   return next(action);
-}
+};
 
 
 //  DELETE BELOW HERE
