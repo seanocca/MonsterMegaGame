@@ -43,7 +43,7 @@
       "react/prop-types": false,
       "react/destructuring-assignment": false,
       "no-shadow": 0,
-      "no-console": true
+      "no-console": 0
     }
   },
   "prettier": {
