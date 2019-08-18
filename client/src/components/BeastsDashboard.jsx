@@ -1,14 +1,14 @@
 import React from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Container, CardColumns } from 'react-bootstrap';
 // TODO: use useDispatch functions for CRUD actions
 import { useSelector } from 'react-redux';
 import Dashboard from '../pages/Dashboard';
-import AdminBeast from './AdminBeast';
+import EditableBeastCard from './EditableBeastCard';
 
 const BeastsDashboard = () => {
   const beasts = useSelector((state) => state.beasts);
   const beastComponents = beasts.map((factionBeasts) => (factionBeasts.beasts.map((beast) => 
-    <AdminBeast
+    <EditableBeastCard
       name={beast.name}
       desc={beast.desc}
       move={beast.move}
@@ -27,26 +27,9 @@ const BeastsDashboard = () => {
     <Container>
     <Dashboard />
       <h1>Beasts</h1>
-      <Table bordered hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Desc</th>
-            <th>Move</th>
-            <th>Dmg</th>
-            <th>Max Dmg</th>
-            <th>Leap</th>
-            <th>Max Leap</th>
-            <th>HP</th>
-            <th>Max HP</th>
-            <th>Speed</th>
-            <th>Max Speed</th>
-          </tr>
-        </thead>
-      </Table>      
-      <div>
+      <CardColumns>
         {beastComponents}
-      </div>
+      </CardColumns>
     </Container>
   );
 };
