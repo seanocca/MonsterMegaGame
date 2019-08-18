@@ -52,7 +52,7 @@ const EditableBeastCard = (props) => {
       </Card.Body>
       <Card.Footer>
         {/* Link currently not working yet */}
-        <a href="">Edit Beast</a>
+        <a href="/#">Edit Beast</a>
       </Card.Footer>
     </Card>
   );
