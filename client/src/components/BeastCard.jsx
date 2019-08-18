@@ -36,12 +36,11 @@ const BeastCard = (props) => {
   const altTag = `${faction} - ${name}`;
   return (
     <Card bg="dark" text="white" style={factionStyles}>
+      <Card.Header>{faction} <img src={factionImagePath} alt={altTag} style={{ height: '1.3rem' }} /></Card.Header>
       {/* placeholder image */}
-      <Card.Img variant="top" src={Clamberer} />
+      <Card.Img variant="top" src={Clamberer} style={{ height: '20rem' }} />
       <Card.Body>
-        <Card.Title>
-          {faction} - {name} <img src={factionImagePath} alt={altTag} style={{ height: '1.3rem' }} />
-        </Card.Title>
+        <Card.Title>{name}</Card.Title>
         <Card.Text>
           {desc}
           <br />

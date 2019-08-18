@@ -40,15 +40,15 @@ const BeastsDashboard = () => {
     <Container>
       <Dashboard />
       <h1>Beasts</h1>
+      <ToggleableBeastForm
+        onFormSubmit={handleCreateFormSubmit}
+      />
       <CardColumns>
         <EditableBeastList
           beasts={beasts}
           onFormSubmit={handleEditFormSubmit}
         />
       </CardColumns>
-      <ToggleableBeastForm
-        onFormSubmit={handleCreateFormSubmit}
-      />
     </Container>
   );
 };
