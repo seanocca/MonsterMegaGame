@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import { Form, Col, Card, Button } from "react-bootstrap";
+import React from 'react';
+import {
+  Form, Col, Card, Button,
+} from 'react-bootstrap';
 
-class AccEditForm extends Component {
-  render() {
-    return (
-      <Card>
-        <Card.Header className="text-center" style={{fontSize: '1.4rem'}}>Edit Account Details</Card.Header>
-        <Form style={{padding: '1rem'}}>
-        <Card.Body inline="true" >
+const AccEditForm = () => {
+  console.log('blah');
 
+  return (
+    <Card>
+      <Card.Header className="text-center" style={{ fontSize: '1.4rem' }}>Edit Account Details</Card.Header>
+      <Form style={{ padding: '1rem' }}>
+        <Card.Body inline="true">
           <Form.Row>
             <Form.Group as={Col} controlId="formFirstName">
               <Form.Label>First Name</Form.Label>
@@ -47,40 +49,39 @@ class AccEditForm extends Component {
             </Form.Group>
           </Form.Row>
 
-            <Form.Group controlId="formGridAddress">
-              <Form.Label>Address</Form.Label>
-              <Form.Control placeholder="1234 Main St" />
+          <Form.Group controlId="formGridAddress">
+            <Form.Label>Address</Form.Label>
+            <Form.Control placeholder="1234 Main St" />
+          </Form.Group>
+
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>City</Form.Label>
+              <Form.Control />
             </Form.Group>
 
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridCity">
-                <Form.Label>City</Form.Label>
-                <Form.Control />
-              </Form.Group>
+            <Form.Group as={Col} controlId="formGridState">
+              <Form.Label>State</Form.Label>
+              <Form.Control as="select">
+                <option>Choose...</option>
+                <option>...</option>
+              </Form.Control>
+            </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridState">
-                <Form.Label>State</Form.Label>
-                <Form.Control as="select">
-                  <option>Choose...</option>
-                  <option>...</option>
-                </Form.Control>
-              </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridZip">
-                <Form.Label>Zip</Form.Label>
-                <Form.Control />
-              </Form.Group>
-            </Form.Row>
-          </Card.Body>
-          <Form.Row className="justify-content-center">
-            <Button variant="primary" type="submit">
-              Update
-            </Button>
+            <Form.Group as={Col} controlId="formGridZip">
+              <Form.Label>Zip</Form.Label>
+              <Form.Control />
+            </Form.Group>
           </Form.Row>
-        </Form>
-      </Card>
-    );
-  }
-}
+        </Card.Body>
+        <Form.Row className="justify-content-center">
+          <Button variant="primary" type="submit">
+            Update
+          </Button>
+        </Form.Row>
+      </Form>
+    </Card>
+  );
+};
 
 export default AccEditForm;
