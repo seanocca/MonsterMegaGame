@@ -19,6 +19,8 @@ const useFactionCardStyles = (faction) => {
     case 'Biochrondys':
       border = 'solid 10px green';
       break;
+    default:
+      // do nothing
   }
   return {
     width: '18rem',
