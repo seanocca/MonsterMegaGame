@@ -8,7 +8,7 @@ const EditableBeastCard = (props) => {
   const { faction, name, desc, move, damage, maxdmg, leap, maxleap, hp, maxhp, speed, maxspeed } = props;
   const factionImagePath = factionImagePathPrefix + faction.toLowerCase() + '.png';
   return (
-    <Card style={{ width: '18rem', height: 'auto' }}>
+    <Card bg="dark" text="white" style={{ width: '18rem', height: 'auto' }}>
       {/* placeholder image */}
       <Card.Img variant="top" src={Clamberer} />
       <Card.Body>
