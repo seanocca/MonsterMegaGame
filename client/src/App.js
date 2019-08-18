@@ -23,6 +23,7 @@ import GameRules from './pages/GameRules';
 import NotFound from './pages/NotFound';
 import UsersDashboard from './components/UsersDashboard';
 import BeastsDashboard from './components/BeastsDashboard';
+import AugmentsDashboard from './components/AugmentsDashboard';
 import FactionsDashboard from './components/FactionsDashboard';
 
 import { userHasAuthenticated } from './store/actions';
@@ -54,6 +55,7 @@ const App = ({ userHasAuthenticated }) => {
         <Route exact path="/gamerules" component={GameRules} />
         <Route exact path="/dashboard/users" component={UsersDashboard} />
         <Route exact path="/dashboard/beasts" component={BeastsDashboard} />
+        <Route exact path="/dashboard/augments" component={AugmentsDashboard} />
         <Route exact path="/dashboard/factions" component={FactionsDashboard} />
         <Route component={NotFound} />
       </Switch>

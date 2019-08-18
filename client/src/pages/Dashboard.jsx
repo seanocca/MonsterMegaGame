@@ -19,6 +19,9 @@ class Dashboard extends Component {
             <Nav.Link href="/dashboard/beasts">Beasts</Nav.Link>
           </Nav.Item>
           <Nav.Item>
+            <Nav.Link href="/dashboard/augments">Augments</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
             <Nav.Link href="/dashboard/factions">Factions</Nav.Link>
           </Nav.Item>
         </Nav>
