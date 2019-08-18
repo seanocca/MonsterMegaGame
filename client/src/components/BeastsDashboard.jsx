@@ -9,6 +9,7 @@ const BeastsDashboard = () => {
   const beasts = useSelector((state) => state.beasts);
   const beastComponents = beasts.map((factionBeasts) => (factionBeasts.beasts.map((beast) => 
     <EditableBeastCard
+      faction={factionBeasts.faction}
       name={beast.name}
       desc={beast.desc}
       move={beast.move}
