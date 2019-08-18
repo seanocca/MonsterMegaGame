@@ -41,9 +41,8 @@ const BeastCard = (props) => {
       <Card.Img variant="top" src={Clamberer} style={{ height: '20rem' }} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
+        <Card.Subtitle>{desc}</Card.Subtitle>
         <Card.Text>
-          {desc}
-          <br />
           <strong>DMG: </strong> {damage}/{maxdmg} <strong>SPD: </strong> {speed}/{maxspeed} <br />
           <strong>LEAP:</strong> {leap}/{maxleap} <strong>HP: </strong> {hp}/{maxhp} <br />
           <strong>MOVE: </strong>{move}
