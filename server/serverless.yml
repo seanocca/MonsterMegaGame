@@ -50,7 +50,7 @@ functions:
     handler: get.main
     events:
       - http:
-          path: users
+          path: user
           method: get
           cors: true
           authorizer: aws_iam

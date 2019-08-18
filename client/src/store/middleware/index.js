@@ -61,8 +61,11 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
 
     if (GET_USER === action.type) {
       // download the data
-      userData = action.payload;
-      return dispatch({ type: PROCESS_USER, payload: userData });
+      return API.get('User', '/user')
+        .then(response => dispatch({ type: PROCESS_USER, payload: response }))
+        .catch(({ response }) => {
+          console.log(`Error(${response.status}): ${response.data.message}`);
+        });
     }
   }
 
