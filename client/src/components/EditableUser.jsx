@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import UserForm from './UserForm';
+import AdminUserForm from './AdminUserForm';
 import User from './User';
 
 class EditableUser extends Component {
@@ -13,7 +13,7 @@ class EditableUser extends Component {
     const { firstName, lastName } = this.props;
     if (editFormOpen) {
       return (
-        <UserForm
+        <AdminUserForm
           key="nothing"
           id="nothing"
           firstName={firstName}

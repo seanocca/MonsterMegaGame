@@ -20,11 +20,12 @@ import Bestiary from './pages/Bestiary';
 import Lore from './pages/Lore';
 import GameRules from './pages/GameRules';
 
-import NotFound from './pages/NotFound';
-import UsersDashboard from './components/UsersDashboard';
+import UsersDashboard from './pages/UsersDashboard';
 import BeastsDashboard from './pages/BeastsDashboard';
 import AugmentsDashboard from './pages/AugmentsDashboard';
 import FactionsDashboard from './components/FactionsDashboard';
+
+import NotFound from './pages/NotFound';
 
 import { userHasAuthenticated, getUser } from './store/actions';
 

@@ -12,6 +12,7 @@ import augments from '../constants/augment-data';
 import overview from '../constants/overview-data';
 import rift from '../constants/rift-data';
 import gamerules from '../constants/game-rule-data';
+import users from '../constants/user-data';
 
 const initialState = {
   isAuthenticated: false,
@@ -24,6 +25,7 @@ const initialState = {
   overview,
   rift,
   gamerules,
+  users,
 };
 
 const rootReducer = (state = initialState, action) => {
