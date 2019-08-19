@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 // TODO: use useDispatch functions for CRUD actions
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Container, CardColumns } from 'react-bootstrap';
 
 import Dashboard from './Dashboard';

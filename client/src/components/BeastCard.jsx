@@ -30,7 +30,9 @@ const useFactionCardStyles = (faction) => {
 };
 
 const BeastCard = (props) => {
-  const { faction, name, desc, move, damage, maxdmg, leap, maxleap, hp, maxhp, speed, maxspeed } = props;
+  const {
+    faction, name, desc, move, damage, maxdmg, leap, maxleap, hp, maxhp, speed, maxspeed,
+  } = props;
   const factionStyles = useFactionCardStyles(faction);
   const factionImagePath = `${factionImagePathPrefix + faction.toLowerCase()}.png`;
   const altTag = `${faction} - ${name}`;

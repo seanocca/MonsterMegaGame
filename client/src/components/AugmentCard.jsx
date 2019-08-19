@@ -30,7 +30,9 @@ const useFactionCardStyles = (faction) => {
 };
 
 const AugmentCard = (props) => {
-  const { faction, name, type, action, desc } = props;
+  const {
+    faction, name, type, action, desc,
+  } = props;
   const factionStyles = useFactionCardStyles(faction);
   const factionImagePath = `${factionImagePathPrefix + faction.toLowerCase()}.png`;
   const altTag = `${faction} - ${name}`;
@@ -50,6 +52,6 @@ const AugmentCard = (props) => {
       </Card.Footer>
     </Card>
   );
-}
+};
 
 export default AugmentCard;
