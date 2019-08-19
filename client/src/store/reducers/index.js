@@ -3,6 +3,7 @@ import {
   PROCESS_USER_AUTHENTICATION,
   IS_AUTHENTICATING,
   PROCESS_USER,
+  IS_LOADING,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -15,6 +16,7 @@ import gamerules from '../constants/game-rule-data';
 const initialState = {
   isAuthenticated: false,
   isAuthenticating: true,
+  isLoading: false,
   user: null,
   factions,
   beasts,
@@ -41,10 +43,18 @@ const rootReducer = (state = initialState, action) => {
     });
   }
 
+  if (IS_LOADING === action.type) {
+    console.log('[REDUX] Is Loading: ', action.payload);
+    return Object.assign({}, state, {
+      isLoading: action.payload,
+    });
+  }
+
   if (PROCESS_USER === action.type) {
-    console.log('[REDUX] Set/Get User: ', action.payload);
+    console.log('[REDUX] Set/Get User: ', action.payload, action.isLoading);
     return Object.assign({}, state, {
       user: action.payload,
+      isLoading: (action.isLoading === undefined) ? state.isLoading : action.isLoading,
     });
   }
 
