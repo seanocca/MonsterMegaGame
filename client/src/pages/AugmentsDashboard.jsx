@@ -37,7 +37,7 @@ const AugmentsDashboard = () => {
   };
 
   return (
-    <Container>
+    <Container style={{ padding: '4rem 0' }}>
       <Dashboard />
       <h1>Augments</h1>
       <ToggleableAugmentForm

@@ -37,7 +37,7 @@ const BeastsDashboard = () => {
   };
 
   return (
-    <Container>
+    <Container style={{ padding: '4rem 0' }}>
       <Dashboard />
       <h1>Beasts</h1>
       <ToggleableBeastForm
