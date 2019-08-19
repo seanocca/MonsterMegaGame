@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Form, Col, Card, Button,
 } from 'react-bootstrap';
+import { setUser, isLoading } from '../store/actions';
 
 const seedState = {
   email: '',
@@ -17,12 +18,10 @@ const seedState = {
   cognitoID: '',
 };
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
-const AccEditForm = ({ user }) => {
+const AccEditForm = () => {
+  const dispatch = useDispatch();
   const [formValues, setFormValues] = useState(seedState);
+  const user = useSelector(state => state.user);
 
   useEffect(() => {
     if (user !== null) setFormValues(user);
@@ -33,10 +32,18 @@ const AccEditForm = ({ user }) => {
     setFormValues(values => ({ ...values, [event.target.id]: event.target.value }));
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    dispatch(isLoading(true));
+    dispatch(setUser(formValues));
+    // setIsLoading(false);
+  };
+
   return (
     <Card>
       <Card.Header className="text-center" style={{ fontSize: '1.4rem' }}>Edit Account Details</Card.Header>
-      <Form style={{ padding: '1rem' }}>
+      <Form style={{ padding: '1rem' }} onSubmit={handleSubmit}>
         <Card.Body inline="true">
           <Form.Row>
             <Form.Group as={Col} controlId="firstName">
@@ -142,7 +149,7 @@ const AccEditForm = ({ user }) => {
           </Form.Row>
         </Card.Body>
         <Form.Row className="justify-content-center">
-          <Button variant="primary" type="submit" disabled>
+          <Button variant="primary" type="submit">
             Update
           </Button>
         </Form.Row>
@@ -151,4 +158,4 @@ const AccEditForm = ({ user }) => {
   );
 };
 
-export default connect(mapStateToProps)(AccEditForm);
+export default AccEditForm;
