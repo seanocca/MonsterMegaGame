@@ -7,7 +7,6 @@ const EditableUserRow = (props) => {
   const {
     firstName, lastName, email, address, city, state, postcode,
   } = props;
-  console.log(props);
   if (editFormOpen) {
     return (
       <AdminUserForm

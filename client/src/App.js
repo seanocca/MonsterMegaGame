@@ -23,7 +23,7 @@ import GameRules from './pages/GameRules';
 import UsersDashboard from './pages/UsersDashboard';
 import BeastsDashboard from './pages/BeastsDashboard';
 import AugmentsDashboard from './pages/AugmentsDashboard';
-import FactionsDashboard from './components/FactionsDashboard';
+import FactionsDashboard from './pages/FactionsDashboard';
 
 import NotFound from './pages/NotFound';
 
