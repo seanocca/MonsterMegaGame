@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import { 
+import {
   processUserAuth,
-  processUser, } from './middleware';
+  processUser,
+} from './middleware';
 
 // Enables redux dev tools on middleware
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -13,7 +14,8 @@ const store = createStore(
   storeEnhancers(applyMiddleware(
     thunk,
     processUserAuth,
-    processUser,))
+    processUser,
+  )),
 );
 
 export default store;

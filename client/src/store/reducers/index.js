@@ -30,6 +30,7 @@ const rootReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       isAuthenticated: action.payload,
       isAuthenticating: false,
+      user: (action.payload) ? state.user : null,
     });
   }
 
@@ -46,13 +47,6 @@ const rootReducer = (state = initialState, action) => {
       user: action.payload,
     });
   }
-
-  // if (PROCESS_USER_CONFIRMED_EMAIL === action.type) {
-  //   console.log('[REDUX] User Confirm Email: ', action.payload);
-  //   return Object.assign({}, state, {
-  //     user: Object.assign({}, state.user, { emailConfirmed: action.payload }),
-  //   });
-  // }
 
   console.log('[REDUX] Uncaught Action: ', action);
   return state;

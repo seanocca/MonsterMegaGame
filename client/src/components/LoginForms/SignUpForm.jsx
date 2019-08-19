@@ -131,6 +131,7 @@ const SignUpForm = ({ setUser }) => {
           <Form.Control
             as="select"
             onChange={handleChange}
+            value={formValues.state}
           >
             <option value="">Choose...</option>
             <option value="QLD">QLD</option>
