@@ -7,7 +7,7 @@ import FBLogo from '../images/facebook.png';
 import InstaLogo from '../images/instagram.png';
 import YTLogo from '../images/youtube.png';
 import PatLogo from '../images/patreon.png';
-import './Footer.css'
+import './Footer.css';
 
 class Footer extends Component {
   render() {
