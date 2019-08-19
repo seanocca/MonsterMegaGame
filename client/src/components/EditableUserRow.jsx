@@ -4,19 +4,11 @@ import UserRow from './UserRow';
 
 const EditableUserRow = (props) => {
   const [editFormOpen, setEditFormOpen] = useState(false);
-  const {
-    firstName, lastName, email, address, city, state, postcode,
-  } = props;
+  const { firstName, lastName } = props;
   if (editFormOpen) {
     return (
       <AdminUserForm
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        address={address}
-        city={city}
-        state={state}
-        postcode={postcode}
+        {...props}
         onFormClose={() => setEditFormOpen(false)}
       />
     );

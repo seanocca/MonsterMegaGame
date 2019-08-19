@@ -4,42 +4,17 @@ import BeastCard from './BeastCard';
 
 const EditableBeastCard = (props) => {
   const [editFormOpen, setEditFormOpen] = useState(false);
-  const {
-    faction, name, desc, move, damage, maxdmg, leap, maxleap, hp, maxhp, speed, maxspeed,
-  } = props;
   if (editFormOpen) {
     return (
       <BeastForm
-        faction={faction}
-        name={name}
-        desc={desc}
-        move={move}
-        damage={damage}
-        maxdmg={maxdmg}
-        leap={leap}
-        maxleap={maxleap}
-        hp={hp}
-        maxhp={maxhp}
-        speed={speed}
-        maxspeed={maxspeed}
+        {...props}
         onFormClose={() => setEditFormOpen(false)}
       />
     );
   }
   return (
     <BeastCard
-      faction={faction}
-      name={name}
-      desc={desc}
-      move={move}
-      damage={damage}
-      maxdmg={maxdmg}
-      leap={leap}
-      maxleap={maxleap}
-      hp={hp}
-      maxhp={maxhp}
-      speed={speed}
-      maxspeed={maxspeed}
+      {...props}
       onFormOpen={() => setEditFormOpen(true)}
     />
   );

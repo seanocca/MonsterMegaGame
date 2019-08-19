@@ -6,10 +6,7 @@ import EditableFactionRow from './EditableFactionRow';
 const EditableFactionsList = (props) => {
   const factions = props.factions.map(faction => (
     <EditableFactionRow
-      name={faction.name}
-      leader={faction.leader}
-      faculty={faction.faculty}
-      desc={faction.desc}
+      {...faction}
     />
   ));
 

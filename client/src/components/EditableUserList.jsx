@@ -6,10 +6,7 @@ import EditableUserRow from './EditableUserRow';
 const EditableUserList = (props) => {
   const users = props.users.map(user => (
     <EditableUserRow
-      firstName={user.firstName}
-      lastName={user.lastName}
-      email={user.email}
-      address={user.address}
+      {...user}
     />
   ));
 

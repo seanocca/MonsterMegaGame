@@ -6,11 +6,8 @@ const EditableAugmentList = (props) => {
   const { onFormSubmit } = props;
   const augments = props.augments.map(factionAugments => factionAugments.augments.map(augment => (
     <EditableAugmentCard
+      {...augment}
       faction={factionAugments.faction}
-      name={augment.name}
-      type={augment.type}
-      action={augment.action}
-      desc={augment.desc}
       onFormSubmit={onFormSubmit}
     />
   )));
