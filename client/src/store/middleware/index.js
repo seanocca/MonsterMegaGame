@@ -52,7 +52,7 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
         .then((data) => {
           userData = Object.assign({}, userData, { password: '', confirm: '' });
           API.post('User', '/users', { body: userData })
-            .then(res => dispatch({ type: PROCESS_USER, payload: userData }))
+            .then(res => dispatch({ type: PROCESS_USER, payload: userData, isLoading: false }))
             .catch(({ response }) => {
               console.log(`Error(${response.status}): ${response.data.message}`);
             });
