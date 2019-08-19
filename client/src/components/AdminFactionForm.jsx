@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Accordion, Form, Button, Col,
 } from 'react-bootstrap';
-import useFormInput from '../helpers/hooks';
+import { useFormInput } from '../helpers/hooks';
 
 const AdminFactionForm = (props) => {
   const { onFormClose } = props;
