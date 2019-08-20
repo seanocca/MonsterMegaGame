@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import { Auth } from 'aws-amplify';
-import { userHasAuthenticated, setUser } from '../../store/actions';
+import { userHasAuthenticated, setUser, setIsLoading } from '../../store/actions';
 import LoaderButton from './LoaderButton';
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
-const ConfirmationForm = ({
-  history, user, setUser, userHasAuthenticated,
-}) => {
-  const [isLoading, setIsLoading] = useState(false);
+const ConfirmationForm = ({ history }) => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(state => state.isLoading);
+  const user = useSelector(state => state.user);
   const [signUpConfirmationCode, setSignUpConfirmationCode] = useState('');
 
   const handleChange = event => setSignUpConfirmationCode(event.target.value || '');
@@ -63,7 +63,4 @@ const ConfirmationForm = ({
   );
 };
 
-export default withRouter(connect(mapStateToProps, {
-  userHasAuthenticated,
-  setUser,
-})(ConfirmationForm));
+export default withRouter(ConfirmationForm);
