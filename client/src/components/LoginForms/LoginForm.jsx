@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import { Auth } from 'aws-amplify';
@@ -69,6 +69,9 @@ const LoginForm = ({
           value={formValues.logInPassword}
           onChange={handleChange}
         />
+      </Form.Group>
+      <Form.Group>
+        <Link to="/login/reset">Forgot password?</Link>
       </Form.Group>
       <LoaderButton
         block

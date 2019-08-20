@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
+import ResetPassword from './pages/ResetPassword';
 import AdminLogin from './pages/AdminLogin';
 import Account from './pages/Account';
 import Factions from './pages/Factions';
@@ -51,6 +52,7 @@ const App = ({ userHasAuthenticated, getUser }) => {
         <Route exact path="/" component={Home} />
         <Redirect from="/home" to="/" />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/login/reset" component={ResetPassword} />
         <Route exact path="/admin" component={AdminLogin} />
         <Route exact path="/account" component={Account} />
         <Route exact path="/factions" component={Factions} />
