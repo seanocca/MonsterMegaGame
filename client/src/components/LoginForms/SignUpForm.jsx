@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form, Col } from 'react-bootstrap';
 import { Auth } from 'aws-amplify';
-import { setUser } from '../../store/actions';
+import { setUser, setIsLoading } from '../../store/actions';
 import LoaderButton from './LoaderButton';
 
 const seedState = {
@@ -17,11 +16,13 @@ const seedState = {
   postcode: '',
   state: '',
   cognitoID: '',
+  idAdmin: false,
 };
 
-const SignUpForm = ({ setUser }) => {
+const SignUpForm = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(state => state.isLoading);
   const [formValues, setFormValues] = useState(seedState);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event) => {
     event.persist();
@@ -36,19 +37,18 @@ const SignUpForm = ({ setUser }) => {
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
 
-    setIsLoading(true);
+    dispatch(setIsLoading(true));
     try {
       const newUser = await Auth.signUp({
         username: formValues.email,
         password: formValues.password,
       });
 
-      setIsLoading(false);
-      setUser({ ...formValues, cognitoID: newUser.userSub });
+      dispatch(setUser({ ...formValues, cognitoID: newUser.userSub }));
     } catch (e) {
       // eslint-disable-next-line no-alert
       alert(e.message);
-      setIsLoading(false);
+      dispatch(setIsLoading(false));
     }
   };
 
@@ -168,4 +168,4 @@ const SignUpForm = ({ setUser }) => {
   );
 };
 
-export default withRouter(connect(null, { setUser })(SignUpForm));
+export default SignUpForm;
