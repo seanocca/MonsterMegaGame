@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Form, Col, Card, Button,
 } from 'react-bootstrap';
-import { setUser, isLoading } from '../store/actions';
+import { setUser, setIsLoading } from '../store/actions';
 
 const seedState = {
   email: '',
@@ -32,12 +32,11 @@ const AccEditForm = () => {
     setFormValues(values => ({ ...values, [event.target.id]: event.target.value }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    dispatch(isLoading(true));
+    dispatch(setIsLoading(true));
     dispatch(setUser(formValues));
-    // setIsLoading(false);
   };
 
   return (
