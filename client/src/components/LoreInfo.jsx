@@ -14,14 +14,22 @@ const mapStateToProps = state => ({
 
 class LoreInfo extends Component {
   overviewData = () => (this.props.overview.map((info, i) => (
-    <Card.Body key={i}>
-      {info}
+    <Card.Body key={info.id}>
+      {info.data.map((paragraph, ii) => (
+        <Card.Text>
+          {paragraph}
+        </Card.Text>
+      ))}
     </Card.Body>
   )))
 
   riftData = () => (this.props.rift.map((info, j) => (
-    <Card.Body key={j}>
-      {info}
+    <Card.Body key={info.id}>
+      {info.data.map((paragraph, ii) => (
+        <Card.Text>
+          {paragraph}
+        </Card.Text>
+      ))}
     </Card.Body>
   )))
 

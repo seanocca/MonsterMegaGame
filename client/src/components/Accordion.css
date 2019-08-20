@@ -37,6 +37,8 @@
   background-color: #fff0 !important;
   border: none !important;
   vertical-align: middle !important;
+  margin: 0;
+  padding: 0;
 }
 
 .custom-game-rule-card .card-body span {
@@ -50,4 +52,5 @@
 
 .custom-gamemode-column {
   margin: 2% 0;
+  padding: 0 !important;
 }
