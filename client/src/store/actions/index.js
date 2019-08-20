@@ -10,4 +10,4 @@ export const userHasAuthenticated = payload => ({ type: USER_AUTHENTICATION, pay
 export const isAuthenticating = payload => ({ type: IS_AUTHENTICATING, payload });
 export const setUser = payload => ({ type: SET_USER, payload });
 export const getUser = payload => ({ type: GET_USER, payload });
-export const isLoading = payload => ({ type: IS_LOADING, payload });
+export const setIsLoading = payload => ({ type: IS_LOADING, payload });
