@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Card, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import {
+  Row, Col, Card, Button,
+} from 'react-bootstrap';
 import './Lore.css';
 import './Text.css';
 
@@ -10,7 +13,6 @@ const mapStateToProps = state => ({
 });
 
 class LoreInfo extends Component {
-
   overviewData = () => (this.props.overview.map((info, i) => (
     <Card.Body key={i}>
       {info}
@@ -24,38 +26,43 @@ class LoreInfo extends Component {
   )))
 
   render() {
-    return(
+    return (
       <div>
         <h1 className="text-center custom-title">LORE</h1>
         <Row>
           <Col>
-            <Card className="text-center custom-lore-card" >
+            <Card className="text-center custom-lore-card">
               <Card.Header>Overview</Card.Header>
-                {this.overviewData()}
+              {this.overviewData()}
             </Card>
           </Col>
         </Row>
         <Row>
           <Col>
-          <Card className="text-center custom-lore-card" >
-            <Card.Header>The Rift</Card.Header>
-                {this.riftData()}
-          </Card>
+            <Card className="text-center custom-lore-card">
+              <Card.Header>The Rift</Card.Header>
+              {this.riftData()}
+            </Card>
           </Col>
         </Row>
         <Row>
           <Col lg={6} xs={12}>
-            <Button className="custom-lore-button" block href="/factions">
-              <span>Factions</span>
-            </Button>
+            <LinkContainer to="/factions">
+              <Button className="custom-lore-button" block>
+                <span>Factions</span>
+              </Button>
+            </LinkContainer>
           </Col>
           <Col lg={6} xs={12}>
-            <Button className="custom-lore-button" block href="/bestiary">
-              <span>Bestiary</span>
-            </Button>
+            <LinkContainer to="/bestiary">
+              <Button className="custom-lore-button" block>
+                <span>Bestiary</span>
+              </Button>
+            </LinkContainer>
           </Col>
         </Row>
-      </div>);
+      </div>
+    );
   }
 }
 
