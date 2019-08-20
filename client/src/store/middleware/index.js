@@ -56,13 +56,13 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
             .catch(({ response }) => {
               console.log(`Error(${response.status}): ${response.data.message}`);
             });
-        }).catch(e => dispatch({ type: PROCESS_USER, payload: userData }));
+        }).catch(e => dispatch({ type: PROCESS_USER, payload: userData, isLoading: false }));
     }
 
     if (GET_USER === action.type) {
       // download the data
       return API.get('User', '/user')
-        .then(response => dispatch({ type: PROCESS_USER, payload: response }))
+        .then(response => dispatch({ type: PROCESS_USER, payload: response, isLoading: false }))
         .catch(({ response }) => {
           console.log(`Error(${response.status}): ${response.data.message}`);
         });
