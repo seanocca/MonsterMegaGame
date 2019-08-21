@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
 import { Link } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
+import { Form, Container, Row, Col, Tabs, Tab, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import LoaderButton from '../components/LoginForms/LoaderButton';
@@ -160,13 +160,25 @@ export default class ResetPassword extends Component {
 
   render() {
     return (
-      <div className="ResetPassword">
-        {!this.state.codeSent
-          ? this.renderRequestCodeForm()
-          : !this.state.confirmed
-            ? this.renderConfirmationForm()
-            : this.renderSuccessMessage()}
-      </div>
+      <Container style={{ padding: '4rem 0' }}>
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
+            <Tabs defaultActiveKey="reset" id="resetPassword">
+              <Tab eventKey="reset" title="Reset Password">
+                <Card>
+                  <Card.Body>
+                    {!this.state.codeSent
+                      ? this.renderRequestCodeForm()
+                      : !this.state.confirmed
+                        ? this.renderConfirmationForm()
+                        : this.renderSuccessMessage()}
+                  </Card.Body>
+                </Card>
+              </Tab>
+            </Tabs>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
