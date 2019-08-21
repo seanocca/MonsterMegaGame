@@ -6,14 +6,11 @@ import { Auth } from 'aws-amplify';
 import { userHasAuthenticated, setUser, setIsLoading } from '../../store/actions';
 import LoaderButton from './LoaderButton';
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
 const ConfirmationForm = ({ history }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(state => state.isLoading);
   const user = useSelector(state => state.user);
+  const unConfirmedUser = useSelector(state => state.unConfirmedUser);
   const [signUpConfirmationCode, setSignUpConfirmationCode] = useState('');
 
   const handleChange = event => setSignUpConfirmationCode(event.target.value || '');
@@ -24,17 +21,20 @@ const ConfirmationForm = ({ history }) => {
 
     setIsLoading(true);
 
-    try {
-      await Auth.confirmSignUp(user.email, signUpConfirmationCode);
-      await Auth.signIn(user.email, user.password);
+    const currentUserDetails = (unConfirmedUser !== null) ? unConfirmedUser : user;
 
-      setUser(user);
-      userHasAuthenticated(true);
+    try {
+      await Auth.confirmSignUp(currentUserDetails.email, signUpConfirmationCode);
+      await Auth.signIn(currentUserDetails.email, currentUserDetails.password);
+
+      localStorage.removeItem('unConfirmedUser');
+      dispatch(setUser(currentUserDetails));
+      dispatch(userHasAuthenticated(true));
       history.push('/');
     } catch (e) {
       // eslint-disable-next-line no-alert
       alert(e);
-      setIsLoading(false);
+      dispatch(setIsLoading(false));
     }
   };
 

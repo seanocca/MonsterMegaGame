@@ -7,7 +7,10 @@ import {
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
   if (USER_AUTHENTICATION === action.type) {
-    if (action.payload === false) await Auth.signOut();
+    if (action.payload === false) {
+      localStorage.removeItem('user');
+      await Auth.signOut();
+    }
     return dispatch({ type: PROCESS_USER_AUTHENTICATION, payload: action.payload });
   }
 
@@ -32,6 +35,7 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
     if (SET_USER === action.type) {
       // Upsert the data
       userData = action.payload;
+      localStorage.setItem('user', JSON.stringify(userData));
 
       return Auth.currentSession()
         .then((data) => {
@@ -47,8 +51,10 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
     if (GET_USER === action.type) {
       // download the data
       return API.get('User', '/user')
-        .then(response => dispatch({ type: PROCESS_USER, payload: response, isLoading: false }))
-        .catch(({ response }) => {
+        .then((response) => {
+          localStorage.setItem('user', JSON.stringify(response));
+          dispatch({ type: PROCESS_USER, payload: response, isLoading: false });
+        }).catch(({ response }) => {
           console.log(`Error(${response.status}): ${response.data.message}`);
         });
     }
@@ -56,4 +62,3 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
 
   return next(action);
 };
-

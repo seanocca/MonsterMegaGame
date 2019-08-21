@@ -43,8 +43,9 @@ const SignUpForm = () => {
         username: formValues.email,
         password: formValues.password,
       });
-
-      dispatch(setUser({ ...formValues, cognitoID: newUser.userSub }));
+      const unConfirmedUser = { ...formValues, cognitoID: newUser.userSub };
+      localStorage.setItem('unConfirmedUser', JSON.stringify(unConfirmedUser));
+      dispatch(setUser(unConfirmedUser));
     } catch (e) {
       // eslint-disable-next-line no-alert
       alert(e.message);

@@ -5,20 +5,21 @@ import ConfirmationForm from '../components/LoginForms/ConfirmationForm';
 import LoginForm from '../components/LoginForms/LoginForm';
 import SignUpForm from '../components/LoginForms/SignUpForm';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { 
     user: state.user,
+    unConfirmedUser: state.unConfirmedUser,
   };
 };
 
-const Login = ({ user }) => {
+const Login = ({ user, unConfirmedUser }) => {
   const [key, setKey] = useState('confirmation');
 
   return (
     <Container style={{ padding: '4rem 0' }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          {user === null
+          {(unConfirmedUser === null && user === null)
             ? (
               <Fragment>
                 <Tabs defaultActiveKey="login" id="loginSignupConfirmationAAA">
