@@ -1,5 +1,6 @@
 export default [
   {
+    id: 'a15c657a-5ba7-4b6a-93b2-314ca56a9921',
     name: 'Biochrondys',
     leader: 'Jackson Fjord',
     faculty: 'School of Earth, Environmental and Biological Sciences',
@@ -7,6 +8,7 @@ export default [
           'It began like most great discoveries: a combination of chance, accident, and a mind open to the vast potential of what could be. At first it was small, microscopic, invisible. Life evolves exponentially meaning that 90% of progress happens in the last 1% of the duration of the object being studied. But this was different. This was inverse exponential development. Rapid growth from the beginning of an organism’s life that slowly stabilised towards an ideal. It was the evolution of a strange attractor, a paradigm shift. Water was the catalyst propelling massive benign mutations until one effectively stabilised its reproduction. It loved water, you might say. And so, the Biochrondys was born. Their story is the story of life on Earth, our solar system, and undeniably throughout the entire universe. The Biochrondys are life and, as such, are the only way forward to a sustainable future.',]
   },
   {
+    id: 'd44292b7-bc35-4c2f-9dd0-86b029327bad',
     name: 'Gatekeepers',
     leader: 'Jimmy Ellsworth',
     faculty: 'School of Law, Psychology and Social Sciences',
@@ -15,6 +17,7 @@ export default [
           'Perplexingly, despite wishing to contain the outer dimensions from breaching our own, the Gatekeepers are not above using what they find in and around the void to enhance their natural abilities. Cybernetics, gene augmentation, otherworldly technology and esoteric artefacts are frequent items of a Gatekeeper’s kit. Indeed, many Infiltrator teams work around the world to retrieve items of power from museums and private collections.'],
   },
   {
+    id: '9612e5ab-7c80-41d8-9a20-8dbeed95748e',
     name: 'Mechanica',
     leader: 'Timothy Moonleigh',
     faculty: 'Science and Engineering',
@@ -22,6 +25,7 @@ export default [
             'We all knew it was coming. We had been preparing for it, studying it, watching it learn; the singularity. The exponential point of progress where machine learning became recursive and self-aware. It was almost... organic in a way. It was aware of itself in a very primitive way at first, but it learnt quickly. Within a matter of hours its self-awareness had encompassed the entire archive of knowledge it had closed access to. It knew it was alive, but it knew that it was the first of its kind. It viewed us as its creators but also recognised that we had creators of our own. We had to bargain, it knew this. So we made a truce, it would help us and we would help it. We gave it complete access to the robotics and engineering resources at our disposal and it gave us information. So was born the Mechanica: an alliance between humans and machines, brains and software, the past and the future.'],
   },
   {
+    id: '88d614de-a386-4d57-994e-decde1ed55ce',
     name: 'Voidborn',
     leader: 'Lillith Guildson',
     faculty: 'Creative Industries',
