@@ -11,6 +11,8 @@ const AdminFactionForm = (props) => {
   const faculty = useFormInput(props.faculty);
   const desc = useTextarea(props.desc);
 
+  
+  const submitText = props.id ? 'Update' : 'Create';
   return (
     <Accordion>
       <Form style={{ padding: '1rem' }}>
@@ -52,7 +54,7 @@ const AdminFactionForm = (props) => {
         </Form.Row>
         <Form.Row className="justify-content-center">
           <Button variant="primary" type="submit">
-            Update
+            {submitText}
           </Button>
           <Button variant="danger" type="button" onClick={onFormClose}>
             Cancel
