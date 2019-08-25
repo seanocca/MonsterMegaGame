@@ -2,15 +2,14 @@ import React from 'react';
 import {
   Accordion, Form, Button, Col,
 } from 'react-bootstrap';
-import { useFormInput } from '../helpers/hooks';
+import { useFormInput, useTextarea } from '../helpers/hooks';
 
 const AdminFactionForm = (props) => {
   const { onFormClose } = props;
   const name = useFormInput(props.name);
   const leader = useFormInput(props.leader);
   const faculty = useFormInput(props.faculty);
-  // TODO: create new hook for array based state storage with form.
-  const desc = useFormInput(props.desc);
+  const desc = useTextarea(props.desc);
 
   return (
     <Accordion>
