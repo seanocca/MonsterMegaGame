@@ -6,3 +6,7 @@ export const DOWNLOAD_FACTIONS = 'DOWNLOAD_FACTIONS';
 export const GET_USER = 'GET_USER';
 export const SET_USER = 'SET_USER';
 export const PROCESS_USER = 'PROCESS_USER';
+// Factions
+export const LOAD_FACTIONS = 'LOAD_FACTIONS';
+export const CREATE_FACTION = 'CREATE_FACTION';
+export const EDIT_FACTION = 'EDIT_FACTION';
