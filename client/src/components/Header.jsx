@@ -13,7 +13,7 @@ import Logo from '../images/hmgLogo.png';
 const mapStateToProps = state => ({
   isAuthenticated: state.isAuthenticated,
   isAuthenticating: state.isAuthenticating,
-  firstName: state.user.firstName,
+  firstName: (state.user && state.user.firstName) ? state.user.firstName : '',
 });
 
 const mapDispatchToProps = dispatch => ({
