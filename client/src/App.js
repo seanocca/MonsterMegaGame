@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Auth } from 'aws-amplify';
 import {
   Route,
@@ -10,6 +10,7 @@ import {
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AuthenticatedRoute from './components/AuthenticatedRoute';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -31,6 +32,9 @@ import NotFound from './pages/NotFound';
 import { userHasAuthenticated, getUser } from './store/actions';
 
 const App = ({ userHasAuthenticated, getUser }) => {
+  const isAuthenticated = useSelector(state => state.isAuthenticated);
+  console.log('isAuthenticated', isAuthenticated);
+
   useEffect(() => {
     Auth.currentSession()
       .then((user) => {
@@ -45,6 +49,10 @@ const App = ({ userHasAuthenticated, getUser }) => {
       });
   }, [userHasAuthenticated, getUser]);
 
+  const childProps = {
+    isAuthenticated,
+  };
+
   return (
     <Fragment>
       <Header />
@@ -53,16 +61,16 @@ const App = ({ userHasAuthenticated, getUser }) => {
         <Redirect from="/home" to="/" />
         <Route exact path="/login" component={Login} />
         <Route exact path="/login/reset" component={ResetPassword} />
-        <Route exact path="/admin" component={AdminLogin} />
-        <Route exact path="/account" component={Account} />
+        <AuthenticatedRoute exact path="/admin" component={AdminLogin} props={childProps} />
+        <AuthenticatedRoute exact path="/account" component={Account} props={childProps} />
         <Route exact path="/factions" component={Factions} />
         <Route exact path="/bestiary" component={Bestiary} />
         <Route exact path="/lore" component={Lore} />
         <Route exact path="/gamerules" component={GameRules} />
-        <Route exact path="/dashboard/users" component={UsersDashboard} />
-        <Route exact path="/dashboard/beasts" component={BeastsDashboard} />
-        <Route exact path="/dashboard/augments" component={AugmentsDashboard} />
-        <Route exact path="/dashboard/factions" component={FactionsDashboard} />
+        <AuthenticatedRoute exact path="/dashboard/users" component={UsersDashboard} props={childProps} />
+        <AuthenticatedRoute exact path="/dashboard/beasts" component={BeastsDashboard} props={childProps} />
+        <AuthenticatedRoute exact path="/dashboard/augments" component={AugmentsDashboard} props={childProps} />
+        <AuthenticatedRoute exact path="/dashboard/factions" component={FactionsDashboard} props={childProps} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
