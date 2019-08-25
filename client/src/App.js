@@ -10,7 +10,9 @@ import {
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+
 import AuthenticatedRoute from './components/AuthenticatedRoute';
+import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -59,8 +61,8 @@ const App = ({ userHasAuthenticated, getUser }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Redirect from="/home" to="/" />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/login/reset" component={ResetPassword} />
+        <UnauthenticatedRoute exact path="/login" component={Login} props={childProps} />
+        <UnauthenticatedRoute exact path="/login/reset" component={ResetPassword} props={childProps} />
         <AuthenticatedRoute exact path="/admin" component={AdminLogin} props={childProps} />
         <AuthenticatedRoute exact path="/account" component={Account} props={childProps} />
         <Route exact path="/factions" component={Factions} />
