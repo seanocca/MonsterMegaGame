@@ -20,7 +20,7 @@ const AdminFactionForm = (props) => {
       desc: desc.handleSubmit(),
     });
   };
-  
+
   const submitText = props.id ? 'Update' : 'Create';
   return (
     <Accordion>
