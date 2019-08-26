@@ -6,6 +6,7 @@ import {
   IS_LOADING,
   CREATE_FACTION,
   EDIT_FACTION,
+  CREATE_AUGMENT,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -37,7 +38,7 @@ const rootReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       isAuthenticated: action.payload,
       isAuthenticating: false,
-      user: (action.payload) ? state.user : null,
+      user: action.payload ? state.user : null,
     });
   }
 
@@ -59,7 +60,8 @@ const rootReducer = (state = initialState, action) => {
     console.log('[REDUX] Set/Get User: ', action.payload, action.isLoading);
     return Object.assign({}, state, {
       user: action.payload,
-      isLoading: (action.isLoading === undefined) ? state.isLoading : action.isLoading,
+      isLoading:
+        action.isLoading === undefined ? state.isLoading : action.isLoading,
     });
   }
 
@@ -79,9 +81,7 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (EDIT_FACTION === action.type) {
-    const {
-      name, leader, faculty, desc,
-    } = action.payload;
+    const { name, leader, faculty, desc } = action.payload;
     console.log('[REDUX] Edit faction: ', action.payload);
     return Object.assign({}, state, {
       factions: state.factions.map((faction) => {
@@ -94,6 +94,20 @@ const rootReducer = (state = initialState, action) => {
           });
         }
         return faction;
+      }),
+    });
+  }
+
+  // Augments
+  if (CREATE_AUGMENT === action.type) {
+    console.log('[REDUX] Create augment: ', action.payload);
+    return Object.assign({}, state, {
+      augments: state.augments.map((factionAugments) => {
+        if (factionAugments.faction === action.payload.faction) {
+          return Object.assign({}, { faction: factionAugments.faction },
+            { augments: factionAugments.augments.concat(action.payload.augment)});
+        }
+        return factionAugments;
       }),
     });
   }
