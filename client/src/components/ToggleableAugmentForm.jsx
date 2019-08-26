@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import AugmentForm from './AugmentForm';
+import AdminAugmentForm from './AdminAugmentForm';
 
 const ToggleableAugmentForm = (props) => {
   const [formOpen, setFormOpen] = useState(false);
@@ -21,7 +21,7 @@ const ToggleableAugmentForm = (props) => {
 
   if (formOpen) {
     return (
-      <AugmentForm
+      <AdminAugmentForm
         onFormSubmit={handleFormSubmit}
         onFormClose={handleFormClose}
       />

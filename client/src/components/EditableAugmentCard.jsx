@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-import AugmentForm from './AugmentForm';
+import AdminAugmentForm from './AdminAugmentForm';
 import AugmentCard from './AugmentCard';
 
 const EditableAugmentCard = (props) => {
   const [editFormopen, setEditFormOpen] = useState(false);
+  const { onFormSubmit } = props;
+
+  const handleSubmit = (augment) => {
+    onFormSubmit(augment);
+    setEditFormOpen(false);
+  };
+
   if (editFormopen) {
     return (
-      <AugmentForm
+      <AdminAugmentForm
         {...props}
         onFormClose={() => setEditFormOpen(false)}
+        onFormSubmit={handleSubmit}
       />
     );
   }

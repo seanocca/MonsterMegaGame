@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Card, Button } from 'react-bootstrap';
 
 import { useFactionCardStyles } from '../helpers/hooks';
 import Clamberer from '../images/monsters/clamberer.png';
@@ -9,11 +9,12 @@ const factionImagePathPrefix = '/img/factions/';
 
 const AugmentCard = (props) => {
   const {
-    faction, name, type, action, desc,
+    faction, name, type, action, desc, onFormOpen,
   } = props;
   const factionStyles = useFactionCardStyles(faction);
   const factionImagePath = `${factionImagePathPrefix + faction.toLowerCase()}.png`;
   const altTag = `${faction} - ${name}`;
+
   return (
     <Card bg="dark" text="white" style={factionStyles}>
       <Card.Header>{faction} <img src={factionImagePath} alt={altTag} style={{ height: '1.3rem' }} /></Card.Header>
@@ -25,8 +26,7 @@ const AugmentCard = (props) => {
         <Card.Text>{action}: {desc}</Card.Text>
       </Card.Body>
       <Card.Footer>
-        {/* Link currently not working yet */}
-        <a href="/#">Edit Augment</a>
+        <Button type="button" onClick={onFormOpen}>Edit Augment</Button>
       </Card.Footer>
     </Card>
   );
