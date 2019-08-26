@@ -42,7 +42,7 @@ export const useFactionCardStyles = (faction) => {
     case 'Mechanica':
       border = 'solid 10px orange';
       break;
-    case 'Gatekeepers':
+    case 'Gatekeeper':
       border = 'solid 10px black';
       break;
     case 'Biochrondys':

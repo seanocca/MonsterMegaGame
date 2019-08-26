@@ -11,7 +11,7 @@ export default [
   },
   {
     id: 'd91fdf7c-c793-11e9-aa8c-2a2ae2dbcce4',
-    name: 'Gatekeepers',
+    name: 'Gatekeeper',
     leader: 'Jimmy Ellsworth',
     faculty: 'School of Law, Psychology and Social Sciences',
     desc: [
