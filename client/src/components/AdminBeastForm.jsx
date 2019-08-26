@@ -62,12 +62,6 @@ const AdminBeastForm = (props) => {
         </Form.Group>
       </Form.Row>
       <Form.Row>
-        <Form.Group as={Col} controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control placeholder="Beast Name" {...name} />
-        </Form.Group>
-      </Form.Row>
-      <Form.Row>
         <Form.Group as={Col} controlId="desc">
           <Form.Label>Description</Form.Label>
           <Form.Control placeholder="Beast Description" {...desc} />
