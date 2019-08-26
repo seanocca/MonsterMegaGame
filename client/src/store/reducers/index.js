@@ -7,6 +7,7 @@ import {
   CREATE_FACTION,
   EDIT_FACTION,
   CREATE_AUGMENT,
+  EDIT_AUGMENT,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -81,7 +82,9 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (EDIT_FACTION === action.type) {
-    const { name, leader, faculty, desc } = action.payload;
+    const {
+      name, leader, faculty, desc,
+    } = action.payload;
     console.log('[REDUX] Edit faction: ', action.payload);
     return Object.assign({}, state, {
       factions: state.factions.map((faction) => {
@@ -104,8 +107,44 @@ const rootReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       augments: state.augments.map((factionAugments) => {
         if (factionAugments.faction === action.payload.faction) {
-          return Object.assign({}, { faction: factionAugments.faction },
-            { augments: factionAugments.augments.concat(action.payload.augment)});
+          return Object.assign(
+            {},
+            { faction: factionAugments.faction },
+            {
+              augments: factionAugments.augments.concat(action.payload.augment),
+            },
+          );
+        }
+        return factionAugments;
+      }),
+    });
+  }
+  if (EDIT_AUGMENT === action.type) {
+    const {
+      id, type, name, augmentAction, desc,
+    } = action.payload.augment;
+    console.log('[REDUX] Edit augment: ', action.payload);
+    return Object.assign({}, state, {
+      augments: state.augments.map((factionAugments) => {
+        if (factionAugments.faction === action.payload.faction) {
+          return Object.assign(
+            {},
+            { faction: factionAugments.action },
+            {
+              augments: factionAugments.augments.map((augment) => {
+                if (augment.id === id) {
+                  return Object.assign({}, augment, {
+                    id,
+                    type,
+                    name,
+                    action: augmentAction,
+                    desc,
+                  });
+                }
+                return augment;
+              }),
+            },
+          );
         }
         return factionAugments;
       }),
