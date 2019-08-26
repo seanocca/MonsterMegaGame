@@ -121,15 +121,16 @@ const rootReducer = (state = initialState, action) => {
   }
   if (EDIT_AUGMENT === action.type) {
     const {
-      id, type, name, augmentAction, desc,
+      id, type, name, desc,
     } = action.payload.augment;
+    const augmentAction = action.payload.augment.action;
     console.log('[REDUX] Edit augment: ', action.payload);
     return Object.assign({}, state, {
       augments: state.augments.map((factionAugments) => {
         if (factionAugments.faction === action.payload.faction) {
           return Object.assign(
             {},
-            { faction: factionAugments.action },
+            { faction: factionAugments.faction },
             {
               augments: factionAugments.augments.map((augment) => {
                 if (augment.id === id) {
