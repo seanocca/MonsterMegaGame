@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 const FactionRow = (props) => {
   const {
@@ -8,7 +9,7 @@ const FactionRow = (props) => {
     <tr>
       <td>{name}</td>
       <td>{leader}</td>
-      <td><button type="button" onClick={onFormOpen}>Edit Faction</button></td>
+      <td><Button type="button" onClick={onFormOpen}>Edit Faction</Button></td>
     </tr>
   );
 };

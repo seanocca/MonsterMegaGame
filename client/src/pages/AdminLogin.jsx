@@ -1,7 +1,7 @@
 // change to Login.jsx in future
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 import { useFormInput } from '../helpers/hooks';
 
@@ -33,7 +33,7 @@ const Login = ({ history }) => {
           {...password}
         />
       </Form.Group>
-      <button type="button" onClick={handleSubmit}>Login</button>
+      <Button type="button" onClick={handleSubmit}>Login</Button>
     </Form>
   );
 };
