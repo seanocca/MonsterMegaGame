@@ -8,6 +8,7 @@ import {
   EDIT_FACTION,
   CREATE_AUGMENT,
   EDIT_AUGMENT,
+  CREATE_BEAST,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -148,6 +149,25 @@ const rootReducer = (state = initialState, action) => {
           );
         }
         return factionAugments;
+      }),
+    });
+  }
+
+  // beasts
+  if (CREATE_BEAST === action.type) {
+    console.log('[REDUX] Create beast: ', action.payload);
+    return Object.assign({}, state, {
+      beasts: state.beasts.map((factionBeasts) => {
+        if (factionBeasts.faction === action.payload.faction) {
+          return Object.assign(
+            {},
+            { faction: factionBeasts.faction },
+            {
+              beasts: factionBeasts.beasts.concat(action.payload.beast),
+            },
+          );
+        }
+        return factionBeasts;
       }),
     });
   }
