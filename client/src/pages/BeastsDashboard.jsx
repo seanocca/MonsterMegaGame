@@ -1,39 +1,26 @@
 import React, { useEffect } from 'react';
-// TODO: use useDispatch functions for CRUD actions
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container, CardColumns } from 'react-bootstrap';
 
+import { loadBeasts, createBeast, editBeast } from '../store/actions';
 import Dashboard from './Dashboard';
 import EditableBeastList from '../components/EditableBeastList';
 import ToggleableBeastForm from '../components/ToggleableBeastForm';
 
 const BeastsDashboard = () => {
   const beasts = useSelector(state => state.beasts);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    loadBeastsFromServer();
-  }, [beasts]);
-
-
-  const loadBeastsFromServer = () => {
-    // dispatch fetch all beasts redux action
-  };
+    dispatch(loadBeasts());
+  });
 
   const handleCreateFormSubmit = (beast) => {
-    createBeast(beast);
+    dispatch(createBeast(beast));
   };
 
   const handleEditFormSubmit = (beast) => {
-    editBeast(beast);
-  };
-
-  const createBeast = (beast) => {
-    // dispatch create beast redux action with beast details
-  };
-
-  const editBeast = (beast) => {
-    // dispatch edit beast redux action with beast details
+    dispatch(editBeast(beast));
   };
 
   return (
