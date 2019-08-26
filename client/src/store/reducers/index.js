@@ -68,9 +68,16 @@ const rootReducer = (state = initialState, action) => {
     console.log('[REDUX] Create faction: ', action.payload);
     return Object.assign({}, state, {
       factions: state.factions.concat(action.payload),
+      beasts: state.beasts.concat({
+        faction: action.payload.name,
+        beasts: [],
+      }),
+      augments: state.augments.concat({
+        faction: action.payload.name,
+        beasts: [],
+      }),
     });
   }
-
   if (EDIT_FACTION === action.type) {
     const {
       name, leader, faculty, desc,
@@ -90,6 +97,7 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
+
   console.log('[REDUX] Uncaught Action: ', action);
   return state;
 };
