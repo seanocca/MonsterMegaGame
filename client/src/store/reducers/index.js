@@ -9,6 +9,7 @@ import {
   CREATE_AUGMENT,
   EDIT_AUGMENT,
   CREATE_BEAST,
+  EDIT_BEAST,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -171,7 +172,46 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
-
+  if (EDIT_BEAST === action.type) {
+    const {
+      id, type, name, desc, move, damage, maxdmg,
+      leap, maxleap, hp, maxhp, speed, maxspeed,
+    } = action.payload.beast;
+    console.log('[REDUX] Edit augment: ', action.payload);
+    return Object.assign({}, state, {
+      beasts: state.beasts.map((factionBeasts) => {
+        if (factionBeasts.faction === action.payload.faction) {
+          return Object.assign(
+            {},
+            { faction: factionBeasts.faction },
+            {
+              beasts: factionBeasts.beasts.map((beast) => {
+                if (beast.id === id) {
+                  return Object.assign({}, beast, {
+                    id,
+                    type,
+                    name,
+                    desc,
+                    move,
+                    damage,
+                    maxdmg,
+                    leap,
+                    maxleap,
+                    hp,
+                    maxhp,
+                    speed,
+                    maxspeed,
+                  });
+                }
+                return beast;
+              }),
+            },
+          );
+        }
+        return factionBeasts;
+      }),
+    });
+  }
   console.log('[REDUX] Uncaught Action: ', action);
   return state;
 };
