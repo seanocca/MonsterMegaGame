@@ -13,6 +13,7 @@ import Logo from '../images/hmgLogo.png';
 const mapStateToProps = state => ({
   isAuthenticated: state.isAuthenticated,
   isAuthenticating: state.isAuthenticating,
+  firstName: (state.user && state.user.firstName) ? state.user.firstName : '',
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -44,12 +45,13 @@ class Header extends Component {
     ? (
       <NavDropdown
         style={textColor}
-        title="User###"
+        title={`Hello ${this.props.firstName}`}
         id="basic-nav-dropdown"
         className="justify-content-right"
       >
-        <NavDropdown.Item style={textColor} href="#details">User Details</NavDropdown.Item>
-        <NavDropdown.Item style={textColor} href="#action">Change Faction</NavDropdown.Item>
+        <LinkContainer style={textColor} to="/account">
+          <NavDropdown.Item>User Details</NavDropdown.Item>
+        </LinkContainer>
         <NavDropdown.Divider />
         <NavDropdown.Item style={textColor} onClick={this.handleLogout}>Log Out</NavDropdown.Item>
       </NavDropdown>

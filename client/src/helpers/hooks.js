@@ -7,9 +7,29 @@ export const useFormInput = (initialValue) => {
     setValue(e.target.value);
   }
 
+
   return {
     value,
     onChange: handleChange,
+  };
+};
+
+export const useTextarea = (initVal, separator = '\n\n') => {
+  const initialValue = Array.isArray(initVal) ? initVal.join(separator) : initVal;
+  const [value, setValue] = useState(initialValue);
+
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+
+  function handleSubmit() {
+    return value.split(separator);
+  }
+
+  return {
+    value,
+    onChange: handleChange,
+    handleSubmit,
   };
 };
 

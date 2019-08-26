@@ -16,6 +16,7 @@ const seedState = {
   postcode: '',
   state: '',
   cognitoID: '',
+  isAdmin: false,
 };
 
 const AccEditForm = () => {

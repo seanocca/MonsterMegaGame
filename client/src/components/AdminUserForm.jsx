@@ -14,6 +14,7 @@ const AdminUserForm = (props) => {
   const state = useFormInput(props.state);
   const postcode = useFormInput(props.postcode);
 
+  const submitText = props.id ? 'Update' : 'Create';
   return (
     <Accordion>
       <Form style={{ padding: '1rem' }}>
@@ -86,7 +87,7 @@ const AdminUserForm = (props) => {
         </Form.Row>
         <Form.Row className="justify-content-center">
           <Button variant="primary" type="submit">
-            Update
+            {submitText}
           </Button>
           <Button variant="danger" type="button" onClick={onFormClose}>
             Cancel
