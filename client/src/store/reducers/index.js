@@ -5,6 +5,7 @@ import {
   PROCESS_USER,
   IS_LOADING,
   CREATE_FACTION,
+  EDIT_FACTION,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -70,6 +71,25 @@ const rootReducer = (state = initialState, action) => {
     });
   }
 
+  if (EDIT_FACTION === action.type) {
+    const {
+      name, leader, faculty, desc,
+    } = action.payload;
+    console.log('[REDUX] Edit faction: ', action.payload);
+    return Object.assign({}, state, {
+      factions: state.factions.map((faction) => {
+        if (faction.id === action.payload.id) {
+          return Object.assign({}, faction, {
+            name,
+            leader,
+            faculty,
+            desc,
+          });
+        }
+        return faction;
+      }),
+    });
+  }
   console.log('[REDUX] Uncaught Action: ', action);
   return state;
 };
