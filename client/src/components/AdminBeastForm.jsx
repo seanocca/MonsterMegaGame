@@ -144,7 +144,7 @@ const AdminBeastForm = (props) => {
         </Form.Group>
       </Form.Row>
       <Form.Row>
-        <Button type="button" onSubmit={handleSubmit}>
+        <Button type="button" onClick={handleSubmit}>
           {submitText}
         </Button>
         <Button variant="danger" type="button" onClick={onFormClose}>
