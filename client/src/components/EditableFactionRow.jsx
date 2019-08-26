@@ -4,12 +4,19 @@ import FactionRow from './FactionRow';
 
 const EditableFactionRow = (props) => {
   const [editFormOpen, setEditFormOpen] = useState(false);
-  const { name, leader } = props;
+  const { name, leader, onFormSubmit } = props;
+
+  const handleSubmit = (faction) => {
+    onFormSubmit(faction);
+    setEditFormOpen(false);
+  };
+
   if (editFormOpen) {
     return (
       <AdminFactionForm
         {...props}
         onFormClose={() => setEditFormOpen(false)}
+        onFormSubmit={handleSubmit}
       />
     );
   }

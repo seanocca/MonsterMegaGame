@@ -4,9 +4,11 @@ import { Table } from 'react-bootstrap';
 import EditableFactionRow from './EditableFactionRow';
 
 const EditableFactionsList = (props) => {
+  const { onFormSubmit } = props;
   const factions = props.factions.map(faction => (
     <EditableFactionRow
       {...faction}
+      onFormSubmit={onFormSubmit}
     />
   ));
 
