@@ -39,7 +39,7 @@ class FactionAccordion extends Component {
       <Accordion.Collapse eventKey={i} className="justify-content-center">
         <Card key={faction.name} className="custom-faction-card">
           <Row>
-            <Col md={{ span: 2, order: 1 }} xs={{ span: 6, order: 2 }}>
+            <Col md={{ span: 2, order: 1 }} className="d-none d-md-block d-sm-none">
               <img
                 src={require(`../images/banners/${
                   faction.name.toLowerCase()
@@ -63,7 +63,7 @@ class FactionAccordion extends Component {
               <Card.Body>Faculty: {faction.faculty}</Card.Body>
               {this.factionDescSeperater(faction.desc)}
             </Col>
-            <Col md={{ span: 2, order: 3 }} xs={{ span: 6, order: 3 }}>
+            <Col md={{ span: 2, order: 3 }} className="d-none d-md-block d-sm-none">
               <img
                 src={require(`../images/banners/${
                   faction.name.toLowerCase()
@@ -93,16 +93,16 @@ class FactionAccordion extends Component {
       <Row className="flex-row" style={{ margin: '0' }}>
         <Col
           md={{ span: 1, order: 1 }}
-          xs={{ span: 3, order: 3 }}
-          style={{ margin: '0' }}
+          className="d-none d-md-block d-sm-none"
+          style={{ margin: '0', padding: '0px 1%' }}
         >
           <img src={BioLogo} alt="Biochrondys" width="100%" className="custom-logo" />
           <img src={Biochrondys} alt="Biochrondys" height="100%" width="100%" className="custom-banner" />
         </Col>
         <Col
           md={{ span: 1, order: 2 }}
-          xs={{ span: 3, order: 3 }}
-          style={{ margin: '0' }}
+          className="d-none d-md-block d-sm-none"
+          style={{ margin: '0', padding: '0px 1%' }}
         >
           <img src={GatLogo} alt="Gatekeepers" width="100%" className="custom-logo" />
           <img src={Gatekeepers} alt="Gatekeepers" height="100%" width="100%" className="custom-banner" />
@@ -115,16 +115,16 @@ class FactionAccordion extends Component {
         </Col>
         <Col
           md={{ span: 1, order: 4 }}
-          xs={{ span: 3, order: 3 }}
-          style={{ margin: '0' }}
+          className="d-none d-md-block d-sm-none"
+          style={{ margin: '0', padding: '0px 1%' }}
         >
           <img src={MecLogo} alt="Mechanica" width="100%" className="custom-logo" />
           <img src={Mechanica} alt="Mechanica" height="100%" width="100%" className="custom-banner" />
         </Col>
         <Col
           md={{ span: 1, order: 5 }}
-          xs={{ span: 3, order: 3 }}
-          style={{ margin: '0' }}
+          className="d-none d-md-block d-sm-none"
+          style={{ margin: '0', padding: '0px 1%' }}
         >
           <img src={VoiLogo} alt="Voidborn" width="100%" className="custom-logo" />
           <img src={Voidborn} alt="Voidborn" height="100%" width="100%" className="custom-banner" />

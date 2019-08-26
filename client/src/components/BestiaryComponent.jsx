@@ -1,7 +1,9 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Accordion, Card, Col, Row } from 'react-bootstrap';
+import {
+  Accordion, Card, Col, Row,
+} from 'react-bootstrap';
 import './Accordion.css';
 import Clamberer from '../images/monsters/clamberer-white.png';
 
@@ -11,24 +13,23 @@ const mapStateToProps = state => ({
 });
 
 class BestiaryAccordion extends Component {
-
-  beastDetails = (faction) => (this.props.beasts[faction].beasts.map((beast, j) => (
-    <Col xs={12} md={6} lg={4} key={j}>
-      <Card key={j} className="custom-beast-card">
+  beastDetails = faction => (this.props.beasts[faction].beasts.map((beast, j) => (
+    <Col xs={12} md={6} lg={4} key={beast.name}>
+      <Card key={beast.name} className="custom-beast-card">
         <Card.Header>
           {beast.name}
         </Card.Header>
         <Card.Body className="align-text ">
           <i>{beast.desc}</i>
           <br />
-          <img src={Clamberer} width="100" height="150" alt={beast.name}/>
+          <img src={Clamberer} width="100" height="150" alt={beast.name} />
         </Card.Body>
       </Card>
     </Col>
   )))
 
   factionAccordion = () => (this.props.beasts.map((beasts, i) => (
-    <Card className="custom-accordion-card" key={i}>
+    <Card className="custom-accordion-card" key={beasts.faction}>
       <Accordion.Toggle as={Card.Header} eventKey={i} className="custom-accordion">
         {beasts.faction}
       </Accordion.Toggle>
