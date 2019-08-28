@@ -24,10 +24,10 @@ import Bestiary from './pages/Bestiary';
 import Lore from './pages/Lore';
 import GameRules from './pages/GameRules';
 
-import UsersDashboard from './pages/UsersDashboard';
-import BeastsDashboard from './pages/BeastsDashboard';
-import AugmentsDashboard from './pages/AugmentsDashboard';
-import FactionsDashboard from './pages/FactionsDashboard';
+import AugmentsDashboard from './components/Dashboard/AugmentsDashboard';
+import BeastsDashboard from './components/Dashboard/BeastsDashboard';
+import FactionsDashboard from './components/Dashboard/FactionsDashboard';
+import UsersDashboard from './components/Dashboard/UsersDashboard';
 
 import NotFound from './pages/NotFound';
 
