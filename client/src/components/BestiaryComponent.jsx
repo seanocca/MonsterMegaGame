@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
   Accordion, Card, Col, Row,
 } from 'react-bootstrap';
-import './Accordion.css';
+// import './Accordion.css';
 import Clamberer from '../images/monsters/clamberer-white.png';
 
 const mapStateToProps = state => ({
@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 class BestiaryAccordion extends Component {
   beastDetails = faction => (this.props.beasts[faction].beasts.map((beast, j) => (
     <Col xs={12} md={6} lg={4} key={beast.name}>
-      <Card key={beast.name} className="custom-beast-card">
+      <Card key={beast.name} >
         <Card.Header>
           {beast.name}
         </Card.Header>
@@ -29,8 +29,8 @@ class BestiaryAccordion extends Component {
   )))
 
   factionAccordion = () => (this.props.beasts.map((beasts, i) => (
-    <Card className="custom-accordion-card" key={beasts.faction}>
-      <Accordion.Toggle as={Card.Header} eventKey={i} className="custom-accordion">
+    <Card key={beasts.faction}>
+      <Accordion.Toggle as={Card.Header} eventKey={i}>
         {beasts.faction}
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={i}>
@@ -46,7 +46,7 @@ class BestiaryAccordion extends Component {
   render() {
     return (
       <div>
-        <h1 className="text-center custom-title">BESTIARY</h1>
+        <h1 className="text-center">BESTIARY</h1>
         <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center">
           {this.factionAccordion()}
         </Accordion>
