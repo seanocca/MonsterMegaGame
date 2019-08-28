@@ -5,7 +5,7 @@ import LoreButtons from './LoreButtons';
 
 import ReUsabaleStaticCard from './ReUsable/StaticCard';
 
-import './Lore.css';
+import './Buttons.css';
 import './Text.css';
 
 const mapStateToProps = state => ({

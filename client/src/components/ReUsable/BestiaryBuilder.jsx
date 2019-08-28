@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BestiaryBuilder {
+function bestiaryBuilder {
 
 }
 
