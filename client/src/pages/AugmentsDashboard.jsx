@@ -1,39 +1,26 @@
 import React, { useEffect } from 'react';
-// TODO: use useDispatch functions for CRUD actions
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container, CardColumns } from 'react-bootstrap';
 
+import { loadAugments, createAugment, editAugment } from '../store/actions';
 import Dashboard from './Dashboard';
 import EditableAugmentList from '../components/EditableAugmentList';
 import ToggleableAugmentForm from '../components/ToggleableAugmentForm';
 
 const AugmentsDashboard = () => {
   const augments = useSelector(state => state.augments);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    loadAugmentsFromServer();
-  }, [augments]);
-
-
-  const loadAugmentsFromServer = () => {
-    // dispatch fetch all augments redux action
-  };
+    dispatch(loadAugments());
+  });
 
   const handleCreateFormSubmit = (augment) => {
-    createAugment(augment);
+    dispatch(createAugment(augment));
   };
 
   const handleEditFormSubmit = (augment) => {
-    editAugment(augment);
-  };
-
-  const createAugment = (augment) => {
-    // dispatch create augment redux action with augment details
-  };
-
-  const editAugment = (augment) => {
-    // dispatch edit augment redux action with augment details
+    dispatch(editAugment(augment));
   };
 
   return (

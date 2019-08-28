@@ -7,7 +7,6 @@ export const useFormInput = (initialValue) => {
     setValue(e.target.value);
   }
 
-
   return {
     value,
     onChange: handleChange,
@@ -15,7 +14,9 @@ export const useFormInput = (initialValue) => {
 };
 
 export const useTextarea = (initVal, separator = '\n\n') => {
-  const initialValue = Array.isArray(initVal) ? initVal.join(separator) : initVal;
+  const initialValue = Array.isArray(initVal)
+    ? initVal.join(separator)
+    : initVal;
   const [value, setValue] = useState(initialValue);
 
   function handleChange(e) {
@@ -33,6 +34,21 @@ export const useTextarea = (initVal, separator = '\n\n') => {
   };
 };
 
+export const useNumericFormInput = (initialState, min = 0, max = 30) => {
+  const [value, setValue] = useState(initialState);
+
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+
+  return {
+    value,
+    onChange: handleChange,
+    min,
+    max,
+  };
+};
+
 export const useFactionCardStyles = (faction) => {
   let border = '';
   switch (faction) {
@@ -42,14 +58,14 @@ export const useFactionCardStyles = (faction) => {
     case 'Mechanica':
       border = 'solid 10px orange';
       break;
-    case 'Gatekeepers':
+    case 'Gatekeeper':
       border = 'solid 10px black';
       break;
     case 'Biochrondys':
       border = 'solid 10px green';
       break;
     default:
-      // do nothing
+    // do nothing
   }
   return {
     width: '18rem',

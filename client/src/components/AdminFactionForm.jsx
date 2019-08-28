@@ -5,13 +5,22 @@ import {
 import { useFormInput, useTextarea } from '../helpers/hooks';
 
 const AdminFactionForm = (props) => {
-  const { onFormClose } = props;
+  const { id, onFormClose, onFormSubmit } = props;
   const name = useFormInput(props.name);
   const leader = useFormInput(props.leader);
   const faculty = useFormInput(props.faculty);
   const desc = useTextarea(props.desc);
 
-  
+  const handleSubmit = () => {
+    onFormSubmit({
+      id,
+      name: name.value,
+      leader: leader.value,
+      faculty: faculty.value,
+      desc: desc.handleSubmit(),
+    });
+  };
+
   const submitText = props.id ? 'Update' : 'Create';
   return (
     <Accordion>
@@ -53,7 +62,7 @@ const AdminFactionForm = (props) => {
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="button" onClick={handleSubmit}>
             {submitText}
           </Button>
           <Button variant="danger" type="button" onClick={onFormClose}>

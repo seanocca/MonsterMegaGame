@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import AdminFactionForm from './AdminFactionForm';
 
 const ToggleableFactionForm = (props) => {
@@ -27,7 +28,7 @@ const ToggleableFactionForm = (props) => {
     );
   }
   return (
-    <button type="button" onClick={handleFormOpen}>Add new Faction</button>
+    <Button type="button" onClick={handleFormOpen}>Add new Faction</Button>
   );
 };
 

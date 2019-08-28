@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import BeastCardForm from './BeastForm';
+import { Button } from 'react-bootstrap';
+import AdminBeastForm from './AdminBeastForm';
 
 const ToggleableBeastForm = (props) => {
   const [formOpen, setFormOpen] = useState(false);
@@ -20,14 +21,14 @@ const ToggleableBeastForm = (props) => {
 
   if (formOpen) {
     return (
-      <BeastCardForm
+      <AdminBeastForm
         onFormSubmit={handleFormSubmit}
         onFormClose={handleFormClose}
       />
     );
   }
   return (
-    <button type="button" onClick={handleFormOpen}>Add new beast</button>
+    <Button type="button" onClick={handleFormOpen}>Add new beast</Button>
   );
 };
 

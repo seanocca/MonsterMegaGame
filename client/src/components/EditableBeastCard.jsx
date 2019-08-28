@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-import BeastForm from './BeastForm';
+import AdminBeastForm from './AdminBeastForm';
 import BeastCard from './BeastCard';
 
 const EditableBeastCard = (props) => {
   const [editFormOpen, setEditFormOpen] = useState(false);
+  const { onFormSubmit } = props;
+
+  const handleSubmit = (beast) => {
+    onFormSubmit(beast);
+    setEditFormOpen(false);
+  }
+
   if (editFormOpen) {
     return (
-      <BeastForm
+      <AdminBeastForm
         {...props}
         onFormClose={() => setEditFormOpen(false)}
+        onFormSubmit={handleSubmit}
       />
     );
   }

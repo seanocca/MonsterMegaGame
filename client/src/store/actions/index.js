@@ -10,6 +10,9 @@ import {
   DOWNLOAD_BEASTS,
   CREATE_BEAST,
   EDIT_BEAST,
+  DOWNLOAD_AUGMENTS,
+  CREATE_AUGMENT,
+  EDIT_AUGMENT,
 } from '../constants/action-types';
 
 export const userHasAuthenticated = payload => ({ type: USER_AUTHENTICATION, payload });
@@ -25,3 +28,7 @@ export const editFaction = payload => ({ type: EDIT_FACTION, payload });
 export const loadBeasts = payload => ({ type: DOWNLOAD_BEASTS, payload });
 export const createBeast = payload => ({ type: CREATE_BEAST, payload });
 export const editBeast = payload => ({ type: EDIT_BEAST, payload });
+// Augments
+export const loadAugments = payload => ({ type: DOWNLOAD_AUGMENTS, payload });
+export const createAugment = payload => ({ type: CREATE_AUGMENT, payload });
+export const editAugment = payload => ({ type: EDIT_AUGMENT, payload });

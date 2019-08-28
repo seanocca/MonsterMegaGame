@@ -13,3 +13,7 @@ export const EDIT_FACTION = 'EDIT_FACTION';
 export const DOWNLOAD_BEASTS = 'DOWNLOAD_BEASTS';
 export const CREATE_BEAST = 'CREATE_BEAST';
 export const EDIT_BEAST = 'EDIT_BEAST';
+// Augments
+export const DOWNLOAD_AUGMENTS = 'DOWNLOAD_AUGMENTS';
+export const CREATE_AUGMENT = 'CREATE_AUGMENT';
+export const EDIT_AUGMENT = 'EDIT_AUGMENT';

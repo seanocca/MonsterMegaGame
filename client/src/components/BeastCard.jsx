@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
 import { useFactionCardStyles } from '../helpers/hooks';
 import Clamberer from '../images/monsters/clamberer.png';
@@ -8,11 +8,13 @@ const factionImagePathPrefix = '/img/factions/';
 
 const BeastCard = (props) => {
   const {
-    faction, name, desc, move, damage, maxdmg, leap, maxleap, hp, maxhp, speed, maxspeed,
+    faction, name, desc, move, damage, maxdmg, leap,
+    maxleap, hp, maxhp, speed, maxspeed, onFormOpen,
   } = props;
   const factionStyles = useFactionCardStyles(faction);
   const factionImagePath = `${factionImagePathPrefix + faction.toLowerCase()}.png`;
   const altTag = `${faction} - ${name}`;
+
   return (
     <Card bg="dark" text="white" style={factionStyles}>
       <Card.Header>{faction} <img src={factionImagePath} alt={altTag} style={{ height: '1.3rem' }} /></Card.Header>
@@ -28,8 +30,7 @@ const BeastCard = (props) => {
         </Card.Text>
       </Card.Body>
       <Card.Footer>
-        {/* Link currently not working yet */}
-        <a href="/#">Edit Beast</a>
+        <Button type="button" onClick={onFormOpen}>Edit Beast</Button>
       </Card.Footer>
     </Card>
   );
