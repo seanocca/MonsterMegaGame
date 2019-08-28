@@ -5,7 +5,7 @@ import LoreInfo from '../components/LoreInfo';
 
 function Lore() {
   return (
-    <Container style={{ padding: '4rem 0' }}>
+    <Container style={{ padding: '4rem 1rem' }}>
       <LoreInfo />
     </Container>
   );

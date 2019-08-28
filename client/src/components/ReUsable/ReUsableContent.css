@@ -1,0 +1,77 @@
+/*------------------------------ ACCORDION STYLING ------------------------------*/
+
+.custom-accordion{
+  margin: 2% 2% !important;
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+.custom-accordion .card {
+  border: none !important;
+  margin: 2% 0 !important;
+}
+
+.custom-accordion .card .card{
+  margin: 0 2% !important;
+  border-bottom: 1px solid !important;
+  border-left: 1px solid !important;
+  border-right: 1px solid !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.custom-accordion .card .card .card-body{
+  min-width: 100% !important;
+}
+
+.custom-accordion .card .card .card{
+  margin: 2% 2% !important;
+  min-height: 90%;
+  border: none !important;
+}
+
+.custom-accordion .card .card .card .card-body{
+  margin: 0 !important;
+  vertical-align: middle !important;
+}
+
+.custom-accordion .card-header {
+  color: #ffc107 !important;
+  margin: 0 !important;
+  background-color: #01004d !important;
+  border-radius: 5px !important;
+  border: none !important;
+  z-index: 1;
+}
+
+.custom-accordion .card-body {
+  padding: 10px 20px;
+}
+
+.custom-accordion .card-text {
+  padding: 0 20px !important;
+  font-size: 0.75rem;
+}
+
+
+
+/*------------------------------ STATIC CARD STYLING ------------------------------*/
+
+.static-column {
+  padding: 0 !important;
+}
+
+.static-card {
+  margin: 3%;
+}
+
+.static-card .card-header {
+  background-color: #01004d !important;
+  color: #ffc107 !important;
+  font-weight: 500;
+  font-size: 250%;
+}
+
+.static-card .card-text {
+  font-size: 1rem !important;
+}

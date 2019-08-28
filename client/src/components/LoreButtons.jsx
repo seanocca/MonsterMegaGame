@@ -7,14 +7,14 @@ function LoreButton() {
     <Row>
       <Col lg={6} xs={12}>
         <LinkContainer to="/factions">
-          <Button className="custom-lore-button" block>
+          <Button className="custom-lore-button">
             <span>Factions</span>
           </Button>
         </LinkContainer>
       </Col>
       <Col lg={6} xs={12}>
         <LinkContainer to="/bestiary">
-          <Button className="custom-lore-button" block>
+          <Button className="custom-lore-button">
             <span>Bestiary</span>
           </Button>
         </LinkContainer>

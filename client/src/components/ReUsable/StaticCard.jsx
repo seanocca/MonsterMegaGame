@@ -2,26 +2,26 @@ import React from 'react';
 
 import { Row, Col, Card } from 'react-bootstrap';
 
-function textData(data) {
-  console.log(data);
-  return data.map((info, i) => (
-    <Card.Body key={info.id}>
-      {info.data.map((paragraph, ii) => (
-        <Card.Text key={info.id}>
-          {paragraph}
-        </Card.Text>
-      ))}
-    </Card.Body>
+import './ReUsableContent.css';
+
+function textData(text) {
+  return text.data.map((paragraph, ii) => (
+    <Card.Text key={text.id}>
+      {paragraph}
+    </Card.Text>
   ));
 }
 
 function ReUsableStaticCard(text) {
+  console.log(text.name);
   return (
     <Row>
-      <Col>
-        <Card>
-          <Card.Header>Overview</Card.Header>
-          {textData(text)}
+      <Col className="static-column">
+        <Card className="text-center static-card">
+          <Card.Header className="static-card-header">{text.name}</Card.Header>
+          <Card.Body key={text.id}>
+            {textData(text)}
+          </Card.Body>
         </Card>
       </Col>
     </Row>
