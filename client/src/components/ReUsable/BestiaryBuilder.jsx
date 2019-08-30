@@ -42,9 +42,7 @@ function bestiaryBuilder(beasts) {
   return (
     <div>
       <h1 className="text-center">BESTIARY</h1>
-      <Accordion as={Col} md={{ span: 8, offset: 2 }} className="justify-content-center text-center">
-        {factionAccordion(beasts)}
-      </Accordion>
+      {factionAccordion(beasts)}
     </div>
   );
 }
