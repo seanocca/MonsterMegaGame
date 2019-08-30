@@ -1,6 +1,6 @@
-service: capstone-2019-hmg
+service: notes-app-2-api
 
-# Create an optimized package for our functions
+# Create an optimized package for our functions 
 package:
   individually: true
 
@@ -8,14 +8,37 @@ plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
 
+custom:
+  # Our stage is based on what is passed in when running serverless
+  # commands. Or fallsback to what we have set in the provider section.
+  stage: ${opt:stage, self:provider.stage}
+  # Set the table name here so we can use it while testing locally
+  usersTableName: ${self:custom.stage}-usersTable
+  factionsTableName: ${self:custom.stage}-factionsTable
+  augmentsTableName: ${self:custom.stage}-augmentsTable
+  beastsTableName: ${self:custom.stage}-beastsTable
+  gameRulesTableName: ${self:custom.stage}-gameRulesTable
+  ritfTableName: ${self:custom.stage}-riftTable
+  overviewTableName: ${self:custom.stage}-overviewTable
+  bucketName: ${self:custom.stage}-images-capstone2019
+
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: prod
+  stage: hmg
   region: ap-southeast-2
 
-  # 'iamRoleStatements' defines the permission policy for the Lambda function.
-  # In this case Lambda functions are granted with permissions to access DynamoDB.
+  # These environment variables are made available to our functions
+  # under process.env.
+  environment:
+    userTable: ${self:custom.usersTableName}
+    factionTable: ${self:custom.factionsTableName}
+    augmentTable: ${self:custom.augmentsTableName}
+    beastTable: ${self:custom.beastsTableName}
+    gameRuleTable: ${self:custom.gameRulesTableName}
+    riftable: ${self:custom.riftTableName}
+    overviewTable: ${self:custom.overviewTableName}
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -26,69 +49,40 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:ap-southeast-2:*:*"
+      # Restrict our IAM role permissions to
+      # the specific table for the stage
+      Resource:
+        - "Fn::GetAtt": [ UsersTable, Arn ]
+        - "Fn::GetAtt": [ FactionsTable, Arn ]
+        - "Fn::GetAtt": [ AugmentsTable, Arn ]
+        - "Fn::GetAtt": [ BeastsTable, Arn ]
+        - "Fn::GetAtt": [ GameRulesTable, Arn ]
+        - "Fn::GetAtt": [ RiftTable, Arn ]
+        - "Fn::GetAtt": [ OverviewTable, Arn ]
 
 functions:
-  # Defines an HTTP API endpoint that calls the main function in create.js
-  # - path: url path is /notes
-  # - method: POST request
-  # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
-  #     domain api call
-  # - authorizer: authenticate using the AWS IAM role
-  create:
-    handler: create.main
-    events:
-      - http:
-          path: users
-          method: post
-          cors: true
-          authorizer: aws_iam
-  get:
-    # Defines an HTTP API endpoint that calls the main function in get.js
-    # - path: url path is /notes/{id}
-    # - method: GET request
-    handler: get.main
-    events:
-      - http:
-          path: user
-          method: get
-          cors: true
-          authorizer: aws_iam
-  list:
-    # Defines an HTTP API endpoint that calls the main function in list.js
-    # - path: url path is /notes
-    # - method: GET request
-    handler: list.main
-    events:
-      - http:
-          path: users/{id}
-          method: get
-          cors: true
-          authorizer: aws_iam
-  update:
-    # Defines an HTTP API endpoint that calls the main function in update.js
-    # - path: url path is /notes/{id}
-    # - method: PUT request
-    handler: update.main
-    events:
-      - http:
-          path: users/{id}
-          method: put
-          cors: true
-          authorizer: aws_iam
-  delete:
-    # Defines an HTTP API endpoint that calls the main function in delete.js
-    # - path: url path is /notes/{id}
-    # - method: DELETE request
-    handler: delete.main
-    events:
-      - http:
-          path: users/{id}
-          method: delete
-          cors: true
-          authorizer: aws_iam
+  - ${file(resources/users/users-functions.yml)}
+  - ${file(resources/factions/factions-functions.yml)}
+  - ${file(resources/augment/augment-functions.yml)}
+  - ${file(resources/beasts/beasts-functions.yml)}
+  - ${file(resources/gameRules/gameRules-functions.yml)}
+  - ${file(resources/rift/rift-functions.yml)}
+  - ${file(resources/overview/overview-functions.yml)}
 
 # Create our resources with separate CloudFormation templates
 resources:
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}
+  # DynamoDB
+  - ${file(resources/users/users-dynamodb.yml)}
+  - ${file(resources/factions/factions-dynamodb.yml)}
+  - ${file(resources/augment/augment-dynamodb.yml)}
+  - ${file(resources/beasts/beasts-dynamodb.yml)}
+  - ${file(resources/gameRules/gameRules-dynamodb.yml)}
+  - ${file(resources/rift/rift-dynamodb.yml)}
+  - ${file(resources/overview/overview-dynamodb.yml)}
+  # S3
+  - ${file(resources/s3-bucket.yml)}
+  # Cognito
+  - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}

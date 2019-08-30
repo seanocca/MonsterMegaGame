@@ -1,0 +1,32 @@
+riftCreate:
+  handler: resources/rift/src/create.main
+  events:
+    - http:
+        path: rift
+        method: post
+        cors: true
+        authorizer: aws_iam
+
+riftGet:
+  # Defines an HTTP API endpoint that calls the main function in get.js
+  # - path: url path is /notes/{id}
+  # - method: GET request
+  handler: resources/rift/src/get.main
+  events:
+    - http:
+        path: rift
+        method: get
+        cors: true
+        authorizer: aws_iam
+
+riftList:
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/rift/src/list.main
+  events:
+    - http:
+        path:  rifts
+        method: get
+        cors: true
+        authorizer: aws_iam

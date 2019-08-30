@@ -1,0 +1,42 @@
+/* eslint-disable no-unused-vars */
+import uuidv1 from 'uuid/v1';
+import * as dynamoDbLib from '../../utils/dynamodb-lib';
+import { success, failure } from '../../utils/response-lib';
+
+
+// eslint-disable-next-line import/prefer-default-export
+export async function main(event, context, callback) {
+  // Request body is passed in as a JSON encoded string in 'event.body'
+  const apiData = JSON.parse(event.body);
+
+  const params = {
+    TableName: process.env.beastsTable,
+    Item: {
+      factionName: apiData.factionName,
+      beastID: uuidv1(),
+      name: apiData.name,
+      desc: apiData.desc,
+      image: apiData.image,
+      move: apiData.move,
+      damage: apiData.damage,
+      maxdmg: apiData.maxdmg,
+      leap: apiData.leap,
+      maxleap: apiData.maxleap,
+      hp: apiData.hp,
+      maxhp: apiData.maxhp,
+      speed: apiData.speed,
+      maxspeed: apiData.maxspeed,
+      createdAt: Date.now(),
+    },
+  };
+
+  try {
+    await dynamoDbLib.call('put', params);
+    return success(params.Item);
+  } catch (e) {
+    return failure({
+      status: false,
+      message: e.message,
+    });
+  }
+}

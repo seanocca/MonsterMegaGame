@@ -1,0 +1,17 @@
+Resources:
+  AugmentsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.augmentsTableName}
+      AttributeDefinitions:
+        - AttributeName: factionName
+          AttributeType: S
+        - AttributeName: augmentId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: factionName
+          KeyType: HASH
+        - AttributeName: augmentId
+          KeyType: RANGE
+      # Set the capacity to auto-scale
+      BillingMode: PAY_PER_REQUEST

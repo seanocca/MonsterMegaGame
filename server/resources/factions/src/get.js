@@ -1,16 +1,19 @@
 /* eslint-disable no-unused-vars */
-import * as dynamoDbLib from './utils/dynamodb-lib';
-import { success, failure } from './utils/response-lib';
+import * as dynamoDbLib from '../../utils/dynamodb-lib';
+import { success, failure } from '../../utils/response-lib';
 
 // eslint-disable-next-line import/prefer-default-export
 export async function main(event, context) {
+  const apiData = JSON.parse(event.body);
+
   const params = {
-    TableName: 'Users',
+    TableName: process.env.augmentTable,
     // 'Key' defines the partition key and sort key of the item to be retrieved
     // - 'userId': Identity Pool identity id of the authenticated user
     // - 'noteId': path parameter
     Key: {
-      userID: event.requestContext.identity.cognitoIdentityId,
+      factionName: apiData.factionName,
+      augmentID: apiData.augmentID,
     },
   };
 

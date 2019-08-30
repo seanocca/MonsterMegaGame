@@ -1,0 +1,13 @@
+Resources:
+  OverviewTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.overviewTableName}
+      AttributeDefinitions:
+        - AttributeName: overviewID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: overviewID
+          KeyType: HASH
+      # Set the capacity to auto-scale
+      BillingMode: PAY_PER_REQUEST

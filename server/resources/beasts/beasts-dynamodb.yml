@@ -1,0 +1,17 @@
+Resources:
+  BeastsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.beastsTableName}
+      AttributeDefinitions:
+        - AttributeName: factionName
+          AttributeType: S
+        - AttributeName: beastId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: factionName
+          KeyType: HASH
+        - AttributeName: beastId
+          KeyType: RANGE
+      # Set the capacity to auto-scale
+      BillingMode: PAY_PER_REQUEST

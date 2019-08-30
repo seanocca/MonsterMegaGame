@@ -1,0 +1,13 @@
+Resources:
+  RiftTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.riftTableName}
+      AttributeDefinitions:
+        - AttributeName: riftID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: riftID
+          KeyType: HASH
+      # Set the capacity to auto-scale
+      BillingMode: PAY_PER_REQUEST

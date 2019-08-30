@@ -1,0 +1,32 @@
+augmentsCreate:
+  handler: resources/augment/src/create.main
+  events:
+    - http:
+        path: augment
+        method: post
+        cors: true
+        authorizer: aws_iam
+
+augmentsGet:
+  # Defines an HTTP API endpoint that calls the main function in get.js
+  # - path: url path is /notes/{id}
+  # - method: GET request
+  handler: resources/augment/src/get.main
+  events:
+    - http:
+        path: augment
+        method: get
+        cors: true
+        authorizer: aws_iam
+
+augmentsList:
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/augment/src/list.main
+  events:
+    - http:
+        path:  augments
+        method: get
+        cors: true
+        authorizer: aws_iam
