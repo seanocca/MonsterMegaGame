@@ -18,7 +18,7 @@ custom:
   augmentsTableName: ${self:custom.stage}-augmentsTable
   beastsTableName: ${self:custom.stage}-beastsTable
   gameRulesTableName: ${self:custom.stage}-gameRulesTable
-  ritfTableName: ${self:custom.stage}-riftTable
+  riftTableName: ${self:custom.stage}-riftTable
   overviewTableName: ${self:custom.stage}-overviewTable
   bucketName: ${self:custom.stage}-images-capstone2019
 
@@ -36,7 +36,7 @@ provider:
     augmentTable: ${self:custom.augmentsTableName}
     beastTable: ${self:custom.beastsTableName}
     gameRuleTable: ${self:custom.gameRulesTableName}
-    riftable: ${self:custom.riftTableName}
+    riftTable: ${self:custom.riftTableName}
     overviewTable: ${self:custom.overviewTableName}
 
   iamRoleStatements:
