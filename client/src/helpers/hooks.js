@@ -69,7 +69,8 @@ export const useFactionCardStyles = (faction) => {
   }
   return {
     width: '18rem',
-    height: 'auto',
+    height: '35rem',
+    overflowY: 'scroll',
     border,
   };
 };
