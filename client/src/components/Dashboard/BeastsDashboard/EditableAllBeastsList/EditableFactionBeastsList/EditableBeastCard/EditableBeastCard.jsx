@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AdminBeastForm from '../../ToggleableBeastForm/AdminBeastForm';
+import AdminBeastForm from '../../../ToggleableBeastForm/AdminBeastForm';
 import BeastCard from './BeastCard';
 
 const EditableBeastCard = (props) => {

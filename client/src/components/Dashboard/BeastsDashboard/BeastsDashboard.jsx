@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, CardColumns } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 import { loadBeasts, createBeast, editBeast } from '../../../store/actions';
 import Dashboard from '../Dashboard';
-import EditableBeastList from './EditableBeastList';
+import EditableAllBeastsList from './EditableAllBeastsList';
 import ToggleableBeastForm from './ToggleableBeastForm';
 
 const BeastsDashboard = () => {
-  const beasts = useSelector(state => state.beasts);
+  const allBeasts = useSelector(state => state.beasts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,12 +30,10 @@ const BeastsDashboard = () => {
       <ToggleableBeastForm
         onFormSubmit={handleCreateFormSubmit}
       />
-      <CardColumns>
-        <EditableBeastList
-          beasts={beasts}
-          onFormSubmit={handleEditFormSubmit}
-        />
-      </CardColumns>
+      <EditableAllBeastsList
+        allBeasts={allBeasts}
+        onFormSubmit={handleEditFormSubmit}
+      />
     </Container>
   );
 };
