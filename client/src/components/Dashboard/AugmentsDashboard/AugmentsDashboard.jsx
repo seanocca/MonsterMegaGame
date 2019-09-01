@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, CardColumns } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 import { loadAugments, createAugment, editAugment } from '../../../store/actions';
 import Dashboard from '../Dashboard';
-import EditableAugmentList from './EditableAugmentList';
+import EditableAllAugmentsList from './EditableAllAugmentsList';
 import ToggleableAugmentForm from './ToggleableAugmentForm';
 
 const AugmentsDashboard = () => {
-  const augments = useSelector(state => state.augments);
+  const allAugments = useSelector(state => state.augments);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,12 +30,10 @@ const AugmentsDashboard = () => {
       <ToggleableAugmentForm
         onFormSubmit={handleCreateFormSubmit}
       />
-      <CardColumns>
-        <EditableAugmentList
-          augments={augments}
-          onFormSubmit={handleEditFormSubmit}
-        />
-      </CardColumns>
+      <EditableAllAugmentsList
+        allAugments={allAugments}
+        onFormSubmit={handleEditFormSubmit}
+      />
     </Container>
   );
 };

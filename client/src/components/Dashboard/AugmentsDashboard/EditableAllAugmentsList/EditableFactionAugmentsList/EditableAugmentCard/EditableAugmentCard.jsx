@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AdminAugmentForm from '../../ToggleableAugmentForm/AdminAugmentForm';
+import AdminAugmentForm from '../../../ToggleableAugmentForm/AdminAugmentForm';
 import AugmentCard from './AugmentCard';
 
 const EditableAugmentCard = (props) => {
