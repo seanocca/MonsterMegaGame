@@ -7,12 +7,10 @@ export async function main(event, context) {
   const apiData = JSON.parse(event.body);
 
   const params = {
-    TableName: process.env.beastsTable,
-    // 'Key' defines the partition key and sort key of the item to be retrieved
-    // - 'userId': Identity Pool identity id of the authenticated user
-    // - 'noteId': path parameter
+    TableName: process.env.beastTable,
     Key: {
-      beastID: apiData.beastID,
+      factionName: apiData.factionName,
+      id: apiData.id,
     },
   };
 

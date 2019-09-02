@@ -26,7 +26,19 @@ beastsList:
   handler: resources/beasts/src/list.main
   events:
     - http:
-        path:  beasts
+        path:  list-beasts
         method: get
+        cors: true
+        authorizer: aws_iam
+
+beastsDelete:
+  # Defines an HTTP API endpoint that calls the main function in delete.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/beasts/src/delete.main
+  events:
+    - http:
+        path:  delete-beast
+        method: post
         cors: true
         authorizer: aws_iam

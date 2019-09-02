@@ -8,24 +8,23 @@ import { success, failure } from '../../utils/response-lib';
 export async function main(event, context, callback) {
   // Request body is passed in as a JSON encoded string in 'event.body'
   const apiData = JSON.parse(event.body);
-
   const params = {
-    TableName: process.env.beastsTable,
+    TableName: process.env.beastTable,
     Item: {
       factionName: apiData.factionName,
-      beastID: uuidv1(),
-      name: apiData.name,
-      desc: apiData.desc,
-      image: apiData.image,
-      move: apiData.move,
-      damage: apiData.damage,
-      maxdmg: apiData.maxdmg,
-      leap: apiData.leap,
-      maxleap: apiData.maxleap,
-      hp: apiData.hp,
-      maxhp: apiData.maxhp,
-      speed: apiData.speed,
-      maxspeed: apiData.maxspeed,
+      id: apiData.id || uuidv1(),
+      name: apiData.name || null,
+      desc: apiData.desc || null,
+      image: apiData.image || null,
+      move: apiData.move || null,
+      damage: apiData.damage || null,
+      maxdmg: apiData.maxdmg || null,
+      leap: apiData.leap || null,
+      maxleap: apiData.maxleap || null,
+      hp: apiData.hp || null,
+      maxhp: apiData.maxhp || null,
+      speed: apiData.speed || null,
+      maxspeed: apiData.maxspeed || null,
       createdAt: Date.now(),
     },
   };
