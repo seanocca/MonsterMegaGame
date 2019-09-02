@@ -13,11 +13,10 @@ function gameRuleDetails(gamerules) {
   }
 
   function gameRuleDescSeperater(desc) {
-    console.log('GameRuleDescSeperator', desc);
     return desc.map((info, j) => (
-      <Card.Body>
+      <Card.Body key={info.id}>
         <Card.Text>
-          {info}
+          {info.line}
         </Card.Text>
       </Card.Body>
     ));
