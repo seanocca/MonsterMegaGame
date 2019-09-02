@@ -26,7 +26,19 @@ gameRulesList:
   handler: resources/gameRules/src/list.main
   events:
     - http:
-        path:  gameRules
+        path:  list-gameRules
         method: get
+        cors: true
+        authorizer: aws_iam
+
+gameRulesDelete:
+  # Defines an HTTP API endpoint that calls the main function in delete.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/gameRules/src/delete.main
+  events:
+    - http:
+        path:  delete-gamerule
+        method: post
         cors: true
         authorizer: aws_iam

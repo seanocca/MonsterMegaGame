@@ -14,12 +14,12 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   # Set the table name here so we can use it while testing locally
   usersTableName: ${self:custom.stage}-usersTable
-  factionsTableName: ${self:custom.stage}-factionsTable2
+  factionsTableName: ${self:custom.stage}-factionsTable
   augmentsTableName: ${self:custom.stage}-augmentsTable
-  beastsTableName: ${self:custom.stage}-beastsTable2
+  beastsTableName: ${self:custom.stage}-beastsTable
   gameRulesTableName: ${self:custom.stage}-gameRulesTable
-  riftTableName: ${self:custom.stage}-riftTable2
-  overviewTableName: ${self:custom.stage}-overviewTable2
+  riftTableName: ${self:custom.stage}-riftTable
+  overviewTableName: ${self:custom.stage}-overviewTable
   bucketName: ${self:custom.stage}-images-capstone2019
 
 provider:

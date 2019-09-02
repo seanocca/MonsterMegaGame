@@ -10,11 +10,12 @@ export async function main(event, context, callback) {
   const apiData = JSON.parse(event.body);
 
   const params = {
-    TableName: process.env.gameRulesTable,
+    TableName: process.env.gameRuleTable,
     Item: {
-      gameRuleID: uuidv1(),
-      name: apiData.name,
-      text: apiData.text,
+      id: apiData.id || uuidv1(),
+      name: apiData.name || undefined,
+      text: apiData.text || undefined,
+      gamemodes: apiData.gamemodes || undefined,
       createdAt: Date.now(),
     },
   };

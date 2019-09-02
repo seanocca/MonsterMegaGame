@@ -4,10 +4,10 @@ Resources:
     Properties:
       TableName: ${self:custom.gameRulesTableName}
       AttributeDefinitions:
-        - AttributeName: gameRuleID
+        - AttributeName: id
           AttributeType: S
       KeySchema:
-        - AttributeName: gameRuleID
+        - AttributeName: id
           KeyType: HASH
       # Set the capacity to auto-scale
       BillingMode: PAY_PER_REQUEST
