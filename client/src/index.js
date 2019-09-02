@@ -29,7 +29,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: 'User',
+        name: 'AWS-HMG-URL',
         endpoint: REACT_APP_URL,
         region: REACT_APP_REGION,
       },
