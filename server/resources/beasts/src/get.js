@@ -22,6 +22,9 @@ export async function main(event, context) {
     }
     return failure({ status: false, error: 'Item not found.' });
   } catch (e) {
-    return failure({ status: false });
+    return failure({
+      status: false,
+      message: e.message,
+    });
   }
 }
