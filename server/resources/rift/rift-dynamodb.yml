@@ -4,10 +4,10 @@ Resources:
     Properties:
       TableName: ${self:custom.riftTableName}
       AttributeDefinitions:
-        - AttributeName: riftID
+        - AttributeName: id
           AttributeType: S
       KeySchema:
-        - AttributeName: riftID
+        - AttributeName: id
           KeyType: HASH
       # Set the capacity to auto-scale
       BillingMode: PAY_PER_REQUEST

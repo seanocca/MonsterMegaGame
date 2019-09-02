@@ -10,10 +10,11 @@ export async function main(event, context, callback) {
   const apiData = JSON.parse(event.body);
 
   const params = {
-    TableName: process.env.riftable,
+    TableName: process.env.riftTable,
     Item: {
-      riftID: uuidv1(),
-      data: apiData.data,
+      id: apiData.id || uuidv1(),
+      name: apiData.name || undefined,
+      data: apiData.data || undefined,
       createdAt: Date.now(),
     },
   };

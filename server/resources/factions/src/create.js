@@ -19,7 +19,6 @@ export async function main(event, context, callback) {
       banner: apiData.banner || undefined,
       logo: apiData.logo || undefined,
       desc: apiData.desc || undefined,
-      test: undefined,
       createdAt: Date.now(),
     },
   };
