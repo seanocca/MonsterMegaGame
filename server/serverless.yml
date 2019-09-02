@@ -14,7 +14,7 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   # Set the table name here so we can use it while testing locally
   usersTableName: ${self:custom.stage}-usersTable
-  factionsTableName: ${self:custom.stage}-factionsTable
+  factionsTableName: ${self:custom.stage}-factionsTable2
   augmentsTableName: ${self:custom.stage}-augmentsTable
   beastsTableName: ${self:custom.stage}-beastsTable2
   gameRulesTableName: ${self:custom.stage}-gameRulesTable

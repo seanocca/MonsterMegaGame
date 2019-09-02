@@ -4,10 +4,10 @@ Resources:
     Properties:
       TableName: ${self:custom.factionsTableName}
       AttributeDefinitions:
-        - AttributeName: factionID
+        - AttributeName: id
           AttributeType: S
       KeySchema:
-        - AttributeName: factionID
+        - AttributeName: id
           KeyType: HASH
       # Set the capacity to auto-scale
       BillingMode: PAY_PER_REQUEST

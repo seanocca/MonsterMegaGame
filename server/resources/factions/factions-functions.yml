@@ -26,7 +26,19 @@ factionsList:
   handler: resources/factions/src/list.main
   events:
     - http:
-        path: factions
+        path: list-factions
         method: get
+        cors: true
+        authorizer: aws_iam
+
+factionsDelete:
+  # Defines an HTTP API endpoint that calls the main function in delete.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/factions/src/delete.main
+  events:
+    - http:
+        path:  delete-faction
+        method: post
         cors: true
         authorizer: aws_iam
