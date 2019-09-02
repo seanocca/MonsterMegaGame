@@ -18,8 +18,8 @@ custom:
   augmentsTableName: ${self:custom.stage}-augmentsTable
   beastsTableName: ${self:custom.stage}-beastsTable2
   gameRulesTableName: ${self:custom.stage}-gameRulesTable
-  riftTableName: ${self:custom.stage}-riftTable
-  overviewTableName: ${self:custom.stage}-overviewTable
+  riftTableName: ${self:custom.stage}-riftTable2
+  overviewTableName: ${self:custom.stage}-overviewTable2
   bucketName: ${self:custom.stage}-images-capstone2019
 
 provider:

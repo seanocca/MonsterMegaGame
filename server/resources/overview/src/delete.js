@@ -1,27 +1,20 @@
 /* eslint-disable no-unused-vars */
-import uuidv1 from 'uuid/v1';
 import * as dynamoDbLib from '../../utils/dynamodb-lib';
 import { success, failure } from '../../utils/response-lib';
 
-
 // eslint-disable-next-line import/prefer-default-export
-export async function main(event, context, callback) {
-  // Request body is passed in as a JSON encoded string in 'event.body'
+export async function main(event, context) {
   const apiData = JSON.parse(event.body);
-
   const params = {
     TableName: process.env.overviewTable,
-    Item: {
-      id: apiData.id || uuidv1(),
-      name: apiData.name || undefined,
-      data: apiData.data || undefined,
-      createdAt: Date.now(),
+    Key: {
+      id: apiData.id,
     },
   };
 
   try {
-    await dynamoDbLib.call('put', params);
-    return success(params.Item);
+    await dynamoDbLib.call('delete', params);
+    return success({ status: true });
   } catch (e) {
     return failure({
       status: false,

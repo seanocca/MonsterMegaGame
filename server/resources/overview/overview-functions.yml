@@ -26,7 +26,19 @@ overviewList:
   handler: resources/overview/src/list.main
   events:
     - http:
-        path:  overviews
+        path:  list-overviews
         method: get
+        cors: true
+        authorizer: aws_iam
+
+overviewDelete:
+  # Defines an HTTP API endpoint that calls the main function in delete.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/overview/src/delete.main
+  events:
+    - http:
+        path:  delete-overview
+        method: post
         cors: true
         authorizer: aws_iam

@@ -4,10 +4,10 @@ Resources:
     Properties:
       TableName: ${self:custom.overviewTableName}
       AttributeDefinitions:
-        - AttributeName: overviewID
+        - AttributeName: id
           AttributeType: S
       KeySchema:
-        - AttributeName: overviewID
+        - AttributeName: id
           KeyType: HASH
       # Set the capacity to auto-scale
       BillingMode: PAY_PER_REQUEST
