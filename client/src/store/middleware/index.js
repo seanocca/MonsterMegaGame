@@ -40,7 +40,7 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
       return Auth.currentSession()
         .then((data) => {
           userData = Object.assign({}, userData, { password: '', confirm: '' });
-          API.post('User', '/users', { body: userData })
+          API.post('AWS-HMG-URL', '/user', { body: userData })
             .then(res => dispatch({ type: PROCESS_USER, payload: userData, isLoading: false }))
             .catch(({ response }) => {
               console.log(`Error(${response.status}): ${response.data.message}`);
@@ -50,7 +50,7 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
 
     if (GET_USER === action.type) {
       // download the data
-      return API.get('User', '/user')
+      return API.get('AWS-HMG-URL', '/user')
         .then((response) => {
           localStorage.setItem('user', JSON.stringify(response));
           dispatch({ type: PROCESS_USER, payload: response, isLoading: false });
