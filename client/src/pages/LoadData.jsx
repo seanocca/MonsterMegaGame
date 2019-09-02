@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import {
+  Container, Row, Col, Button,
+} from 'react-bootstrap';
 import { API } from 'aws-amplify';
 
 const Account = () => {
