@@ -30,6 +30,7 @@ import FactionsDashboard from './components/Dashboard/FactionsDashboard';
 import UsersDashboard from './components/Dashboard/UsersDashboard';
 
 import NotFound from './pages/NotFound';
+import LoadData from './pages/LoadData';
 
 import { userHasAuthenticated, getUser } from './store/actions';
 
@@ -73,6 +74,7 @@ const App = ({ userHasAuthenticated, getUser }) => {
         <AuthenticatedRoute exact path="/dashboard/beasts" component={BeastsDashboard} props={childProps} />
         <AuthenticatedRoute exact path="/dashboard/augments" component={AugmentsDashboard} props={childProps} />
         <AuthenticatedRoute exact path="/dashboard/factions" component={FactionsDashboard} props={childProps} />
+        <AuthenticatedRoute exact path="/load-data" component={LoadData} props={childProps} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
