@@ -232,7 +232,7 @@ const Account = () => {
         <Col sm={3}>
           <Button onClick={deleteGameRules}>Delete *ALL* Game Rules Data</Button>
         </Col>
-      </Row>      
+      </Row>
       <hr />
       <Row>
         <Col sm={6}>
