@@ -1,5 +1,6 @@
 export default [
   {
+    id: '123',
     name: 'Setup',
     text:
     [
@@ -10,13 +11,15 @@ export default [
       'Players can also bet Augments or Monsters as prizes for winning.',
       'Each player chooses a Faction starting point to start from (see Faction start discs).',
       'Creatures with the highest speed go first. If in doubt, do scissors-paper-rock and play continues clockwise around the board)',
-    ]
+    ],
   },
   {
+    id: '456',
     name: 'Game Modes',
     gamemodes:
     [
       {
+        id: 'gm123',
         name: 'The Rift',
         text:
           [
@@ -26,6 +29,7 @@ export default [
           ],
       },
       {
+        id: 'gm456',
         name: 'The Tower Tyrant',
         text:
           [
@@ -36,6 +40,7 @@ export default [
           ],
       },
       {
+        id: 'gm789',
         name: 'Hunt for Humans',
         text:
           [
@@ -44,27 +49,30 @@ export default [
             'The game ends when all Prey is consumed or saved - Faction with the most Prey tokens wins.',
           ],
       },
-    ]
+    ],
   },
   {
+    id: '789',
     name: 'How to Win!',
     text:
       [
         'To win, players must accomplish the objective determined by the Game Mode (outlined below). This includes, but is not limited to, eliminating all other opponents, reaching a set number of kills, or completing an agreed upon objective (capture the flag, interrogate the humans, etc.).',
         'The basic game mode for your first game will be one-life elimination-style Deathmatch (good for practice purposes).',
-      ]
+      ],
   },
   {
+    id: '012',
     name: 'Attacking and Health Points',
     text:
       [
         'Your monster can attack one target at any point of its movement for that turn.',
         'Extra Action augment allows two attacks per turn.',
-        `A Monster's DAMAGE is subtracted from the HEALTH POINTS (HP) of the monster it's attacking.`,
+        'A Monster\'s DAMAGE is subtracted from the HEALTH POINTS (HP) of the monster it\'s attacking.',
         'The monster token must make physical contact during the move for the attack to hit.',
-      ]
+      ],
   },
   {
+    id: '345',
     name: 'Death and Experience',
     text:
       [
@@ -75,6 +83,6 @@ export default [
         'You cannot upgrade a skill twice at one time; when you receive 2 Experience or more, you must spread it around the attributes on your Monster’s card.',
         'If your creature dies, it gains 1 Experience before respawning.',
         'Experience gained from kills immediately improves the creature, and also tops up its health to that new level, but not back to full health.',
-      ]
-  }
-]
+      ],
+  },
+];
