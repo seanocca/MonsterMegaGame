@@ -6,7 +6,7 @@ import {
 
 function factionBuilder(factions) {
   function factionDescSeperater(desc) {
-    return desc.map((info, j) => <Card.Body>{info}</Card.Body>);
+    return desc.map((info, j) => <Card.Body key={info.id}>{info.line}</Card.Body>);
   }
 
   function factionBannerLogo(logo, banner, name, value) {
@@ -28,7 +28,7 @@ function factionBuilder(factions) {
 
   function factionDetails(factions) {
     return factions.map((faction, i) => (
-      <Card>
+      <Card key={faction.id}>
         <Accordion.Toggle as={Card.Header} eventKey={i}>
           {faction.name}
         </Accordion.Toggle>
