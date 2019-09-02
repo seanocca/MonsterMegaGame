@@ -24,9 +24,8 @@ function gameRuleDetails(gamerules) {
   }
 
   function gameRuleGamemodeBuilder(type) {
-    console.log('GameRuleGameModeBuilder', type);
     return type.map((info, y) => (
-      <Col xs={12} md={6} lg={4}>
+      <Col key={info.id} xs={12} md={6} lg={4}>
         <Card>
           <Card.Header>{info.name}</Card.Header>
           {gameRuleDescSeperater(info.text)}
@@ -35,9 +34,8 @@ function gameRuleDetails(gamerules) {
     ));
   }
 
-  console.log('GameRuleDetails', gamerules);
   return gamerules.map((data, i) => (
-    <Card md={{ span: 10, offset: 2 }}>
+    <Card key={data.id} md={{ span: 10, offset: 2 }}>
       <Accordion.Toggle as={Card.Header} eventKey={i}>
         {data.name}
       </Accordion.Toggle>
