@@ -16,7 +16,7 @@ custom:
   usersTableName: ${self:custom.stage}-usersTable
   factionsTableName: ${self:custom.stage}-factionsTable
   augmentsTableName: ${self:custom.stage}-augmentsTable
-  beastsTableName: ${self:custom.stage}-beastsTable
+  beastsTableName: ${self:custom.stage}-beastsTable2
   gameRulesTableName: ${self:custom.stage}-gameRulesTable
   riftTableName: ${self:custom.stage}-riftTable
   overviewTableName: ${self:custom.stage}-overviewTable

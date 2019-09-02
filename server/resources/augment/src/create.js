@@ -10,13 +10,14 @@ export async function main(event, context, callback) {
   const apiData = JSON.parse(event.body);
 
   const params = {
-    TableName: process.env.factionTable,
+    TableName: process.env.augmentTable,
     Item: {
-      factionID: uuidv1(),
-      name: apiData.name,
-      leader: apiData.leader,
-      faculty: apiData.faculty,
-      desc: apiData.desc,
+      id: apiData.id || uuidv1(),
+      factionName: apiData.factionName || undefined,
+      type: apiData.type || undefined,
+      name: apiData.name || undefined,
+      action: apiData.action || undefined,
+      desc: apiData.desc || undefined,
       createdAt: Date.now(),
     },
   };

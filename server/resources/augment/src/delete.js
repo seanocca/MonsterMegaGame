@@ -4,14 +4,18 @@ import { success, failure } from '../../utils/response-lib';
 
 // eslint-disable-next-line import/prefer-default-export
 export async function main(event, context) {
+  const apiData = JSON.parse(event.body);
   const params = {
     TableName: process.env.augmentTable,
+    Key: {
+      factionName: apiData.factionName,
+      id: apiData.id,
+    },
   };
 
   try {
-    const result = await dynamoDbLib.call('scan', params);
-    // Return the matching list of items in response body
-    return success(result.Items);
+    await dynamoDbLib.call('delete', params);
+    return success({ status: true });
   } catch (e) {
     return failure({ status: false });
   }
