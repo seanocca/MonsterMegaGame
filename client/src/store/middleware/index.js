@@ -21,18 +21,21 @@ export const processUserAuth = ({ getState, dispatch }) => next => async (action
 export const downloadFactions = ({ getState, dispatch }) => next => async (action) => {
   if (DOWNLOAD_FACTIONS === action.type) {
     const currentTime = Math.round(Date.now() / 1000);
-    const staleTime = getState().isDownload.factionData + STALE_TIME;
+    const staleTime = getState().isDownload.factionData;
     if (staleTime < currentTime) {
       dispatch({ type: IS_STALE, payload: { factionData: Infinity } });
       await API.get('AWS-HMG-URL', '/list-factions')
         .then((response) => {
           dispatch({ type: PROCESS_DOWNLOAD_FACTIONS, payload: response });
-          window.localStorage.setItem('factionsRecheck', staleTime);
           window.localStorage.setItem('factionsData', JSON.stringify(response));
         })
         .catch(e => console.log(e))
-        .finally(dispatch({ type: IS_STALE, payload: { factionData: currentTime } }));
+        .finally((fin) => {
+          localStorage.setItem('factionsRecheck', currentTime + STALE_TIME);
+          dispatch({ type: IS_STALE, payload: { factionData: currentTime + STALE_TIME } });
+        });
     }
+    return true;
   }
   return next(action);
 };
