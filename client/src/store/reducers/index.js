@@ -4,12 +4,10 @@ import {
   IS_AUTHENTICATING,
   PROCESS_USER,
   IS_LOADING,
-  CREATE_FACTION,
-  EDIT_FACTION,
-  CREATE_AUGMENT,
-  EDIT_AUGMENT,
-  CREATE_BEAST,
-  EDIT_BEAST,
+  CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
+  CREATE_AUGMENT, EDIT_AUGMENT,
+  CREATE_BEAST, EDIT_BEAST,
+  IS_STALE,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -24,6 +22,10 @@ const initialState = {
   isAuthenticated: false,
   isAuthenticating: true,
   isLoading: false,
+  isDownload: {
+    factionData: localStorage.getItem('factionsRecheck'),
+    augmentData: 0,
+  },
   user: JSON.parse(localStorage.getItem('user')),
   unConfirmedUser: JSON.parse(localStorage.getItem('unConfirmedUser')),
   factions,
@@ -36,6 +38,15 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
+  if (IS_STALE === action.type) {
+    return Object.assign({}, state, {
+      isDownload: {
+        ...state.isDownload,
+        ...action.payload,
+      },
+    });
+  }
+
   if (PROCESS_USER_AUTHENTICATION === action.type) {
     console.log('[REDUX] User Authentication: ', action.payload);
     return Object.assign({}, state, {
@@ -69,6 +80,12 @@ const rootReducer = (state = initialState, action) => {
   }
 
   // Factions
+  if (PROCESS_DOWNLOAD_FACTIONS === action.type) {
+    console.log('[REDUX] Download factions: ', action.payload);
+    return Object.assign({}, state, {
+      factions: action.payload,
+    });
+  }
   if (CREATE_FACTION === action.type) {
     console.log('[REDUX] Create faction: ', action.payload);
     return Object.assign({}, state, {

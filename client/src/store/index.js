@@ -4,6 +4,7 @@ import rootReducer from './reducers';
 import {
   processUserAuth,
   processUser,
+  downloadFactions,
 } from './middleware';
 
 // Enables redux dev tools on middleware
@@ -15,6 +16,7 @@ const store = createStore(
     thunk,
     processUserAuth,
     processUser,
+    downloadFactions,
   )),
 );
 

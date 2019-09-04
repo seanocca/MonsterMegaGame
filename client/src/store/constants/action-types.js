@@ -7,6 +7,7 @@ export const SET_USER = 'SET_USER';
 export const PROCESS_USER = 'PROCESS_USER';
 // Factions
 export const DOWNLOAD_FACTIONS = 'DOWNLOAD_FACTIONS';
+export const PROCESS_DOWNLOAD_FACTIONS = 'PROCESS_DOWNLOAD_FACTIONS';
 export const CREATE_FACTION = 'CREATE_FACTION';
 export const EDIT_FACTION = 'EDIT_FACTION';
 // Beasts
@@ -17,3 +18,7 @@ export const EDIT_BEAST = 'EDIT_BEAST';
 export const DOWNLOAD_AUGMENTS = 'DOWNLOAD_AUGMENTS';
 export const CREATE_AUGMENT = 'CREATE_AUGMENT';
 export const EDIT_AUGMENT = 'EDIT_AUGMENT';
+
+// General
+export const IS_STALE = 'IS_STALE';
+export const STALE_TIME = 86400; // 1 day in seconds
