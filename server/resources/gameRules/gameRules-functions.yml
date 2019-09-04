@@ -28,8 +28,6 @@ gameRulesList:
     - http:
         path:  list-gameRules
         method: get
-        cors: true
-        authorizer: aws_iam
 
 gameRulesDelete:
   # Defines an HTTP API endpoint that calls the main function in delete.js

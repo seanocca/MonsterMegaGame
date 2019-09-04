@@ -28,8 +28,6 @@ beastsList:
     - http:
         path:  list-beasts
         method: get
-        cors: true
-        authorizer: aws_iam
 
 beastsDelete:
   # Defines an HTTP API endpoint that calls the main function in delete.js

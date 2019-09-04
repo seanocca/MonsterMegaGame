@@ -28,8 +28,6 @@ riftList:
     - http:
         path:  list-rifts
         method: get
-        cors: true
-        authorizer: aws_iam
 
 riftDelete:
   # Defines an HTTP API endpoint that calls the main function in delete.js

@@ -28,8 +28,6 @@ factionsList:
     - http:
         path: list-factions
         method: get
-        cors: true
-        authorizer: aws_iam
 
 factionsDelete:
   # Defines an HTTP API endpoint that calls the main function in delete.js

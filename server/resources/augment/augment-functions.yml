@@ -28,8 +28,6 @@ augmentsList:
     - http:
         path:  list-augments
         method: get
-        cors: true
-        authorizer: aws_iam
 
 augmentsDelete:
   # Defines an HTTP API endpoint that calls the main function in list.js
