@@ -6,6 +6,7 @@ import {
 
 function bestiaryBuilder(beasts) {
   function beastDetails(bestiary) {
+    console.log(bestiary);
     return bestiary.beasts.map((beast, j) => (
       <Col xs={12} md={6} lg={4} key={beast.name}>
         <Card key={beast.name}>
@@ -15,7 +16,14 @@ function bestiaryBuilder(beasts) {
           <Card.Body className="align-text ">
             <i>{beast.desc}</i>
             <br />
-            <img src={beast.img} width="100" height="150" alt={beast.name} />
+            <img src={beast.image} width="100" height="150" alt={beast.name} />
+            <Card.Body>
+              <p>{beast.move}</p>
+              <p>Leap: {beast.leap}/{beast.maxleap}</p>
+              <p>HP: {beast.hp}/{beast.maxhp}</p>
+              <p>Damage: {beast.damage}/{beast.maxdmg}</p>
+              <p>Speed: {beast.speed}/{beast.maxspeed}</p>
+            </Card.Body>
           </Card.Body>
         </Card>
       </Col>

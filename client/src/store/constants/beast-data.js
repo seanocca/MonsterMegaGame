@@ -1,3 +1,17 @@
+import CarnosaurImg from '../../images/beasts/Carnosaur.png';
+import AbyssateImg from '../../images/beasts/Abyssate.png';
+import VaulterixImg from '../../images/beasts/Vaulterix.png';
+import InfiltratorsImg from '../../images/beasts/Infiltrators.png';
+import ContainmentImg from '../../images/beasts/Containment.png';
+import TacticalTeamImg from '../../images/beasts/TacticalTeam.png';
+import ClambererImg from '../../images/beasts/Clamberer.png';
+import BastionImg from '../../images/beasts/Bastion.png';
+import SubterrakImg from '../../images/beasts/Subterrak.png';
+import AxialBeastImg from '../../images/beasts/AxialBeast.png';
+import NodeHorrorImg from '../../images/beasts/NodeHorror.png';
+import NexusHivemindImg from '../../images/beasts/NexusHivemind.png';
+
+
 export default [
   {
     faction: 'Biochrondys',
@@ -6,7 +20,7 @@ export default [
         id: '33525fde-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Carnosaur',
         desc: 'Agile Predator',
-        image: '',
+        image: CarnosaurImg,
         move: 'Jumps from rooftop to rooftop',
         damage: '1',
         maxdmg: '5',
@@ -21,7 +35,7 @@ export default [
         id: '3b25a1da-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Abyssate',
         desc: 'Leaping Carnivore',
-        image: '',
+        image: AbyssateImg,
         move: 'Moves instantly from ground to rooftops',
         damage: '2',
         maxdmg: '6',
@@ -36,8 +50,8 @@ export default [
         id: '416453ac-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Vaulterix',
         desc: 'Apex Draconian',
-        image: '',
-        move: 'Fly&#39s in any direction at any time.',
+        image: VaulterixImg,
+        move: 'Fly\'s in any direction at any time.',
         damage: '3',
         maxdmg: '7',
         leap: '0',
@@ -56,7 +70,7 @@ export default [
         id: '529d4e12-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Infiltrators',
         desc: 'Hunt and Track (Unit of 4)',
-        image: '',
+        image: InfiltratorsImg,
         move:
           'Each turn, one unit can zipline to any surface in line of sight.',
         damage: '1',
@@ -72,7 +86,7 @@ export default [
         id: '5828cc30-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Containment',
         desc: 'Search and Capture (Unit of 4)',
-        image: '',
+        image: ContainmentImg,
         move: 'Runs along walls.',
         damage: '1',
         maxdmg: '5',
@@ -87,7 +101,7 @@ export default [
         id: '5d7322bc-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Tactical Team',
         desc: 'Seek and Destroy (Unit of 4)',
-        image: '',
+        image: TacticalTeamImg,
         move: 'Can move down streets through the air as movement.',
         damage: '1',
         maxdmg: '5',
@@ -107,7 +121,7 @@ export default [
         id: '659051d6-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Clamberer',
         desc: 'Four-Armed Automation',
-        image: 'clamberer.png',
+        image: ClambererImg,
         move: 'Climbs the sides of buildings.',
         damage: '2',
         maxdmg: '6',
@@ -122,7 +136,7 @@ export default [
         id: '6ddff83c-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Bastion',
         desc: 'Armoured Hulk',
-        image: '',
+        image: BastionImg,
         move: 'Smashes through walls.',
         damage: '3',
         maxdmg: '7',
@@ -137,7 +151,7 @@ export default [
         id: '76d7d3f6-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Subterrak',
         desc: 'Tunneling Behemoth',
-        image: '',
+        image: SubterrakImg,
         move: 'Dissapear underground.\nDisappear overground.',
         damage: '4',
         maxdmg: '8',
@@ -157,7 +171,7 @@ export default [
         id: '8044570c-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Axial Beast',
         desc: 'Phase Creature',
-        image: '',
+        image: AxialBeastImg,
         move: 'Phases through walls.',
         damage: '2',
         maxdmg: '6',
@@ -172,7 +186,7 @@ export default [
         id: '85eacf60-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Node Horror',
         desc: 'Transdimensional Hunter',
-        image: '',
+        image: NodeHorrorImg,
         move: 'Phases from one wall to any other wall on the map.',
         damage: '3',
         maxdmg: '7',
@@ -187,7 +201,7 @@ export default [
         id: '912e1706-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Nexus Hivemind',
         desc: 'Ominscient Horror',
-        image: '',
+        image: NexusHivemindImg,
         move: 'Teleports to any point on the map.',
         damage: '4',
         maxdmg: '8',

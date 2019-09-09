@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import {
   Card, Row, Col, Image,
 } from 'react-bootstrap';
-import FBLogo from '../../images/facebook.png';
-import InstaLogo from '../../images/instagram.png';
-import YTLogo from '../../images/youtube.png';
-import PatLogo from '../../images/patreon.png';
+import FBLogo from '../../images/socials/facebook.png';
+import InstaLogo from '../../images/socials/instagram.png';
+import YTLogo from '../../images/socials/youtube.png';
+import PatLogo from '../../images/socials/patreon.png';
 import './Footer.css';
 
 class Footer extends Component {

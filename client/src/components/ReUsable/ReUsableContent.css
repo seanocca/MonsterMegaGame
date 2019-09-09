@@ -27,7 +27,16 @@
 .custom-accordion .card .card .card{
   margin: 2% 2% !important;
   min-height: 90%;
-  border: none !important;
+  box-shadow: 5px 5px #d3d3d3;
+  border: 1px solid #d3d3d3 !important;
+  border-radius: 5px 5px !important;
+}
+
+.custom-accordion .card .card .card .card-header{
+  border-radius: 5px 5px 0px 0px !important;
+  color: #ffc107 !important;
+  background-color: #fff !important;
+  border-bottom: 1px dashed !important;
 }
 
 .custom-accordion .card .card .card .card-body{
