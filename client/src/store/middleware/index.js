@@ -63,8 +63,8 @@ const beastData = async (getState, dispatch, type) => {
             buildData.push({ faction: factionName, beasts: [{ ...beasts }] });
           }
         }));
-        dispatch({ type: `download_${type}`, payload: response });
-        localStorage.setItem(`${type}sData`, JSON.stringify(response));
+        dispatch({ type: `download_${type}`, payload: buildData });
+        localStorage.setItem(`${type}sData`, JSON.stringify(buildData));
       })
       .catch(e => console.log(e))
       .finally((fin) => {
