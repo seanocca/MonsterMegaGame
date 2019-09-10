@@ -1,6 +1,6 @@
 export default [
   {
-    id: '123',
+    id: 'setup123',
     name: 'Setup',
     text:
     [
@@ -35,7 +35,7 @@ export default [
     ],
   },
   {
-    id: '456',
+    id: 'gameModes456',
     name: 'Game Modes',
     gamemodes:
     [
