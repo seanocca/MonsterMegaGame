@@ -6,7 +6,6 @@ import {
 
 function bestiaryBuilder(beasts) {
   function beastDetails(bestiary) {
-    console.log(bestiary);
     return bestiary.beasts.map((beast, j) => (
       <Col xs={12} md={6} lg={4} key={beast.name}>
         <Card key={beast.name}>
