@@ -6,7 +6,7 @@ import {
   IS_LOADING,
   CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
   CREATE_AUGMENT, EDIT_AUGMENT,
-  CREATE_BEAST, EDIT_BEAST,
+  CREATE_BEAST, EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
   IS_STALE,
 } from '../constants/action-types';
 
@@ -176,6 +176,12 @@ const rootReducer = (state = initialState, action) => {
   }
 
   // beasts
+  if (PROCESS_DOWNLOAD_BEASTS === action.type) {
+    console.log('[REDUX] Download Beats: ', action.payload);
+    return Object.assign({}, state, {
+      beasts: action.payload,
+    });
+  }
   if (CREATE_BEAST === action.type) {
     console.log('[REDUX] Create beast: ', action.payload);
     return Object.assign({}, state, {
