@@ -7,7 +7,7 @@ import {
 function bestiaryBuilder(beasts) {
   function beastDetails(bestiary) {
     return bestiary.beasts.map((beast, j) => (
-      <Col xs={12} md={6} lg={4} key={beast.name}>
+      <Col xs={12} md={6} lg={4} key={beast.name} className="custom-accordion-col">
         <Card key={beast.name}>
           <Card.Header>
             {beast.name}

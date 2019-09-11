@@ -6,7 +6,7 @@ export default [
     [
       {
         id: 'setup1',
-        line: 'Choose a Monster and Augment to play with.           ',
+        line: 'Choose a Monster and Augment to play with.',
       },
       {
         id: 'setup2',

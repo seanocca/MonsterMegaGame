@@ -64,7 +64,7 @@ export default [
     ],
   },
   {
-    faction: 'Gatekeeper',
+    faction: 'Gatekeepers',
     beasts: [
       {
         id: '529d4e12-c793-11e9-aa8c-2a2ae2dbcce4',

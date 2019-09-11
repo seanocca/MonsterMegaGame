@@ -14,15 +14,17 @@ function gameRuleDetails(gamerules) {
 
   function gameRuleDescSeperater(desc) {
     return desc.map((info, j) => (
-      <Card.Text>
-        {info.line}
-      </Card.Text>
+      <Col md={12}>
+        <Card.Text>
+          {info.line}
+        </Card.Text>
+      </Col>
     ));
   }
 
   function gameRuleGamemodeBuilder(type) {
     return type.map((info, y) => (
-      <Col key={info.id} xs={12} md={6} lg={4}>
+      <Col key={info.id} xs={12} md={6} lg={4} className="custom-accordion-col">
         <Card>
           <Card.Header>{info.name}</Card.Header>
           {gameRuleDescSeperater(info.text)}
@@ -38,7 +40,9 @@ function gameRuleDetails(gamerules) {
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={i}>
         <Card>
-          <Row>{checkGamemode(data)}</Row>
+          <Row>
+            {checkGamemode(data)}
+          </Row>
         </Card>
       </Accordion.Collapse>
     </Card>
