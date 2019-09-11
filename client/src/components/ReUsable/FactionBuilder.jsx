@@ -49,33 +49,7 @@ function factionBuilder(factions) {
     ));
   }
 
-  function bannerBuilder(faction, value) {
-    return (
-      <Col
-        md={{ span: 1, order: value }}
-        className="d-none d-md-block d-sm-none custom-column-banners"
-      >
-        <img src={faction.logo} alt={faction.name} className="custom-logo" />
-        <img src={faction.banner} alt={faction.name} className="custom-banner" />
-      </Col>
-    );
-  }
-
-
-  return (
-    <Row className="flex-row" style={{ margin: '0' }}>
-      {bannerBuilder(factions[0], 1)}
-      {bannerBuilder(factions[1], 2)}
-      <Col md={{ span: 8, order: 3 }} xs={{ span: 12, order: 1 }}>
-        <h1 className="text-center ">FACTIONS</h1>
-        <Accordion className="justify-content-center text-center">
-          {factionDetails(factions)}
-        </Accordion>
-      </Col>
-      {bannerBuilder(factions[2], 3)}
-      {bannerBuilder(factions[3], 4)}
-    </Row>
-  );
+  return factionDetails(factions);
 }
 
 export default { factionBuilder };

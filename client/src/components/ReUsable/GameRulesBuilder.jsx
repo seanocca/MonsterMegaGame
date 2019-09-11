@@ -25,9 +25,9 @@ function gameRuleDetails(gamerules) {
   function gameRuleGamemodeBuilder(type) {
     return type.map((info, y) => (
       <Col key={info.id} xs={12} md={6} lg={4} className="custom-accordion-col">
-        <Card>
+        <Card className="shadow p-3 mb-5">
           <Card.Header>{info.name}</Card.Header>
-          {gameRuleDescSeperater(info.text)}
+          <Card.Body>{gameRuleDescSeperater(info.text)}</Card.Body>
         </Card>
       </Col>
     ));
