@@ -28,6 +28,18 @@ factionsList:
     - http:
         path: list-factions
         method: get
+        cors: true
+        authorizer: aws_iam
+
+factionsPublicList:
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/factions/src/list.main
+  events:
+    - http:
+        path: public-list-factions
+        method: get
 
 factionsDelete:
   # Defines an HTTP API endpoint that calls the main function in delete.js

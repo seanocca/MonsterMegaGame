@@ -28,6 +28,18 @@ augmentsList:
     - http:
         path:  list-augments
         method: get
+        cors: true
+        authorizer: aws_iam
+
+augmentsPublicList:
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/augment/src/list.main
+  events:
+    - http:
+        path:  public-list-augments
+        method: get
 
 augmentsDelete:
   # Defines an HTTP API endpoint that calls the main function in list.js
