@@ -1,3 +1,14 @@
+@media screen and (max-width: 995px){
+  .navbar-nav {
+    font-size: 1rem !important;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0rem !important;
+    font-size: 1rem !important;
+  }
+}
+
 .custom-toggler > span{
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,193,7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
@@ -15,10 +26,13 @@
 .text-color {
   color: #ffc107 !important;
   font-weight: 600 !important;
-  font-size: 1.25rem !important;
   text-decoration: none !important;
 }
 
 .img-padding {
   margin-right: 5px !important;
+}
+
+.nav-link {
+  font-size: 1.5rem;
 }

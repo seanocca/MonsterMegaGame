@@ -25,7 +25,7 @@ function gameRuleDetails(gamerules) {
   function gameRuleGamemodeBuilder(type) {
     return type.map((info, y) => (
       <Col key={info.id} xs={12} md={6} lg={4} className="custom-accordion-col">
-        <Card className="shadow p-3 mb-5">
+        <Card>
           <Card.Header>{info.name}</Card.Header>
           <Card.Body>{gameRuleDescSeperater(info.text)}</Card.Body>
         </Card>
@@ -36,7 +36,11 @@ function gameRuleDetails(gamerules) {
   return gamerules.map((data, i) => (
     <Card key={data.id} md={{ span: 10, offset: 2 }}>
       <Accordion.Toggle as={Card.Header} eventKey={i}>
-        {data.name}
+        <Row>
+          <Col md={12} xs={12} className="m-auto">
+            <h1 className="h1-adjust">{data.name}</h1>
+          </Col>
+        </Row>
       </Accordion.Toggle>
       <Accordion.Collapse eventKey={i}>
         <Card>

@@ -1,9 +1,10 @@
 /* eslint-disable react/prefer-stateless-function */
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ReUsableAccordion from './ReUsable/AccordionCard';
 
+import './Text.css';
 
 const mapStateToProps = state => ({
   beasts: state.beasts,
@@ -12,7 +13,14 @@ const mapStateToProps = state => ({
 
 class BestiaryAccordion extends Component {
   render() {
-    return ReUsableAccordion('Bestiary', this.props.beasts);
+    return (
+      <div>
+        <h1 className="text-center custom-title">BESTIARY</h1>
+        {ReUsableAccordion('Bestiary', this.props.beasts)}
+        <h1 className="text-center custom-title">AUGMENTS</h1>
+        {ReUsableAccordion('Augments', this.props.augments)}
+      </div>
+    );
   }
 }
 

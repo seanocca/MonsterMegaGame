@@ -29,11 +29,21 @@ function bestiaryBuilder(beasts) {
     ));
   }
 
-  function factionAccordion(beasts) {
+  function beastAccordion(beasts) {
     return beasts.map((beasts, i) => (
       <Card key={beasts.faction}>
         <Accordion.Toggle as={Card.Header} eventKey={i}>
-          {beasts.faction}
+          <Row>
+            <Col md={3} xs={3}>
+              <img src={beasts.logo} alt={beasts.name} className="inline-logos" />
+            </Col>
+            <Col md={6} xs={6} className="m-auto">
+              <h1 className="h1-adjust">{beasts.faction}</h1>
+            </Col>
+            <Col md={3} xs={3}>
+              <img src={beasts.logo} alt={beasts.name} className="inline-logos" />
+            </Col>
+          </Row>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={i}>
           <Card>
@@ -46,12 +56,7 @@ function bestiaryBuilder(beasts) {
     ));
   }
 
-  return (
-    <div>
-      <h1 className="text-center">BESTIARY</h1>
-      {factionAccordion(beasts)}
-    </div>
-  );
+  return beastAccordion(beasts);
 }
 
 export default { bestiaryBuilder };

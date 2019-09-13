@@ -5,6 +5,7 @@ import { Accordion } from 'react-bootstrap';
 import GameRules from './GameRulesBuilder';
 import Factions from './FactionBuilder';
 import Bestiary from './BestiaryBuilder';
+import Augments from './AugmentBuilder';
 
 import './ReUsableContent.css';
 
@@ -17,6 +18,9 @@ function checkPage(page, data) {
   }
   if (page === 'Bestiary') {
     return Bestiary.bestiaryBuilder(data);
+  }
+  if (page === 'Augments') {
+    return Augments.augmentsBuilder(data);
   }
   return <div />;
 }

@@ -3,10 +3,10 @@ import GatBanner from '../../images/banners/gatekeepers.png';
 import MecBanner from '../../images/banners/mechanica.png';
 import VoiBanner from '../../images/banners/voidborn.png';
 
-import BioLogo from '../../images/banners/biochrondysLogo.png';
-import GatLogo from '../../images/banners/gatekeepersLogo.png';
-import MecLogo from '../../images/banners/mechanicaLogo.png';
-import VoiLogo from '../../images/banners/voidbornLogo.png';
+import BioLogo from '../../images/logos/biochrondys.png';
+import GatLogo from '../../images/logos/gatekeepers.png';
+import MecLogo from '../../images/logos/mechanica.png';
+import VoiLogo from '../../images/logos/voidborn.png';
 
 
 export default [
@@ -20,7 +20,7 @@ export default [
     desc: [
       {
         id: 'bio1',
-        line: '“We are working towards a sustainable future by analysing genomes of Australian plants and animals and improving agricultural and industrial processes. We are looking into real-world problems associated with food security, energy, health and the environment.”'
+        line: '“We are working towards a sustainable future by analysing genomes of Australian plants and animals and improving agricultural and industrial processes. We are looking into real-world problems associated with food security, energy, health and the environment.”',
       },
       {
         id: 'bio2',
