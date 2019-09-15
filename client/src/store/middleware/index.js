@@ -21,9 +21,11 @@ export const processUserAuth = ({ getState, dispatch }) => next => async (action
 const factionData = async (getState, dispatch, type) => {
   const currentTime = Math.round(Date.now() / 1000);
   const staleTime = getState().isDownload[`${type}Data`];
+  const whenIsPublic = (getState().isAuthenticated) ? '' : 'public-';
+
   if (staleTime < currentTime) {
     dispatch({ type: IS_STALE, payload: { [`${type}Data`]: Infinity } });
-    await API.get('AWS-HMG-URL', `/list-${type}s`)
+    await API.get('AWS-HMG-URL', `/${whenIsPublic}list-${type}s`)
       .then((response) => {
         dispatch({ type: `download_${type}`, payload: response });
         localStorage.setItem(`${type}sData`, JSON.stringify(response));
@@ -76,11 +78,11 @@ const beastData = async (getState, dispatch, type) => {
 
 export const generalDataDownloads = ({ getState, dispatch }) => next => async (action) => {
   if (DOWNLOAD_FACTIONS === action.type) {
-    factionData(getState, dispatch, action.type);
+    if (!getState().isAuthenticating) factionData(getState, dispatch, action.type);
     return true;
   }
   if (DOWNLOAD_BEASTS === action.type) {
-    beastData(getState, dispatch, action.type);
+    if (!getState().isAuthenticating) beastData(getState, dispatch, action.type);
     return true;
   }
   return next(action);
