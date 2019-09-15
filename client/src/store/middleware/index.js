@@ -4,6 +4,7 @@ import {
   DOWNLOAD_FACTIONS, DOWNLOAD_BEASTS,
   GET_USER, SET_USER, PROCESS_USER,
   IS_STALE, STALE_TIME,
+  DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW,
 } from '../constants/action-types';
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
@@ -18,7 +19,7 @@ export const processUserAuth = ({ getState, dispatch }) => next => async (action
   return next(action);
 };
 
-const factionData = async (getState, dispatch, type) => {
+const genericData = async (getState, dispatch, type) => {
   const currentTime = Math.round(Date.now() / 1000);
   const staleTime = getState().isDownload[`${type}Data`];
   const whenIsPublic = (getState().isAuthenticated) ? '' : 'public-';
@@ -27,6 +28,7 @@ const factionData = async (getState, dispatch, type) => {
     dispatch({ type: IS_STALE, payload: { [`${type}Data`]: Infinity } });
     await API.get('AWS-HMG-URL', `/${whenIsPublic}list-${type}s`)
       .then((response) => {
+        window[type] = response;
         dispatch({ type: `download_${type}`, payload: response });
         localStorage.setItem(`${type}sData`, JSON.stringify(response));
       })
@@ -48,9 +50,11 @@ const existAlready = (nextFaction, rebuildArray) => {
 const beastData = async (getState, dispatch, type) => {
   const currentTime = Math.round(Date.now() / 1000);
   const staleTime = getState().isDownload[`${type}Data`];
+  const whenIsPublic = (getState().isAuthenticated) ? '' : 'public-';
+
   if (staleTime < currentTime) {
     dispatch({ type: IS_STALE, payload: { [`${type}Data`]: Infinity } });
-    await API.get('AWS-HMG-URL', `/list-${type}s`)
+    await API.get('AWS-HMG-URL', `/${whenIsPublic}list-${type}s`)
       .then((response) => {
         const buildData = [];
         let existingFaction = -1;
@@ -78,7 +82,15 @@ const beastData = async (getState, dispatch, type) => {
 
 export const generalDataDownloads = ({ getState, dispatch }) => next => async (action) => {
   if (DOWNLOAD_FACTIONS === action.type) {
-    if (!getState().isAuthenticating) factionData(getState, dispatch, action.type);
+    if (!getState().isAuthenticating) genericData(getState, dispatch, action.type);
+    return true;
+  }
+  if (DOWNLOAD_RIFT === action.type) {
+    if (!getState().isAuthenticating) genericData(getState, dispatch, action.type);
+    return true;
+  }
+  if (DOWNLOAD_OVERVIEW === action.type) {
+    if (!getState().isAuthenticating) genericData(getState, dispatch, action.type);
     return true;
   }
   if (DOWNLOAD_BEASTS === action.type) {
