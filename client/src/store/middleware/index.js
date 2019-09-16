@@ -23,7 +23,6 @@ const genericData = async (getState, dispatch, type) => {
   const currentTime = Math.round(Date.now() / 1000);
   const staleTime = getState().isDownload[`${type}Data`];
   const whenIsPublic = (getState().isAuthenticated) ? '' : 'public-';
-
   if (staleTime < currentTime) {
     dispatch({ type: IS_STALE, payload: { [`${type}Data`]: Infinity } });
     await API.get('AWS-HMG-URL', `/${whenIsPublic}list-${type}s`)

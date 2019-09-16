@@ -28,8 +28,8 @@ const initialState = {
     factionData: localStorage.getItem('factionsRecheck') || 0,
     beastData: localStorage.getItem('beastsRecheck') || 0,
     augmentData: localStorage.getItem('augmentsRecheck') || 0,
-    overviewData: localStorage.getItem('overviewRecheck') || 0,
-    riftData: localStorage.getItem('riftRecheck') || 0,
+    overviewData: localStorage.getItem('overviewsRecheck') || 0,
+    riftData: localStorage.getItem('riftsRecheck') || 0,
     gameruleData: localStorage.getItem('gamerulesRecheck') || 0,
   },
   user: JSON.parse(localStorage.getItem('user')),
@@ -45,6 +45,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   if (IS_STALE === action.type) {
+    console.log('[REDUX] Update Stale time: ', action.payload);
     return Object.assign({}, state, {
       isDownload: {
         ...state.isDownload,
