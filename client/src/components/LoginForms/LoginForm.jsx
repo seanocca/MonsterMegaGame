@@ -6,6 +6,8 @@ import { Auth } from 'aws-amplify';
 import { userHasAuthenticated, isAuthenticating, getUser } from '../../store/actions';
 import LoaderButton from './LoaderButton';
 
+import './Login.css';
+
 const seedData = {
   logInEmail: '',
   logInPassword: '',
@@ -52,7 +54,7 @@ const LoginForm = ({
   return (
     <Form onSubmit={handleLogInSubmit}>
       <Form.Group controlId="logInEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>Email Address</Form.Label>
         <Form.Control
           autoFocus
           type="email"
