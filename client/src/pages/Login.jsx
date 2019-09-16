@@ -18,7 +18,7 @@ const Login = ({ user, unConfirmedUser }) => {
   return (
     <Container className="custom-container" fluid="false">
       <Row noGutters="false">
-        <Col md={{ span: 6, offset: 3 }} xs={12} className="custom-tab">
+        <Col md={{ span: 4, offset: 4 }} xs={12} className="custom-tab">
           {(unConfirmedUser === null && user === null)
             ? (
               <Fragment>
