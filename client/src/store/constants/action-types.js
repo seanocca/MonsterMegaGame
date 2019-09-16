@@ -16,10 +16,20 @@ export const PROCESS_DOWNLOAD_BEASTS = 'download_beast';
 export const CREATE_BEAST = 'CREATE_BEAST';
 export const EDIT_BEAST = 'EDIT_BEAST';
 // Augments
-export const DOWNLOAD_AUGMENTS = 'DOWNLOAD_AUGMENTS';
-export const PROCESS_DOWNLOAD_AUGMENTS = 'DOWNLOAD_AUGMENTS';
+export const DOWNLOAD_AUGMENTS = 'augments';
+export const PROCESS_DOWNLOAD_AUGMENTS = 'download_augments';
 export const CREATE_AUGMENT = 'CREATE_AUGMENT';
 export const EDIT_AUGMENT = 'EDIT_AUGMENT';
+// Rift
+export const DOWNLOAD_RIFT = 'rift';
+export const PROCESS_DOWNLOAD_RIFT = 'download_rift';
+export const CREATE_RIFT = 'CREATE_RIFT';
+export const EDIT_RIFT = 'EDIT_RIFT';
+// Overview
+export const DOWNLOAD_OVERVIEW = 'overview';
+export const PROCESS_DOWNLOAD_OVERVIEW = 'download_overview';
+export const CREATE_OVERVIEW = 'CREATE_OVERVIEW';
+export const EDIT_OVERVIEW = 'EDIT_OVERVIEW';
 
 // General
 export const IS_STALE = 'IS_STALE';

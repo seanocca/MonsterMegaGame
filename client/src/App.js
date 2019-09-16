@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import { Auth } from 'aws-amplify';
 import {
   Route,
@@ -32,9 +32,12 @@ import UsersDashboard from './components/Dashboard/UsersDashboard';
 import NotFound from './pages/NotFound';
 import LoadData from './pages/LoadData';
 
-import { userHasAuthenticated, getUser } from './store/actions';
+import {
+  userHasAuthenticated, getUser, loadRift, loadOverview, loadFactions, loadBeasts,
+} from './store/actions';
 
 const App = ({ userHasAuthenticated, getUser }) => {
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.isAuthenticated);
   console.log('isAuthenticated', isAuthenticated);
 
@@ -50,7 +53,12 @@ const App = ({ userHasAuthenticated, getUser }) => {
           console.log('Error testing for current session', err);
         }
       });
-  }, [userHasAuthenticated, getUser]);
+  }, [userHasAuthenticated, getUser, dispatch]);
+
+  dispatch(loadRift());
+  dispatch(loadOverview());
+  dispatch(loadFactions());
+  dispatch(loadBeasts());
 
   const childProps = {
     isAuthenticated,

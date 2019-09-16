@@ -25,6 +25,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs8.10
+  versionFunctions: false
   stage: hmg
   region: ap-southeast-2
 

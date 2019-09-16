@@ -7,6 +7,8 @@ import {
   CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
   CREATE_AUGMENT, EDIT_AUGMENT,
   CREATE_BEAST, EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
+  CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
+  CREATE_OVERVIEW, EDIT_OVERVIEW, PROCESS_DOWNLOAD_OVERVIEW,
   IS_STALE,
 } from '../constants/action-types';
 
@@ -26,8 +28,8 @@ const initialState = {
     factionData: localStorage.getItem('factionsRecheck') || 0,
     beastData: localStorage.getItem('beastsRecheck') || 0,
     augmentData: localStorage.getItem('augmentsRecheck') || 0,
-    overviewData: localStorage.getItem('overviewRecheck') || 0,
-    riftData: localStorage.getItem('riftRecheck') || 0,
+    overviewData: localStorage.getItem('overviewsRecheck') || 0,
+    riftData: localStorage.getItem('riftsRecheck') || 0,
     gameruleData: localStorage.getItem('gamerulesRecheck') || 0,
   },
   user: JSON.parse(localStorage.getItem('user')),
@@ -43,6 +45,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   if (IS_STALE === action.type) {
+    console.log('[REDUX] Update Stale time: ', action.payload);
     return Object.assign({}, state, {
       isDownload: {
         ...state.isDownload,
@@ -239,6 +242,95 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
+
+  // Rift
+  if (PROCESS_DOWNLOAD_RIFT === action.type) {
+    const item = action.payload.pop();
+    console.log('[REDUX] Download Rift: ', item);
+    return Object.assign({}, state, {
+      rift: item,
+    });
+  }
+  if (CREATE_RIFT === action.type) {
+    console.log('[REDUX] Create Rift: ', action.payload);
+    return Object.assign({}, state);
+    // return Object.assign({}, state, {
+    //   factions: state.factions.concat(action.payload),
+    //   beasts: state.beasts.concat({
+    //     faction: action.payload.name,
+    //     beasts: [],
+    //   }),
+    //   augments: state.augments.concat({
+    //     faction: action.payload.name,
+    //     beasts: [],
+    //   }),
+    // });
+  }
+  if (EDIT_RIFT === action.type) {
+    // const {
+    //   name, leader, faculty, desc,
+    // } = action.payload;
+    console.log('[REDUX] Edit Rift: ', action.payload);
+    return Object.assign({}, state);
+    // return Object.assign({}, state, {
+    //   factions: state.factions.map((faction) => {
+    //     if (faction.id === action.payload.id) {
+    //       return Object.assign({}, faction, {
+    //         name,
+    //         leader,
+    //         faculty,
+    //         desc,
+    //       });
+    //     }
+    //     return faction;
+    //   }),
+    // });
+  }
+
+  // Overview
+  if (PROCESS_DOWNLOAD_OVERVIEW === action.type) {
+    const item = action.payload.pop();
+    console.log('[REDUX] Download Overview: ', item);
+    return Object.assign({}, state, {
+      overview: item,
+    });
+  }
+  if (CREATE_OVERVIEW === action.type) {
+    console.log('[REDUX] Create Overview: ', action.payload);
+    return Object.assign({}, state);
+    // return Object.assign({}, state, {
+    //   factions: state.factions.concat(action.payload),
+    //   beasts: state.beasts.concat({
+    //     faction: action.payload.name,
+    //     beasts: [],
+    //   }),
+    //   augments: state.augments.concat({
+    //     faction: action.payload.name,
+    //     beasts: [],
+    //   }),
+    // });
+  }
+  if (EDIT_OVERVIEW === action.type) {
+    // const {
+    //   name, leader, faculty, desc,
+    // } = action.payload;
+    console.log('[REDUX] Edit Overview: ', action.payload);
+    return Object.assign({}, state);
+    // return Object.assign({}, state, {
+    //   factions: state.factions.map((faction) => {
+    //     if (faction.id === action.payload.id) {
+    //       return Object.assign({}, faction, {
+    //         name,
+    //         leader,
+    //         faculty,
+    //         desc,
+    //       });
+    //     }
+    //     return faction;
+    //   }),
+    // });
+  }
+
   console.log('[REDUX] Uncaught Action: ', action);
   return state;
 };
