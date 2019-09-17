@@ -13,8 +13,8 @@ function gameRuleDetails(gamerules) {
   }
 
   function gameRuleDescSeperater(desc) {
-    return desc.map((info, j) => (
-      <Col md={12}>
+    return desc.map(info => (
+      <Col key={info.id} md={12}>
         <Card.Text>
           {info.line}
         </Card.Text>
