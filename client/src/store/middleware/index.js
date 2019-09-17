@@ -4,7 +4,7 @@ import {
   DOWNLOAD_FACTIONS, DOWNLOAD_BEASTS,
   GET_USER, SET_USER, PROCESS_USER,
   IS_STALE, STALE_TIME,
-  DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW,
+  DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE,
 } from '../constants/action-types';
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
@@ -23,6 +23,7 @@ const genericData = async (getState, dispatch, type) => {
   const currentTime = Math.round(Date.now() / 1000);
   const staleTime = getState().isDownload[`${type}Data`];
   const whenIsPublic = (getState().isAuthenticated) ? '' : 'public-';
+  if (type === 'gameRule') console.log('GAME DA RULE!', getState().isDownload);
   if (staleTime < currentTime) {
     dispatch({ type: IS_STALE, payload: { [`${type}Data`]: Infinity } });
     await API.get('AWS-HMG-URL', `/${whenIsPublic}list-${type}s`)
@@ -94,6 +95,10 @@ export const generalDataDownloads = ({ getState, dispatch }) => next => async (a
   }
   if (DOWNLOAD_BEASTS === action.type) {
     if (!getState().isAuthenticating) beastData(getState, dispatch, action.type);
+    return true;
+  }
+  if (DOWNLOAD_GAMERULE === action.type) {
+    if (!getState().isAuthenticating) genericData(getState, dispatch, action.type);
     return true;
   }
   return next(action);

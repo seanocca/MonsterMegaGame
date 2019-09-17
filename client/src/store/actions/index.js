@@ -9,6 +9,7 @@ import {
   DOWNLOAD_AUGMENTS, CREATE_AUGMENT, EDIT_AUGMENT,
   DOWNLOAD_RIFT, CREATE_RIFT, EDIT_RIFT,
   DOWNLOAD_OVERVIEW, CREATE_OVERVIEW, EDIT_OVERVIEW,
+  DOWNLOAD_GAMERULE, CREATE_GAMERULE, EDIT_GAMERULE,
 } from '../constants/action-types';
 
 export const userHasAuthenticated = payload => ({ type: USER_AUTHENTICATION, payload });
@@ -36,3 +37,7 @@ export const editRift = payload => ({ type: EDIT_RIFT, payload });
 export const loadOverview = payload => ({ type: DOWNLOAD_OVERVIEW, payload });
 export const createOverview = payload => ({ type: CREATE_OVERVIEW, payload });
 export const editOverview = payload => ({ type: EDIT_OVERVIEW, payload });
+// Game Rules
+export const loadGameRules = payload => ({ type: DOWNLOAD_GAMERULE, payload });
+export const createGameRules = payload => ({ type: CREATE_GAMERULE, payload });
+export const editGameRules = payload => ({ type: EDIT_GAMERULE, payload });

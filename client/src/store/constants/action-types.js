@@ -30,6 +30,11 @@ export const DOWNLOAD_OVERVIEW = 'overview';
 export const PROCESS_DOWNLOAD_OVERVIEW = 'download_overview';
 export const CREATE_OVERVIEW = 'CREATE_OVERVIEW';
 export const EDIT_OVERVIEW = 'EDIT_OVERVIEW';
+// Game Rules
+export const DOWNLOAD_GAMERULE = 'gameRule';
+export const PROCESS_DOWNLOAD_GAMERULE = 'download_gameRule';
+export const CREATE_GAMERULE = 'CREATE_GAMERULES';
+export const EDIT_GAMERULE = 'EDIT_GAMERULES';
 
 // General
 export const IS_STALE = 'IS_STALE';

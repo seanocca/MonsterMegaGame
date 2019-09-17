@@ -9,6 +9,7 @@ import {
   CREATE_BEAST, EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
   CREATE_OVERVIEW, EDIT_OVERVIEW, PROCESS_DOWNLOAD_OVERVIEW,
+  CREATE_GAMERULE, EDIT_GAMERULE, PROCESS_DOWNLOAD_GAMERULE,
   IS_STALE,
 } from '../constants/action-types';
 
@@ -30,7 +31,7 @@ const initialState = {
     augmentData: localStorage.getItem('augmentsRecheck') || 0,
     overviewData: localStorage.getItem('overviewsRecheck') || 0,
     riftData: localStorage.getItem('riftsRecheck') || 0,
-    gameruleData: localStorage.getItem('gamerulesRecheck') || 0,
+    gameRuleData: localStorage.getItem('gameRulesRecheck') || 0,
   },
   user: JSON.parse(localStorage.getItem('user')),
   unConfirmedUser: JSON.parse(localStorage.getItem('unConfirmedUser')),
@@ -311,6 +312,49 @@ const rootReducer = (state = initialState, action) => {
     // });
   }
   if (EDIT_OVERVIEW === action.type) {
+    // const {
+    //   name, leader, faculty, desc,
+    // } = action.payload;
+    console.log('[REDUX] Edit Overview: ', action.payload);
+    return Object.assign({}, state);
+    // return Object.assign({}, state, {
+    //   factions: state.factions.map((faction) => {
+    //     if (faction.id === action.payload.id) {
+    //       return Object.assign({}, faction, {
+    //         name,
+    //         leader,
+    //         faculty,
+    //         desc,
+    //       });
+    //     }
+    //     return faction;
+    //   }),
+    // });
+  }
+
+  // Game Rules
+  if (PROCESS_DOWNLOAD_GAMERULE === action.type) {
+    console.log('[REDUX] Download Overview: ', action.payload);
+    return Object.assign({}, state, {
+      overview: action.payload,
+    });
+  }
+  if (CREATE_GAMERULE === action.type) {
+    console.log('[REDUX] Create Overview: ', action.payload);
+    return Object.assign({}, state);
+    // return Object.assign({}, state, {
+    //   factions: state.factions.concat(action.payload),
+    //   beasts: state.beasts.concat({
+    //     faction: action.payload.name,
+    //     beasts: [],
+    //   }),
+    //   augments: state.augments.concat({
+    //     faction: action.payload.name,
+    //     beasts: [],
+    //   }),
+    // });
+  }
+  if (EDIT_GAMERULE === action.type) {
     // const {
     //   name, leader, faculty, desc,
     // } = action.payload;

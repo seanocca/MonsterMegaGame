@@ -33,7 +33,8 @@ import NotFound from './pages/NotFound';
 import LoadData from './pages/LoadData';
 
 import {
-  userHasAuthenticated, getUser, loadRift, loadOverview, loadFactions, loadBeasts,
+  userHasAuthenticated, getUser, loadRift, loadOverview, loadFactions,
+  loadBeasts, loadGameRules,
 } from './store/actions';
 
 const App = ({ userHasAuthenticated, getUser }) => {
@@ -59,6 +60,7 @@ const App = ({ userHasAuthenticated, getUser }) => {
   dispatch(loadOverview());
   dispatch(loadFactions());
   dispatch(loadBeasts());
+  dispatch(loadGameRules());
 
   const childProps = {
     isAuthenticated,
