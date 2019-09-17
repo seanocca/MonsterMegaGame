@@ -160,7 +160,7 @@ const Account = () => {
     const rules = await listGameRules();
     rules.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-gamerule', { body: { id } })
-        .then(response => console.log('Deleted A Beast!', response))
+        .then(response => console.log('Deleted A Rule!', response))
         .catch(({ response }) => {
           console.log(`Error(${response.status}): ${response.data.message}`);
         });
