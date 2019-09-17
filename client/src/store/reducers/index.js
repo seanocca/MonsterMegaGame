@@ -5,7 +5,7 @@ import {
   PROCESS_USER,
   IS_LOADING,
   CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
-  CREATE_AUGMENT, EDIT_AUGMENT,
+  CREATE_AUGMENT, EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
   CREATE_BEAST, EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
   CREATE_OVERVIEW, EDIT_OVERVIEW, PROCESS_DOWNLOAD_OVERVIEW,
@@ -129,6 +129,12 @@ const rootReducer = (state = initialState, action) => {
   }
 
   // Augments
+  if (PROCESS_DOWNLOAD_AUGMENTS === action.type) {
+    console.log('[REDUX] Download Augments: ', action.payload);
+    return Object.assign({}, state, {
+      augments: action.payload,
+    });
+  }
   if (CREATE_AUGMENT === action.type) {
     console.log('[REDUX] Create augment: ', action.payload);
     return Object.assign({}, state, {

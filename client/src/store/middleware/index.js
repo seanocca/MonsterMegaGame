@@ -4,7 +4,7 @@ import {
   DOWNLOAD_FACTIONS, DOWNLOAD_BEASTS,
   GET_USER, SET_USER, PROCESS_USER,
   IS_STALE, STALE_TIME,
-  DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE,
+  DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE, DOWNLOAD_AUGMENTS,
 } from '../constants/action-types';
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
@@ -23,12 +23,10 @@ const genericData = async (getState, dispatch, type) => {
   const currentTime = Math.round(Date.now() / 1000);
   const staleTime = getState().isDownload[`${type}Data`];
   const whenIsPublic = (getState().isAuthenticated) ? '' : 'public-';
-  if (type === 'gameRule') console.log('GAME DA RULE!', getState().isDownload);
   if (staleTime < currentTime) {
     dispatch({ type: IS_STALE, payload: { [`${type}Data`]: Infinity } });
     await API.get('AWS-HMG-URL', `/${whenIsPublic}list-${type}s`)
       .then((response) => {
-        window[type] = response;
         dispatch({ type: `download_${type}`, payload: response });
         localStorage.setItem(`${type}sData`, JSON.stringify(response));
       })
@@ -40,14 +38,14 @@ const genericData = async (getState, dispatch, type) => {
   }
 };
 
-const existAlready = (nextFaction, rebuildArray) => {
+const factionExistAlready = (nextFaction, rebuildArray) => {
   for (let rebuildIndex = 0; rebuildIndex < rebuildArray.length; rebuildIndex += 1) {
     if (rebuildArray[rebuildIndex].faction === nextFaction) return rebuildIndex;
   }
   return -1;
 };
 
-const beastData = async (getState, dispatch, type) => {
+const complexData = async (getState, dispatch, type) => {
   const currentTime = Math.round(Date.now() / 1000);
   const staleTime = getState().isDownload[`${type}Data`];
   const whenIsPublic = (getState().isAuthenticated) ? '' : 'public-';
@@ -59,14 +57,14 @@ const beastData = async (getState, dispatch, type) => {
         const buildData = [];
         let existingFaction = -1;
         response.forEach(((item) => {
-          const { factionName, ...beasts } = item;
-          existingFaction = existAlready(factionName, buildData);
+          const { factionName, ...lineItem } = item;
+          existingFaction = factionExistAlready(factionName, buildData);
           if (existingFaction !== -1) {
             // Just add to the existing array
-            buildData[existingFaction].beasts.push({ ...beasts });
+            buildData[existingFaction][`${type}s`].push({ ...lineItem });
           } else {
             // Add a new elelment
-            buildData.push({ faction: factionName, beasts: [{ ...beasts }] });
+            buildData.push({ faction: factionName, [`${type}s`]: [{ ...lineItem }] });
           }
         }));
         dispatch({ type: `download_${type}`, payload: buildData });
@@ -94,7 +92,11 @@ export const generalDataDownloads = ({ getState, dispatch }) => next => async (a
     return true;
   }
   if (DOWNLOAD_BEASTS === action.type) {
-    if (!getState().isAuthenticating) beastData(getState, dispatch, action.type);
+    if (!getState().isAuthenticating) complexData(getState, dispatch, action.type);
+    return true;
+  }
+  if (DOWNLOAD_AUGMENTS === action.type) {
+    if (!getState().isAuthenticating) complexData(getState, dispatch, action.type);
     return true;
   }
   if (DOWNLOAD_GAMERULE === action.type) {

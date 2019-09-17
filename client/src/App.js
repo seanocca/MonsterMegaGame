@@ -34,7 +34,7 @@ import LoadData from './pages/LoadData';
 
 import {
   userHasAuthenticated, getUser, loadRift, loadOverview, loadFactions,
-  loadBeasts, loadGameRules,
+  loadBeasts, loadGameRules, loadAugments,
 } from './store/actions';
 
 const App = ({ userHasAuthenticated, getUser }) => {
@@ -61,6 +61,7 @@ const App = ({ userHasAuthenticated, getUser }) => {
   dispatch(loadFactions());
   dispatch(loadBeasts());
   dispatch(loadGameRules());
+  dispatch(loadAugments());
 
   const childProps = {
     isAuthenticated,

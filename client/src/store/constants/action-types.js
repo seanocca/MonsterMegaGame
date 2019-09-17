@@ -16,8 +16,8 @@ export const PROCESS_DOWNLOAD_BEASTS = 'download_beast';
 export const CREATE_BEAST = 'CREATE_BEAST';
 export const EDIT_BEAST = 'EDIT_BEAST';
 // Augments
-export const DOWNLOAD_AUGMENTS = 'augments';
-export const PROCESS_DOWNLOAD_AUGMENTS = 'download_augments';
+export const DOWNLOAD_AUGMENTS = 'augment';
+export const PROCESS_DOWNLOAD_AUGMENTS = 'download_augment';
 export const CREATE_AUGMENT = 'CREATE_AUGMENT';
 export const EDIT_AUGMENT = 'EDIT_AUGMENT';
 // Rift
