@@ -60,7 +60,7 @@ const App = ({ userHasAuthenticated, getUser }) => {
   dispatch(loadOverview());
   dispatch(loadFactions());
   dispatch(loadBeasts());
-  dispatch(loadGameRules());
+  // dispatch(loadGameRules());
   dispatch(loadAugments());
 
   const childProps = {
