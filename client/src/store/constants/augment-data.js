@@ -11,9 +11,15 @@ import DecisiveActionImg from '../../images/augments/DecisiveAction.png';
 import FullAssaultImg from '../../images/augments/FullAssault.png';
 import MimicManoeuvreImg from '../../images/augments/MimicManoeuvre.png';
 
+import BiochrondysLogo from '../../images/logos/biochrondys.png';
+import GatekeepersLogo from '../../images/logos/gatekeepers.png';
+import MechanicaLogo from '../../images/logos/mechanica.png';
+import VoidbornLogo from '../../images/logos/voidborn.png';
+
 export default [
   {
     faction: 'Biochrondys',
+    logo: BiochrondysLogo,
     augments: [
       {
         id: 'cb979420-c794-11e9-aa8c-2a2ae2dbcce4',
@@ -43,6 +49,7 @@ export default [
   },
   {
     faction: 'Gatekeepers',
+    logo: GatekeepersLogo,
     augments: [
       {
         id: '244b8fae-c795-11e9-aa8c-2a2ae2dbcce4',
@@ -72,6 +79,7 @@ export default [
   },
   {
     faction: 'Mechanica',
+    logo: MechanicaLogo,
     augments: [
       {
         id: 'b660b708-c794-11e9-aa8c-2a2ae2dbcce4',
@@ -101,6 +109,7 @@ export default [
   },
   {
     faction: 'Voidborn',
+    logo: VoidbornLogo,
     augments: [
       {
         id: 'e1dd3dac-c794-11e9-aa8c-2a2ae2dbcce4',

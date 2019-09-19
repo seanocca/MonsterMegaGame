@@ -11,10 +11,15 @@ import AxialBeastImg from '../../images/beasts/AxialBeast.png';
 import NodeHorrorImg from '../../images/beasts/NodeHorror.png';
 import NexusHivemindImg from '../../images/beasts/NexusHivemind.png';
 
+import BiochrondysLogo from '../../images/logos/biochrondys.png';
+import GatekeepersLogo from '../../images/logos/gatekeepers.png';
+import MechanicaLogo from '../../images/logos/mechanica.png';
+import VoidbornLogo from '../../images/logos/voidborn.png';
 
 export default [
   {
     faction: 'Biochrondys',
+    logo: BiochrondysLogo,
     beasts: [
       {
         id: '33525fde-c793-11e9-aa8c-2a2ae2dbcce4',
@@ -65,6 +70,7 @@ export default [
   },
   {
     faction: 'Gatekeepers',
+    logo: GatekeepersLogo,
     beasts: [
       {
         id: '529d4e12-c793-11e9-aa8c-2a2ae2dbcce4',
@@ -116,6 +122,7 @@ export default [
   },
   {
     faction: 'Mechanica',
+    logo: MechanicaLogo,
     beasts: [
       {
         id: '659051d6-c793-11e9-aa8c-2a2ae2dbcce4',
@@ -166,6 +173,7 @@ export default [
   },
   {
     faction: 'Voidborn',
+    logo: VoidbornLogo,
     beasts: [
       {
         id: '8044570c-c793-11e9-aa8c-2a2ae2dbcce4',

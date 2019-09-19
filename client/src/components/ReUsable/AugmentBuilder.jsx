@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  Accordion, Card, Col, Row,
+  Accordion, Card, Col, Row, Image,
 } from 'react-bootstrap';
 
 function augmentsBuilder(augments) {
@@ -15,7 +15,7 @@ function augmentsBuilder(augments) {
           <Card.Body className="align-text ">
             <i>{augment.type}</i>
             <br />
-            <img src={augment.image} width="100" height="150" alt={augment.name} />
+            <Image src={augment.image} fluid="false" alt={augment.name} />
             <Card.Body>
               <p>{augment.action}</p>
               <p>{augment.desc}</p>
@@ -32,13 +32,13 @@ function augmentsBuilder(augments) {
         <Accordion.Toggle as={Card.Header} eventKey={i}>
           <Row>
             <Col md={3} xs={3}>
-              <img src={augment.logo} alt={augment.name} className="inline-logos" />
+              <img src={augment.logo} alt={augment.faction} className="inline-logos" />
             </Col>
             <Col md={6} xs={6} className="m-auto">
               <h1 className="h1-adjust">{augment.faction}</h1>
             </Col>
             <Col md={3} xs={3}>
-              <img src={augment.logo} alt={augment.name} className="inline-logos" />
+              <img src={augment.logo} alt={augment.faction} className="inline-logos" />
             </Col>
           </Row>
         </Accordion.Toggle>

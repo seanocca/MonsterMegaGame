@@ -26,6 +26,10 @@
   padding-bottom: 15px;
 }
 
+.custom-accordion-col .row .col-6 {
+  padding: 0 !important;
+}
+
 .custom-accordion .card .card{
   margin: 0 2% !important;
   border: 1px solid #d3d3d3 !important;
@@ -42,7 +46,7 @@
 .custom-accordion .card .card .card{
   margin: 2% 2% !important;
   min-height: 100%;
-  box-shadow: 5px 5px #d3d3d3 !important;
+  filter: drop-shadow(10px 10px 5px #01004d7a);
   border: 1px solid #d3d3d3 !important;
   border-radius: 5px 5px !important;
 }
