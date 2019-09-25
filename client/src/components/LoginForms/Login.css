@@ -1,7 +1,7 @@
 .custom-form {
-  background-color: #ffc107 !important;
+  background-color: #ffc928 !important;
   color: #01004d;
-  font-weight: 600;
+  font-weight: 500;
   filter: drop-shadow(10px 10px 10px #01004d7a);
   border-top-left-radius: 0 !important;
   border: 1px solid  #01004d37 !important;
@@ -22,8 +22,9 @@
 }
 
 .custom-tab .nav-link {
-  background-color: #ffc10737 !important;
-  color: #01004d37 !important;
+  background-color: #ffc10775 !important;
+  color: #01004d !important;
+  font-weight: 700;
   border-color: #01004d37 !important;
   border-bottom: none !important;
 }
