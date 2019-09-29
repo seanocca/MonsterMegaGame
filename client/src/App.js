@@ -17,7 +17,6 @@ import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ResetPassword from './pages/ResetPassword';
-import AdminLogin from './pages/AdminLogin';
 import Account from './pages/Account';
 import Factions from './pages/Factions';
 import Bestiary from './pages/Bestiary';
@@ -60,7 +59,7 @@ const App = ({ userHasAuthenticated, getUser }) => {
   dispatch(loadOverview());
   dispatch(loadFactions());
   dispatch(loadBeasts());
-  // dispatch(loadGameRules());
+  dispatch(loadGameRules());
   dispatch(loadAugments());
 
   const childProps = {
@@ -75,7 +74,6 @@ const App = ({ userHasAuthenticated, getUser }) => {
         <Redirect from="/home" to="/" />
         <UnauthenticatedRoute exact path="/login" component={Login} props={childProps} />
         <UnauthenticatedRoute exact path="/login/reset" component={ResetPassword} props={childProps} />
-        <AuthenticatedRoute exact path="/admin" component={AdminLogin} props={childProps} />
         <AuthenticatedRoute exact path="/account" component={Account} props={childProps} />
         <Route exact path="/factions" component={Factions} />
         <Route exact path="/bestiary" component={Bestiary} />
