@@ -4,19 +4,25 @@ import { Table } from 'react-bootstrap';
 import EditableUserRow from './EditableUserRow/EditableUserRow';
 
 const EditableUserList = (props) => {
-  const users = props.users.map(user => (
-    <EditableUserRow
-      {...user}
-    />
-  ));
+  const users = (props.users)
+    ? props.users.map(user => (
+      <EditableUserRow
+        {...user}
+      />
+    ))
+    : (
+      <tr>
+        <td>Downloading...</td>
+      </tr>
+    );
 
   return (
     <Table>
       <thead>
         <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Edit User</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Edit User</th>
         </tr>
       </thead>
       <tbody>
