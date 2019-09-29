@@ -214,7 +214,7 @@ const rootReducer = (state = initialState, action) => {
       id, type, name, desc, move, damage, maxdmg,
       leap, maxleap, hp, maxhp, speed, maxspeed,
     } = action.payload.beast;
-    console.log('[REDUX] Edit augment: ', action.payload);
+    console.log('[REDUX] Edit Beast: ', action.payload);
     return Object.assign({}, state, {
       beasts: state.beasts.map((factionBeasts) => {
         if (factionBeasts.faction === action.payload.faction) {
@@ -340,13 +340,13 @@ const rootReducer = (state = initialState, action) => {
 
   // Game Rules
   if (PROCESS_DOWNLOAD_GAMERULE === action.type) {
-    console.log('[REDUX] Download Overview: ', action.payload);
+    console.log('[REDUX] Download Gamerule: ', action.payload);
     return Object.assign({}, state, {
-      overview: action.payload,
+      gamerules: action.payload,
     });
   }
   if (CREATE_GAMERULE === action.type) {
-    console.log('[REDUX] Create Overview: ', action.payload);
+    console.log('[REDUX] Create Gamerule: ', action.payload);
     return Object.assign({}, state);
     // return Object.assign({}, state, {
     //   factions: state.factions.concat(action.payload),
@@ -364,7 +364,7 @@ const rootReducer = (state = initialState, action) => {
     // const {
     //   name, leader, faculty, desc,
     // } = action.payload;
-    console.log('[REDUX] Edit Overview: ', action.payload);
+    console.log('[REDUX] Edit Gamerule: ', action.payload);
     return Object.assign({}, state);
     // return Object.assign({}, state, {
     //   factions: state.factions.map((faction) => {
