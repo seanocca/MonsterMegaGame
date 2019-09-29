@@ -39,7 +39,9 @@ import {
 const App = ({ userHasAuthenticated, getUser }) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.isAuthenticated);
-  console.log('isAuthenticated', isAuthenticated);
+  const isAdmin = useSelector(state => ((state.user && state.user.isAdmin)
+    ? state.user.isAdmin
+    : false));
 
   useEffect(() => {
     Auth.currentSession()
@@ -64,6 +66,13 @@ const App = ({ userHasAuthenticated, getUser }) => {
 
   const childProps = {
     isAuthenticated,
+    isAdmin,
+    adminRequired: false,
+  };
+
+  const adminProps = {
+    ...childProps,
+    adminRequired: true,
   };
 
   return (
@@ -79,11 +88,11 @@ const App = ({ userHasAuthenticated, getUser }) => {
         <Route exact path="/bestiary" component={Bestiary} />
         <Route exact path="/lore" component={Lore} />
         <Route exact path="/gamerules" component={GameRules} />
-        <AuthenticatedRoute exact path="/dashboard/users" component={UsersDashboard} props={childProps} />
-        <AuthenticatedRoute exact path="/dashboard/beasts" component={BeastsDashboard} props={childProps} />
-        <AuthenticatedRoute exact path="/dashboard/augments" component={AugmentsDashboard} props={childProps} />
-        <AuthenticatedRoute exact path="/dashboard/factions" component={FactionsDashboard} props={childProps} />
-        <AuthenticatedRoute exact path="/load-data" component={LoadData} props={childProps} />
+        <AuthenticatedRoute exact path="/dashboard/users" component={UsersDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/dashboard/beasts" component={BeastsDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/dashboard/augments" component={AugmentsDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/dashboard/factions" component={FactionsDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/load-data" component={LoadData} props={adminProps} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
