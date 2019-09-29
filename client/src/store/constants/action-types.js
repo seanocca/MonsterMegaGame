@@ -5,6 +5,8 @@ export const IS_LOADING = 'IS_LOADING';
 export const GET_USER = 'GET_USER';
 export const SET_USER = 'SET_USER';
 export const PROCESS_USER = 'PROCESS_USER';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const PROCESS_ALL_USERS = 'PROCESS_ALL_USERS';
 // Factions
 export const DOWNLOAD_FACTIONS = 'faction';
 export const PROCESS_DOWNLOAD_FACTIONS = 'download_faction';
