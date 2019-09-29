@@ -88,6 +88,13 @@ const rootReducer = (state = initialState, action) => {
     });
   }
 
+  if (PROCESS_ALL_USERS === action.type) {
+    console.log('[REDUX] get ALL User: ', action.payload);
+    return Object.assign({}, state, {
+      users: action.payload,
+    });
+  }
+
   // Factions
   if (PROCESS_DOWNLOAD_FACTIONS === action.type) {
     console.log('[REDUX] Download factions: ', action.payload);
