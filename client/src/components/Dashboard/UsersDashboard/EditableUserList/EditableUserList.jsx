@@ -13,9 +13,11 @@ const EditableUserList = (props) => {
   return (
     <Table>
       <thead>
+        <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Edit User</th>
+        </tr>
       </thead>
       <tbody>
         {users}
