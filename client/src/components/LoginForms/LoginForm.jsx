@@ -40,8 +40,6 @@ const LoginForm = ({
         .then(({ username }) => {
           userHasAuthenticated(true);
           getUser({ cognitoID: username });
-
-          history.push('/account');
         });
     } catch (e) {
       // TODO: Use a modal instead of a alert box
