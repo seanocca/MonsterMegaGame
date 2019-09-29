@@ -3,6 +3,7 @@ import {
   IS_AUTHENTICATING,
   SET_USER,
   GET_USER,
+  GET_ALL_USERS,
   IS_LOADING,
   DOWNLOAD_FACTIONS, CREATE_FACTION, EDIT_FACTION,
   DOWNLOAD_BEASTS, CREATE_BEAST, EDIT_BEAST,
@@ -16,6 +17,7 @@ export const userHasAuthenticated = payload => ({ type: USER_AUTHENTICATION, pay
 export const isAuthenticating = payload => ({ type: IS_AUTHENTICATING, payload });
 export const setUser = payload => ({ type: SET_USER, payload });
 export const getUser = payload => ({ type: GET_USER, payload });
+export const getAllUsers = payload => ({ type: GET_ALL_USERS, payload });
 export const setIsLoading = payload => ({ type: IS_LOADING, payload });
 // Factions
 export const loadFactions = payload => ({ type: DOWNLOAD_FACTIONS, payload });
