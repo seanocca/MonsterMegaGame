@@ -4,6 +4,7 @@ import {
   IS_AUTHENTICATING,
   PROCESS_USER,
   IS_LOADING,
+  PROCESS_ALL_USERS,
   CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
   CREATE_AUGMENT, EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
   CREATE_BEAST, EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
@@ -19,7 +20,7 @@ import augments from '../constants/augment-data';
 import overview from '../constants/overview-data';
 import rift from '../constants/rift-data';
 import gamerules from '../constants/game-rule-data';
-import users from '../constants/user-data';
+// import users from '../constants/user-data';
 
 const initialState = {
   isAuthenticated: false,
@@ -41,7 +42,7 @@ const initialState = {
   overview,
   rift,
   gamerules,
-  users,
+  users: undefined,
 };
 
 const rootReducer = (state = initialState, action) => {
