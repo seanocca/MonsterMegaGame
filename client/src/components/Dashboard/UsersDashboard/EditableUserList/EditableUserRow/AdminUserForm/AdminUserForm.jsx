@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Accordion, Form, Button, Col,
-} from 'react-bootstrap';
+import { Form, Button, Col } from 'react-bootstrap';
 import { useFormInput } from '../../../../../../helpers/hooks';
 
 const AdminUserForm = (props) => {
