@@ -2,7 +2,7 @@ import { Auth, API } from 'aws-amplify';
 import {
   USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION,
   DOWNLOAD_FACTIONS, DOWNLOAD_BEASTS,
-  GET_USER, SET_USER, PROCESS_USER,
+  GET_USER, SET_USER, PROCESS_USER, GET_ALL_USERS, PROCESS_ALL_USERS,
   IS_STALE, STALE_TIME,
   DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE, DOWNLOAD_AUGMENTS,
 } from '../constants/action-types';
@@ -136,6 +136,16 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
           console.log(`Error(${response.status}): ${response.data.message}`);
         });
     }
+  }
+
+  if (GET_ALL_USERS === action.type) {
+    // download the data
+    return API.get('AWS-HMG-URL', '/users')
+      .then((response) => {
+        dispatch({ type: PROCESS_ALL_USERS, payload: response });
+      }).catch(({ response }) => {
+        console.log(`Error(${response.status}): ${response.data.message}`);
+      });
   }
 
   return next(action);
