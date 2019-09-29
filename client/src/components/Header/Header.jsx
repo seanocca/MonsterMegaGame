@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
   isAuthenticated: state.isAuthenticated,
   isAuthenticating: state.isAuthenticating,
   firstName: (state.user && state.user.firstName) ? state.user.firstName : '',
+  isAdmin: (state.user && state.user.isAdmin) ? state.user.isAdmin : false,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -30,6 +31,16 @@ class Header extends Component {
     <span className="text-color">Logging in ...</span>
   )
 
+  dashboardButton = () => (this.props.isAdmin
+    ? (
+      <LinkContainer className="text-color" to="/dashboard/users">
+        <NavDropdown.Item>Admin Dashboard</NavDropdown.Item>
+      </LinkContainer>
+    ) : (
+      null
+    )
+  );
+
   userState = () => (this.props.isAuthenticated
     ? (
       <NavDropdown
@@ -40,6 +51,7 @@ class Header extends Component {
         <LinkContainer className="text-color" to="/account">
           <NavDropdown.Item>User Details</NavDropdown.Item>
         </LinkContainer>
+        { this.dashboardButton() }
         <NavDropdown.Divider />
         <NavDropdown.Item className="text-color" onClick={this.handleLogout}>Log Out</NavDropdown.Item>
       </NavDropdown>
