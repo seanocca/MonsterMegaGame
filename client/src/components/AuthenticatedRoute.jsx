@@ -4,8 +4,6 @@ import { Route, Redirect } from 'react-router-dom';
 import NotFound from '../pages/NotFound';
 
 export default ({ component: C, props: cProps, ...rest }) => {
-  console.log('cProps', cProps);
-
   const adminCheck = (props, cProps) => (
     (cProps.isAdmin) ? (
       <C {...props} {...cProps} />
