@@ -7,6 +7,7 @@ const EditableUserList = (props) => {
   const users = (props.users)
     ? props.users.map(user => (
       <EditableUserRow
+        key={user.cognitoID}
         {...user}
       />
     ))
