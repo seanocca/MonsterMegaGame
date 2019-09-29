@@ -43,7 +43,7 @@ const SignUpForm = () => {
         username: formValues.email,
         password: formValues.password,
       });
-      const unConfirmedUser = { ...formValues, cognitoID: newUser.userSub };
+      const unConfirmedUser = { ...formValues, isAdmin: false, cognitoID: newUser.userSub };
       localStorage.setItem('unConfirmedUser', JSON.stringify(unConfirmedUser));
       dispatch(setUser(unConfirmedUser));
     } catch (e) {

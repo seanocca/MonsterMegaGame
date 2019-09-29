@@ -6,10 +6,6 @@ import { Auth } from 'aws-amplify';
 import { userHasAuthenticated, setUser, setIsLoading } from '../../store/actions';
 import LoaderButton from './LoaderButton';
 
-// const mapStateToProps = state => ({
-//   user: state.user,
-// });
-
 const linkPadding = {
   padding: '0',
   margin: '0 4px 4px 4px',
