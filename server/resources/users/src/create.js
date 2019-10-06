@@ -10,7 +10,7 @@ export async function main(event, context, callback) {
   const params = {
     TableName: process.env.userTable,
     Item: {
-      userID: event.requestContext.identity.cognitoIdentityId,
+      userID: apiData.userID || event.requestContext.identity.cognitoIdentityId,
       address: apiData.address,
       city: apiData.city,
       cognitoID: apiData.cognitoID,
@@ -20,7 +20,8 @@ export async function main(event, context, callback) {
       lastName: apiData.lastName,
       postcode: apiData.postcode,
       state: apiData.state,
-      createdAt: Date.now(),
+      isAdmin: apiData.isAdmin,
+      createdAt: apiData.createdAt || Date.now(),
     },
   };
 
