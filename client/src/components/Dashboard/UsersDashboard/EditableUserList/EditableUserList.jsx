@@ -28,6 +28,7 @@ const EditableUserList = (props) => {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Edit User</th>
+          <th>Is a Admin?</th>
         </tr>
       </thead>
       <tbody>
