@@ -4,7 +4,7 @@ import {
   IS_AUTHENTICATING,
   PROCESS_USER,
   IS_LOADING,
-  PROCESS_ALL_USERS,
+  PROCESS_ALL_USERS, UPDATE_ALL_USERS,
   CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
   CREATE_AUGMENT, EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
   CREATE_BEAST, EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
@@ -90,8 +90,20 @@ const rootReducer = (state = initialState, action) => {
 
   if (PROCESS_ALL_USERS === action.type) {
     console.log('[REDUX] get ALL User: ', action.payload);
+    window.users = action.payload;
     return Object.assign({}, state, {
       users: action.payload,
+    });
+  }
+
+  if (UPDATE_ALL_USERS === action.type) {
+    console.log('[REDUX] Update ALL User: ', action.payload);
+    const mergeUsr = (oldU, newU) => oldU.map((usr) => {
+      if (usr.userID === newU.userID) { return newU; } return usr;
+    });
+
+    return Object.assign({}, state, {
+      users: mergeUsr(state.users, action.payload),
     });
   }
 

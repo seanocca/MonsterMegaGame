@@ -2,7 +2,7 @@ import { Auth, API } from 'aws-amplify';
 import {
   USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION,
   DOWNLOAD_FACTIONS, DOWNLOAD_BEASTS,
-  GET_USER, SET_USER, PROCESS_USER, GET_ALL_USERS, PROCESS_ALL_USERS,
+  GET_USER, SET_USER, PROCESS_USER, GET_ALL_USERS, PROCESS_ALL_USERS, UPDATE_ALL_USERS,
   IS_STALE, STALE_TIME,
   DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE, DOWNLOAD_AUGMENTS,
 } from '../constants/action-types';
@@ -113,14 +113,19 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
     if (SET_USER === action.type) {
       // Upsert the data
       userData = action.payload;
-      localStorage.setItem('user', JSON.stringify(userData));
+      if (!userData.userID) localStorage.setItem('user', JSON.stringify(userData));
 
       return Auth.currentSession()
         .then((data) => {
           userData = Object.assign({}, userData, { password: '', confirm: '' });
           API.post('AWS-HMG-URL', '/user', { body: userData })
-            .then(res => dispatch({ type: PROCESS_USER, payload: userData, isLoading: false }))
-            .catch(({ response }) => {
+            .then((res) => {
+              if (!userData.userID) {
+                dispatch({ type: PROCESS_USER, payload: userData, isLoading: false });
+              } else {
+                dispatch({ type: UPDATE_ALL_USERS, payload: userData, isLoading: false });
+              }
+            }).catch(({ response }) => {
               console.log(`Error(${response.status}): ${response.data.message}`);
             });
         }).catch(e => dispatch({ type: PROCESS_USER, payload: userData, isLoading: false }));
