@@ -7,6 +7,7 @@ export const SET_USER = 'SET_USER';
 export const PROCESS_USER = 'PROCESS_USER';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const PROCESS_ALL_USERS = 'PROCESS_ALL_USERS';
+export const UPDATE_ALL_USERS = 'UPDATE_ALL_USERS';
 // Factions
 export const DOWNLOAD_FACTIONS = 'faction';
 export const PROCESS_DOWNLOAD_FACTIONS = 'download_faction';
