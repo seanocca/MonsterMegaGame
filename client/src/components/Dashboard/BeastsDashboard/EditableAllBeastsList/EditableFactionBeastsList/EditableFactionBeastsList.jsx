@@ -9,6 +9,7 @@ const EditableFactionBeastsList = (props) => {
       {...factionBeast}
       faction={faction}
       onFormSubmit={onFormSubmit}
+      key={factionBeast.id}
     />
   ));
   return (
