@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from 'react-bootstrap';
 
@@ -11,9 +11,7 @@ const BeastsDashboard = () => {
   const allBeasts = useSelector(state => state.beasts);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadBeasts());
-  });
+  dispatch(loadBeasts());
 
   const handleCreateFormSubmit = (beast) => {
     dispatch(createBeast(beast));
