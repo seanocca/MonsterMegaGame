@@ -22,7 +22,7 @@ export default [
     logo: BiochrondysLogo,
     beasts: [
       {
-        id: '33525fde-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '33525fde-c793-11e9-aa8c-2a2ae2dfcce4',
         name: 'Carnosaur',
         desc: 'Agile Predator',
         image: CarnosaurImg,
@@ -37,7 +37,7 @@ export default [
         maxspeed: '7',
       },
       {
-        id: '3b25a1da-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '3b25a1da-c793-11e9-aa8c-2f2ae2dbcce4',
         name: 'Abyssate',
         desc: 'Leaping Carnivore',
         image: AbyssateImg,
@@ -52,7 +52,7 @@ export default [
         maxspeed: '8',
       },
       {
-        id: '416453ac-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '416453ac-c793-11f9-aa8c-2a2ae2dbcce4',
         name: 'Vaulterix',
         desc: 'Apex Draconian',
         image: VaulterixImg,
@@ -73,7 +73,7 @@ export default [
     logo: GatekeepersLogo,
     beasts: [
       {
-        id: '529d4e12-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '529d4e12-c793-11e9-aa8c-2a2ae2dbccef',
         name: 'Infiltrators',
         desc: 'Hunt and Track (Unit of 4)',
         image: InfiltratorsImg,
@@ -89,7 +89,7 @@ export default [
         maxspeed: '0',
       },
       {
-        id: '5828cc30-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '5f28cc30-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Containment',
         desc: 'Search and Capture (Unit of 4)',
         image: ContainmentImg,
@@ -104,7 +104,7 @@ export default [
         maxspeed: '0',
       },
       {
-        id: '5d7322bc-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '5d7322bc-c793-1de9-aa8c-2a2ae2dbcce4',
         name: 'Tactical Team',
         desc: 'Seek and Destroy (Unit of 4)',
         image: TacticalTeamImg,
@@ -125,7 +125,7 @@ export default [
     logo: MechanicaLogo,
     beasts: [
       {
-        id: '659051d6-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '659051d6-c793-11e9-ad8c-2a2ae2dbcce4',
         name: 'Clamberer',
         desc: 'Four-Armed Automation',
         image: ClambererImg,
@@ -140,7 +140,7 @@ export default [
         maxspeed: '6',
       },
       {
-        id: '6ddff83c-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '6ddff83c-c793-11e9-aadc-2a2ae2dbcce4',
         name: 'Bastion',
         desc: 'Armoured Hulk',
         image: BastionImg,
@@ -155,7 +155,7 @@ export default [
         maxspeed: '6',
       },
       {
-        id: '76d7d3f6-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '76d7d3f6-c793-11e9-aa8d-2a2ae2dbcce4',
         name: 'Subterrak',
         desc: 'Tunneling Behemoth',
         image: SubterrakImg,
@@ -176,7 +176,7 @@ export default [
     logo: VoidbornLogo,
     beasts: [
       {
-        id: '8044570c-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: 'e044570c-c793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Axial Beast',
         desc: 'Phase Creature',
         image: AxialBeastImg,
@@ -191,7 +191,7 @@ export default [
         maxspeed: '6',
       },
       {
-        id: '85eacf60-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '85eacf60-e793-11e9-aa8c-2a2ae2dbcce4',
         name: 'Node Horror',
         desc: 'Transdimensional Hunter',
         image: NodeHorrorImg,
@@ -206,7 +206,7 @@ export default [
         maxspeed: '6',
       },
       {
-        id: '912e1706-c793-11e9-aa8c-2a2ae2dbcce4',
+        id: '912e1706-c793-e1e9-aa8c-2a2ae2dbcce4',
         name: 'Nexus Hivemind',
         desc: 'Ominscient Horror',
         image: NexusHivemindImg,
