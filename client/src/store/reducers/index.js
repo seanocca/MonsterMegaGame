@@ -98,12 +98,12 @@ const rootReducer = (state = initialState, action) => {
 
   if (UPDATE_ALL_USERS === action.type) {
     console.log('[REDUX] Update ALL User: ', action.payload);
-    const mergeUsr = (oldU, newU) => oldU.map((usr) => {
-      if (usr.userID === newU.userID) { return newU; } return usr;
+    const mergeUser = (oldUsers, newUser) => oldUsers.map((user) => {
+      if (user.userID === newUser.userID) { return newUser; } return user;
     });
 
     return Object.assign({}, state, {
-      users: mergeUsr(state.users, action.payload),
+      users: mergeUser(state.users, action.payload),
     });
   }
 
