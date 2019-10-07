@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Form, Button, Col } from 'react-bootstrap';
 import { useFormInput } from '../../../../../../helpers/hooks';
+import { setUser } from '../../../../../../store/actions';
 
 const AdminUserForm = (props) => {
+  const dispatch = useDispatch();
   const { onFormClose } = props;
   const firstName = useFormInput(props.firstName);
   const lastName = useFormInput(props.lastName);
@@ -11,10 +14,38 @@ const AdminUserForm = (props) => {
   const city = useFormInput(props.city);
   const state = useFormInput(props.state);
   const postcode = useFormInput(props.postcode);
+  const { cognitoID, createdAt, userID } = props;
+
+
+  const [isAdmin, setIsAdmin] = useState((props.isAdmin) ? 'Checked' : '');
+
+  const checkBoxClick = (event) => {
+    setIsAdmin(val => !val);
+  };
+
+  const handleUpdate = (event) => {
+    event.preventDefault();
+
+    const userObject = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      email: email.value,
+      address: address.value,
+      city: city.value,
+      state: state.value,
+      postcode: postcode.value,
+      isAdmin,
+      cognitoID,
+      createdAt,
+      userID,
+    };
+
+    dispatch(setUser(userObject));
+  };
 
   return (
     <tr>
-      <td colSpan="3">
+      <td colSpan="4">
         <Form style={{ padding: '1rem' }}>
           <Form.Row>
             <Form.Group as={Col} controlId="firstName">
@@ -83,8 +114,17 @@ const AdminUserForm = (props) => {
               />
             </Form.Group>
           </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId="isAdmin">
+              <Form.Check
+                label="Site Administrator"
+                defaultChecked={isAdmin}
+                onChange={checkBoxClick}
+              />
+            </Form.Group>
+          </Form.Row>
           <Form.Row className="justify-content-center">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={handleUpdate}>
               Update
             </Button>
             <Button variant="danger" type="button" onClick={onFormClose}>
