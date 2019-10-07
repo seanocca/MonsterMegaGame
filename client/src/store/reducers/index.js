@@ -90,7 +90,6 @@ const rootReducer = (state = initialState, action) => {
 
   if (PROCESS_ALL_USERS === action.type) {
     console.log('[REDUX] get ALL User: ', action.payload);
-    window.users = action.payload;
     return Object.assign({}, state, {
       users: action.payload,
     });

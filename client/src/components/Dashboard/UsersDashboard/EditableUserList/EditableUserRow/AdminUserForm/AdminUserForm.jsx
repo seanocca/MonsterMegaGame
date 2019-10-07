@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form, Button, Col } from 'react-bootstrap';
 import { useFormInput } from '../../../../../../helpers/hooks';
-import { setUser } from '../../../../../../store/actions';
+import { setUser, setIsLoading } from '../../../../../../store/actions';
 
 const AdminUserForm = (props) => {
   const dispatch = useDispatch();
@@ -16,16 +16,14 @@ const AdminUserForm = (props) => {
   const postcode = useFormInput(props.postcode);
   const { cognitoID, createdAt, userID } = props;
 
+  const [isAdmin, setIsAdmin] = useState(props.isAdmin);
+  const disabled = useSelector(({ user }) => ((user.userID === userID) ? { disabled: 'disabled' } : {}));
 
-  const [isAdmin, setIsAdmin] = useState((props.isAdmin) ? 'Checked' : '');
-
-  const checkBoxClick = (event) => {
-    setIsAdmin(val => !val);
-  };
+  const checkBoxClick = event => setIsAdmin(val => !val);
 
   const handleUpdate = (event) => {
     event.preventDefault();
-
+    dispatch(setIsLoading(true));
     const userObject = {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -41,6 +39,7 @@ const AdminUserForm = (props) => {
     };
 
     dispatch(setUser(userObject));
+    onFormClose();
   };
 
   return (
@@ -120,6 +119,7 @@ const AdminUserForm = (props) => {
                 label="Site Administrator"
                 defaultChecked={isAdmin}
                 onChange={checkBoxClick}
+                {...disabled}
               />
             </Form.Group>
           </Form.Row>
