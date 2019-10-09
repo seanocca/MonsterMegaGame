@@ -13,18 +13,16 @@ const EditableFactionBeastsList = (props) => {
     />
   ));
   return (
-    <div>
-      <Accordion>
-        <Accordion.Toggle as={Card.Header}>
-          <h2>{faction}</h2>
-        </Accordion.Toggle>
-        <Accordion.Collapse>
-          <CardColumns>
-            {factionBeastsComponents}
-          </CardColumns>
-        </Accordion.Collapse>
-      </Accordion>
-    </div>
+    <Accordion>
+      <Accordion.Toggle as={Card.Header}>
+        <h2>{faction}</h2>
+      </Accordion.Toggle>
+      <Accordion.Collapse>
+        <CardColumns>
+          {factionBeastsComponents}
+        </CardColumns>
+      </Accordion.Collapse>
+    </Accordion>
   );
 };
 
