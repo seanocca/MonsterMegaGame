@@ -25,7 +25,7 @@ export async function main(event, context, callback) {
       maxhp: apiData.maxhp || null,
       speed: apiData.speed || null,
       maxspeed: apiData.maxspeed || null,
-      createdAt: Date.now(),
+      createdAt: apiData.createdAt || Date.now(),
     },
   };
 
