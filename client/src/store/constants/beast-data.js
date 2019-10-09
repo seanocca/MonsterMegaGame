@@ -23,6 +23,7 @@ export default [
     beasts: [
       {
         id: '33525fde-c793-11e9-aa8c-2a2ae2dfcce4',
+        createdAt: '',
         name: 'Carnosaur',
         desc: 'Agile Predator',
         image: CarnosaurImg,
@@ -38,6 +39,7 @@ export default [
       },
       {
         id: '3b25a1da-c793-11e9-aa8c-2f2ae2dbcce4',
+        createdAt: '',
         name: 'Abyssate',
         desc: 'Leaping Carnivore',
         image: AbyssateImg,
@@ -53,6 +55,7 @@ export default [
       },
       {
         id: '416453ac-c793-11f9-aa8c-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Vaulterix',
         desc: 'Apex Draconian',
         image: VaulterixImg,
@@ -74,6 +77,7 @@ export default [
     beasts: [
       {
         id: '529d4e12-c793-11e9-aa8c-2a2ae2dbccef',
+        createdAt: '',
         name: 'Infiltrators',
         desc: 'Hunt and Track (Unit of 4)',
         image: InfiltratorsImg,
@@ -90,6 +94,7 @@ export default [
       },
       {
         id: '5f28cc30-c793-11e9-aa8c-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Containment',
         desc: 'Search and Capture (Unit of 4)',
         image: ContainmentImg,
@@ -105,6 +110,7 @@ export default [
       },
       {
         id: '5d7322bc-c793-1de9-aa8c-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Tactical Team',
         desc: 'Seek and Destroy (Unit of 4)',
         image: TacticalTeamImg,
@@ -126,6 +132,7 @@ export default [
     beasts: [
       {
         id: '659051d6-c793-11e9-ad8c-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Clamberer',
         desc: 'Four-Armed Automation',
         image: ClambererImg,
@@ -141,6 +148,7 @@ export default [
       },
       {
         id: '6ddff83c-c793-11e9-aadc-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Bastion',
         desc: 'Armoured Hulk',
         image: BastionImg,
@@ -156,6 +164,7 @@ export default [
       },
       {
         id: '76d7d3f6-c793-11e9-aa8d-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Subterrak',
         desc: 'Tunneling Behemoth',
         image: SubterrakImg,
@@ -177,6 +186,7 @@ export default [
     beasts: [
       {
         id: 'e044570c-c793-11e9-aa8c-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Axial Beast',
         desc: 'Phase Creature',
         image: AxialBeastImg,
@@ -192,6 +202,7 @@ export default [
       },
       {
         id: '85eacf60-e793-11e9-aa8c-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Node Horror',
         desc: 'Transdimensional Hunter',
         image: NodeHorrorImg,
@@ -207,6 +218,7 @@ export default [
       },
       {
         id: '912e1706-c793-e1e9-aa8c-2a2ae2dbcce4',
+        createdAt: '',
         name: 'Nexus Hivemind',
         desc: 'Ominscient Horror',
         image: NexusHivemindImg,

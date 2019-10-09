@@ -5,6 +5,7 @@ import {
   processUserAuth,
   processUser,
   generalDataDownloads,
+  processEdits,
 } from './middleware';
 
 // Enables redux dev tools on middleware
@@ -17,6 +18,7 @@ const store = createStore(
     processUserAuth,
     processUser,
     generalDataDownloads,
+    processEdits,
   )),
 );
 

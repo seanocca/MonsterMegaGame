@@ -5,6 +5,7 @@ import {
   GET_USER, SET_USER, PROCESS_USER, GET_ALL_USERS, PROCESS_ALL_USERS, UPDATE_ALL_USERS,
   IS_STALE, STALE_TIME,
   DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE, DOWNLOAD_AUGMENTS,
+  EDIT_BEAST, EDIT_AUGMENT,
 } from '../constants/action-types';
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
@@ -103,6 +104,53 @@ export const generalDataDownloads = ({ getState, dispatch }) => next => async (a
     if (!getState().isAuthenticating) genericData(getState, dispatch, action.type);
     return true;
   }
+  return next(action);
+};
+
+const updateLocalStorage = (type, saveObj) => {
+  const { factionName, ...obj } = saveObj;
+  const existLS = JSON.parse(localStorage.getItem(`${type}sData`));
+  const newLS = existLS.map((group) => {
+    if (group.faction === factionName) {
+      return {
+        faction: factionName,
+        [`${type}s`]: group[`${type}s`].map((detail) => {
+          if (detail.id === obj.id) {
+            return obj;
+          }
+          return detail; // do nothing
+        }),
+      };
+    }
+    return group; // do nothing
+  });
+  localStorage.setItem(`${type}sData`, JSON.stringify(newLS));
+};
+
+const genericEdit = async (dispatch, endpoint, { type, payload }) => {
+  const saveObj = {
+    factionName: payload.faction,
+    ...payload[endpoint],
+  };
+  await API.post('AWS-HMG-URL', `/${endpoint}`, { body: saveObj })
+    .then((response) => {
+      updateLocalStorage(endpoint, saveObj);
+      dispatch({ type: `PROCESS_${type}`, payload, isLoading: false });
+    })
+    .catch(e => console.log(e));
+};
+
+export const processEdits = ({ getState, dispatch }) => next => async (action) => {
+  if (EDIT_BEAST === action.type) {
+    if (!getState().isAuthenticating) await genericEdit(dispatch, 'beast', action);
+    return true;
+  }
+
+  // if (EDIT_AUGMENT === action.type) {
+  //   if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
+  //   return true;
+  // }
+
   return next(action);
 };
 

@@ -7,7 +7,7 @@ import {
   PROCESS_ALL_USERS, UPDATE_ALL_USERS,
   CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
   CREATE_AUGMENT, EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
-  CREATE_BEAST, EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
+  CREATE_BEAST, PROCESS_EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
   CREATE_OVERVIEW, EDIT_OVERVIEW, PROCESS_DOWNLOAD_OVERVIEW,
   CREATE_GAMERULE, EDIT_GAMERULE, PROCESS_DOWNLOAD_GAMERULE,
@@ -36,12 +36,12 @@ const initialState = {
   },
   user: JSON.parse(localStorage.getItem('user')),
   unConfirmedUser: JSON.parse(localStorage.getItem('unConfirmedUser')),
-  factions,
-  beasts,
-  augments,
+  factions: JSON.parse(localStorage.getItem('factionsData')) || factions,
+  beasts: JSON.parse(localStorage.getItem('beastsData')) || beasts,
+  augments: JSON.parse(localStorage.getItem('augmentsData')) || augments,
   overview,
   rift,
-  gamerules,
+  gamerules: JSON.parse(localStorage.getItem('gameRulesData')) || gamerules,
   users: undefined,
 };
 
@@ -206,7 +206,7 @@ const rootReducer = (state = initialState, action) => {
 
   // beasts
   if (PROCESS_DOWNLOAD_BEASTS === action.type) {
-    console.log('[REDUX] Download Beats: ', action.payload);
+    console.log('[REDUX] Download beast: ', action.payload);
     return Object.assign({}, state, {
       beasts: action.payload,
     });
@@ -228,7 +228,7 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
-  if (EDIT_BEAST === action.type) {
+  if (PROCESS_EDIT_BEAST === action.type) {
     const {
       id, type, name, desc, move, damage, maxdmg,
       leap, maxleap, hp, maxhp, speed, maxspeed,

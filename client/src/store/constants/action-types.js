@@ -18,6 +18,7 @@ export const DOWNLOAD_BEASTS = 'beast';
 export const PROCESS_DOWNLOAD_BEASTS = 'download_beast';
 export const CREATE_BEAST = 'CREATE_BEAST';
 export const EDIT_BEAST = 'EDIT_BEAST';
+export const PROCESS_EDIT_BEAST = 'PROCESS_EDIT_BEAST';
 // Augments
 export const DOWNLOAD_AUGMENTS = 'augment';
 export const PROCESS_DOWNLOAD_AUGMENTS = 'download_augment';
