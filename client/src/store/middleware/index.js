@@ -146,10 +146,10 @@ export const processEdits = ({ getState, dispatch }) => next => async (action) =
     return true;
   }
 
-  // if (EDIT_AUGMENT === action.type) {
-  //   if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
-  //   return true;
-  // }
+  if (EDIT_AUGMENT === action.type) {
+    if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
+    return true;
+  }
 
   return next(action);
 };
