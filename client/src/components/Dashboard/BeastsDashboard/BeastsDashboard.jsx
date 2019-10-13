@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from 'react-bootstrap';
 
-import { loadBeasts, createBeast, editBeast } from '../../../store/actions';
+import { createBeast, editBeast } from '../../../store/actions';
 import Dashboard from '../Dashboard';
 import EditableAllBeastsList from './EditableAllBeastsList';
 import ToggleableBeastForm from './ToggleableBeastForm';
@@ -10,8 +10,6 @@ import ToggleableBeastForm from './ToggleableBeastForm';
 const BeastsDashboard = () => {
   const allBeasts = useSelector(state => state.beasts);
   const dispatch = useDispatch();
-
-  dispatch(loadBeasts());
 
   const handleCreateFormSubmit = (beast) => {
     dispatch(createBeast(beast));
