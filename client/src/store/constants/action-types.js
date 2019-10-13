@@ -24,6 +24,7 @@ export const DOWNLOAD_AUGMENTS = 'augment';
 export const PROCESS_DOWNLOAD_AUGMENTS = 'download_augment';
 export const CREATE_AUGMENT = 'CREATE_AUGMENT';
 export const EDIT_AUGMENT = 'EDIT_AUGMENT';
+export const PROCESS_EDIT_AUGMENT = 'PROCESS_EDIT_AUGMENT';
 // Rift
 export const DOWNLOAD_RIFT = 'rift';
 export const PROCESS_DOWNLOAD_RIFT = 'download_rift';
