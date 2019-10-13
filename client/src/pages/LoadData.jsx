@@ -13,13 +13,6 @@ import riftCollection from '../store/constants/rift-data';
 import gamerulesCollection from '../store/constants/game-rule-data';
 
 const Account = () => {
-  // const beastsCollection = useSelector(state => state.beasts);
-  // const augmentCollection = useSelector(state => state.augments);
-  // const factionCollection = useSelector(state => state.factions);
-  // const riftCollection = useSelector(state => state.rift);
-  // const overviewCollection = useSelector(state => state.overview);
-  // const gamerulesCollection = useSelector(state => state.gamerules);
-
   // **********  Beasts  **********
   const createBeasts = () => {
     beastsCollection.forEach(({ faction, beasts }) => {
@@ -34,6 +27,8 @@ const Account = () => {
   };
 
   const deleteBeasts = async () => {
+    localStorage.removeItem('beastsData');
+    localStorage.removeItem('beastsRecheck');
     const beasts = await listBeasts();
     beasts.forEach(({ factionName, id }) => {
       API.post('AWS-HMG-URL', '/delete-beast', { body: { factionName, id } })
@@ -62,6 +57,8 @@ const Account = () => {
   };
 
   const deleteAugment = async () => {
+    localStorage.removeItem('augmentsData');
+    localStorage.removeItem('augmentsRecheck');
     const augments = await listAugments();
     augments.forEach(({ factionName, id }) => {
       API.post('AWS-HMG-URL', '/delete-augments', { body: { factionName, id } })
@@ -88,6 +85,8 @@ const Account = () => {
   };
 
   const deleteFaction = async () => {
+    localStorage.removeItem('factionsData');
+    localStorage.removeItem('factionsRecheck');
     const factions = await listFaction();
     factions.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-faction', { body: { id } })
@@ -112,6 +111,8 @@ const Account = () => {
   };
 
   const deleteRift = async () => {
+    localStorage.removeItem('riftsData');
+    localStorage.removeItem('riftsRecheck');
     const rifts = await listRift();
     rifts.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-rift', { body: { id } })
@@ -137,6 +138,8 @@ const Account = () => {
   };
 
   const deleteOverview = async () => {
+    localStorage.removeItem('overviewsData');
+    localStorage.removeItem('overviewsRecheck');
     const overviews = await listOverview();
     overviews.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-overview', { body: { id } })
@@ -164,6 +167,8 @@ const Account = () => {
   };
 
   const deleteGameRules = async () => {
+    localStorage.removeItem('gameRulesData');
+    localStorage.removeItem('gameRulesRecheck');
     const rules = await listGameRules();
     rules.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-gamerule', { body: { id } })
