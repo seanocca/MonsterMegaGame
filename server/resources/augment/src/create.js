@@ -18,6 +18,7 @@ export async function main(event, context, callback) {
       name: apiData.name || undefined,
       action: apiData.action || undefined,
       desc: apiData.desc || undefined,
+      image: apiData.image || undefined,
       createdAt: Date.now(),
     },
   };
