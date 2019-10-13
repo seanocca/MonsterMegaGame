@@ -2,8 +2,6 @@ import React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { useFormInput, useTextarea } from '../../../../../helpers/hooks';
 
-const convertToString = desc => desc.map(line => line.line).join('\n\n');
-
 const AdminFactionForm = (props) => {
   const {
     id, onFormClose, onFormSubmit, createdAt,
@@ -11,7 +9,7 @@ const AdminFactionForm = (props) => {
   const name = useFormInput(props.name);
   const leader = useFormInput(props.leader);
   const faculty = useFormInput(props.faculty);
-  const desc = useTextarea(convertToString(props.desc));
+  const desc = useTextarea(props.desc);
 
   const handleSubmitx = () => {
     onFormSubmit({
