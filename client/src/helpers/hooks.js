@@ -23,14 +23,9 @@ export const useTextarea = (initVal, separator = '\n\n') => {
     setValue(e.target.value);
   }
 
-  function handleSubmit() {
-    return value.split(separator);
-  }
-
   return {
     value,
     onChange: handleChange,
-    handleSubmit,
   };
 };
 
