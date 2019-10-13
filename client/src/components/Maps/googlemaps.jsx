@@ -1,34 +1,29 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import ReactMapGL from 'react-map-gl';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class SimpleMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: -27.476824,
-      lng: 153.028403,
+  state = {
+    viewport: {
+      width: 600,
+      height: 600,
+      latitude: -27.476824,
+      longitude: 153.028403,
+      zoom: 16.4,
+      bearing: 50,
     },
-    zoom: 18,
-    gestureHandling: false,
-    zoomControl: false,
   };
 
   render() {
     return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyCmxkBpPgTbS95xCAt1YgS0Hd1O1gM0mDo' }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-          draggable={this.props.gestureHandling}
-          options={{
-            zoomControl: this.props.zoomControl,
-            mapTypeId: 'satellite',
-            heading: 90,
-          }}
-        />
-      </div>
+      <ReactMapGL
+        style={{
+          margin: '0 auto',
+        }}
+        mapboxApiAccessToken='pk.eyJ1IjoiaGFsZm1vbnN0ZXJnYW1lcyIsImEiOiJjazFsbWcyMzcwNGpwM2RwaTZtajhvY3piIn0.aHsV6SboffgREmPS6Z_8yg'
+        mapStyle='mapbox://styles/halfmonstergames/ck1lmp6vi0gfq1ckfofw8lgrl'
+        {...this.state.viewport}
+        onViewportChange={(viewport) => this.setState({viewport})}
+      />
     );
   }
 }
