@@ -1,17 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import {
   Container, Row, Col, Button,
 } from 'react-bootstrap';
 import { API } from 'aws-amplify';
 
+import factionCollection from '../store/constants/faction-data';
+import beastsCollection from '../store/constants/beast-data';
+import augmentCollection from '../store/constants/augment-data';
+import overviewCollection from '../store/constants/overview-data';
+import riftCollection from '../store/constants/rift-data';
+import gamerulesCollection from '../store/constants/game-rule-data';
+
 const Account = () => {
-  const beastsCollection = useSelector(state => state.beasts);
-  const augmentCollection = useSelector(state => state.augments);
-  const factionCollection = useSelector(state => state.factions);
-  const riftCollection = useSelector(state => state.rift);
-  const overviewCollection = useSelector(state => state.overview);
-  const gamerulesCollection = useSelector(state => state.gamerules);
+  // const beastsCollection = useSelector(state => state.beasts);
+  // const augmentCollection = useSelector(state => state.augments);
+  // const factionCollection = useSelector(state => state.factions);
+  // const riftCollection = useSelector(state => state.rift);
+  // const overviewCollection = useSelector(state => state.overview);
+  // const gamerulesCollection = useSelector(state => state.gamerules);
 
   // **********  Beasts  **********
   const createBeasts = () => {
