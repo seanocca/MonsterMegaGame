@@ -9,15 +9,18 @@ const EditableFactionsList = (props) => {
     <EditableFactionRow
       {...faction}
       onFormSubmit={onFormSubmit}
+      key={faction.id}
     />
   ));
 
   return (
     <Table>
       <thead>
-        <th>Faction Name</th>
-        <th>Faction Leader</th>
-        <th>Edit Faction</th>
+        <tr>
+          <th>Faction Name</th>
+          <th>Faction Leader</th>
+          <th>Edit Faction</th>
+        </tr>
       </thead>
       <tbody>
         {factions}
