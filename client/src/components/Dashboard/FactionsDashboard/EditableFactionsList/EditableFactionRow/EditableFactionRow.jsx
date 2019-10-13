@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AdminFactionForm from '../../ToggleableFactionForm/AdminFactionForm';
 import FactionRow from './FactionRow';
 
 const EditableFactionRow = (props) => {
-  const [editFormOpen, setEditFormOpen] = useState(false);
-  const { name, leader, onFormSubmit } = props;
+  const {
+    name, leader, onFormSubmit, setEditFormOpen,
+  } = props;
 
   const handleSubmit = (faction) => {
     onFormSubmit(faction);
-    setEditFormOpen(false);
+    setEditFormOpen('');
   };
 
-  if (editFormOpen) {
+  if (props.editFormOpen === props.id) {
     return (
       <AdminFactionForm
         {...props}
-        onFormClose={() => setEditFormOpen(false)}
+        onFormClose={() => setEditFormOpen('')}
         onFormSubmit={handleSubmit}
       />
     );
@@ -24,7 +25,7 @@ const EditableFactionRow = (props) => {
     <FactionRow
       name={name}
       leader={leader}
-      onFormOpen={() => setEditFormOpen(true)}
+      onFormOpen={() => setEditFormOpen(props.id)}
     />
   );
 };
