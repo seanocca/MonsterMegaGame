@@ -229,10 +229,6 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (PROCESS_EDIT_BEAST === action.type) {
-    const {
-      id, type, name, desc, move, damage, maxdmg,
-      leap, maxleap, hp, maxhp, speed, maxspeed,
-    } = action.payload.beast;
     console.log('[REDUX] Edit Beast: ', action.payload);
     return Object.assign({}, state, {
       beasts: state.beasts.map((factionBeasts) => {
@@ -242,22 +238,8 @@ const rootReducer = (state = initialState, action) => {
             { faction: factionBeasts.faction },
             {
               beasts: factionBeasts.beasts.map((beast) => {
-                if (beast.id === id) {
-                  return Object.assign({}, beast, {
-                    id,
-                    type,
-                    name,
-                    desc,
-                    move,
-                    damage,
-                    maxdmg,
-                    leap,
-                    maxleap,
-                    hp,
-                    maxhp,
-                    speed,
-                    maxspeed,
-                  });
+                if (beast.id === action.payload.beast.id) {
+                  return Object.assign({}, beast, action.payload.beast);
                 }
                 return beast;
               }),
