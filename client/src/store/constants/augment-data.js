@@ -11,15 +11,10 @@ import DecisiveActionImg from '../../images/augments/DecisiveAction.png';
 import FullAssaultImg from '../../images/augments/FullAssault.png';
 import MimicManoeuvreImg from '../../images/augments/MimicManoeuvre.png';
 
-import BiochrondysLogo from '../../images/logos/biochrondys.png';
-import GatekeepersLogo from '../../images/logos/gatekeepers.png';
-import MechanicaLogo from '../../images/logos/mechanica.png';
-import VoidbornLogo from '../../images/logos/voidborn.png';
-
 export default [
   {
     faction: 'Biochrondys',
-    logo: BiochrondysLogo,
+    logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Biochrondys.png',
     augments: [
       {
         id: 'cb979420-c794-11e9-aa8c-2a2ae2dbcce4',
@@ -49,7 +44,7 @@ export default [
   },
   {
     faction: 'Gatekeepers',
-    logo: GatekeepersLogo,
+    logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Gatekeepers.png',
     augments: [
       {
         id: '244b8fae-c795-11e9-aa8c-2a2ae2dbcce4',
@@ -79,7 +74,7 @@ export default [
   },
   {
     faction: 'Mechanica',
-    logo: MechanicaLogo,
+    logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Mechanica.png',
     augments: [
       {
         id: 'b660b708-c794-11e9-aa8c-2a2ae2dbcce4',
@@ -109,7 +104,7 @@ export default [
   },
   {
     faction: 'Voidborn',
-    logo: VoidbornLogo,
+    logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Voidborn.png',
     augments: [
       {
         id: 'e1dd3dac-c794-11e9-aa8c-2a2ae2dbcce4',

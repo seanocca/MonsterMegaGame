@@ -11,15 +11,10 @@ import AxialBeastImg from '../../images/beasts/AxialBeast.png';
 import NodeHorrorImg from '../../images/beasts/NodeHorror.png';
 import NexusHivemindImg from '../../images/beasts/NexusHivemind.png';
 
-import BiochrondysLogo from '../../images/logos/biochrondys.png';
-import GatekeepersLogo from '../../images/logos/gatekeepers.png';
-import MechanicaLogo from '../../images/logos/mechanica.png';
-import VoidbornLogo from '../../images/logos/voidborn.png';
-
 export default [
   {
     faction: 'Biochrondys',
-    logo: BiochrondysLogo,
+    logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Biochrondys.png',
     beasts: [
       {
         id: '33525fde-c793-11e9-aa8c-2a2ae2dfcce4',
@@ -73,7 +68,7 @@ export default [
   },
   {
     faction: 'Gatekeepers',
-    logo: GatekeepersLogo,
+    logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Gatekeepers.png',
     beasts: [
       {
         id: '529d4e12-c793-11e9-aa8c-2a2ae2dbccef',
@@ -128,7 +123,7 @@ export default [
   },
   {
     faction: 'Mechanica',
-    logo: MechanicaLogo,
+    logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Mechanica.png',
     beasts: [
       {
         id: '659051d6-c793-11e9-ad8c-2a2ae2dbcce4',
@@ -182,7 +177,7 @@ export default [
   },
   {
     faction: 'Voidborn',
-    logo: VoidbornLogo,
+    logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Voidborn.png',
     beasts: [
       {
         id: 'e044570c-c793-11e9-aa8c-2a2ae2dbcce4',
