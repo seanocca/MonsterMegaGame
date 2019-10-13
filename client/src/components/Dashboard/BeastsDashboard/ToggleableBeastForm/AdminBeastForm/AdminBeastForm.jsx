@@ -58,7 +58,7 @@ const AdminBeastForm = (props) => {
             >
               <option value="">Choose Faction...</option>
               <option value="Mechanica">Mechanica</option>
-              <option value="Gatekeeper">Gatekeeper</option>
+              <option value="Gatekeepers">Gatekeepers</option>
               <option value="Voidborn">Voidborn</option>
               <option value="Biochrondys">Biochrondys</option>
             </Form.Control>
