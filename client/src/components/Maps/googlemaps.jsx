@@ -23,6 +23,12 @@ class SimpleMap extends Component {
         mapStyle='mapbox://styles/halfmonstergames/ck1lmp6vi0gfq1ckfofw8lgrl'
         {...this.state.viewport}
         onViewportChange={(viewport) => this.setState({viewport})}
+        scrollZoom={false}
+        dragPan={false}
+        dragRotate={false}
+        doubleClickZoom={false}
+        touchZoom={false}
+        touchRotate={false}
       />
     );
   }
