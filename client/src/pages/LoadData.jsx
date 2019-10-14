@@ -15,9 +15,9 @@ import gamerulesCollection from '../store/constants/game-rule-data';
 const Account = () => {
   // **********  Beasts  **********
   const createBeasts = () => {
-    beastsCollection.forEach(({ faction, beasts }) => {
+    beastsCollection.forEach(({ faction, logo, beasts }) => {
       beasts.forEach((beast) => {
-        API.post('AWS-HMG-URL', '/beast', { body: { factionName: faction, ...beast } })
+        API.post('AWS-HMG-URL', '/beast', { body: { factionName: faction, logo, ...beast } })
           .then(response => console.log('Created A Beast!', response))
           .catch(({ response }) => {
             console.log(`Error(${response.status}): ${response.data.message}`);
@@ -45,9 +45,9 @@ const Account = () => {
 
   // **********  Augments  **********
   const createAugment = () => {
-    augmentCollection.forEach(({ faction, augments }) => {
+    augmentCollection.forEach(({ faction, logo, augments }) => {
       augments.forEach((augment) => {
-        API.post('AWS-HMG-URL', '/augment', { body: { factionName: faction, ...augment } })
+        API.post('AWS-HMG-URL', '/augment', { body: { factionName: faction, logo, ...augment } })
           .then(response => console.log('Created A Augment!', response))
           .catch(({ response }) => {
             console.log(`Error(${response.status}): ${response.data.message}`);
