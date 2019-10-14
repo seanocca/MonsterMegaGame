@@ -1,6 +1,6 @@
 export default [
   {
-    id: 'setup123',
+    id: '01',
     name: 'Setup',
     text:
     [
@@ -35,7 +35,7 @@ export default [
     ],
   },
   {
-    id: 'gameModes456',
+    id: '02',
     name: 'Game Modes',
     gamemodes:
     [
@@ -103,7 +103,7 @@ export default [
     ],
   },
   {
-    id: '789',
+    id: '03',
     name: 'How to Win!',
     text:
       [
@@ -118,7 +118,7 @@ export default [
       ],
   },
   {
-    id: '012',
+    id: '04',
     name: 'Attacking and Health Points',
     text:
       [
@@ -141,7 +141,7 @@ export default [
       ],
   },
   {
-    id: '345',
+    id: '05',
     name: 'Death and Experience',
     text:
       [

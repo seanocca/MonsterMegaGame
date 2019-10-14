@@ -32,7 +32,8 @@ function bestiaryBuilder(beasts) {
   }
 
   function beastAccordion(beasts) {
-    return beasts.map((beasts, i) => (
+    const sorted = beasts.sort((a, b) => a.faction.localeCompare(b.faction));
+    return sorted.map((beasts, i) => (
       <Card key={beasts.faction}>
         <Accordion.Toggle as={Card.Header} eventKey={i}>
           <Row>

@@ -29,7 +29,8 @@ function factionBuilder(factions) {
   }
 
   function factionDetails(factions) {
-    return factions.map((faction, i) => (
+    const sorted = factions.sort((a, b) => a.name.localeCompare(b.name));
+    return sorted.map((faction, i) => (
       <Card key={faction.id}>
         <Accordion.Toggle as={Card.Header} eventKey={i}>
           <Row>
