@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Col } from 'react-bootstrap';
 
 import { useFactionCardStyles } from '../../../../../../../helpers/hooks';
 
@@ -16,7 +16,7 @@ const BeastCard = (props) => {
   const altTag = `${faction} - ${name}`;
 
   return (
-    <Card bg="dark" text="white" style={factionStyles}>
+    <Card as={Col} className="m-4" md={3} xs={10} bg="dark" text="white" style={factionStyles}>
       <Card.Header>{faction} <img src={factionImagePath} alt={altTag} style={{ height: '1.3rem' }} /></Card.Header>
       {/* placeholder image */}
       <Card.Img variant="top" src={image} style={{ height: '10rem' }} />

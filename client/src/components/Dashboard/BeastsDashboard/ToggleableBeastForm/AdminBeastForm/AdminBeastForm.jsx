@@ -47,7 +47,7 @@ const AdminBeastForm = (props) => {
 
   const submitText = props.id ? 'Update' : 'Create';
   return (
-    <Card bg="dark" text="white" style={factionStyles}>
+    <Col className="m-4" md={4} xs={10} style={factionStyles}>
       <Form>
         <Form.Row>
           <Form.Group as={Col} controlId="faction">
@@ -161,7 +161,7 @@ const AdminBeastForm = (props) => {
           </Button>
         </Form.Row>
       </Form>
-    </Card>
+    </Col>
   );
 };
 
