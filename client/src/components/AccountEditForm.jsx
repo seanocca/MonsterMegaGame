@@ -7,6 +7,7 @@ import { setUser, setIsLoading } from '../store/actions';
 
 const seedState = {
   email: '',
+  faction: '',
   password: '',
   confirm: '',
   firstName: '',
