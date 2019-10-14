@@ -161,14 +161,14 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
     if (SET_USER === action.type) {
       // Upsert the data
       userData = action.payload;
-      if (!userData.userID) localStorage.setItem('user', JSON.stringify(userData));
+      if (userData.userID) localStorage.setItem('user', JSON.stringify(userData));
 
       return Auth.currentSession()
         .then((data) => {
           userData = Object.assign({}, userData, { password: '', confirm: '' });
           API.post('AWS-HMG-URL', '/user', { body: userData })
             .then((res) => {
-              if (!userData.userID) {
+              if (userData.userID) {
                 dispatch({ type: PROCESS_USER, payload: userData, isLoading: false });
               } else {
                 dispatch({ type: UPDATE_ALL_USERS, payload: userData, isLoading: false });

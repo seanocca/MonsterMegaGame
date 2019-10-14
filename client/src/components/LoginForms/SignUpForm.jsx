@@ -7,6 +7,7 @@ import LoaderButton from './LoaderButton';
 
 const seedState = {
   email: '',
+  faction: '',
   password: '',
   confirm: '',
   firstName: '',
@@ -16,7 +17,7 @@ const seedState = {
   postcode: '',
   state: '',
   cognitoID: '',
-  idAdmin: false,
+  isAdmin: false,
 };
 
 const SignUpForm = () => {

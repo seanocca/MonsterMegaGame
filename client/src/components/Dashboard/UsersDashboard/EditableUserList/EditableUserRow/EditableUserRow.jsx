@@ -4,7 +4,7 @@ import UserRow from './UserRow/UserRow';
 
 const EditableUserRow = (props) => {
   const {
-    firstName, lastName, isAdmin, setEditKey,
+    firstName, lastName, isAdmin, setEditKey, faction,
   } = props;
   if (props.editKey === props.cognitoID) {
     return (
@@ -18,6 +18,7 @@ const EditableUserRow = (props) => {
     <UserRow
       firstName={firstName}
       lastName={lastName}
+      faction={faction}
       isAdmin={isAdmin}
       onFormOpen={() => setEditKey(props.cognitoID)}
     />

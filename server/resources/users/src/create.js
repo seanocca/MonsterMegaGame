@@ -12,6 +12,7 @@ export async function main(event, context, callback) {
     Item: {
       userID: apiData.userID || event.requestContext.identity.cognitoIdentityId,
       address: apiData.address,
+      faction: apiData.faction,
       city: apiData.city,
       cognitoID: apiData.cognitoID,
       email: apiData.email,
