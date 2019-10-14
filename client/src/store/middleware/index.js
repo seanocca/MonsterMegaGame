@@ -5,7 +5,7 @@ import {
   GET_USER, SET_USER, PROCESS_USER, GET_ALL_USERS, PROCESS_ALL_USERS, UPDATE_ALL_USERS,
   IS_STALE, STALE_TIME,
   DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE, DOWNLOAD_AUGMENTS,
-  EDIT_BEAST, EDIT_AUGMENT,
+  EDIT_BEAST, EDIT_AUGMENT, EDIT_FACTION,
 } from '../constants/action-types';
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
@@ -107,6 +107,20 @@ export const generalDataDownloads = ({ getState, dispatch }) => next => async (a
   return next(action);
 };
 
+const updateLocalStorageFaction = (type, saveObj) => {
+  const { name } = saveObj;
+  const existLS = JSON.parse(localStorage.getItem(`${type}sData`));
+  console.log('existLS, saveObj', existLS, saveObj);
+  window.saveObj = saveObj;
+  const newLS = existLS.map((group) => {
+    if (group.name === name) {
+      return { ...saveObj };
+    }
+    return group; // do nothing
+  });
+  localStorage.setItem(`${type}sData`, JSON.stringify(newLS));
+};
+
 const updateLocalStorage = (type, saveObj) => {
   const { factionName, ...obj } = saveObj;
   const existLS = JSON.parse(localStorage.getItem(`${type}sData`));
@@ -148,6 +162,19 @@ export const processEdits = ({ getState, dispatch }) => next => async (action) =
 
   if (EDIT_AUGMENT === action.type) {
     if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
+    return true;
+  }
+
+  if (EDIT_FACTION === action.type) {
+    const { payload } = action;
+    console.log('action.type', action.payload);
+    await API.post('AWS-HMG-URL', '/faction', { body: payload })
+      .then((response) => {
+        updateLocalStorageFaction('faction', action.payload);
+        dispatch({ type: 'PROCESS_EDIT_FACTION', payload, isLoading: false });
+      })
+      .catch(e => console.log(e));
+    // if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
     return true;
   }
 

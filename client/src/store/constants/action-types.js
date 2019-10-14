@@ -13,6 +13,7 @@ export const DOWNLOAD_FACTIONS = 'faction';
 export const PROCESS_DOWNLOAD_FACTIONS = 'download_faction';
 export const CREATE_FACTION = 'CREATE_FACTION';
 export const EDIT_FACTION = 'EDIT_FACTION';
+export const PROCESS_EDIT_FACTION = 'PROCESS_EDIT_FACTION';
 // Beasts
 export const DOWNLOAD_BEASTS = 'beast';
 export const PROCESS_DOWNLOAD_BEASTS = 'download_beast';

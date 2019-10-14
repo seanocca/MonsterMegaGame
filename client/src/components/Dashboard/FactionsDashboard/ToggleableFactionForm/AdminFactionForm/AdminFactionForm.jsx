@@ -4,7 +4,7 @@ import { useFormInput, useTextarea } from '../../../../../helpers/hooks';
 
 const AdminFactionForm = (props) => {
   const {
-    id, onFormClose, onFormSubmit, createdAt,
+    id, onFormClose, onFormSubmit, createdAt, banner,
   } = props;
   const name = useFormInput(props.name);
   const leader = useFormInput(props.leader);
@@ -15,6 +15,7 @@ const AdminFactionForm = (props) => {
     onFormSubmit({
       id,
       createdAt,
+      banner,
       name: name.value,
       leader: leader.value,
       faculty: faculty.value,

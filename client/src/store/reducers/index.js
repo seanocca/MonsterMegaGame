@@ -5,7 +5,7 @@ import {
   PROCESS_USER,
   IS_LOADING,
   PROCESS_ALL_USERS, UPDATE_ALL_USERS,
-  CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
+  CREATE_FACTION, PROCESS_EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
   CREATE_AUGMENT, PROCESS_EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
   CREATE_BEAST, PROCESS_EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
@@ -127,7 +127,7 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
-  if (EDIT_FACTION === action.type) {
+  if (PROCESS_EDIT_FACTION === action.type) {
     const {
       name, leader, faculty, desc,
     } = action.payload;
