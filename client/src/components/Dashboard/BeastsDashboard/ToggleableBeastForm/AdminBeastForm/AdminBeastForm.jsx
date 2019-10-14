@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Form, Button, Col, Card,
+  Form, Button, Col,
 } from 'react-bootstrap';
 import { useFormInput, useNumericFormInput, useFactionCardStyles } from '../../../../../helpers/hooks';
 
