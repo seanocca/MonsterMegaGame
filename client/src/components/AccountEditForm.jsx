@@ -85,6 +85,7 @@ const AccEditForm = () => {
                 placeholder="current@email.com"
                 value={formValues.email}
                 onChange={handleChange}
+                disabled
               />
             </Form.Group>
           </Form.Row>
