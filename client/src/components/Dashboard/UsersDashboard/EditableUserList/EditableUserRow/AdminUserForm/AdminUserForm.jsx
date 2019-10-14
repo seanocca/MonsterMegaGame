@@ -14,7 +14,10 @@ const AdminUserForm = (props) => {
   const city = useFormInput(props.city);
   const state = useFormInput(props.state);
   const postcode = useFormInput(props.postcode);
-  const { cognitoID, createdAt, userID } = props;
+  const faction = useFormInput(props.faction);
+  const {
+    cognitoID, createdAt, userID,
+  } = props;
 
   const [isAdmin, setIsAdmin] = useState(props.isAdmin);
   const disabled = useSelector(({ user }) => ((user.userID === userID) ? { disabled: 'disabled' } : {}));
@@ -68,6 +71,7 @@ const AdminUserForm = (props) => {
               <Form.Control
                 type="email"
                 placeholder="current@email.com"
+                disabled
                 {...email}
               />
             </Form.Group>
@@ -110,6 +114,15 @@ const AdminUserForm = (props) => {
               <Form.Control
                 placeholder="1234"
                 {...postcode}
+              />
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId="postcode">
+              <Form.Label>Faction</Form.Label>
+              <Form.Control
+                {...faction}
+                disabled
               />
             </Form.Group>
           </Form.Row>
