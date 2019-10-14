@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Form, Button, Col, Card,
+  Form, Button, Col,
 } from 'react-bootstrap';
 
 import { useFormInput, useFactionCardStyles } from '../../../../../helpers/hooks';
@@ -35,7 +35,7 @@ const AdminAugmentForm = (props) => {
 
   const submitText = props.id ? 'Update' : 'Create';
   return (
-    <Card bg="dark" text="white" style={factionStyles}>
+    <Col className="m-4" md={4} xs={10} style={factionStyles}>
       <Form>
         <Form.Row>
           <Form.Group as={Col} controlId="name">
@@ -81,7 +81,7 @@ const AdminAugmentForm = (props) => {
           </Button>
         </Form.Row>
       </Form>
-    </Card>
+    </Col>
   );
 };
 

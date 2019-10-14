@@ -27,7 +27,8 @@ function augmentsBuilder(augments) {
   }
 
   function augmentAccordion(augments) {
-    return augments.map((augment, i) => (
+    const sorted = augments.sort((a, b) => a.faction.localeCompare(b.faction));
+    return sorted.map((augment, i) => (
       <Card key={augment.faction}>
         <Accordion.Toggle as={Card.Header} eventKey={i}>
           <Row>

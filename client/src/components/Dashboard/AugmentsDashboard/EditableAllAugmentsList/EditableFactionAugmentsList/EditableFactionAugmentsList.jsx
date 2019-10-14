@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardColumns, Accordion, Card } from 'react-bootstrap';
+import { Row, Accordion, Card } from 'react-bootstrap';
 import EditableAugmentCard from './EditableAugmentCard';
 
 const EditableFactionAugmentsList = (props) => {
@@ -18,9 +18,9 @@ const EditableFactionAugmentsList = (props) => {
         <h2>{faction}</h2>
       </Accordion.Toggle>
       <Accordion.Collapse>
-        <CardColumns>
+        <Row>
           {factionAugmentsComponents}
-        </CardColumns>
+        </Row>
       </Accordion.Collapse>
     </Accordion>
   );

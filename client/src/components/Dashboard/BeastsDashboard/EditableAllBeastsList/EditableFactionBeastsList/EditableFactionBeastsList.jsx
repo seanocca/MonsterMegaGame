@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardColumns, Accordion, Card } from 'react-bootstrap';
+import { Row, Accordion, Card } from 'react-bootstrap';
 import EditableBeastCard from './EditableBeastCard';
 
 const EditableFactionBeastsList = (props) => {
@@ -18,9 +18,9 @@ const EditableFactionBeastsList = (props) => {
         <h2>{faction}</h2>
       </Accordion.Toggle>
       <Accordion.Collapse>
-        <CardColumns>
+        <Row>
           {factionBeastsComponents}
-        </CardColumns>
+        </Row>
       </Accordion.Collapse>
     </Accordion>
   );
