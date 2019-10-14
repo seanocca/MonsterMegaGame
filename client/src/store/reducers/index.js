@@ -162,6 +162,7 @@ const rootReducer = (state = initialState, action) => {
           return Object.assign(
             {},
             { faction: factionAugments.faction },
+            { logo: factionAugments.logo },
             {
               augments: factionAugments.augments.concat(action.payload.augment),
             },
@@ -209,6 +210,7 @@ const rootReducer = (state = initialState, action) => {
           return Object.assign(
             {},
             { faction: factionBeasts.faction },
+            { logo: factionBeasts.logo },
             {
               beasts: factionBeasts.beasts.concat(action.payload.beast),
             },
