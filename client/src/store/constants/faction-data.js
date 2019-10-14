@@ -4,7 +4,7 @@ export default [
     name: 'Biochrondys',
     leader: 'Jackson Fjord',
     faculty: 'School of Earth, Environmental and Biological Sciences',
-    banner: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Banners/Biochrondys.png',
+    banner: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Flags/Biochrondys.png',
     logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Biochrondys.png',
     desc: `“We are working towards a sustainable future by analysing genomes of Australian plants and animals and improving agricultural and industrial processes. We are looking into real-world problems associated with food security, energy, health and the environment.”
 
@@ -15,7 +15,7 @@ It began like most great discoveries: a combination of chance, accident, and a m
     name: 'Gatekeepers',
     leader: 'Jimmy Ellsworth',
     faculty: 'School of Law, Psychology and Social Sciences',
-    banner: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Banners/Gatekeepers.png',
+    banner: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Flags/Gatekeepers.png',
     logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Gatekeepers.png',
     desc: `“These beasts are a symptom of corruption in the fabric of time and space. We will track, contain, and eliminate them, and hunt their sources to keep humanity safe.”
 
@@ -28,7 +28,7 @@ Perplexingly, despite wishing to contain the outer dimensions from breaching our
     name: 'Mechanica',
     leader: 'Timothy Moonleigh',
     faculty: 'Science and Engineering',
-    banner: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Banners/Mechanica.png',
+    banner: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Flags/Mechanica.png',
     logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Mechanica.png',
     desc: `You've got ideas that can help shape the world? Our courses will give you the tools, equipment, and technology to bring your concepts to life. We're a university of technology, future-focused and always exploring emerging disciplines and equipment. We'll teach you to push the boundaries of scientific development using cutting-edge facilities housed in our specialist precincts, labs and workspaces.
 
@@ -39,7 +39,7 @@ We all knew it was coming. We had been preparing for it, studying it, watching i
     name: 'Voidborn',
     leader: 'Lillith Guildson',
     faculty: 'Creative Industries',
-    banner: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Banners/Voidborn.png',
+    banner: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Flags/Voidborn.png',
     logo: 'https://hmg-images-capstone2019.s3-ap-southeast-2.amazonaws.com/Logos/Voidborn.png',
     desc: `"We invite you to join with us in shaping the future of the creative professions at a time of critical transformation in higher education and changing understandings of what it is to be a modern university. In the Creative Industries Faculty, our central mission lies in discovering new knowledge, preserving foundational discoveries and practices of the past, and mentoring the rising generation, but within a framework which acknowledges the dynamics of the 21st Century. This environment is one of technological innovation, global mobility, industry partnerships and the democratisation of knowledge and access.”
 
