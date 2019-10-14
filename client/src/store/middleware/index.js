@@ -58,14 +58,14 @@ const complexData = async (getState, dispatch, type) => {
         const buildData = [];
         let existingFaction = -1;
         response.forEach(((item) => {
-          const { factionName, ...lineItem } = item;
+          const { factionName, logo, ...lineItem } = item;
           existingFaction = factionExistAlready(factionName, buildData);
           if (existingFaction !== -1) {
             // Just add to the existing array
             buildData[existingFaction][`${type}s`].push({ ...lineItem });
           } else {
             // Add a new elelment
-            buildData.push({ faction: factionName, [`${type}s`]: [{ ...lineItem }] });
+            buildData.push({ faction: factionName, logo, [`${type}s`]: [{ ...lineItem }] });
           }
         }));
         dispatch({ type: `download_${type}`, payload: buildData });
