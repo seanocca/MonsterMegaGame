@@ -3,12 +3,14 @@ import AdminUserForm from './AdminUserForm';
 import UserRow from './UserRow/UserRow';
 
 const EditableUserRow = (props) => {
-  const { firstName, lastName, isAdmin } = props;
+  const {
+    firstName, lastName, isAdmin, setEditKey, faction,
+  } = props;
   if (props.editKey === props.cognitoID) {
     return (
       <AdminUserForm
         {...props}
-        onFormClose={() => props.setEditKey('')}
+        onFormClose={() => setEditKey('')}
       />
     );
   }
@@ -16,8 +18,9 @@ const EditableUserRow = (props) => {
     <UserRow
       firstName={firstName}
       lastName={lastName}
+      faction={faction}
       isAdmin={isAdmin}
-      onFormOpen={() => props.setEditKey(props.cognitoID)}
+      onFormOpen={() => setEditKey(props.cognitoID)}
     />
   );
 };

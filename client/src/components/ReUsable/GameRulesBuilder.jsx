@@ -33,7 +33,8 @@ function gameRuleDetails(gamerules) {
     ));
   }
 
-  return gamerules.map((data, i) => (
+  const sorted = gamerules.sort((a, b) => a.id.localeCompare(b.id));
+  return sorted.map((data, i) => (
     <Card key={data.id} md={{ span: 10, offset: 2 }}>
       <Accordion.Toggle as={Card.Header} eventKey={i}>
         <Row>

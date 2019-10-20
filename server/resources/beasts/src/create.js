@@ -16,6 +16,7 @@ export async function main(event, context, callback) {
       name: apiData.name || null,
       desc: apiData.desc || null,
       image: apiData.image || null,
+      logo: apiData.logo || null,
       move: apiData.move || null,
       damage: apiData.damage || null,
       maxdmg: apiData.maxdmg || null,

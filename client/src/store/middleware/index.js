@@ -5,7 +5,7 @@ import {
   GET_USER, SET_USER, PROCESS_USER, GET_ALL_USERS, PROCESS_ALL_USERS, UPDATE_ALL_USERS,
   IS_STALE, STALE_TIME,
   DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE, DOWNLOAD_AUGMENTS,
-  EDIT_BEAST, EDIT_AUGMENT,
+  EDIT_BEAST, EDIT_AUGMENT, EDIT_FACTION,
 } from '../constants/action-types';
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
@@ -58,14 +58,14 @@ const complexData = async (getState, dispatch, type) => {
         const buildData = [];
         let existingFaction = -1;
         response.forEach(((item) => {
-          const { factionName, ...lineItem } = item;
+          const { factionName, logo, ...lineItem } = item;
           existingFaction = factionExistAlready(factionName, buildData);
           if (existingFaction !== -1) {
             // Just add to the existing array
             buildData[existingFaction][`${type}s`].push({ ...lineItem });
           } else {
             // Add a new elelment
-            buildData.push({ faction: factionName, [`${type}s`]: [{ ...lineItem }] });
+            buildData.push({ faction: factionName, logo, [`${type}s`]: [{ ...lineItem }] });
           }
         }));
         dispatch({ type: `download_${type}`, payload: buildData });
@@ -107,6 +107,20 @@ export const generalDataDownloads = ({ getState, dispatch }) => next => async (a
   return next(action);
 };
 
+const updateLocalStorageFaction = (type, saveObj) => {
+  const { name } = saveObj;
+  const existLS = JSON.parse(localStorage.getItem(`${type}sData`));
+  console.log('existLS, saveObj', existLS, saveObj);
+  window.saveObj = saveObj;
+  const newLS = existLS.map((group) => {
+    if (group.name === name) {
+      return { ...saveObj };
+    }
+    return group; // do nothing
+  });
+  localStorage.setItem(`${type}sData`, JSON.stringify(newLS));
+};
+
 const updateLocalStorage = (type, saveObj) => {
   const { factionName, ...obj } = saveObj;
   const existLS = JSON.parse(localStorage.getItem(`${type}sData`));
@@ -146,10 +160,23 @@ export const processEdits = ({ getState, dispatch }) => next => async (action) =
     return true;
   }
 
-  // if (EDIT_AUGMENT === action.type) {
-  //   if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
-  //   return true;
-  // }
+  if (EDIT_AUGMENT === action.type) {
+    if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
+    return true;
+  }
+
+  if (EDIT_FACTION === action.type) {
+    const { payload } = action;
+    console.log('action.type', action.payload);
+    await API.post('AWS-HMG-URL', '/faction', { body: payload })
+      .then((response) => {
+        updateLocalStorageFaction('faction', action.payload);
+        dispatch({ type: 'PROCESS_EDIT_FACTION', payload, isLoading: false });
+      })
+      .catch(e => console.log(e));
+    // if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
+    return true;
+  }
 
   return next(action);
 };
@@ -161,14 +188,14 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
     if (SET_USER === action.type) {
       // Upsert the data
       userData = action.payload;
-      if (!userData.userID) localStorage.setItem('user', JSON.stringify(userData));
+      if (userData.userID) localStorage.setItem('user', JSON.stringify(userData));
 
       return Auth.currentSession()
         .then((data) => {
           userData = Object.assign({}, userData, { password: '', confirm: '' });
           API.post('AWS-HMG-URL', '/user', { body: userData })
             .then((res) => {
-              if (!userData.userID) {
+              if (userData.userID) {
                 dispatch({ type: PROCESS_USER, payload: userData, isLoading: false });
               } else {
                 dispatch({ type: UPDATE_ALL_USERS, payload: userData, isLoading: false });

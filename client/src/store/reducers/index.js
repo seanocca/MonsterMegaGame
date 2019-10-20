@@ -5,8 +5,8 @@ import {
   PROCESS_USER,
   IS_LOADING,
   PROCESS_ALL_USERS, UPDATE_ALL_USERS,
-  CREATE_FACTION, EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
-  CREATE_AUGMENT, EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
+  CREATE_FACTION, PROCESS_EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
+  CREATE_AUGMENT, PROCESS_EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
   CREATE_BEAST, PROCESS_EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
   CREATE_OVERVIEW, EDIT_OVERVIEW, PROCESS_DOWNLOAD_OVERVIEW,
@@ -127,7 +127,7 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
-  if (EDIT_FACTION === action.type) {
+  if (PROCESS_EDIT_FACTION === action.type) {
     const {
       name, leader, faculty, desc,
     } = action.payload;
@@ -162,6 +162,7 @@ const rootReducer = (state = initialState, action) => {
           return Object.assign(
             {},
             { faction: factionAugments.faction },
+            { logo: factionAugments.logo },
             {
               augments: factionAugments.augments.concat(action.payload.augment),
             },
@@ -171,11 +172,7 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
-  if (EDIT_AUGMENT === action.type) {
-    const {
-      id, type, name, desc,
-    } = action.payload.augment;
-    const augmentAction = action.payload.augment.action;
+  if (PROCESS_EDIT_AUGMENT === action.type) {
     console.log('[REDUX] Edit augment: ', action.payload);
     return Object.assign({}, state, {
       augments: state.augments.map((factionAugments) => {
@@ -185,14 +182,8 @@ const rootReducer = (state = initialState, action) => {
             { faction: factionAugments.faction },
             {
               augments: factionAugments.augments.map((augment) => {
-                if (augment.id === id) {
-                  return Object.assign({}, augment, {
-                    id,
-                    type,
-                    name,
-                    action: augmentAction,
-                    desc,
-                  });
+                if (augment.id === action.payload.augment.id) {
+                  return Object.assign({}, augment, action.payload.augment);
                 }
                 return augment;
               }),
@@ -219,6 +210,7 @@ const rootReducer = (state = initialState, action) => {
           return Object.assign(
             {},
             { faction: factionBeasts.faction },
+            { logo: factionBeasts.logo },
             {
               beasts: factionBeasts.beasts.concat(action.payload.beast),
             },
@@ -229,10 +221,6 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (PROCESS_EDIT_BEAST === action.type) {
-    const {
-      id, type, name, desc, move, damage, maxdmg,
-      leap, maxleap, hp, maxhp, speed, maxspeed,
-    } = action.payload.beast;
     console.log('[REDUX] Edit Beast: ', action.payload);
     return Object.assign({}, state, {
       beasts: state.beasts.map((factionBeasts) => {
@@ -242,22 +230,8 @@ const rootReducer = (state = initialState, action) => {
             { faction: factionBeasts.faction },
             {
               beasts: factionBeasts.beasts.map((beast) => {
-                if (beast.id === id) {
-                  return Object.assign({}, beast, {
-                    id,
-                    type,
-                    name,
-                    desc,
-                    move,
-                    damage,
-                    maxdmg,
-                    leap,
-                    maxleap,
-                    hp,
-                    maxhp,
-                    speed,
-                    maxspeed,
-                  });
+                if (beast.id === action.payload.beast.id) {
+                  return Object.assign({}, beast, action.payload.beast);
                 }
                 return beast;
               }),

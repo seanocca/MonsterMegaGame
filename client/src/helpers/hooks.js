@@ -23,14 +23,9 @@ export const useTextarea = (initVal, separator = '\n\n') => {
     setValue(e.target.value);
   }
 
-  function handleSubmit() {
-    return value.split(separator);
-  }
-
   return {
     value,
     onChange: handleChange,
-    handleSubmit,
   };
 };
 
@@ -68,8 +63,6 @@ export const useFactionCardStyles = (faction) => {
     // do nothing
   }
   return {
-    width: '18rem',
-    height: '30rem',
     // overflowY: 'scroll',
     border,
   };

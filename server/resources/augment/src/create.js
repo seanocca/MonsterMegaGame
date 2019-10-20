@@ -14,10 +14,12 @@ export async function main(event, context, callback) {
     Item: {
       id: apiData.id || uuidv1(),
       factionName: apiData.factionName || undefined,
+      logo: apiData.logo || undefined,
       type: apiData.type || undefined,
       name: apiData.name || undefined,
       action: apiData.action || undefined,
       desc: apiData.desc || undefined,
+      image: apiData.image || undefined,
       createdAt: Date.now(),
     },
   };

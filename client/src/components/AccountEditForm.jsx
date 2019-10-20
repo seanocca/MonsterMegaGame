@@ -7,6 +7,7 @@ import { setUser, setIsLoading } from '../store/actions';
 
 const seedState = {
   email: '',
+  faction: '',
   password: '',
   confirm: '',
   firstName: '',
@@ -85,6 +86,7 @@ const AccEditForm = () => {
                 placeholder="current@email.com"
                 value={formValues.email}
                 onChange={handleChange}
+                disabled
               />
             </Form.Group>
           </Form.Row>
@@ -92,12 +94,12 @@ const AccEditForm = () => {
           <Form.Row>
             <Form.Group as={Col} controlId="formResetPassword">
               <Form.Label>New Password</Form.Label>
-              <Form.Control type="password" placeholder="New Password" />
+              <Form.Control type="password" placeholder="New Password" disabled />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formResetConfirmPassword">
               <Form.Label>Confirm New Password</Form.Label>
-              <Form.Control type="password" placeholder="Confirm Password" />
+              <Form.Control type="password" placeholder="Confirm Password" disabled />
             </Form.Group>
           </Form.Row>
 

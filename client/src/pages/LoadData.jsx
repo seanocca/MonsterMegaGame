@@ -1,23 +1,23 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import {
   Container, Row, Col, Button,
 } from 'react-bootstrap';
 import { API } from 'aws-amplify';
 
-const Account = () => {
-  const beastsCollection = useSelector(state => state.beasts);
-  const augmentCollection = useSelector(state => state.augments);
-  const factionCollection = useSelector(state => state.factions);
-  const riftCollection = useSelector(state => state.rift);
-  const overviewCollection = useSelector(state => state.overview);
-  const gamerulesCollection = useSelector(state => state.gamerules);
+import factionCollection from '../store/constants/faction-data';
+import beastsCollection from '../store/constants/beast-data';
+import augmentCollection from '../store/constants/augment-data';
+import overviewCollection from '../store/constants/overview-data';
+import riftCollection from '../store/constants/rift-data';
+import gamerulesCollection from '../store/constants/game-rule-data';
 
+const Account = () => {
   // **********  Beasts  **********
   const createBeasts = () => {
-    beastsCollection.forEach(({ faction, beasts }) => {
+    beastsCollection.forEach(({ faction, logo, beasts }) => {
       beasts.forEach((beast) => {
-        API.post('AWS-HMG-URL', '/beast', { body: { factionName: faction, ...beast } })
+        API.post('AWS-HMG-URL', '/beast', { body: { factionName: faction, logo, ...beast } })
           .then(response => console.log('Created A Beast!', response))
           .catch(({ response }) => {
             console.log(`Error(${response.status}): ${response.data.message}`);
@@ -27,6 +27,8 @@ const Account = () => {
   };
 
   const deleteBeasts = async () => {
+    localStorage.removeItem('beastsData');
+    localStorage.removeItem('beastsRecheck');
     const beasts = await listBeasts();
     beasts.forEach(({ factionName, id }) => {
       API.post('AWS-HMG-URL', '/delete-beast', { body: { factionName, id } })
@@ -43,9 +45,9 @@ const Account = () => {
 
   // **********  Augments  **********
   const createAugment = () => {
-    augmentCollection.forEach(({ faction, augments }) => {
+    augmentCollection.forEach(({ faction, logo, augments }) => {
       augments.forEach((augment) => {
-        API.post('AWS-HMG-URL', '/augment', { body: { factionName: faction, ...augment } })
+        API.post('AWS-HMG-URL', '/augment', { body: { factionName: faction, logo, ...augment } })
           .then(response => console.log('Created A Augment!', response))
           .catch(({ response }) => {
             console.log(`Error(${response.status}): ${response.data.message}`);
@@ -55,6 +57,8 @@ const Account = () => {
   };
 
   const deleteAugment = async () => {
+    localStorage.removeItem('augmentsData');
+    localStorage.removeItem('augmentsRecheck');
     const augments = await listAugments();
     augments.forEach(({ factionName, id }) => {
       API.post('AWS-HMG-URL', '/delete-augments', { body: { factionName, id } })
@@ -81,6 +85,8 @@ const Account = () => {
   };
 
   const deleteFaction = async () => {
+    localStorage.removeItem('factionsData');
+    localStorage.removeItem('factionsRecheck');
     const factions = await listFaction();
     factions.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-faction', { body: { id } })
@@ -105,6 +111,8 @@ const Account = () => {
   };
 
   const deleteRift = async () => {
+    localStorage.removeItem('riftsData');
+    localStorage.removeItem('riftsRecheck');
     const rifts = await listRift();
     rifts.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-rift', { body: { id } })
@@ -130,6 +138,8 @@ const Account = () => {
   };
 
   const deleteOverview = async () => {
+    localStorage.removeItem('overviewsData');
+    localStorage.removeItem('overviewsRecheck');
     const overviews = await listOverview();
     overviews.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-overview', { body: { id } })
@@ -157,6 +167,8 @@ const Account = () => {
   };
 
   const deleteGameRules = async () => {
+    localStorage.removeItem('gameRulesData');
+    localStorage.removeItem('gameRulesRecheck');
     const rules = await listGameRules();
     rules.forEach(({ id }) => {
       API.post('AWS-HMG-URL', '/delete-gamerule', { body: { id } })

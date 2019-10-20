@@ -6,7 +6,9 @@ import {
 
 function factionBuilder(factions) {
   function factionDescSeperater(desc) {
-    return desc.map((info, j) => <Card.Body key={info.id}>{info.line}</Card.Body>);
+    const newDisplay = desc.split('\n');
+    // eslint-disable-next-line react/no-array-index-key
+    return newDisplay.map((info, j) => <Card.Body key={j}>{info}</Card.Body>);
   }
 
   function factionBannerLogo(logo, banner, name, value) {
@@ -27,7 +29,8 @@ function factionBuilder(factions) {
   }
 
   function factionDetails(factions) {
-    return factions.map((faction, i) => (
+    const sorted = factions.sort((a, b) => a.name.localeCompare(b.name));
+    return sorted.map((faction, i) => (
       <Card key={faction.id}>
         <Accordion.Toggle as={Card.Header} eventKey={i}>
           <Row>
