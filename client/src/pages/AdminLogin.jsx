@@ -1,74 +1,41 @@
-import React, { Component } from 'react';
-import { Button, FormGroup, FormControl, FormLabel } from 'react-bootstrap';
+// change to Login.jsx in future
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
 
-const login = {
-  padding: '60px 0',
-};
+import { useFormInput } from '../helpers/hooks';
 
-const loginForm = {
-  margin: '0 auto',
-  maxWidth: '320px',
-};
+const Login = ({ history }) => {
+  const email = useFormInput('');
+  const password = useFormInput('');
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value,
-    });
-  };
-
-  handleSubmit = (event) => {
-    // just route to the admin page for now
+  const handleSubmit = (event) => {
+    // just route to a dashboard page
     event.preventDefault();
+    history.push('/dashboard/users');
   };
 
-  validateForm() {
-    const { email, password } = this.state;
-    return email.length > 0 && password.length > 0;
-  }
+  return (
+    <Form>
+      <Form.Group controlId="email" bsSize="large">
+        <Form.Label>Email</Form.Label>
+        <Form.Control
+          type="email"
+          placeholder="Email address"
+          autoFocus
+          {...email}
+        />
+      </Form.Group>
+      <Form.Group controlId="password" bsSize="large">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type="password"
+          {...password}
+        />
+      </Form.Group>
+      <Button type="button" onClick={handleSubmit}>Login</Button>
+    </Form>
+  );
+};
 
-  render() {
-    const { email, password } = this.state;
-    return (
-      <div style={login}>
-        <form onSubmit={this.handleSubmit} style={loginForm}>
-          <FormGroup controlId="email" bsSize="large">
-            <FormLabel>Email</FormLabel>
-            <FormControl
-              autoFocus
-              type="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <FormLabel>Password</FormLabel>
-            <FormControl
-              value={password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-            href="/dashboard"
-          >
-            Login
-          </Button>
-        </form>
-      </div>
-    );
-  }
-}
+export default withRouter(Login);

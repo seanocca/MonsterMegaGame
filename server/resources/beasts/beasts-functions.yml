@@ -1,0 +1,54 @@
+beastsCreate:
+  handler: resources/beasts/src/create.main
+  events:
+    - http:
+        path: beast
+        method: post
+        cors: true
+        authorizer: aws_iam
+
+beastsGet:
+  # Defines an HTTP API endpoint that calls the main function in get.js
+  # - path: url path is /notes/{id}
+  # - method: GET request
+  handler: resources/beasts/src/get.main
+  events:
+    - http:
+        path: beast
+        method: get
+        cors: true
+        authorizer: aws_iam
+
+beastsList:
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/beasts/src/list.main
+  events:
+    - http:
+        path:  list-beasts
+        method: get
+        cors: true
+        authorizer: aws_iam
+
+beastsPublicList:
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/beasts/src/list.main
+  events:
+    - http:
+        path:  public-list-beasts
+        method: get
+
+beastsDelete:
+  # Defines an HTTP API endpoint that calls the main function in delete.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/beasts/src/delete.main
+  events:
+    - http:
+        path:  delete-beast
+        method: post
+        cors: true
+        authorizer: aws_iam

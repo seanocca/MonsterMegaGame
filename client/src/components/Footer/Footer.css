@@ -1,0 +1,23 @@
+.custom-footer {
+  position: absolute !important;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  font-size: 0.75rem;
+  background-color: transparent !important;
+  border-top: 1px dashed !important;
+  border-radius: 0 !important;
+}
+
+.custom-footer-card {
+  font-size: 0.6rem;
+  padding: 0.5rem 1rem !important;
+}
+
+.custom-footer-socials {
+  padding: 5px 5px !important;
+  border: none !important;
+  background-color: #fff0 !important;
+  width: 40px !important;
+  height: 40px !important;
+}

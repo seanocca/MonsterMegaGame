@@ -1,0 +1,163 @@
+/*------------------------------ MOBILE RESPONSIVE STYLING ------------------------------*/
+@media screen and (max-width: 995px){
+  .card-text {
+    font-size: 0.9rem !important;
+  }
+
+}
+
+/*------------------------------ ACCORDION STYLING ------------------------------*/
+
+.custom-accordion{
+  margin: 2% 2% !important;
+  border: none !important;
+  border-radius: 5px !important;
+  background-color: transparent !important;
+  filter: drop-shadow(5px 5px 10px #01004d7a);
+}
+
+.custom-accordion .card {
+  border: none !important;
+  margin: 7.5% 0 !important;
+  background-color: transparent !important;
+}
+
+.custom-accordion-col {
+  padding-bottom: 15px;
+}
+
+.custom-accordion-col .row .col-6 {
+  padding: 0 !important;
+}
+
+.custom-accordion .card .card{
+  margin: 0 2% !important;
+  border: 1px solid #d3d3d3 !important;
+  border-top: none !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  background-color: #fff !important;
+}
+
+.custom-accordion .card .card .card-body{
+  min-width: 100% !important;
+}
+
+.custom-accordion .card .card .card{
+  margin: 2% 2% !important;
+  min-height: 100%;
+  filter: drop-shadow(10px 10px 5px #01004d7a);
+  border: 1px solid #d3d3d3 !important;
+  border-radius: 5px 5px !important;
+}
+
+.custom-accordion .card .card .card .card-header{
+  border-radius: 5px 5px 0px 0px !important;
+  color: #01004d !important;
+  font-weight: 800;
+  background-color: #ffc107 !important;
+  border-bottom: 1px dashed !important;
+}
+
+.custom-accordion .card .card .card .card-body{
+  margin: 0 !important;
+  vertical-align: middle !important;
+}
+
+.custom-accordion .card-header {
+  color: #ffc107 !important;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0 !important;
+  background-color: #01004d !important;
+  border-radius: 5px !important;
+  border: none !important;
+  z-index: 10;
+}
+
+.custom-accordion .card-body {
+  padding: 10px 20px;
+}
+
+.custom-accordion .card-text {
+  padding: 10px 20px !important;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+/*------------------------------ FACTION LOGO BANNER STYLING ------------------------------*/
+
+.custom-logo {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  display: block;
+  margin: auto;
+  padding: 0px 20px;
+  width: 100%;
+  overflow: hidden;
+  transition: height 0.66s ease-out;
+  z-index: 1;
+}
+
+.custom-column-logo {
+  padding: 0px 10px !important;
+}
+
+.custom-banner {
+  padding: 0 5% !important;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+}
+
+.custom-column-banner {
+  padding: 0 !important;
+}
+
+@media screen and (max-width: 995px){
+  .h1-adjust {
+    font-size: 1.25rem !important;
+    margin: 1rem !important;
+  }
+
+  .inline-logos {
+    height: 40px !important;
+    margin: auto !important;
+  }
+}
+
+.inline-logos {
+  height: 60px;
+}
+
+.h1-adjust {
+  margin: 0.5rem 0 !important;
+}
+
+
+/*------------------------------ STATIC CARD STYLING ------------------------------*/
+
+.static-column {
+  padding: 0 !important;
+}
+
+.static-card {
+  margin: 3%;
+  border: 1px solid #d3d3d3 !important;
+  filter: drop-shadow(5px 4px 10px #01004d7a);
+}
+
+.static-card .card-header {
+  border-bottom: 2px dashed #ffc107 !important;
+  color: #01004d !important;
+  background-color: #ffc107 !important;
+  font-weight: 700;
+  font-size: 250%;
+}
+
+.static-card .card-text {
+  font-size: 1rem;
+}

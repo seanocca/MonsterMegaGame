@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { connect, useSelector, useDispatch } from 'react-redux';
+import { Auth } from 'aws-amplify';
 import {
   Route,
   Switch,
@@ -6,43 +8,96 @@ import {
   withRouter,
 } from 'react-router-dom';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+
+import AuthenticatedRoute from './components/AuthenticatedRoute';
+import UnauthenticatedRoute from './components/UnauthenticatedRoute';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
-import AdminLogin from './pages/AdminLogin';
+import ResetPassword from './pages/ResetPassword';
 import Account from './pages/Account';
 import Factions from './pages/Factions';
 import Bestiary from './pages/Bestiary';
 import Lore from './pages/Lore';
 import GameRules from './pages/GameRules';
 
+import AugmentsDashboard from './components/Dashboard/AugmentsDashboard';
+import BeastsDashboard from './components/Dashboard/BeastsDashboard';
+import FactionsDashboard from './components/Dashboard/FactionsDashboard';
+import UsersDashboard from './components/Dashboard/UsersDashboard';
+
 import NotFound from './pages/NotFound';
-import UsersDashboard from './components/UsersDashboard';
-import BeastsDashboard from './components/BeastsDashboard';
-import FactionsDashboard from './components/FactionsDashboard';
+import LoadData from './pages/LoadData';
 
-const App = () => (
-  <Fragment>
-    <Header />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Redirect from="/home" to="/" />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/admin" component={AdminLogin} />
-      <Route exact path="/account" component={Account} />
-      <Route exact path="/factions" component={Factions} />
-      <Route exact path="/bestiary" component={Bestiary} />
-      <Route exact path="/lore" component={Lore} />
-      <Route exact path="/gamerules" component={GameRules} />
-      <Route exact path="/dashboard/users" component={UsersDashboard} />
-      <Route exact path="/dashboard/beasts" component={BeastsDashboard} />
-      <Route exact path="/dashboard/factions" component={FactionsDashboard} />
-      <Route component={NotFound} />
-    </Switch>
-    <Footer />
-  </Fragment>
-);
+import {
+  userHasAuthenticated, getUser, loadRift, loadOverview, loadFactions,
+  loadBeasts, loadGameRules, loadAugments,
+} from './store/actions';
 
-export default withRouter(App);
+const App = ({ userHasAuthenticated, getUser }) => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(state => state.isAuthenticated);
+  const isAdmin = useSelector(state => ((state.user && state.user.isAdmin)
+    ? state.user.isAdmin
+    : false));
+
+  useEffect(() => {
+    Auth.currentSession()
+      .then((user) => {
+        getUser();
+        userHasAuthenticated(true);
+      }).catch((err) => {
+        if (err === 'No current user') {
+          userHasAuthenticated(false);
+        } else {
+          console.log('Error testing for current session', err);
+        }
+      });
+  }, [userHasAuthenticated, getUser, dispatch]);
+
+  dispatch(loadRift());
+  dispatch(loadOverview());
+  dispatch(loadFactions());
+  dispatch(loadBeasts());
+  dispatch(loadGameRules());
+  dispatch(loadAugments());
+
+  const childProps = {
+    isAuthenticated,
+    isAdmin,
+    adminRequired: false,
+  };
+
+  const adminProps = {
+    ...childProps,
+    adminRequired: true,
+  };
+
+  return (
+    <Fragment>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Redirect from="/home" to="/" />
+        <UnauthenticatedRoute exact path="/login" component={Login} props={childProps} />
+        <UnauthenticatedRoute exact path="/login/reset" component={ResetPassword} props={childProps} />
+        <AuthenticatedRoute exact path="/account" component={Account} props={childProps} />
+        <Route exact path="/factions" component={Factions} />
+        <Route exact path="/bestiary" component={Bestiary} />
+        <Route exact path="/lore" component={Lore} />
+        <Route exact path="/gamerules" component={GameRules} />
+        <AuthenticatedRoute exact path="/dashboard/users" component={UsersDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/dashboard/beasts" component={BeastsDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/dashboard/augments" component={AugmentsDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/dashboard/factions" component={FactionsDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/load-data" component={LoadData} props={adminProps} />
+        <Route component={NotFound} />
+      </Switch>
+      <Footer />
+    </Fragment>
+  );
+};
+
+export default withRouter(connect(null, { userHasAuthenticated, getUser })(App));

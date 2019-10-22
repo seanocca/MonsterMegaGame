@@ -1,0 +1,54 @@
+gameRulesCreate:
+  handler: resources/gameRules/src/create.main
+  events:
+    - http:
+        path: gameRule
+        method: post
+        cors: true
+        authorizer: aws_iam
+
+gameRulesGet:
+  # Defines an HTTP API endpoint that calls the main function in get.js
+  # - path: url path is /notes/{id}
+  # - method: GET request
+  handler: resources/gameRules/src/get.main
+  events:
+    - http:
+        path: gameRule
+        method: get
+        cors: true
+        authorizer: aws_iam
+
+gameRulesList:
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/gameRules/src/list.main
+  events:
+    - http:
+        path:  list-gameRules
+        method: get
+        cors: true
+        authorizer: aws_iam
+
+gamePublicRulesList:
+  # Defines an HTTP API endpoint that calls the main function in list.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/gameRules/src/list.main
+  events:
+    - http:
+        path:  public-list-gameRules
+        method: get
+
+gameRulesDelete:
+  # Defines an HTTP API endpoint that calls the main function in delete.js
+  # - path: url path is /notes
+  # - method: GET request
+  handler: resources/gameRules/src/delete.main
+  events:
+    - http:
+        path:  delete-gamerule
+        method: post
+        cors: true
+        authorizer: aws_iam

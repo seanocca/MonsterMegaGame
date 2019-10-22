@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+/* eslint-disable react/prefer-stateless-function */
+import React from 'react';
 import { Container } from 'react-bootstrap';
 
-class Factions extends Component {
-  render() {
-    return(
-      <Container style={{ padding: '4rem 0' }}>
-        <p>This is the factions</p>
-      </Container>);
-  }
-}
+import FactionAccordion from '../components/FactionAccordion';
+
+const Factions = () => (
+  <Container style={{ padding: '4rem 0' }}>
+    <FactionAccordion />
+  </Container>
+);
 
 export default Factions;

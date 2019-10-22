@@ -1,16 +1,62 @@
-import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import {
+  Container, Card, Row, Col, Tabs, Tab,
+} from 'react-bootstrap';
+import ConfirmationForm from '../components/LoginForms/ConfirmationForm';
+import LoginForm from '../components/LoginForms/LoginForm';
+import SignUpForm from '../components/LoginForms/SignUpForm';
 
-import Forms from '../components/LoginRegisterForm';
+const mapStateToProps = state => ({
+  user: state.user,
+  unConfirmedUser: state.unConfirmedUser,
+});
 
-class Login extends Component {
-  render() {
-    return (
-      <Container style={{ padding: '4rem 0' }}>
-        <Forms />
-      </Container>
-    );
-  }
-}
+const Login = ({ user, unConfirmedUser }) => {
+  const [key, setKey] = useState('confirmation');
 
-export default Login;
+  return (
+    <Container className="custom-container" fluid="false">
+      <Row noGutters="false">
+        <Col md={{ span: 4, offset: 4 }} xs={12} className="custom-tab">
+          {(unConfirmedUser === null && user === null)
+            ? (
+              <Fragment>
+                <Tabs defaultActiveKey="login" id="loginSignupConfirmationAAA">
+                  <Tab eventKey="login" title="Login">
+                    <Card className="custom-form">
+                      <Card.Body>
+                        <LoginForm />
+                      </Card.Body>
+                    </Card>
+                  </Tab>
+                  <Tab eventKey="signUp" title="Sign Up" className="custom-tab">
+                    <Card className="custom-form">
+                      <Card.Body>
+                        <SignUpForm />
+                      </Card.Body>
+                    </Card>
+                  </Tab>
+                </Tabs>
+              </Fragment>
+            )
+            : (
+              <Fragment>
+                <Tabs activeKey={key} onSelect={k => setKey(k)} id="loginSignupConfirmationBBB">
+                  <Tab eventKey="confirmation" title="Confirm Email" className="custom-tab">
+                    <Card className="custom-form">
+                      <Card.Body>
+                        <ConfirmationForm />
+                      </Card.Body>
+                    </Card>
+                  </Tab>
+                </Tabs>
+              </Fragment>
+            )}
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default connect(mapStateToProps)(Login);
