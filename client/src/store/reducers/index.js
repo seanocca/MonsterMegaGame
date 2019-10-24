@@ -20,6 +20,7 @@ import augments from '../constants/augment-data';
 import overview from '../constants/overview-data';
 import rift from '../constants/rift-data';
 import gamerules from '../constants/game-rule-data';
+import blocks from '../constants/block-data';
 // import users from '../constants/user-data';
 
 const initialState = {
@@ -33,12 +34,14 @@ const initialState = {
     overviewData: localStorage.getItem('overviewsRecheck') || 0,
     riftData: localStorage.getItem('riftsRecheck') || 0,
     gameRuleData: localStorage.getItem('gameRulesRecheck') || 0,
+    blockData: localStorage.getItem('blockRecheck') || 0,
   },
   user: JSON.parse(localStorage.getItem('user')),
   unConfirmedUser: JSON.parse(localStorage.getItem('unConfirmedUser')),
   factions: JSON.parse(localStorage.getItem('factionsData')) || factions,
   beasts: JSON.parse(localStorage.getItem('beastsData')) || beasts,
   augments: JSON.parse(localStorage.getItem('augmentsData')) || augments,
+  blocks: JSON.parse(localStorage.getItem('blocksData')) || blocks,
   overview,
   rift,
   gamerules: JSON.parse(localStorage.getItem('gameRulesData')) || gamerules,

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ButtonToolbar, Button, Container } from 'react-bootstrap';
 
-import Game from '../components/Game';
 import HowToModal from '../components/HowToModal';
 import Maps from '../components/Maps/googlemaps';
 import Geolocation from '../components/Maps/googlelocation';

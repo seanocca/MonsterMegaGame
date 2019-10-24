@@ -41,6 +41,8 @@ export const DOWNLOAD_GAMERULE = 'gameRule';
 export const PROCESS_DOWNLOAD_GAMERULE = 'download_gameRule';
 export const CREATE_GAMERULE = 'CREATE_GAMERULES';
 export const EDIT_GAMERULE = 'EDIT_GAMERULES';
+// Blocks
+export const GET_ALL_BLOCKS = 'GET_ALL_BLOCKS';
 
 // General
 export const IS_STALE = 'IS_STALE';

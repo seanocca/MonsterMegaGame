@@ -25,6 +25,11 @@ const Dashboard = () => (
           <Nav.Link>Factions</Nav.Link>
         </LinkContainer>
       </Nav.Item>
+      <Nav.Item>
+        <LinkContainer to="/dashboard/blocks">
+          <Nav.Link>Blocks</Nav.Link>
+        </LinkContainer>
+      </Nav.Item>
     </Nav>
   </Container>
 );
