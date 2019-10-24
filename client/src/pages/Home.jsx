@@ -11,7 +11,6 @@ function Home() {
 
   return (
     <Container style={{ padding: '4rem 0', flex: '1 0 auto', minHeight: '100%' }}>
-      <Game />
       <Maps />
       <Geolocation place="" />
       <ButtonToolbar>
