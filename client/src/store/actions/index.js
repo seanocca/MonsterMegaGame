@@ -11,7 +11,7 @@ import {
   DOWNLOAD_RIFT, CREATE_RIFT, EDIT_RIFT,
   DOWNLOAD_OVERVIEW, CREATE_OVERVIEW, EDIT_OVERVIEW,
   DOWNLOAD_GAMERULE, CREATE_GAMERULE, EDIT_GAMERULE,
-  GET_ALL_BLOCKS,
+  GET_ALL_BLOCKS, CREATE_BLOCK, EDIT_BLOCK,
 } from '../constants/action-types';
 
 export const userHasAuthenticated = payload => ({ type: USER_AUTHENTICATION, payload });
@@ -46,3 +46,5 @@ export const createGameRules = payload => ({ type: CREATE_GAMERULE, payload });
 export const editGameRules = payload => ({ type: EDIT_GAMERULE, payload });
 //  blocks
 export const loadBlocks = payload => ({ type: GET_ALL_BLOCKS, payload });
+export const createBlock = payload => ({ type: CREATE_BLOCK, payload });
+export const editBlock = payload => ({ type: EDIT_BLOCK, payload });

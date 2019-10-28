@@ -1,16 +1,23 @@
 import React from 'react';
-import AdminBlockForm from './AdminBlockForm';
-import BlockRow from './BlockRow/BlockRow';
+import AdminBlockForm from '../../ToggleableBlockForm/AdminBlockForm';
+import BlockRow from './BlockRow';
 
 const EditableBlockRow = (props) => {
   const {
-    name, latitude, longitude, setEditKey,
+    name, latitude, longitude, onFormSubmit, setEditFormOpen,
   } = props;
-  if (props.editKey === props.cognitoID) {
+
+  const handleSubmit = (block) => {
+    onFormSubmit(block);
+    setEditFormOpen('');
+  };
+
+  if (props.editFormOpen === props.id) {
     return (
       <AdminBlockForm
         {...props}
-        onFormClose={() => setEditKey('')}
+        onFormClose={() => setEditFormOpen('')}
+        onFormSubmit={handleSubmit}
       />
     );
   }
@@ -19,7 +26,7 @@ const EditableBlockRow = (props) => {
       name={name}
       latitude={latitude}
       longitude={longitude}
-      onFormOpen={() => setEditKey(props.cognitoID)}
+      onFormOpen={() => setEditFormOpen(props.id)}
     />
   );
 };

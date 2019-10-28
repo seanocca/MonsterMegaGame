@@ -14,7 +14,6 @@ const AdminAugmentForm = (props) => {
   const action = useFormInput(props.action);
   const desc = useFormInput(props.desc);
   const faction = useFormInput(props.faction);
-  console.log('faction', faction);
 
   const factionStyles = useFactionCardStyles(faction);
 

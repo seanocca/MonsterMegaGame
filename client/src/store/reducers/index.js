@@ -11,7 +11,9 @@ import {
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
   CREATE_OVERVIEW, EDIT_OVERVIEW, PROCESS_DOWNLOAD_OVERVIEW,
   CREATE_GAMERULE, EDIT_GAMERULE, PROCESS_DOWNLOAD_GAMERULE,
+  CREATE_BLOCK,
   IS_STALE,
+  EDIT_BLOCK,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -242,6 +244,31 @@ const rootReducer = (state = initialState, action) => {
           );
         }
         return factionBeasts;
+      }),
+    });
+  }
+
+  // blocks
+  if (CREATE_BLOCK === action.type) {
+    console.log('[REDUX] Create Block: ', action.payload);
+    return Object.assign({}, state, {
+      blocks: state.blocks.concat(action.payload),
+    });
+  }
+  if (EDIT_BLOCK === action.type) {
+    const {
+      name, latitude, longitude,
+    } = action.payload;
+    console.log('[REDUX] Edit Block: ', action.payload);
+    return Object.assign({}, state, {
+      blocks: state.blocks.map((block) => {
+        if (block.id === action.payload.id) {
+          return Object.assign({}, block, {
+            name,
+            latitude,
+            longitude,
+          });
+        }
       }),
     });
   }

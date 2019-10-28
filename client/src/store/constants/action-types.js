@@ -43,6 +43,8 @@ export const CREATE_GAMERULE = 'CREATE_GAMERULES';
 export const EDIT_GAMERULE = 'EDIT_GAMERULES';
 // Blocks
 export const GET_ALL_BLOCKS = 'GET_ALL_BLOCKS';
+export const CREATE_BLOCK = 'CREATE_BLOCK';
+export const EDIT_BLOCK = 'EDIT_BLOCK';
 
 // General
 export const IS_STALE = 'IS_STALE';

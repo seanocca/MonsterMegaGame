@@ -1,1 +1,1 @@
-export { default } from './EditableUserRow';
+export { default } from './EditableBlockRow';
