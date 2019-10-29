@@ -4,24 +4,28 @@ import ReactMapGL, { Marker } from 'react-map-gl';
 
 import CityPin from './citypin';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   blocks: state.blocks,
 });
 
 class SimpleMap extends Component {
   state = {
     viewport: {
-      width: 600,
-      height: 600,
-      latitude: -27.477390,
+      width: 400,
+      height: 400,
+      latitude: -27.47739,
       longitude: 153.028329,
-      zoom: 16.9,
+      zoom: 16,
       bearing: 49,
     },
   };
 
   renderCityMarker = (city, index) => (
-    <Marker key={`marker-${index}`} longitude={city.longitude} latitude={city.latitude}>
+    <Marker
+      key={`marker-${index}`}
+      longitude={city.longitude}
+      latitude={city.latitude}
+    >
       <CityPin size={20} />
     </Marker>
   );
@@ -36,7 +40,7 @@ class SimpleMap extends Component {
         mapboxApiAccessToken="pk.eyJ1IjoiaGFsZm1vbnN0ZXJnYW1lcyIsImEiOiJjazFsbWcyMzcwNGpwM2RwaTZtajhvY3piIn0.aHsV6SboffgREmPS6Z_8yg"
         mapStyle="mapbox://styles/halfmonstergames/ck1lmp6vi0gfq1ckfofw8lgrl"
         {...this.state.viewport}
-        onViewportChange={viewport => this.setState({ viewport })}
+        onViewportChange={(viewport) => this.setState({ viewport })}
         scrollZoom={false}
         dragPan={false}
         dragRotate={false}
