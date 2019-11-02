@@ -269,6 +269,7 @@ const rootReducer = (state = initialState, action) => {
             longitude,
           });
         }
+        return block;
       }),
     });
   }
