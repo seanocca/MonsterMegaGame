@@ -39,6 +39,7 @@ const AdminUserForm = (props) => {
       cognitoID,
       createdAt,
       userID,
+      update: true,
     };
 
     dispatch(setUser(userObject));

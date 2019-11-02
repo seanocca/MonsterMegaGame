@@ -87,9 +87,10 @@ const rootReducer = (state = initialState, action) => {
   if (PROCESS_USER === action.type) {
     console.log('[REDUX] Set/Get User: ', action.payload, action.isLoading);
     return Object.assign({}, state, {
-      user: action.payload,
-      isLoading:
-        action.isLoading === undefined ? state.isLoading : action.isLoading,
+      user: (state.user.cognitoID === action.payload.cognitoID)
+        ? action.payload : state.user,
+      isLoading: (action.isLoading === undefined)
+        ? state.isLoading : action.isLoading,
     });
   }
 

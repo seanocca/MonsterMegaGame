@@ -188,14 +188,19 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
     if (SET_USER === action.type) {
       // Upsert the data
       userData = action.payload;
-      if (userData.userID) localStorage.setItem('user', JSON.stringify(userData));
+
+      // Here to save user data while confirming account
+      if (userData.unConfirmed) {
+        userData = Object.assign({}, userData, { password: '', confirm: '', unConfirmed: false });
+        localStorage.setItem('user', JSON.stringify(userData));
+      }
 
       return Auth.currentSession()
         .then((data) => {
-          userData = Object.assign({}, userData, { password: '', confirm: '' });
+          userData = Object.assign({}, userData, { password: '', confirm: '', unConfirmed: false });
           API.post('AWS-HMG-URL', '/user', { body: userData })
             .then((res) => {
-              if (userData.userID) {
+              if (!userData.update) {
                 dispatch({ type: PROCESS_USER, payload: userData, isLoading: false });
               } else {
                 dispatch({ type: UPDATE_ALL_USERS, payload: userData, isLoading: false });
