@@ -14,6 +14,8 @@ export const PROCESS_DOWNLOAD_FACTIONS = 'download_faction';
 export const CREATE_FACTION = 'CREATE_FACTION';
 export const EDIT_FACTION = 'EDIT_FACTION';
 export const PROCESS_EDIT_FACTION = 'PROCESS_EDIT_FACTION';
+export const DELETE_FACTION = 'delete-faction';
+export const PROCESS_DELETE_FACTION = 'PROCESS_delete-faction';
 // Beasts
 export const DOWNLOAD_BEASTS = 'beast';
 export const PROCESS_DOWNLOAD_BEASTS = 'download_beast';
@@ -49,6 +51,8 @@ export const EDIT_GAMERULE = 'EDIT_GAMERULES';
 export const GET_ALL_BLOCKS = 'GET_ALL_BLOCKS';
 export const CREATE_BLOCK = 'CREATE_BLOCK';
 export const EDIT_BLOCK = 'EDIT_BLOCK';
+export const DELETE_BLOCK = 'delete-block';
+export const PROCESS_DELETE_BLOCK = 'PROCESS_delete-block';
 
 // General
 export const IS_STALE = 'IS_STALE';

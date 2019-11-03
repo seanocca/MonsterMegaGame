@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import AdminBlockForm from '../../ToggleableBlockForm/AdminBlockForm';
 import BlockRow from './BlockRow';
+import { deleteBlock } from '../../../../../store/actions';
 
 const EditableBlockRow = (props) => {
+  const dispatch = useDispatch();
   const {
     name, latitude, longitude, onFormSubmit, setEditFormOpen,
   } = props;
@@ -11,6 +14,8 @@ const EditableBlockRow = (props) => {
     onFormSubmit(block);
     setEditFormOpen('');
   };
+
+  const handleDelete = () => dispatch(deleteBlock(props));
 
   if (props.editFormOpen === props.id) {
     return (
@@ -27,6 +32,7 @@ const EditableBlockRow = (props) => {
       latitude={latitude}
       longitude={longitude}
       onFormOpen={() => setEditFormOpen(props.id)}
+      handleDelete={handleDelete}
     />
   );
 };

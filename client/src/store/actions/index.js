@@ -5,13 +5,13 @@ import {
   GET_USER,
   GET_ALL_USERS,
   IS_LOADING,
-  DOWNLOAD_FACTIONS, CREATE_FACTION, EDIT_FACTION,
+  DOWNLOAD_FACTIONS, CREATE_FACTION, EDIT_FACTION, DELETE_FACTION,
   DOWNLOAD_BEASTS, CREATE_BEAST, EDIT_BEAST, DELETE_BEAST,
   DOWNLOAD_AUGMENTS, CREATE_AUGMENT, EDIT_AUGMENT, DELETE_AUGMENT,
   DOWNLOAD_RIFT, CREATE_RIFT, EDIT_RIFT,
   DOWNLOAD_OVERVIEW, CREATE_OVERVIEW, EDIT_OVERVIEW,
   DOWNLOAD_GAMERULE, CREATE_GAMERULE, EDIT_GAMERULE,
-  GET_ALL_BLOCKS, CREATE_BLOCK, EDIT_BLOCK,
+  GET_ALL_BLOCKS, CREATE_BLOCK, EDIT_BLOCK, DELETE_BLOCK,
 } from '../constants/action-types';
 
 export const userHasAuthenticated = payload => ({ type: USER_AUTHENTICATION, payload });
@@ -24,6 +24,7 @@ export const setIsLoading = payload => ({ type: IS_LOADING, payload });
 export const loadFactions = payload => ({ type: DOWNLOAD_FACTIONS, payload });
 export const createFaction = payload => ({ type: CREATE_FACTION, payload });
 export const editFaction = payload => ({ type: EDIT_FACTION, payload });
+export const deleteFaction = payload => ({ type: DELETE_FACTION, payload });
 // Beasts
 export const loadBeasts = payload => ({ type: DOWNLOAD_BEASTS, payload });
 export const createBeast = payload => ({ type: CREATE_BEAST, payload });
@@ -50,3 +51,4 @@ export const editGameRules = payload => ({ type: EDIT_GAMERULE, payload });
 export const loadBlocks = payload => ({ type: GET_ALL_BLOCKS, payload });
 export const createBlock = payload => ({ type: CREATE_BLOCK, payload });
 export const editBlock = payload => ({ type: EDIT_BLOCK, payload });
+export const deleteBlock = payload => ({ type: DELETE_BLOCK, payload });

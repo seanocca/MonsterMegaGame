@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import AdminFactionForm from '../../ToggleableFactionForm/AdminFactionForm';
 import FactionRow from './FactionRow';
+import { deleteFaction } from '../../../../../store/actions';
 
 const EditableFactionRow = (props) => {
+  const dispatch = useDispatch();
   const {
     name, leader, onFormSubmit, setEditFormOpen,
   } = props;
@@ -11,6 +14,8 @@ const EditableFactionRow = (props) => {
     onFormSubmit(faction);
     setEditFormOpen('');
   };
+
+  const handleDelete = () => dispatch(deleteFaction(props));
 
   if (props.editFormOpen === props.id) {
     return (
@@ -26,6 +31,7 @@ const EditableFactionRow = (props) => {
       name={name}
       leader={leader}
       onFormOpen={() => setEditFormOpen(props.id)}
+      handleDelete={handleDelete}
     />
   );
 };

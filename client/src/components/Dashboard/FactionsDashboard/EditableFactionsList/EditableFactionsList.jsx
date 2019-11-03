@@ -22,7 +22,7 @@ const EditableFactionsList = (props) => {
         <tr>
           <th>Faction Name</th>
           <th>Faction Leader</th>
-          <th>Edit Faction</th>
+          <th />
         </tr>
       </thead>
       <tbody>
