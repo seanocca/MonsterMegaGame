@@ -145,8 +145,10 @@ const updateLocalStorage = (type, saveObj) => {
 const genericEdit = async (dispatch, endpoint, { type, payload }) => {
   const saveObj = {
     factionName: payload.faction,
+    logo: payload.logo,
     ...payload[endpoint],
   };
+  console.log('XXXXXXgenericEdit', saveObj);
   await API.post('AWS-HMG-URL', `/${endpoint}`, { body: saveObj })
     .then((response) => {
       updateLocalStorage(endpoint, saveObj);
@@ -168,7 +170,6 @@ export const processEdits = ({ getState, dispatch }) => next => async (action) =
 
   if (EDIT_FACTION === action.type) {
     const { payload } = action;
-    console.log('action.type', action.payload);
     await API.post('AWS-HMG-URL', '/faction', { body: payload })
       .then((response) => {
         updateLocalStorageFaction('faction', action.payload);

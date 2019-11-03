@@ -10,7 +10,7 @@ import ToggleableBeastForm from './ToggleableBeastForm';
 const BeastsDashboard = () => {
   const allBeasts = useSelector(state => state.beasts);
   const dispatch = useDispatch();
-
+  console.log('BeastsDashboard', allBeasts);
   const handleCreateFormSubmit = (beast) => {
     dispatch(createBeast(beast));
   };

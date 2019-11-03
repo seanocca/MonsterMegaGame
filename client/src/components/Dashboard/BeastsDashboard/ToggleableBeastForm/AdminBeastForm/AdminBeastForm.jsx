@@ -6,7 +6,7 @@ import { useFormInput, useNumericFormInput, useFactionCardStyles } from '../../.
 
 const AdminBeastForm = (props) => {
   const {
-    id, onFormClose, onFormSubmit, createdAt, image,
+    id, onFormClose, onFormSubmit, createdAt, image, logo,
   } = props;
   const name = useFormInput(props.name);
   const desc = useFormInput(props.desc);
@@ -46,6 +46,7 @@ const AdminBeastForm = (props) => {
         maxspeed: maxspeed.value,
       },
       faction: faction.value,
+      logo,
     });
   };
 

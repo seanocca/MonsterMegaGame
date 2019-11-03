@@ -257,6 +257,7 @@ const rootReducer = (state = initialState, action) => {
           return Object.assign(
             {},
             { faction: factionBeasts.faction },
+            { logo: factionBeasts.logo },
             {
               beasts: factionBeasts.beasts.map((beast) => {
                 if (beast.id === action.payload.beast.id) {
