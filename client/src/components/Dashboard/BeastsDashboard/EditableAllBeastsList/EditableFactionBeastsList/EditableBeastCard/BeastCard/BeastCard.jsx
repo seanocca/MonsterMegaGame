@@ -8,12 +8,16 @@ const factionImagePathPrefix = '/img/factions/';
 const BeastCard = (props) => {
   const {
     faction, name, desc, move, damage, maxdmg, leap, image,
-    maxleap, hp, maxhp, speed, maxspeed, onFormOpen,
+    maxleap, hp, maxhp, speed, maxspeed, onFormOpen, handleDelete,
   } = props;
   const factionStyles = useFactionCardStyles(faction);
   let factionImagePath = `${factionImagePathPrefix + faction.toLowerCase()}.png`;
   if (faction === 'Gatekeepers') factionImagePath = `${factionImagePathPrefix}gatekeeper.png`;
   const altTag = `${faction} - ${name}`;
+
+  const paddingRight = {
+    marginRight: '10px',
+  };
 
   return (
     <Card as={Col} className="m-4" md={3} xs={10} bg="dark" text="white" style={factionStyles}>
@@ -29,8 +33,9 @@ const BeastCard = (props) => {
           <strong>MOVE: </strong>{move}
         </Card.Text>
       </Card.Body>
-      <Card.Footer>
-        <Button type="button" onClick={onFormOpen}>Edit Beast</Button>
+      <Card.Footer className="text-center">
+        <Button type="button" onClick={onFormOpen} style={paddingRight}>Edit</Button>
+        <Button type="button" variant="danger" onClick={handleDelete}>Delete</Button>
       </Card.Footer>
     </Card>
   );

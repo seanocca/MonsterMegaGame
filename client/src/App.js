@@ -27,13 +27,14 @@ import AugmentsDashboard from './components/Dashboard/AugmentsDashboard';
 import BeastsDashboard from './components/Dashboard/BeastsDashboard';
 import FactionsDashboard from './components/Dashboard/FactionsDashboard';
 import UsersDashboard from './components/Dashboard/UsersDashboard';
+import BlocksDashboard from './components/Dashboard/BlocksDashboard';
 
 import NotFound from './pages/NotFound';
 import LoadData from './pages/LoadData';
 
 import {
   userHasAuthenticated, getUser, loadRift, loadOverview, loadFactions,
-  loadBeasts, loadGameRules, loadAugments,
+  loadBeasts, loadGameRules, loadAugments, loadBlocks,
 } from './store/actions';
 
 const App = ({ userHasAuthenticated, getUser }) => {
@@ -63,6 +64,7 @@ const App = ({ userHasAuthenticated, getUser }) => {
   dispatch(loadBeasts());
   dispatch(loadGameRules());
   dispatch(loadAugments());
+  dispatch(loadBlocks());
 
   const childProps = {
     isAuthenticated,
@@ -92,6 +94,7 @@ const App = ({ userHasAuthenticated, getUser }) => {
         <AuthenticatedRoute exact path="/dashboard/beasts" component={BeastsDashboard} props={adminProps} />
         <AuthenticatedRoute exact path="/dashboard/augments" component={AugmentsDashboard} props={adminProps} />
         <AuthenticatedRoute exact path="/dashboard/factions" component={FactionsDashboard} props={adminProps} />
+        <AuthenticatedRoute exact path="/dashboard/blocks" component={BlocksDashboard} props={adminProps} />
         <AuthenticatedRoute exact path="/load-data" component={LoadData} props={adminProps} />
         <Route component={NotFound} />
       </Switch>

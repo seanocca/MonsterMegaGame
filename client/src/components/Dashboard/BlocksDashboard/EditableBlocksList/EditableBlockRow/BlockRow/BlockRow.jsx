@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const FactionRow = (props) => {
+const BlockRow = (props) => {
   const {
-    name, leader, onFormOpen, handleDelete,
+    name, latitude, longitude, onFormOpen, handleDelete,
   } = props;
 
   const paddingRight = {
@@ -13,7 +13,8 @@ const FactionRow = (props) => {
   return (
     <tr>
       <td>{name}</td>
-      <td>{leader}</td>
+      <td>{latitude}</td>
+      <td>{longitude}</td>
       <td>
         <Button type="button" onClick={onFormOpen} style={paddingRight}>Edit</Button>
         <Button type="button" variant="danger" onClick={handleDelete}>Delete</Button>
@@ -22,4 +23,4 @@ const FactionRow = (props) => {
   );
 };
 
-export default FactionRow;
+export default BlockRow;

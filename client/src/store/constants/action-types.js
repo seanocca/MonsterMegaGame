@@ -14,18 +14,24 @@ export const PROCESS_DOWNLOAD_FACTIONS = 'download_faction';
 export const CREATE_FACTION = 'CREATE_FACTION';
 export const EDIT_FACTION = 'EDIT_FACTION';
 export const PROCESS_EDIT_FACTION = 'PROCESS_EDIT_FACTION';
+export const DELETE_FACTION = 'delete-faction';
+export const PROCESS_DELETE_FACTION = 'PROCESS_delete-faction';
 // Beasts
 export const DOWNLOAD_BEASTS = 'beast';
 export const PROCESS_DOWNLOAD_BEASTS = 'download_beast';
 export const CREATE_BEAST = 'CREATE_BEAST';
 export const EDIT_BEAST = 'EDIT_BEAST';
 export const PROCESS_EDIT_BEAST = 'PROCESS_EDIT_BEAST';
+export const DELETE_BEAST = 'delete-beast';
+export const PROCESS_DELETE_BEAST = 'PROCESS_delete-beast';
 // Augments
 export const DOWNLOAD_AUGMENTS = 'augment';
 export const PROCESS_DOWNLOAD_AUGMENTS = 'download_augment';
 export const CREATE_AUGMENT = 'CREATE_AUGMENT';
 export const EDIT_AUGMENT = 'EDIT_AUGMENT';
 export const PROCESS_EDIT_AUGMENT = 'PROCESS_EDIT_AUGMENT';
+export const DELETE_AUGMENT = 'delete-augments';
+export const PROCESS_DELETE_AUGMENT = 'PROCESS_delete-augments';
 // Rift
 export const DOWNLOAD_RIFT = 'rift';
 export const PROCESS_DOWNLOAD_RIFT = 'download_rift';
@@ -41,7 +47,14 @@ export const DOWNLOAD_GAMERULE = 'gameRule';
 export const PROCESS_DOWNLOAD_GAMERULE = 'download_gameRule';
 export const CREATE_GAMERULE = 'CREATE_GAMERULES';
 export const EDIT_GAMERULE = 'EDIT_GAMERULES';
+// Blocks
+export const GET_ALL_BLOCKS = 'GET_ALL_BLOCKS';
+export const CREATE_BLOCK = 'CREATE_BLOCK';
+export const EDIT_BLOCK = 'EDIT_BLOCK';
+export const DELETE_BLOCK = 'delete-block';
+export const PROCESS_DELETE_BLOCK = 'PROCESS_delete-block';
 
 // General
 export const IS_STALE = 'IS_STALE';
-export const STALE_TIME = 86400; // 1 day in seconds
+// export const STALE_TIME = 86400; // 1 day in seconds
+export const STALE_TIME = 60; // For demo reasons - set to 1 minute

@@ -14,9 +14,12 @@ const AdminAugmentForm = (props) => {
   const action = useFormInput(props.action);
   const desc = useFormInput(props.desc);
   const faction = useFormInput(props.faction);
-  console.log('faction', faction);
 
   const factionStyles = useFactionCardStyles(faction);
+
+  const paddingRight = {
+    marginRight: '10px',
+  };
 
   const handleSubmit = () => {
     onFormSubmit({
@@ -73,7 +76,7 @@ const AdminAugmentForm = (props) => {
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">
-          <Button variant="primary" type="button" onClick={handleSubmit}>
+          <Button variant="primary" type="button" onClick={handleSubmit} style={paddingRight}>
             {submitText}
           </Button>
           <Button variant="danger" type="button" onClick={onFormClose}>

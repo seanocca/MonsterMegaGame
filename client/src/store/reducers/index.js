@@ -5,13 +5,15 @@ import {
   PROCESS_USER,
   IS_LOADING,
   PROCESS_ALL_USERS, UPDATE_ALL_USERS,
-  CREATE_FACTION, PROCESS_EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
-  CREATE_AUGMENT, PROCESS_EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
-  CREATE_BEAST, PROCESS_EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
+  CREATE_FACTION, PROCESS_EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS, PROCESS_DELETE_FACTION,
+  CREATE_AUGMENT, PROCESS_EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS, PROCESS_DELETE_AUGMENT,
+  CREATE_BEAST, PROCESS_EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS, PROCESS_DELETE_BEAST,
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
   CREATE_OVERVIEW, EDIT_OVERVIEW, PROCESS_DOWNLOAD_OVERVIEW,
   CREATE_GAMERULE, EDIT_GAMERULE, PROCESS_DOWNLOAD_GAMERULE,
+  CREATE_BLOCK,
   IS_STALE,
+  EDIT_BLOCK,
 } from '../constants/action-types';
 
 import factions from '../constants/faction-data';
@@ -20,6 +22,7 @@ import augments from '../constants/augment-data';
 import overview from '../constants/overview-data';
 import rift from '../constants/rift-data';
 import gamerules from '../constants/game-rule-data';
+import blocks from '../constants/block-data';
 // import users from '../constants/user-data';
 
 const initialState = {
@@ -33,12 +36,14 @@ const initialState = {
     overviewData: localStorage.getItem('overviewsRecheck') || 0,
     riftData: localStorage.getItem('riftsRecheck') || 0,
     gameRuleData: localStorage.getItem('gameRulesRecheck') || 0,
+    blockData: localStorage.getItem('blockRecheck') || 0,
   },
   user: JSON.parse(localStorage.getItem('user')),
   unConfirmedUser: JSON.parse(localStorage.getItem('unConfirmedUser')),
   factions: JSON.parse(localStorage.getItem('factionsData')) || factions,
   beasts: JSON.parse(localStorage.getItem('beastsData')) || beasts,
   augments: JSON.parse(localStorage.getItem('augmentsData')) || augments,
+  blocks: JSON.parse(localStorage.getItem('blocksData')) || blocks,
   overview,
   rift,
   gamerules: JSON.parse(localStorage.getItem('gameRulesData')) || gamerules,
@@ -146,6 +151,12 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
+  if (PROCESS_DELETE_FACTION === action.type) {
+    console.log('[REDUX] Delete Faction: ', action.payload);
+    return Object.assign({}, state, {
+      factions: state.factions.filter(faction => (faction.id !== action.payload.id)),
+    });
+  }
 
   // Augments
   if (PROCESS_DOWNLOAD_AUGMENTS === action.type) {
@@ -187,6 +198,24 @@ const rootReducer = (state = initialState, action) => {
                 }
                 return augment;
               }),
+            },
+          );
+        }
+        return factionAugments;
+      }),
+    });
+  }
+  if (PROCESS_DELETE_AUGMENT === action.type) {
+    console.log('[REDUX] Delete Augment: ', action.payload);
+    return Object.assign({}, state, {
+      augments: state.augments.map((factionAugments) => {
+        if (factionAugments.faction === action.payload.factionName) {
+          return Object.assign(
+            {},
+            { faction: factionAugments.faction },
+            {
+              augments: factionAugments.augments
+                .filter(augment => (augment.id !== action.payload.id)),
             },
           );
         }
@@ -239,6 +268,49 @@ const rootReducer = (state = initialState, action) => {
           );
         }
         return factionBeasts;
+      }),
+    });
+  }
+  if (PROCESS_DELETE_BEAST === action.type) {
+    console.log('[REDUX] Delete Beast: ', action.payload);
+    return Object.assign({}, state, {
+      beasts: state.beasts.map((factionBeasts) => {
+        if (factionBeasts.faction === action.payload.factionName) {
+          return Object.assign(
+            {},
+            { faction: factionBeasts.faction },
+            {
+              beasts: factionBeasts.beasts.filter(beast => (beast.id !== action.payload.id)),
+            },
+          );
+        }
+        return factionBeasts;
+      }),
+    });
+  }
+
+  // blocks
+  if (CREATE_BLOCK === action.type) {
+    console.log('[REDUX] Create Block: ', action.payload);
+    return Object.assign({}, state, {
+      blocks: state.blocks.concat(action.payload),
+    });
+  }
+  if (EDIT_BLOCK === action.type) {
+    const {
+      name, latitude, longitude,
+    } = action.payload;
+    console.log('[REDUX] Edit Block: ', action.payload);
+    return Object.assign({}, state, {
+      blocks: state.blocks.map((block) => {
+        if (block.id === action.payload.id) {
+          return Object.assign({}, block, {
+            name,
+            latitude,
+            longitude,
+          });
+        }
+        return block;
       }),
     });
   }

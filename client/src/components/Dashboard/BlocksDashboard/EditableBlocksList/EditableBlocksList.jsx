@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 
-import EditableFactionRow from './EditableFactionRow';
+import EditableBlockRow from './EditableBlockRow';
 
-const EditableFactionsList = (props) => {
+const EditableBlocksList = (props) => {
   const [editFormOpen, setEditFormOpen] = useState('');
   const { onFormSubmit } = props;
-  const factions = props.factions.map(faction => (
-    <EditableFactionRow
-      {...faction}
+
+  const blocks = props.blocks.map(block => (
+    <EditableBlockRow
+      {...block}
       onFormSubmit={onFormSubmit}
-      key={faction.id}
+      key={block.id}
       editFormOpen={editFormOpen}
       setEditFormOpen={setEditFormOpen}
     />
@@ -20,16 +21,17 @@ const EditableFactionsList = (props) => {
     <Table>
       <thead>
         <tr>
-          <th>Faction Name</th>
-          <th>Faction Leader</th>
-          <th />
+          <th>Block Name</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Edit block</th>
         </tr>
       </thead>
       <tbody>
-        {factions}
+        {blocks}
       </tbody>
     </Table>
   );
 };
 
-export default EditableFactionsList;
+export default EditableBlocksList;
