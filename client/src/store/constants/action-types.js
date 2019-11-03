@@ -20,12 +20,16 @@ export const PROCESS_DOWNLOAD_BEASTS = 'download_beast';
 export const CREATE_BEAST = 'CREATE_BEAST';
 export const EDIT_BEAST = 'EDIT_BEAST';
 export const PROCESS_EDIT_BEAST = 'PROCESS_EDIT_BEAST';
+export const DELETE_BEAST = 'delete-beast';
+export const PROCESS_DELETE_BEAST = 'PROCESS_delete-beast';
 // Augments
 export const DOWNLOAD_AUGMENTS = 'augment';
 export const PROCESS_DOWNLOAD_AUGMENTS = 'download_augment';
 export const CREATE_AUGMENT = 'CREATE_AUGMENT';
 export const EDIT_AUGMENT = 'EDIT_AUGMENT';
 export const PROCESS_EDIT_AUGMENT = 'PROCESS_EDIT_AUGMENT';
+export const DELETE_AUGMENT = 'delete-augments';
+export const PROCESS_DELETE_AUGMENT = 'PROCESS_delete-augments';
 // Rift
 export const DOWNLOAD_RIFT = 'rift';
 export const PROCESS_DOWNLOAD_RIFT = 'download_rift';
@@ -48,4 +52,5 @@ export const EDIT_BLOCK = 'EDIT_BLOCK';
 
 // General
 export const IS_STALE = 'IS_STALE';
-export const STALE_TIME = 86400; // 1 day in seconds
+// export const STALE_TIME = 86400; // 1 day in seconds
+export const STALE_TIME = 60; // For demo reasons - set to 1 minute

@@ -17,6 +17,10 @@ const AdminAugmentForm = (props) => {
 
   const factionStyles = useFactionCardStyles(faction);
 
+  const paddingRight = {
+    marginRight: '10px',
+  };
+
   const handleSubmit = () => {
     onFormSubmit({
       augment: {
@@ -72,7 +76,7 @@ const AdminAugmentForm = (props) => {
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">
-          <Button variant="primary" type="button" onClick={handleSubmit}>
+          <Button variant="primary" type="button" onClick={handleSubmit} style={paddingRight}>
             {submitText}
           </Button>
           <Button variant="danger" type="button" onClick={onFormClose}>

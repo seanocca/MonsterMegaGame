@@ -24,6 +24,10 @@ const AdminUserForm = (props) => {
 
   const checkBoxClick = event => setIsAdmin(val => !val);
 
+  const paddingRight = {
+    marginRight: '10px',
+  };
+
   const handleUpdate = (event) => {
     event.preventDefault();
     dispatch(setIsLoading(true));
@@ -138,7 +142,7 @@ const AdminUserForm = (props) => {
             </Form.Group>
           </Form.Row>
           <Form.Row className="justify-content-center">
-            <Button variant="primary" type="submit" onClick={handleUpdate}>
+            <Button variant="primary" type="submit" onClick={handleUpdate} style={paddingRight}>
               Update
             </Button>
             <Button variant="danger" type="button" onClick={onFormClose}>

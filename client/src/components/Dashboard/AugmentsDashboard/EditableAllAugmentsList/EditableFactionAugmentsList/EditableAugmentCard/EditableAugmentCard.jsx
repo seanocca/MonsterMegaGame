@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import AdminAugmentForm from '../../../ToggleableAugmentForm/AdminAugmentForm';
 import AugmentCard from './AugmentCard';
+import { deleteAugment } from '../../../../../../store/actions';
 
 const EditableAugmentCard = (props) => {
+  const dispatch = useDispatch();
   const [editFormopen, setEditFormOpen] = useState(false);
   const { onFormSubmit } = props;
 
@@ -10,6 +13,8 @@ const EditableAugmentCard = (props) => {
     onFormSubmit(augment);
     setEditFormOpen(false);
   };
+
+  const handleDelete = () => dispatch(deleteAugment(props));
 
   if (editFormopen) {
     return (
@@ -24,6 +29,7 @@ const EditableAugmentCard = (props) => {
     <AugmentCard
       {...props}
       onFormOpen={() => setEditFormOpen(true)}
+      handleDelete={handleDelete}
     />
   );
 };

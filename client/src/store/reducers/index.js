@@ -6,8 +6,8 @@ import {
   IS_LOADING,
   PROCESS_ALL_USERS, UPDATE_ALL_USERS,
   CREATE_FACTION, PROCESS_EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
-  CREATE_AUGMENT, PROCESS_EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS,
-  CREATE_BEAST, PROCESS_EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS,
+  CREATE_AUGMENT, PROCESS_EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS, PROCESS_DELETE_AUGMENT,
+  CREATE_BEAST, PROCESS_EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS, PROCESS_DELETE_BEAST,
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
   CREATE_OVERVIEW, EDIT_OVERVIEW, PROCESS_DOWNLOAD_OVERVIEW,
   CREATE_GAMERULE, EDIT_GAMERULE, PROCESS_DOWNLOAD_GAMERULE,
@@ -87,10 +87,9 @@ const rootReducer = (state = initialState, action) => {
   if (PROCESS_USER === action.type) {
     console.log('[REDUX] Set/Get User: ', action.payload, action.isLoading);
     return Object.assign({}, state, {
-      user: (state.user.cognitoID === action.payload.cognitoID)
-        ? action.payload : state.user,
-      isLoading: (action.isLoading === undefined)
-        ? state.isLoading : action.isLoading,
+      user: action.payload,
+      isLoading:
+        action.isLoading === undefined ? state.isLoading : action.isLoading,
     });
   }
 
@@ -200,6 +199,23 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
+  if (PROCESS_DELETE_AUGMENT === action.type) {
+    console.log('[REDUX] Delete Augment: ', action.payload);
+    return Object.assign({}, state, {
+      augments: state.augments.map((factionAugments) => {
+        if (factionAugments.faction === action.payload.factionName) {
+          return Object.assign(
+            {},
+            { faction: factionAugments.faction },
+            {
+              augments: factionAugments.augments.filter(augment => (augment.id !== action.payload.id)),
+            },
+          );
+        }
+        return factionAugments;
+      }),
+    });
+  }
 
   // beasts
   if (PROCESS_DOWNLOAD_BEASTS === action.type) {
@@ -241,6 +257,23 @@ const rootReducer = (state = initialState, action) => {
                 }
                 return beast;
               }),
+            },
+          );
+        }
+        return factionBeasts;
+      }),
+    });
+  }
+  if (PROCESS_DELETE_BEAST === action.type) {
+    console.log('[REDUX] Delete Beast: ', action.payload);
+    return Object.assign({}, state, {
+      beasts: state.beasts.map((factionBeasts) => {
+        if (factionBeasts.faction === action.payload.factionName) {
+          return Object.assign(
+            {},
+            { faction: factionBeasts.faction },
+            {
+              beasts: factionBeasts.beasts.filter(beast => (beast.id !== action.payload.id)),
             },
           );
         }

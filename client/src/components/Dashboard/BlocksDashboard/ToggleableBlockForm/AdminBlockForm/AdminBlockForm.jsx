@@ -21,6 +21,10 @@ const AdminBlockForm = (props) => {
     });
   };
 
+  const paddingRight = {
+    marginRight: '10px',
+  };
+
   const submitText = props.id ? 'Update' : 'Create';
   return (
     <td colSpan="3">
@@ -49,7 +53,7 @@ const AdminBlockForm = (props) => {
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">
-          <Button variant="primary" type="button" onClick={handleSubmit}>
+          <Button variant="primary" type="button" onClick={handleSubmit} style={paddingRight}>
             {submitText}
           </Button>
           <Button variant="danger" type="button" onClick={onFormClose}>

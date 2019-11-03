@@ -6,8 +6,8 @@ import {
   GET_ALL_USERS,
   IS_LOADING,
   DOWNLOAD_FACTIONS, CREATE_FACTION, EDIT_FACTION,
-  DOWNLOAD_BEASTS, CREATE_BEAST, EDIT_BEAST,
-  DOWNLOAD_AUGMENTS, CREATE_AUGMENT, EDIT_AUGMENT,
+  DOWNLOAD_BEASTS, CREATE_BEAST, EDIT_BEAST, DELETE_BEAST,
+  DOWNLOAD_AUGMENTS, CREATE_AUGMENT, EDIT_AUGMENT, DELETE_AUGMENT,
   DOWNLOAD_RIFT, CREATE_RIFT, EDIT_RIFT,
   DOWNLOAD_OVERVIEW, CREATE_OVERVIEW, EDIT_OVERVIEW,
   DOWNLOAD_GAMERULE, CREATE_GAMERULE, EDIT_GAMERULE,
@@ -28,10 +28,12 @@ export const editFaction = payload => ({ type: EDIT_FACTION, payload });
 export const loadBeasts = payload => ({ type: DOWNLOAD_BEASTS, payload });
 export const createBeast = payload => ({ type: CREATE_BEAST, payload });
 export const editBeast = payload => ({ type: EDIT_BEAST, payload });
+export const deleteBeast = payload => ({ type: DELETE_BEAST, payload });
 // Augments
 export const loadAugments = payload => ({ type: DOWNLOAD_AUGMENTS, payload });
 export const createAugment = payload => ({ type: CREATE_AUGMENT, payload });
 export const editAugment = payload => ({ type: EDIT_AUGMENT, payload });
+export const deleteAugment = payload => ({ type: DELETE_AUGMENT, payload });
 // Rift
 export const loadRift = payload => ({ type: DOWNLOAD_RIFT, payload });
 export const createRift = payload => ({ type: CREATE_RIFT, payload });

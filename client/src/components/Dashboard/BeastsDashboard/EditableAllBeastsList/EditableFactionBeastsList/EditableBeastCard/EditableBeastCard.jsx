@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import AdminBeastForm from '../../../ToggleableBeastForm/AdminBeastForm';
 import BeastCard from './BeastCard';
+import { deleteBeast } from '../../../../../../store/actions';
 
 const EditableBeastCard = (props) => {
+  const dispatch = useDispatch();
   const [editFormOpen, setEditFormOpen] = useState(false);
   const { onFormSubmit } = props;
 
@@ -10,6 +13,8 @@ const EditableBeastCard = (props) => {
     onFormSubmit(beast);
     setEditFormOpen(false);
   };
+
+  const handleDelete = () => dispatch(deleteBeast(props));
 
   if (editFormOpen) {
     return (
@@ -24,6 +29,7 @@ const EditableBeastCard = (props) => {
     <BeastCard
       {...props}
       onFormOpen={() => setEditFormOpen(true)}
+      handleDelete={handleDelete}
     />
   );
 };

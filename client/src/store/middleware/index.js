@@ -6,6 +6,7 @@ import {
   IS_STALE, STALE_TIME,
   DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE, DOWNLOAD_AUGMENTS,
   EDIT_BEAST, EDIT_AUGMENT, EDIT_FACTION,
+  DELETE_BEAST, DELETE_AUGMENT,
 } from '../constants/action-types';
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
@@ -231,6 +232,37 @@ export const processUser = ({ getState, dispatch }) => next => async (action) =>
       }).catch(({ response }) => {
         console.log(`Error(${response.status}): ${response.data.message}`);
       });
+  }
+
+  return next(action);
+};
+
+const deleteGeneral = (dispatch, { type, payload }) => {
+  console.log('type, id', type, payload);
+  const { faction, id } = payload;
+  let modType = type;
+
+  if (type === DELETE_AUGMENT) modType = type.slice(0, -1); // hack
+
+  localStorage.removeItem(`${modType}sData`);
+  localStorage.removeItem(`${modType}sRecheck`);
+
+  API.post('AWS-HMG-URL', `/${type}`, { body: { factionName: faction, id } })
+    .then(response => dispatch({ type: `PROCESS_${type}`, payload: { factionName: faction, id } }))
+    .catch(({ response }) => {
+      console.log(`Error(${response.status}): ${response.data.message}`);
+    });
+};
+
+export const deleteItems = ({ getState, dispatch }) => next => async (action) => {
+  if (DELETE_BEAST === action.type) {
+    if (!getState().isAuthenticating) deleteGeneral(dispatch, action);
+    return true;
+  }
+
+  if (DELETE_AUGMENT === action.type) {
+    if (!getState().isAuthenticating) deleteGeneral(dispatch, action);
+    return true;
   }
 
   return next(action);

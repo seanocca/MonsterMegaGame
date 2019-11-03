@@ -11,6 +11,10 @@ const AdminFactionForm = (props) => {
   const faculty = useFormInput(props.faculty);
   const desc = useTextarea(props.desc);
 
+  const paddingRight = {
+    marginRight: '10px',
+  };
+
   const handleSubmit = () => {
     onFormSubmit({
       id,
@@ -65,7 +69,7 @@ const AdminFactionForm = (props) => {
             </Form.Group>
           </Form.Row>
           <Form.Row className="justify-content-center">
-            <Button variant="primary" type="button" onClick={handleSubmit}>
+            <Button variant="primary" type="button" onClick={handleSubmit} style={paddingRight}>
               {submitText}
             </Button>
             <Button variant="danger" type="button" onClick={onFormClose}>
