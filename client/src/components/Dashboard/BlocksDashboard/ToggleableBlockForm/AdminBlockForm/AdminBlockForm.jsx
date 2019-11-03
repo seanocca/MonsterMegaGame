@@ -27,41 +27,43 @@ const AdminBlockForm = (props) => {
 
   const submitText = props.id ? 'Update' : 'Create';
   return (
-    <td colSpan="3">
-      <Form style={{ padding: '1rem' }}>
-        <Form.Row>
-          <Form.Group as={Col} controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              placeholder="Block Name"
-              {...name}
-            />
-          </Form.Group>
-        </Form.Row>
-        <Form.Row>
-          <Form.Group as={Col} controlId="name">
-            <Form.Label>Latitude</Form.Label>
-            <Form.Control
-              {...latitude}
-            />
-          </Form.Group>
-          <Form.Group as={Col} controlId="name">
-            <Form.Label>Longitude</Form.Label>
-            <Form.Control
-              {...longitude}
-            />
-          </Form.Group>
-        </Form.Row>
-        <Form.Row className="justify-content-center">
-          <Button variant="primary" type="button" onClick={handleSubmit} style={paddingRight}>
-            {submitText}
-          </Button>
-          <Button variant="danger" type="button" onClick={onFormClose}>
-            Cancel
-          </Button>
-        </Form.Row>
-      </Form>
-    </td>
+    <tr>
+      <td colSpan="3">
+        <Form style={{ padding: '1rem' }}>
+          <Form.Row>
+            <Form.Group as={Col} controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                placeholder="Block Name"
+                {...name}
+              />
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId="name">
+              <Form.Label>Latitude</Form.Label>
+              <Form.Control
+                {...latitude}
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId="name">
+              <Form.Label>Longitude</Form.Label>
+              <Form.Control
+                {...longitude}
+              />
+            </Form.Group>
+          </Form.Row>
+          <Form.Row className="justify-content-center">
+            <Button variant="primary" type="button" onClick={handleSubmit} style={paddingRight}>
+              {submitText}
+            </Button>
+            <Button variant="danger" type="button" onClick={onFormClose}>
+              Cancel
+            </Button>
+          </Form.Row>
+        </Form>
+      </td>
+    </tr>
   );
 };
 

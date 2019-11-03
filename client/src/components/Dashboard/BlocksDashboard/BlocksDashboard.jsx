@@ -22,7 +22,7 @@ const BlocksDashboard = () => {
   return (
     <Container style={{ padding: '4rem 0' }}>
       <Dashboard />
-      <h1>Factions</h1>
+      <h1>Blocks</h1>
       <ToggleableBlockForm
         onFormSubmit={handleCreateFormSubmit}
       />
