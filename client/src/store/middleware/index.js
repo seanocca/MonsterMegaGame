@@ -148,7 +148,6 @@ const genericEdit = async (dispatch, endpoint, { type, payload }) => {
     logo: payload.logo,
     ...payload[endpoint],
   };
-  console.log('XXXXXXgenericEdit', saveObj);
   await API.post('AWS-HMG-URL', `/${endpoint}`, { body: saveObj })
     .then((response) => {
       updateLocalStorage(endpoint, saveObj);
