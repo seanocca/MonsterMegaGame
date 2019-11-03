@@ -5,7 +5,7 @@ import {
   PROCESS_USER,
   IS_LOADING,
   PROCESS_ALL_USERS, UPDATE_ALL_USERS,
-  CREATE_FACTION, PROCESS_EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS,
+  CREATE_FACTION, PROCESS_EDIT_FACTION, PROCESS_DOWNLOAD_FACTIONS, PROCESS_DELETE_FACTION,
   CREATE_AUGMENT, PROCESS_EDIT_AUGMENT, PROCESS_DOWNLOAD_AUGMENTS, PROCESS_DELETE_AUGMENT,
   CREATE_BEAST, PROCESS_EDIT_BEAST, PROCESS_DOWNLOAD_BEASTS, PROCESS_DELETE_BEAST,
   CREATE_RIFT, EDIT_RIFT, PROCESS_DOWNLOAD_RIFT,
@@ -151,6 +151,12 @@ const rootReducer = (state = initialState, action) => {
       }),
     });
   }
+  if (PROCESS_DELETE_FACTION === action.type) {
+    console.log('[REDUX] Delete Faction: ', action.payload);
+    return Object.assign({}, state, {
+      factions: state.factions.filter(faction => (faction.id !== action.payload.id)),
+    });
+  }
 
   // Augments
   if (PROCESS_DOWNLOAD_AUGMENTS === action.type) {
@@ -208,7 +214,8 @@ const rootReducer = (state = initialState, action) => {
             {},
             { faction: factionAugments.faction },
             {
-              augments: factionAugments.augments.filter(augment => (augment.id !== action.payload.id)),
+              augments: factionAugments.augments
+                .filter(augment => (augment.id !== action.payload.id)),
             },
           );
         }

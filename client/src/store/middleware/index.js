@@ -6,7 +6,7 @@ import {
   IS_STALE, STALE_TIME,
   DOWNLOAD_RIFT, DOWNLOAD_OVERVIEW, DOWNLOAD_GAMERULE, DOWNLOAD_AUGMENTS,
   EDIT_BEAST, EDIT_AUGMENT, EDIT_FACTION,
-  DELETE_BEAST, DELETE_AUGMENT,
+  DELETE_BEAST, DELETE_AUGMENT, DELETE_FACTION,
 } from '../constants/action-types';
 
 export const processUserAuth = ({ getState, dispatch }) => next => async (action) => {
@@ -261,6 +261,11 @@ export const deleteItems = ({ getState, dispatch }) => next => async (action) =>
   }
 
   if (DELETE_AUGMENT === action.type) {
+    if (!getState().isAuthenticating) deleteGeneral(dispatch, action);
+    return true;
+  }
+
+  if (DELETE_FACTION === action.type) {
     if (!getState().isAuthenticating) deleteGeneral(dispatch, action);
     return true;
   }
