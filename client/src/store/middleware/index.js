@@ -1,4 +1,4 @@
-import { Auth, API } from 'aws-amplify';
+import { Auth, API, Storage } from 'aws-amplify';
 import {
   USER_AUTHENTICATION, PROCESS_USER_AUTHENTICATION,
   DOWNLOAD_FACTIONS, DOWNLOAD_BEASTS,
@@ -148,6 +148,17 @@ const genericEdit = async (dispatch, endpoint, { type, payload }) => {
     logo: payload.logo,
     ...payload[endpoint],
   };
+
+  if (saveObj.newImage) {
+    const { REACT_APP_BUCKET, REACT_APP_REGION } = process.env;
+    const { newImage } = saveObj;
+    const filename = `${endpoint}/${newImage.name}`;
+    await Storage.put(filename, newImage, { contentType: newImage.type })
+      .then(({ key }) => {
+        saveObj.image = `https://${REACT_APP_BUCKET}.s3-${REACT_APP_REGION}.amazonaws.com/public/${key}`;
+      }).catch(e => console.log(e));
+  }
+
   await API.post('AWS-HMG-URL', `/${endpoint}`, { body: saveObj })
     .then((response) => {
       updateLocalStorage(endpoint, saveObj);
