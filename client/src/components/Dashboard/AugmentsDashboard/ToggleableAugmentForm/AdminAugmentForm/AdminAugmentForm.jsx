@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Form, Button, Col, Image,
 } from 'react-bootstrap';
@@ -22,6 +23,8 @@ const AdminAugmentForm = (props) => {
     marginRight: '10px',
   };
 
+  const factionList = useSelector(state => state.factions);
+
   const handleNewFile = ({ target }) => {
     if (target.files.length > 0) {
       setImage(URL.createObjectURL(target.files[0]));
@@ -44,6 +47,12 @@ const AdminAugmentForm = (props) => {
       faction: faction.value,
       logo,
     });
+  };
+
+  const factionOptions = () => {
+    return factionList.map((faction, i) => (
+      <option value={faction.name} key={faction.id}>{faction.name}</option>
+    ))
   };
 
   const submitText = props.id ? 'Update' : 'Create';
@@ -72,10 +81,7 @@ const AdminAugmentForm = (props) => {
               {...faction}
             >
               <option value="">Choose Faction...</option>
-              <option value="Mechanica">Mechanica</option>
-              <option value="Gatekeepers">Gatekeepers</option>
-              <option value="Voidborn">Voidborn</option>
-              <option value="Biochrondys">Biochrondys</option>
+              {factionOptions()}
             </Form.Control>
           </Form.Group>
         </Form.Row>

@@ -9,7 +9,6 @@ const AdminFactionForm = (props) => {
     id, onFormClose, onFormSubmit, createdAt, banner,
   } = props;
 
-  console.log(props.logo);
   const name = useFormInput(props.name);
   const leader = useFormInput(props.leader);
   const faculty = useFormInput(props.faculty);
