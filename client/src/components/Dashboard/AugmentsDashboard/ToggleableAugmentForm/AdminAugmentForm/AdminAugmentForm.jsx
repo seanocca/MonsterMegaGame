@@ -94,7 +94,7 @@ const AdminAugmentForm = (props) => {
               accept="image/*"
               onChange={handleNewFile}
             />
-            <Image src={ image } height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
+            <Image src={image} height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">
