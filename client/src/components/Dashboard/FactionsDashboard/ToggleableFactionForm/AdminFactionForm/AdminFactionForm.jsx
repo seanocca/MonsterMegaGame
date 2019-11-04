@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Button, Col, Image } from 'react-bootstrap';
+import {
+  Form, Button, Col, Image,
+} from 'react-bootstrap';
 import { useFormInput, useTextarea } from '../../../../../helpers/hooks';
 
 const AdminFactionForm = (props) => {
@@ -90,7 +92,7 @@ const AdminFactionForm = (props) => {
                 accept="image/*"
                 onChange={handleNewFile}
               />
-              <Image src={ logo.value } height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
+              <Image src={logo} height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
             </Form.Group>
           </Form.Row>
           <Form.Row className="justify-content-center">
