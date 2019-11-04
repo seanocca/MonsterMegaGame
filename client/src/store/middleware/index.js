@@ -167,6 +167,28 @@ const genericEdit = async (dispatch, endpoint, { type, payload }) => {
     .catch(e => console.log(e));
 };
 
+const factionEdit = async (dispatch, endpoint, { type, payload }) => {
+  const saveObj = Object.assign({}, payload);
+
+  if (saveObj.newLogo) {
+    const { REACT_APP_BUCKET, REACT_APP_REGION } = process.env;
+    const { newLogo } = saveObj;
+    const filename = `${endpoint}/${newLogo.name}`;
+    await Storage.put(filename, newLogo, { contentType: newLogo.type })
+      .then(({ key }) => {
+        saveObj.logo = `https://${REACT_APP_BUCKET}.s3-${REACT_APP_REGION}.amazonaws.com/public/${key}`;
+      }).catch(e => console.log(e));
+  }
+
+  await API.post('AWS-HMG-URL', `/${endpoint}`, { body: saveObj })
+    .then((response) => {
+      updateLocalStorageFaction(endpoint, saveObj);
+      dispatch({ type: 'PROCESS_EDIT_FACTION', payload: saveObj, isLoading: false });
+    })
+    .catch(e => console.log(e));
+  return true;
+};
+
 export const processEdits = ({ getState, dispatch }) => next => async (action) => {
   if (EDIT_BEAST === action.type) {
     if (!getState().isAuthenticating) await genericEdit(dispatch, 'beast', action);
@@ -179,14 +201,7 @@ export const processEdits = ({ getState, dispatch }) => next => async (action) =
   }
 
   if (EDIT_FACTION === action.type) {
-    const { payload } = action;
-    await API.post('AWS-HMG-URL', '/faction', { body: payload })
-      .then((response) => {
-        updateLocalStorageFaction('faction', action.payload);
-        dispatch({ type: 'PROCESS_EDIT_FACTION', payload, isLoading: false });
-      })
-      .catch(e => console.log(e));
-    // if (!getState().isAuthenticating) await genericEdit(dispatch, 'augment', action);
+    if (!getState().isAuthenticating) await factionEdit(dispatch, 'faction', action);
     return true;
   }
 
