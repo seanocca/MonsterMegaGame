@@ -3,13 +3,16 @@ import { Row, Accordion, Card } from 'react-bootstrap';
 import EditableAugmentCard from './EditableAugmentCard';
 
 const EditableFactionAugmentsList = (props) => {
-  const { faction, factionAugments, onFormSubmit } = props;
+  const {
+    faction, logo, factionAugments, onFormSubmit,
+  } = props;
   const factionAugmentsComponents = factionAugments.map(factionAugment => (
     <EditableAugmentCard
       {...factionAugment}
       faction={faction}
       onFormSubmit={onFormSubmit}
       key={factionAugment.id}
+      logo={logo}
     />
   ));
   return (

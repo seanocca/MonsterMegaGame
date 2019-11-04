@@ -7,7 +7,7 @@ import { useFormInput, useFactionCardStyles } from '../../../../../helpers/hooks
 
 const AdminAugmentForm = (props) => {
   const {
-    id, onFormClose, onFormSubmit, createdAt,
+    id, onFormClose, onFormSubmit, createdAt, logo,
   } = props;
   const name = useFormInput(props.name);
   const type = useFormInput(props.type);
@@ -18,7 +18,6 @@ const AdminAugmentForm = (props) => {
   const [newImage, setNewImage] = useState(null);
 
   const factionStyles = useFactionCardStyles(faction);
-
   const paddingRight = {
     marginRight: '10px',
   };
@@ -43,6 +42,7 @@ const AdminAugmentForm = (props) => {
         desc: desc.value,
       },
       faction: faction.value,
+      logo,
     });
   };
 

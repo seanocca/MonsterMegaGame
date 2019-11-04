@@ -10,6 +10,7 @@ const EditableAllAugmentsList = (props) => {
       factionAugments={factionAugments.augments}
       onFormSubmit={onFormSubmit}
       key={factionAugments.faction}
+      logo={factionAugments.logo}
     />
   ));
   return (
