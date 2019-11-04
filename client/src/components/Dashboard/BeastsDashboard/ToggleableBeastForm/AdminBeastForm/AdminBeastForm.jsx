@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import {
   Form, Button, Col, Image,
 } from 'react-bootstrap';
@@ -20,7 +20,8 @@ const AdminBeastForm = (props) => {
   const hp = useFormInput(props.hp);
   const maxhp = useFormInput(props.maxhp);
   const faction = useFormInput(props.faction);
-  const image = useFormInput(props.image);
+  const [image, setImage] = useState(props.image);
+  const [newImage, setNewImage] = useState(null);
 
   const factionStyles = useFactionCardStyles(faction);
 
@@ -28,12 +29,19 @@ const AdminBeastForm = (props) => {
     marginRight: '10px',
   };
 
-  const handleSubmit = () => {
+  const handleNewFile = ({ target }) => {
+    if (target.files.length > 0) {
+      setImage(URL.createObjectURL(target.files[0]));
+      setNewImage(target.files[0]);
+    }
+  };
+
+  const handleSubmit = (event) => {
     onFormSubmit({
       beast: {
         id,
         createdAt,
-        image: image.value,
+        image: newImage || image,
         name: name.value,
         desc: desc.value,
         move: move.value,
@@ -164,8 +172,10 @@ const AdminBeastForm = (props) => {
             <Form.Control
               as="input"
               type="file"
+              accept="image/*"
+              onChange={handleNewFile}
             />
-            <Image src={ image.value } height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
+            <Image src={image} height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">
