@@ -41,7 +41,8 @@ const AdminBeastForm = (props) => {
       beast: {
         id,
         createdAt,
-        image: newImage || image,
+        image,
+        newImage,
         name: name.value,
         desc: desc.value,
         move: move.value,
