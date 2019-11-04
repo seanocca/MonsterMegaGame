@@ -1,15 +1,18 @@
 import React from 'react';
-import { Form, Button, Col } from 'react-bootstrap';
+import { Form, Button, Col, Image } from 'react-bootstrap';
 import { useFormInput, useTextarea } from '../../../../../helpers/hooks';
 
 const AdminFactionForm = (props) => {
   const {
     id, onFormClose, onFormSubmit, createdAt, banner,
   } = props;
+
+  console.log(props.logo);
   const name = useFormInput(props.name);
   const leader = useFormInput(props.leader);
   const faculty = useFormInput(props.faculty);
   const desc = useTextarea(props.desc);
+  const logo = useFormInput(props.logo);
 
   const paddingRight = {
     marginRight: '10px',
@@ -24,6 +27,7 @@ const AdminFactionForm = (props) => {
       leader: leader.value,
       faculty: faculty.value,
       desc: desc.value,
+      logo: logo.value,
     });
   };
 
@@ -66,6 +70,16 @@ const AdminFactionForm = (props) => {
                 placeholder="Faculty"
                 {...desc}
               />
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId="image">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                as="input"
+                type="file"
+              />
+              <Image src={ logo.value } height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
             </Form.Group>
           </Form.Row>
           <Form.Row className="justify-content-center">

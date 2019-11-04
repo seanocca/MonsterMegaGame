@@ -7,7 +7,7 @@ import { deleteFaction } from '../../../../../store/actions';
 const EditableFactionRow = (props) => {
   const dispatch = useDispatch();
   const {
-    name, leader, onFormSubmit, setEditFormOpen,
+    name, leader, onFormSubmit, setEditFormOpen, image,
   } = props;
 
   const handleSubmit = (faction) => {
@@ -30,6 +30,7 @@ const EditableFactionRow = (props) => {
     <FactionRow
       name={name}
       leader={leader}
+      image={image}
       onFormOpen={() => setEditFormOpen(props.id)}
       handleDelete={handleDelete}
     />
