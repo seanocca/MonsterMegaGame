@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  Form, Button, Col,
+  Form, Button, Col, Image,
 } from 'react-bootstrap';
 import { useFormInput, useNumericFormInput, useFactionCardStyles } from '../../../../../helpers/hooks';
 
 const AdminBeastForm = (props) => {
   const {
-    id, onFormClose, onFormSubmit, createdAt, image, logo,
+    id, onFormClose, onFormSubmit, createdAt, logo,
   } = props;
   const name = useFormInput(props.name);
   const desc = useFormInput(props.desc);
@@ -20,6 +20,7 @@ const AdminBeastForm = (props) => {
   const hp = useFormInput(props.hp);
   const maxhp = useFormInput(props.maxhp);
   const faction = useFormInput(props.faction);
+  const image = useFormInput(props.image);
 
   const factionStyles = useFactionCardStyles(faction);
 
@@ -32,7 +33,7 @@ const AdminBeastForm = (props) => {
       beast: {
         id,
         createdAt,
-        image,
+        image: image.value,
         name: name.value,
         desc: desc.value,
         move: move.value,
@@ -155,6 +156,16 @@ const AdminBeastForm = (props) => {
             <Form.Control
               {...move}
             />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col} controlId="image">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              as="input"
+              type="file"
+            />
+            <Image src={ image.value } height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">
