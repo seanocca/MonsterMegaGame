@@ -57,4 +57,4 @@ export const PROCESS_DELETE_BLOCK = 'PROCESS_delete-block';
 // General
 export const IS_STALE = 'IS_STALE';
 // export const STALE_TIME = 86400; // 1 day in seconds
-export const STALE_TIME = 60; // For demo reasons - set to 1 minute
+export const STALE_TIME = 1; // For demo reasons - set to 1 minute
