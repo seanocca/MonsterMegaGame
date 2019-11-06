@@ -3,11 +3,14 @@ import { Row, Accordion, Card } from 'react-bootstrap';
 import EditableBeastCard from './EditableBeastCard';
 
 const EditableFactionBeastsList = (props) => {
-  const { faction, factionBeasts, onFormSubmit } = props;
+  const {
+    faction, logo, factionBeasts, onFormSubmit,
+  } = props;
   const factionBeastsComponents = factionBeasts.map(factionBeast => (
     <EditableBeastCard
       {...factionBeast}
       faction={faction}
+      logo={logo}
       onFormSubmit={onFormSubmit}
       key={factionBeast.id}
     />

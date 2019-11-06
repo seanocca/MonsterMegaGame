@@ -25,16 +25,17 @@ class FactionAccordion extends Component {
   )
 
   render() {
+    const sorted = this.props.factions.sort((a, b) => a.name.localeCompare(b.name));
     return (
       <Row className="flex-row" style={{ margin: '0' }}>
-        {this.bannerBuilder(this.props.factions[0], 1)}
-        {this.bannerBuilder(this.props.factions[1], 2)}
+        {this.bannerBuilder(sorted[0], 1)}
+        {this.bannerBuilder(sorted[1], 2)}
         <Col md={{ span: 8, order: 3 }} xs={{ span: 12, order: 1 }}>
           <h1 className="text-center custom-title">FACTIONS</h1>
-          {ReUsableAccordion('Factions', this.props.factions)}
+          {ReUsableAccordion('Factions', sorted)}
         </Col>
-        {this.bannerBuilder(this.props.factions[2], 3)}
-        {this.bannerBuilder(this.props.factions[3], 4)}
+        {this.bannerBuilder(sorted[2], 3)}
+        {this.bannerBuilder(sorted[3], 4)}
       </Row>
     );
   }

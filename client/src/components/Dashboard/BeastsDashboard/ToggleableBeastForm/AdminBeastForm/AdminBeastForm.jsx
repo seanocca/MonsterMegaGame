@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
-  Form, Button, Col,
+  Form, Button, Col, Image,
 } from 'react-bootstrap';
 import { useFormInput, useNumericFormInput, useFactionCardStyles } from '../../../../../helpers/hooks';
 
 const AdminBeastForm = (props) => {
   const {
-    id, onFormClose, onFormSubmit, createdAt, image,
+    id, onFormClose, onFormSubmit, createdAt, logo,
   } = props;
   const name = useFormInput(props.name);
   const desc = useFormInput(props.desc);
@@ -20,6 +21,8 @@ const AdminBeastForm = (props) => {
   const hp = useFormInput(props.hp);
   const maxhp = useFormInput(props.maxhp);
   const faction = useFormInput(props.faction);
+  const [image, setImage] = useState(props.image);
+  const [newImage, setNewImage] = useState(null);
 
   const factionStyles = useFactionCardStyles(faction);
 
@@ -27,12 +30,22 @@ const AdminBeastForm = (props) => {
     marginRight: '10px',
   };
 
-  const handleSubmit = () => {
+  const factionList = useSelector(state => state.factions);
+
+  const handleNewFile = ({ target }) => {
+    if (target.files.length > 0) {
+      setImage(URL.createObjectURL(target.files[0]));
+      setNewImage(target.files[0]);
+    }
+  };
+
+  const handleSubmit = (event) => {
     onFormSubmit({
       beast: {
         id,
         createdAt,
         image,
+        newImage,
         name: name.value,
         desc: desc.value,
         move: move.value,
@@ -46,7 +59,14 @@ const AdminBeastForm = (props) => {
         maxspeed: maxspeed.value,
       },
       faction: faction.value,
+      logo,
     });
+  };
+
+  const factionOptions = () => {
+    return factionList.map((faction, i) => (
+      <option value={faction.name} key={faction.id}>{faction.name}</option>
+    ))
   };
 
   const submitText = props.id ? 'Update' : 'Create';
@@ -61,10 +81,7 @@ const AdminBeastForm = (props) => {
               {...faction}
             >
               <option value="">Choose Faction...</option>
-              <option value="Mechanica">Mechanica</option>
-              <option value="Gatekeepers">Gatekeepers</option>
-              <option value="Voidborn">Voidborn</option>
-              <option value="Biochrondys">Biochrondys</option>
+              {factionOptions()}
             </Form.Control>
           </Form.Group>
         </Form.Row>
@@ -154,6 +171,18 @@ const AdminBeastForm = (props) => {
             <Form.Control
               {...move}
             />
+          </Form.Group>
+        </Form.Row>
+        <Form.Row>
+          <Form.Group as={Col} controlId="image">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              as="input"
+              type="file"
+              accept="image/*"
+              onChange={handleNewFile}
+            />
+            <Image src={image} height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
           </Form.Group>
         </Form.Row>
         <Form.Row className="justify-content-center">

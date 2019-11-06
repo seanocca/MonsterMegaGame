@@ -1,18 +1,30 @@
-import React from 'react';
-import { Form, Button, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import {
+  Form, Button, Col, Image,
+} from 'react-bootstrap';
 import { useFormInput, useTextarea } from '../../../../../helpers/hooks';
 
 const AdminFactionForm = (props) => {
   const {
     id, onFormClose, onFormSubmit, createdAt, banner,
   } = props;
+
   const name = useFormInput(props.name);
   const leader = useFormInput(props.leader);
   const faculty = useFormInput(props.faculty);
   const desc = useTextarea(props.desc);
+  const [logo, setLogo] = useState(props.logo);
+  const [newLogo, setNewLogo] = useState(null);
 
   const paddingRight = {
     marginRight: '10px',
+  };
+
+  const handleNewFile = ({ target }) => {
+    if (target.files.length > 0) {
+      setLogo(URL.createObjectURL(target.files[0]));
+      setNewLogo(target.files[0]);
+    }
   };
 
   const handleSubmit = () => {
@@ -24,6 +36,8 @@ const AdminFactionForm = (props) => {
       leader: leader.value,
       faculty: faculty.value,
       desc: desc.value,
+      logo,
+      newLogo,
     });
   };
 
@@ -66,6 +80,18 @@ const AdminFactionForm = (props) => {
                 placeholder="Faculty"
                 {...desc}
               />
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} controlId="image">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                as="input"
+                type="file"
+                accept="image/*"
+                onChange={handleNewFile}
+              />
+              <Image src={logo} height="150" width="150" thumbnail style={{ backgroundColor: 'transparent', border: 'none' }} />
             </Form.Group>
           </Form.Row>
           <Form.Row className="justify-content-center">

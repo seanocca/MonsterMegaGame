@@ -8,6 +8,7 @@ const EditableAllBeastsList = (props) => {
     <EditableFactionBeastsList
       faction={factionbeasts.faction}
       factionBeasts={factionbeasts.beasts}
+      logo={factionbeasts.logo}
       onFormSubmit={onFormSubmit}
       key={factionbeasts.faction}
     />

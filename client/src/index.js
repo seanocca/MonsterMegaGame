@@ -13,6 +13,7 @@ require('dotenv').config();
 const {
   REACT_APP_REGION,
   REACT_APP_URL,
+  REACT_APP_BUCKET,
   REACT_APP_USER_POOL_ID,
   REACT_APP_APP_CLIENT_ID,
   REACT_APP_IDENTITY_POOL_ID,
@@ -25,6 +26,12 @@ Amplify.configure({
     userPoolId: REACT_APP_USER_POOL_ID,
     identityPoolId: REACT_APP_IDENTITY_POOL_ID,
     userPoolWebClientId: REACT_APP_APP_CLIENT_ID,
+  },
+  Storage: {
+    AWSS3: {
+      bucket: REACT_APP_BUCKET,
+      region: REACT_APP_REGION,
+    },
   },
   API: {
     endpoints: [

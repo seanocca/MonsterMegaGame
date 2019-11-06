@@ -25,6 +25,8 @@ import gamerules from '../constants/game-rule-data';
 import blocks from '../constants/block-data';
 // import users from '../constants/user-data';
 
+const DISPLAY_LOGS = false;
+
 const initialState = {
   isAuthenticated: false,
   isAuthenticating: true,
@@ -52,7 +54,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   if (IS_STALE === action.type) {
-    console.log('[REDUX] Update Stale time: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Update Stale time: ', action.payload);
     return Object.assign({}, state, {
       isDownload: {
         ...state.isDownload,
@@ -62,7 +64,7 @@ const rootReducer = (state = initialState, action) => {
   }
 
   if (PROCESS_USER_AUTHENTICATION === action.type) {
-    console.log('[REDUX] User Authentication: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] User Authentication: ', action.payload);
     return Object.assign({}, state, {
       isAuthenticated: action.payload,
       isAuthenticating: false,
@@ -71,21 +73,21 @@ const rootReducer = (state = initialState, action) => {
   }
 
   if (IS_AUTHENTICATING === action.type) {
-    console.log('[REDUX] Is Authenticating: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Is Authenticating: ', action.payload);
     return Object.assign({}, state, {
       isAuthenticating: action.payload,
     });
   }
 
   if (IS_LOADING === action.type) {
-    console.log('[REDUX] Is Loading: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Is Loading: ', action.payload);
     return Object.assign({}, state, {
       isLoading: action.payload,
     });
   }
 
   if (PROCESS_USER === action.type) {
-    console.log('[REDUX] Set/Get User: ', action.payload, action.isLoading);
+    if (DISPLAY_LOGS) console.log('[REDUX] Set/Get User: ', action.payload, action.isLoading);
     return Object.assign({}, state, {
       user: action.payload,
       isLoading:
@@ -94,14 +96,14 @@ const rootReducer = (state = initialState, action) => {
   }
 
   if (PROCESS_ALL_USERS === action.type) {
-    console.log('[REDUX] get ALL User: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] get ALL User: ', action.payload);
     return Object.assign({}, state, {
       users: action.payload,
     });
   }
 
   if (UPDATE_ALL_USERS === action.type) {
-    console.log('[REDUX] Update ALL User: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Update ALL User: ', action.payload);
     const mergeUser = (oldUsers, newUser) => oldUsers.map((user) => {
       if (user.userID === newUser.userID) { return newUser; } return user;
     });
@@ -113,13 +115,13 @@ const rootReducer = (state = initialState, action) => {
 
   // Factions
   if (PROCESS_DOWNLOAD_FACTIONS === action.type) {
-    console.log('[REDUX] Download factions: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Download factions: ', action.payload);
     return Object.assign({}, state, {
       factions: action.payload,
     });
   }
   if (CREATE_FACTION === action.type) {
-    console.log('[REDUX] Create faction: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Create faction: ', action.payload);
     return Object.assign({}, state, {
       factions: state.factions.concat(action.payload),
       beasts: state.beasts.concat({
@@ -136,7 +138,7 @@ const rootReducer = (state = initialState, action) => {
     const {
       name, leader, faculty, desc,
     } = action.payload;
-    console.log('[REDUX] Edit faction: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Edit faction: ', action.payload);
     return Object.assign({}, state, {
       factions: state.factions.map((faction) => {
         if (faction.id === action.payload.id) {
@@ -152,7 +154,7 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (PROCESS_DELETE_FACTION === action.type) {
-    console.log('[REDUX] Delete Faction: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Delete Faction: ', action.payload);
     return Object.assign({}, state, {
       factions: state.factions.filter(faction => (faction.id !== action.payload.id)),
     });
@@ -160,13 +162,13 @@ const rootReducer = (state = initialState, action) => {
 
   // Augments
   if (PROCESS_DOWNLOAD_AUGMENTS === action.type) {
-    console.log('[REDUX] Download Augments: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Download Augments: ', action.payload);
     return Object.assign({}, state, {
       augments: action.payload,
     });
   }
   if (CREATE_AUGMENT === action.type) {
-    console.log('[REDUX] Create augment: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Create augment: ', action.payload);
     return Object.assign({}, state, {
       augments: state.augments.map((factionAugments) => {
         if (factionAugments.faction === action.payload.faction) {
@@ -184,7 +186,7 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (PROCESS_EDIT_AUGMENT === action.type) {
-    console.log('[REDUX] Edit augment: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Edit augment: ', action.payload);
     return Object.assign({}, state, {
       augments: state.augments.map((factionAugments) => {
         if (factionAugments.faction === action.payload.faction) {
@@ -206,7 +208,7 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (PROCESS_DELETE_AUGMENT === action.type) {
-    console.log('[REDUX] Delete Augment: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Delete Augment: ', action.payload);
     return Object.assign({}, state, {
       augments: state.augments.map((factionAugments) => {
         if (factionAugments.faction === action.payload.factionName) {
@@ -226,13 +228,13 @@ const rootReducer = (state = initialState, action) => {
 
   // beasts
   if (PROCESS_DOWNLOAD_BEASTS === action.type) {
-    console.log('[REDUX] Download beast: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Download beast: ', action.payload);
     return Object.assign({}, state, {
       beasts: action.payload,
     });
   }
   if (CREATE_BEAST === action.type) {
-    console.log('[REDUX] Create beast: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Create beast: ', action.payload);
     return Object.assign({}, state, {
       beasts: state.beasts.map((factionBeasts) => {
         if (factionBeasts.faction === action.payload.faction) {
@@ -250,13 +252,14 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (PROCESS_EDIT_BEAST === action.type) {
-    console.log('[REDUX] Edit Beast: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Edit Beast: ', action.payload);
     return Object.assign({}, state, {
       beasts: state.beasts.map((factionBeasts) => {
         if (factionBeasts.faction === action.payload.faction) {
           return Object.assign(
             {},
             { faction: factionBeasts.faction },
+            { logo: factionBeasts.logo },
             {
               beasts: factionBeasts.beasts.map((beast) => {
                 if (beast.id === action.payload.beast.id) {
@@ -272,7 +275,7 @@ const rootReducer = (state = initialState, action) => {
     });
   }
   if (PROCESS_DELETE_BEAST === action.type) {
-    console.log('[REDUX] Delete Beast: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Delete Beast: ', action.payload);
     return Object.assign({}, state, {
       beasts: state.beasts.map((factionBeasts) => {
         if (factionBeasts.faction === action.payload.factionName) {
@@ -291,7 +294,7 @@ const rootReducer = (state = initialState, action) => {
 
   // blocks
   if (CREATE_BLOCK === action.type) {
-    console.log('[REDUX] Create Block: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Create Block: ', action.payload);
     return Object.assign({}, state, {
       blocks: state.blocks.concat(action.payload),
     });
@@ -300,7 +303,7 @@ const rootReducer = (state = initialState, action) => {
     const {
       name, latitude, longitude,
     } = action.payload;
-    console.log('[REDUX] Edit Block: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Edit Block: ', action.payload);
     return Object.assign({}, state, {
       blocks: state.blocks.map((block) => {
         if (block.id === action.payload.id) {
@@ -318,132 +321,56 @@ const rootReducer = (state = initialState, action) => {
   // Rift
   if (PROCESS_DOWNLOAD_RIFT === action.type) {
     const item = action.payload.pop();
-    console.log('[REDUX] Download Rift: ', item);
+    if (DISPLAY_LOGS) console.log('[REDUX] Download Rift: ', item);
     return Object.assign({}, state, {
       rift: item,
     });
   }
   if (CREATE_RIFT === action.type) {
-    console.log('[REDUX] Create Rift: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Create Rift: ', action.payload);
     return Object.assign({}, state);
-    // return Object.assign({}, state, {
-    //   factions: state.factions.concat(action.payload),
-    //   beasts: state.beasts.concat({
-    //     faction: action.payload.name,
-    //     beasts: [],
-    //   }),
-    //   augments: state.augments.concat({
-    //     faction: action.payload.name,
-    //     beasts: [],
-    //   }),
-    // });
   }
   if (EDIT_RIFT === action.type) {
-    // const {
-    //   name, leader, faculty, desc,
-    // } = action.payload;
-    console.log('[REDUX] Edit Rift: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Edit Rift: ', action.payload);
     return Object.assign({}, state);
-    // return Object.assign({}, state, {
-    //   factions: state.factions.map((faction) => {
-    //     if (faction.id === action.payload.id) {
-    //       return Object.assign({}, faction, {
-    //         name,
-    //         leader,
-    //         faculty,
-    //         desc,
-    //       });
-    //     }
-    //     return faction;
-    //   }),
-    // });
   }
 
   // Overview
   if (PROCESS_DOWNLOAD_OVERVIEW === action.type) {
     const item = action.payload.pop();
-    console.log('[REDUX] Download Overview: ', item);
+    if (DISPLAY_LOGS) console.log('[REDUX] Download Overview: ', item);
     return Object.assign({}, state, {
       overview: item,
     });
   }
   if (CREATE_OVERVIEW === action.type) {
-    console.log('[REDUX] Create Overview: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Create Overview: ', action.payload);
     return Object.assign({}, state);
-    // return Object.assign({}, state, {
-    //   factions: state.factions.concat(action.payload),
-    //   beasts: state.beasts.concat({
-    //     faction: action.payload.name,
-    //     beasts: [],
-    //   }),
-    //   augments: state.augments.concat({
-    //     faction: action.payload.name,
-    //     beasts: [],
-    //   }),
-    // });
   }
   if (EDIT_OVERVIEW === action.type) {
-    // const {
-    //   name, leader, faculty, desc,
-    // } = action.payload;
-    console.log('[REDUX] Edit Overview: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Edit Overview: ', action.payload);
     return Object.assign({}, state);
-    // return Object.assign({}, state, {
-    //   factions: state.factions.map((faction) => {
-    //     if (faction.id === action.payload.id) {
-    //       return Object.assign({}, faction, {
-    //         name,
-    //         leader,
-    //         faculty,
-    //         desc,
-    //       });
-    //     }
-    //     return faction;
-    //   }),
-    // });
   }
 
   // Game Rules
   if (PROCESS_DOWNLOAD_GAMERULE === action.type) {
-    console.log('[REDUX] Download Gamerule: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Download Gamerule: ', action.payload);
     return Object.assign({}, state, {
       gamerules: action.payload,
     });
   }
   if (CREATE_GAMERULE === action.type) {
-    console.log('[REDUX] Create Gamerule: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Create Gamerule: ', action.payload);
     return Object.assign({}, state);
-    // return Object.assign({}, state, {
-    //   factions: state.factions.concat(action.payload),
-    //   beasts: state.beasts.concat({
-    //     faction: action.payload.name,
-    //     beasts: [],
-    //   }),
-    //   augments: state.augments.concat({
-    //     faction: action.payload.name,
-    //     beasts: [],
-    //   }),
-    // });
   }
   if (EDIT_GAMERULE === action.type) {
-    // const {
-    //   name, leader, faculty, desc,
-    // } = action.payload;
-    console.log('[REDUX] Edit Gamerule: ', action.payload);
+    if (DISPLAY_LOGS) console.log('[REDUX] Edit Gamerule: ', action.payload);
     return Object.assign({}, state);
-    // return Object.assign({}, state, {
-    //   factions: state.factions.map((faction) => {
-    //     if (faction.id === action.payload.id) {
-    //       return Object.assign({}, faction, {
-    //         name,
-    //         leader,
-    //         faculty,
-    //         desc,
-    //       });
-    //     }
-    //     return faction;
-    //   }),
-    // });
+  }
+
+  if (action.type === 'GET_ALL_BLOCKS') {
+    // This is to silence this action that has not been implemented
+    return state;
   }
 
   console.log('[REDUX] Uncaught Action: ', action);
